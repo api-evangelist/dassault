@@ -1,0 +1,69 @@
+name: Dassault Systèmes FinOps
+description: Dassault Systèmes 3DEXPERIENCE platform licensing follows a role-based
+  model where costs are tied to the number of named roles purchased rather than API
+  call volume or consumption metrics. There are no public usage-based API billing
+  tiers. Cost governance centers on role provisioning, subscription management, and
+  optimizing the number of active named users against deployed functionality. For
+  channel partners, the API4Partners gateway is provided as part of the partner program
+  at no additional per-call cost.
+url: https://www.3ds.com/3dexperience/
+created: '2026-06-13'
+modified: '2026-06-13'
+costModel:
+  type: role-based-subscription
+  description: Costs are driven by the number and type of 3DEXPERIENCE roles licensed.
+    Each role unlocks a set of platform applications and corresponding REST web service
+    access. API usage itself is not metered or billed separately.
+  billingCycle:
+    - annual
+    - multi-year
+  pricingTransparency: low
+  publicPricing: false
+  negotiated: true
+costDrivers:
+  - name: Number of Named Roles
+    description: Each named user role (e.g., Product Designer, Manufacturing Engineer,
+      ENOVIA Manager) carries a subscription cost. More roles mean higher total cost.
+    impact: high
+  - name: Deployment Model
+    description: Cloud deployments include infrastructure hosting costs managed by
+      Dassault Systèmes. On-premise deployments shift infrastructure costs to the
+      customer but may require additional support contracts.
+    impact: high
+  - name: Product Line
+    description: Licensing costs vary significantly across product lines — SolidWorks,
+      CATIA, ENOVIA, SIMULIA, DELMIA, and 3DVIA each carry different price points.
+    impact: high
+  - name: Support and Maintenance
+    description: Annual maintenance and support contracts add to total cost of ownership,
+      typically calculated as a percentage of license value.
+    impact: medium
+  - name: Training and Onboarding
+    description: Developer onboarding, CAA API training, and 3DEXPERIENCE web services
+      training through partners or directly from Dassault Systèmes adds implementation
+      cost.
+    impact: low
+optimizationRecommendations:
+  - recommendation: Audit active named roles and reclaim unused licenses to reduce
+      subscription spend.
+    category: license-management
+  - recommendation: Evaluate cloud vs. on-premise TCO including infrastructure, maintenance,
+      and upgrade costs before committing to a deployment model.
+    category: deployment
+  - recommendation: Consolidate redundant roles across teams where platform functionality
+      overlaps to minimize seat count.
+    category: license-management
+  - recommendation: Use staging environments (apigw-ppt, apigw-qal) for development
+      and testing to avoid unnecessary production load and potential overage discussions
+      during renewal.
+    category: api-governance
+  - recommendation: Leverage the 3DEXPERIENCE Health Console to monitor platform
+      utilization and identify underused tenants that may be candidates for consolidation.
+    category: monitoring
+resources:
+  - name: 3DEXPERIENCE Store
+    url: https://www.3ds.com/store
+  - name: Trust Center and Availability
+    url: https://www.3ds.com/trust-center/availability
+  - name: Partner Portal Pricing APIs
+    url: https://partners.3ds.com/docs/0.10.0/

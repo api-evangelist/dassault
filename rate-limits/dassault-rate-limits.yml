@@ -1,0 +1,44 @@
+name: Dassault Systèmes Rate Limits
+description: Dassault Systèmes does not publish specific rate limit values for the
+  3DEXPERIENCE web services or the API4Partners gateway in public documentation.
+  The API4Partners gateway returns HTTP 429 responses when request thresholds are
+  exceeded, indicating that rate limiting is enforced at the gateway level. Specific
+  limits are communicated to partners through the onboarding process and secured
+  3DSwym Community channel. On-premise deployments are subject to the capacity of
+  the customer's own infrastructure rather than platform-imposed limits.
+url: https://partners.3ds.com/docs/0.10.0/
+created: '2026-06-13'
+modified: '2026-06-13'
+rateLimits:
+  - name: API4Partners Gateway Rate Limit
+    description: HTTP 429 Too Many Requests responses are returned by the API gateway
+      when a partner's API key exceeds the allowed request rate. Exact thresholds
+      are not documented publicly and are communicated during partner onboarding.
+    scope: per-api-key
+    httpStatusOnExceeded: 429
+    documented: false
+    notes: Contact Dassault Systèmes IS team or partner portal for current limits.
+  - name: 3DEXPERIENCE Cloud Web Services
+    description: Rate limits for the 3DEXPERIENCE platform REST web services on cloud
+      deployments are not publicly documented. Limits are governed by the subscribed
+      service tier and role count. Customers should consult their subscription agreement
+      or Dassault Systèmes support for specifics.
+    scope: per-tenant
+    documented: false
+    notes: Managed through the Health Console and subscription service agreement.
+  - name: On-Premise Deployments
+    description: On-premise installations of the 3DEXPERIENCE platform do not have
+      externally imposed rate limits. Throughput is constrained by the customer's
+      server hardware, network capacity, and database performance.
+    scope: infrastructure
+    documented: false
+    notes: Customer-managed infrastructure; no platform-level rate cap applied.
+errorCodes:
+  - code: 429
+    description: Too Many Requests — rate limit exceeded on the API4Partners gateway.
+  - code: 401
+    description: Unauthorized — invalid or missing API key.
+  - code: 403
+    description: Forbidden — API key lacks permission for the requested resource.
+  - code: 400
+    description: Bad Request — malformed request payload or query parameters.

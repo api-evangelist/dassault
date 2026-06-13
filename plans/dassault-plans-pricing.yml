@@ -1,0 +1,62 @@
+name: Dassault Systèmes Plans and Pricing
+description: Dassault Systèmes licenses the 3DEXPERIENCE platform through subscription
+  and perpetual models sold via direct sales and authorized resellers. Pricing is
+  not published publicly and is negotiated based on product lines, number of roles,
+  deployment model (cloud or on-premise), and contract duration. API access is bundled
+  with the corresponding 3DEXPERIENCE roles and applications; there are no standalone
+  public API pricing tiers. The API4Partners gateway is available exclusively to
+  certified channel partners.
+url: https://www.3ds.com/store
+created: '2026-06-13'
+modified: '2026-06-13'
+plans:
+  - name: On-Premise License
+    description: Perpetual or subscription license for deploying the 3DEXPERIENCE
+      platform on customer-managed infrastructure. Includes access to platform APIs
+      proportional to the purchased roles. Pricing is negotiated per engagement.
+    url: https://www.3ds.com/3dexperience/
+    pricingModel: negotiated
+    audience:
+      - Enterprise
+      - Manufacturing
+      - Engineering
+    features:
+      - Full 3DEXPERIENCE platform access
+      - REST API and CAA API access included with roles
+      - ENOVIA, CATIA, SolidWorks integrations
+      - On-premise deployment and administration
+      - Developer assistance portal access
+  - name: 3DEXPERIENCE Cloud Subscription
+    description: SaaS subscription for the 3DEXPERIENCE platform hosted on Dassault
+      Systèmes cloud infrastructure. REST web service access is included with licensed
+      roles. Includes access to the Health Console for availability monitoring.
+    url: https://www.3ds.com/support/cloud/private
+    pricingModel: subscription
+    audience:
+      - Enterprise
+      - SMB
+      - Manufacturing
+    features:
+      - Managed cloud hosting by Dassault Systèmes
+      - REST web services API access per licensed role
+      - Health Console for uptime and availability monitoring
+      - Automatic updates and maintenance
+      - GxP-compliant environments available
+  - name: API4Partners Gateway
+    description: Dedicated partner integration gateway available to Dassault Systèmes
+      certified channel partners. Access is provisioned by the IS team through a
+      secured 3DSwym Community channel. Enables order management, price list queries,
+      accreditation lookups, and lead registration via REST API.
+    url: https://partners.3ds.com/docs/0.10.0/
+    pricingModel: partner-program
+    audience:
+      - Channel Partners
+      - Resellers
+      - System Integrators
+    features:
+      - Order search and retrieval
+      - Price list queries
+      - Accreditation search
+      - Lead and opportunity management
+      - Portfolio item browsing
+      - Staging and production environments
