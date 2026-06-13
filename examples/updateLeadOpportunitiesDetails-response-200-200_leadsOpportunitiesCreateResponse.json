@@ -1,0 +1,14 @@
+{
+  "info": {
+    "success": true,
+    "statusCode": 200,
+    "timeStamp": null,
+    "traceId": null
+  },
+  "error": null,
+  "data": {
+    "partnerLeadOpportunityId": "OPPY-12345",
+    "dsLeadOpportunityId": "XJSR-DZMFFT",
+    "action": "update"
+  }
+}

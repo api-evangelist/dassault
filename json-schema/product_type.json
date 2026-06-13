@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/product_type.json",
+  "title": "Product Type",
+  "type": "string",
+  "description": "Type of the product.",
+  "enum": [
+    "Add-On",
+    "Auxiliary",
+    "Casual Named User",
+    "Configuration",
+    "Enterprise",
+    "Machine Based",
+    "Migration Path",
+    "Named User",
+    "Offer",
+    "Package",
+    "Service",
+    "Shareable",
+    "Single Add-On",
+    "System",
+    "Token-Based"
+  ],
+  "x-enumDescriptions": {
+    "Add-On": "An additional feature or component that enhances the functionality of a product.",
+    "Auxiliary": "A supplementary product or service that supports the primary product.",
+    "Casual Named User": "A type of user license that allows for occasional or infrequent use of a product.",
+    "Configuration": "A specific setup or arrangement of a product's features or components.",
+    "Enterprise": "A product or service designed for large-scale or enterprise-level use.",
+    "Machine Based": "A product or service that is licensed or used on a machine or device.",
+    "Migration Path": "A product or service that helps customers transition from one product to another.",
+    "Named User": "A type of user license that allows for regular or frequent use of a product by a specific individual.",
+    "Offer": "A product or service that is being promoted or offered as a special deal.",
+    "Package": "A collection of products or services that are bundled together for sale.",
+    "Service": "A product or service that provides support or assistance to customers.",
+    "Shareable": "A product or service that can be shared among multiple users or devices.",
+    "Single Add-On": "A single additional feature or component that enhances the functionality of a product.",
+    "System": "A product or service that is designed to work as a complete system or solution.",
+    "Token-Based": "A product or service that uses tokens or other forms of authentication to manage access."
+  },
+  "example": "Named User"
+}

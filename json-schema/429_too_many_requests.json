@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/429_too_many_requests.json",
+  "title": "429 Too Many Requests",
+  "type": "object",
+  "description": "Too Many Requests",
+  "properties": {
+    "message": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "message"
+  ]
+}

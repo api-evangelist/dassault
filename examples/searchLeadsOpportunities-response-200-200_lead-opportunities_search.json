@@ -1,0 +1,18 @@
+{
+  "info": {
+    "success": true,
+    "statusCode": 200,
+    "timeStamp": "2025-08-08T16:36:23Z",
+    "traceId": "785594df0cbd4f149d0ffbd7e0933820"
+  },
+  "error": null,
+  "data": [
+    {
+      "dsLeadOpportunityId": [
+        "1FFC-7BQC5E",
+        "BYTK-COL4A0",
+        "5KSL-VLSWRX"
+      ]
+    }
+  ]
+}

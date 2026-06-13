@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/200_accreditations_search.json",
+  "title": "200 Accreditations Search",
+  "type": "object",
+  "description": "Response returned upon a successful price list search request.",
+  "properties": {
+    "data": {
+      "$ref": "#/components/schemas/accreditations_search_data"
+    },
+    "info": {
+      "$ref": "#/components/schemas/info"
+    },
+    "error": {
+      "$ref": "#/components/schemas/error"
+    }
+  },
+  "required": [
+    "info",
+    "data"
+  ]
+}

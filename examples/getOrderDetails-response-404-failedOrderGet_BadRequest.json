@@ -1,0 +1,20 @@
+{
+  "data": [],
+  "info": {
+    "success": false,
+    "statusCode": 400,
+    "estimatedSearchCount": 0
+  },
+  "error": [
+    {
+      "type": "errors:3dx:resourceNotFound",
+      "title": "Not found",
+      "errors": [
+        {
+          "detail": "Change your parameters to get results",
+          "pointer": "#"
+        }
+      ]
+    }
+  ]
+}

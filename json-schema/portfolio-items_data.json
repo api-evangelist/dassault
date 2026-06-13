@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/portfolio-items_data.json",
+  "title": "Portfolio Items Data",
+  "type": "object",
+  "description": "A sales portfolio-item.",
+  "properties": {
+    "salesPortfolioType": {
+      "type": "string",
+      "description": "type of portfolio item",
+      "example": "Brand"
+    },
+    "salesPortfolioInfrastructure": {
+      "type": "string",
+      "description": "infrastructure type",
+      "example": "On Premise"
+    },
+    "salesPortfolioisOrderable": {
+      "type": "boolean",
+      "description": "Whether or not the item can be ordered",
+      "example": true
+    },
+    "salesPortfolioLevel1": {
+      "type": "string",
+      "description": "Level 1 of the description of the portfolio item",
+      "example": "3DEXPERIENCE"
+    },
+    "salesPortfolioLevel2": {
+      "type": "string",
+      "description": "Level 2 of the description of the portfolio item",
+      "example": "Simulation"
+    },
+    "salesPortfolioLevel3": {
+      "type": "string",
+      "description": "Level 3 of the description of the portfolio item",
+      "example": "Design to Manufacturing Process"
+    },
+    "salesPortfolioId": {
+      "type": "string",
+      "description": "type of portfolio item",
+      "example": "CLASS00002_ONPR_PRTF077_SOL001277"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/401_basic_unauthorized.json",
+  "title": "401 Basic Unauthorized",
+  "type": "object",
+  "description": "Unauthorized",
+  "properties": {
+    "message": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "message"
+  ]
+}

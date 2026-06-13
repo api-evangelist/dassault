@@ -1,0 +1,19 @@
+{
+  "info": {
+    "success": true,
+    "statusCode": 200,
+    "estimatedSearchCount": 3049,
+    "timeStamp": "2025-08-14T06:24:04.000Z"
+  },
+  "data": [
+    {
+      "salesPortfolioType": "Brand",
+      "salesPortfolioInfrastructure": "On Premise",
+      "salesPortfolioisOrderable": true,
+      "salesPortfolioLevel1": "CATIA",
+      "salesPortfolioLevel2": "CATIA V4",
+      "salesPortfolioLevel3": "MANUFACTURING",
+      "salesPortfolioId": "CLASS00001_ONPR_CATIAV4_SOL000038"
+    }
+  ]
+}

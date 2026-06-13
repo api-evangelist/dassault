@@ -1,0 +1,37 @@
+{
+  "data": [
+    {
+      "id": "PRTF008",
+      "name": "Support & Services Offering",
+      "accreditationType": "Portfolio"
+    },
+    {
+      "id": "PRTF063",
+      "name": "Public Cloud 3DEXPERIENCE WORKS",
+      "accreditationType": "Portfolio"
+    },
+    {
+      "id": "IPE00041462",
+      "name": "18-Sub-system Level Structural Validation",
+      "accreditationType": "Industry Process Experience",
+      "deploymentType": "On Premise",
+      "industrySolutionExperience": {
+        "id": "ISE00005355",
+        "name": "Co-Design to Target"
+      },
+      "solutionRelease": {
+        "id": "REL00000055",
+        "name": "3DEXPERIENCE R2025x"
+      },
+      "industry": {
+        "id": "IND000005",
+        "name": "Aerospace & Defense"
+      }
+    }
+  ],
+  "info": {
+    "success": true,
+    "statusCode": 200,
+    "estimatedSearchCount": 3
+  }
+}

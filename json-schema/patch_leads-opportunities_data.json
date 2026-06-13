@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/patch_leads-opportunities_data.json",
+  "title": "Patch Leads Opportunities Data",
+  "description": "Request body schema for updating leads-opportunities",
+  "type": "object",
+  "properties": {
+    "partnerId": {
+      "type": "string",
+      "description": "Identification of partner LegalEntity in 3DS system.",
+      "example": "200000000014442"
+    },
+    "leadOpportunity": {
+      "type": "object",
+      "description": "Specific attributes of the lead-opportunity in case of update",
+      "$ref": "#/components/schemas/lead-opportunity_patch"
+    },
+    "offerLines": {
+      "type": "array",
+      "description": "array of the various Offer Lines.",
+      "items": {
+        "type": "object",
+        "$ref": "#/components/schemas/offerLine"
+      }
+    },
+    "customerLegalEntity": {
+      "$ref": "#/components/schemas/customerLegalEntity"
+    },
+    "customerContacts": {
+      "type": "array",
+      "description": "Customer Contact(s) informations",
+      "items": {
+        "$ref": "#/components/schemas/customerContact"
+      }
+    },
+    "partnerContacts": {
+      "type": "array",
+      "description": "Partner Contact(s) informations",
+      "items": {
+        "$ref": "#/components/schemas/partnerContact"
+      }
+    }
+  },
+  "required": [
+    "leadOpportunity"
+  ]
+}

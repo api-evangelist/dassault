@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/forecastCategory.json",
+  "title": "Forecastcategory",
+  "type": "string",
+  "enum": [
+    "UPSIDE",
+    "COMMIT",
+    "SAFE",
+    "WON",
+    "LOST",
+    "LONGSHOT",
+    "EMPTY"
+  ],
+  "description": "Forecast Category is an assessment done by the Sales Expert to report his/her level of confidence that the Opportunity will close on the Close Date with the revenue amounts defined.\nValue is ignored at creation if status is \u2018LEAD_OPEN\u2019,\u2019QUALIFIED\u2019 or \u2019ACCEPTED\u2019.\nif value is not provided at creation time, it defaults based on the following matrix : \n| status | default forecastCategory | forecastCategory values |\n| ------- | ------------------------ | -----------------------|\n| -3 Open | Upside | Safe/Commit/Upside/Longshot |\n| -2 validated | Upside | Safe/Commit/Upside/Longshot |\n| -1 Established | Upside | Safe/Commit/Upside/Longshot |\n| Won | Won | Won (set by the system)|\n| Lost | Lost| Lost (set by the system)",
+  "x-enumDescriptions": {
+    "UPSIDE": "One or more major risks of closing business by the close date, however the customer stated an intention, as represented in the Win Plan, to place an order by the specified Close Date.\n",
+    "COMMIT": "Commitment that this Opportunity will be won by the close date. All key steps to close by the close date have been agreed upon with the customer and there are no known major risks.\n",
+    "SAFE": "The Purchase Order and agreements signed by the customer are received by 3DS, are being reviewed by Sales Operations and have been submitted to Finance.\n",
+    "WON": "The signed Statement of work and Purchase Order are approved (by Finance)\n",
+    "LOST": "The signed Statement of work and Purchase Order are approved (by Finance) and the Opportunity is lost.\n",
+    "LONGSHOT": "LongLow probability of closing business by the close date due to one or more significant risks (RFP in process, missing technical proofs or vendor selection, no alignment on Close Date, services or legal contracts not startedshot.\n",
+    "EMPTY": "Empty, not filled in.\n"
+  }
+}

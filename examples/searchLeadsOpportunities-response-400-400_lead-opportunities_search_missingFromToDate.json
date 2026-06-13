@@ -1,0 +1,13 @@
+{
+  "info": {
+    "success": false,
+    "statusCode": 400,
+    "timeStamp": "2025-08-08T15:14:19Z",
+    "traceId": "afafb61eb2704ecb9b626d8b3b6c593f"
+  },
+  "error": {
+    "code": "ERROR_043",
+    "message": "Both startDateTime and endDateTime must be passed as parameters"
+  },
+  "data": null
+}

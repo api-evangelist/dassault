@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/400_patch_leads-opportunities.json",
+  "title": "400 Patch Leads Opportunities",
+  "type": "object",
+  "description": "Response in case of Bad Request operation for updating leadsOpportunities object",
+  "required": [
+    "data",
+    "info",
+    "errors"
+  ],
+  "properties": {
+    "data": {
+      "type": "object"
+    },
+    "info": {
+      "type": "object",
+      "required": [
+        "success",
+        "statusCode"
+      ],
+      "properties": {
+        "success": {
+          "type": "boolean"
+        },
+        "statusCode": {
+          "type": "integer"
+        },
+        "estimateSearchCount": {
+          "type": "integer"
+        }
+      }
+    },
+    "errors": {
+      "type": "object"
+    }
+  }
+}

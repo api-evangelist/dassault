@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/lead-opportunity_attributes.json",
+  "title": "Lead Opportunity Attributes",
+  "type": "object",
+  "properties": {
+    "partnerLeadOpportunityId": {
+      "$ref": "#/components/schemas/partnerLeadOpportunityId"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name assigned to the lead-opportunity",
+      "example": "Projekt Big-Picture Topic + MBSE (STEP 1+2)"
+    },
+    "dsOwnerEmail": {
+      "$ref": "#/components/schemas/dsOwnerEmail"
+    },
+    "status": {
+      "$ref": "#/components/schemas/lead-opportunity-status",
+      "example": "LEAD_OPEN"
+    },
+    "forecastCategory": {
+      "$ref": "#/components/schemas/forecastCategory",
+      "example": "UPSIDE"
+    },
+    "closeDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Expected date for the closing of the sale in ISO 8601 format (like YYYY-MM-DDThh:mm:ss.sssZ)",
+      "example": "2025-08-01T18:03:16.325Z"
+    },
+    "cometCampaignCode": {
+      "type": "string",
+      "description": "COMET Campaign code",
+      "example": "OC2DE17TAQ1C13018"
+    },
+    "reasonWon": {
+      "type": "array",
+      "description": "\nIdentification of the reason a lead or an opportunity is won.\n\n_Note_ : At creation time, if value is not provided, it will be defaulted to `STRNG_VAL_PROP` (Stronger value proposition).",
+      "items": {
+        "$ref": "#/components/schemas/reason_won"
+      }
+    },
+    "reasonLost": {
+      "type": "array",
+      "description": "\nA list of reason lost is used to identify the reason(s) for loss of an opportunity and for a Lead (which will give insight for the lessons learnt).\n\n_Note_ : At creation time, if value is not provided, it will be defaulted to `NO_PROJECT`.",
+      "items": {
+        "$ref": "#/components/schemas/reason_lost"
+      }
+    },
+    "competitors": {
+      "type": "array",
+      "description": "List of the competitors. \nIn current state of the API, the list of valid values will be provided through direct communication with partners (mail or 3DSwym discussion). \n",
+      "items": {
+        "type": "string"
+      }
+    },
+    "reasonWonLostComment": {
+      "type": "string",
+      "description": "Comment associated to WON or LOST reasons",
+      "example": "The Customer has no budget"
+    },
+    "gtmTacticId": {
+      "type": "string",
+      "description": "identification of GoToMarket."
+    },
+    "description": {
+      "type": "string",
+      "description": "description associated to the lead-opportunity",
+      "example": "Projekt Dashboard - Big-Picture TopicPilotprojekt"
+    },
+    "nextMilestone": {
+      "type": "string",
+      "description": "Description of the next activity to be done",
+      "example": "Next activity is to make a demo to the Customer"
+    },
+    "nextMilestoneDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Next Milestone date in ISO 8601 format (like YYYY-MM-DDThh:mm:ss.sssZ)",
+      "example": "2025-08-01T18:03:16.325Z"
+    },
+    "currency": {
+      "$ref": "#/components/schemas/currency"
+    }
+  }
+}

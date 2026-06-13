@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/4xx_get_orders.json",
+  "title": "4Xx Get Orders",
+  "type": "object",
+  "description": "Response body returned when the order details request fails.",
+  "properties": {
+    "data": {
+      "type": "array",
+      "description": "Always an empty array in case of error responses.",
+      "maxItems": 0,
+      "items": {},
+      "example": []
+    },
+    "info": {
+      "$ref": "#/components/schemas/info"
+    },
+    "error": {
+      "$ref": "#/components/schemas/error"
+    }
+  },
+  "required": [
+    "data",
+    "info",
+    "error"
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/orders_search_data.json",
+  "title": "Orders Search Data",
+  "type": "array",
+  "description": "List of orders retrieved during the search operation.",
+  "items": {
+    "type": "object",
+    "description": "Summary information for a single order.",
+    "properties": {
+      "transaction": {
+        "$ref": "#/components/schemas/transaction"
+      },
+      "businessUnit": {
+        "$ref": "#/components/schemas/business_unit"
+      },
+      "billToSite": {
+        "type": "object",
+        "description": "Legal entity to which Dassault Syst\u00e8mes will issue the invoice (Bill To).",
+        "$ref": "#/components/schemas/legal_entity"
+      },
+      "soldToSite": {
+        "type": "object",
+        "description": "Legal entity of the company that is the Final Customer of Dassault Syst\u00e8mes products (Sold To).",
+        "$ref": "#/components/schemas/legal_entity"
+      },
+      "creationDateTime": {
+        "$ref": "#/components/schemas/creation_datetime"
+      },
+      "dsRecievedPoDate": {
+        "$ref": "#/components/schemas/ds_received_po_date"
+      },
+      "bookingDateTime": {
+        "$ref": "#/components/schemas/booking_datetime"
+      },
+      "currency": {
+        "$ref": "#/components/schemas/currency"
+      },
+      "onlineConsentStatus": {
+        "$ref": "#/components/schemas/online_consent_status"
+      },
+      "billToSalesRepresentative": {
+        "$ref": "#/components/schemas/billto_sales_representative"
+      },
+      "billToPoReference": {
+        "$ref": "#/components/schemas/billto_po_reference"
+      }
+    },
+    "required": [
+      "transaction",
+      "businessUnit",
+      "billToSite",
+      "soldToSite",
+      "creationDateTime",
+      "currency"
+    ]
+  }
+}

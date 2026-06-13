@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/info_response_portfolio-items.json",
+  "title": "Info Response Portfolio Items",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/info_response_base_attributes"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "timeStamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp of the operation.",
+          "example": "2025-08-14T07:45:59.000Z"
+        }
+      }
+    }
+  ],
+  "required": [
+    "success",
+    "statusCode",
+    "timeStamp",
+    "estimatedSearchCount"
+  ]
+}

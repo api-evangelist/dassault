@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/business_unit.json",
+  "title": "Business Unit",
+  "type": "object",
+  "description": "Details of the sales business unit.",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier of the sales business unit.",
+      "minLength": 5,
+      "maxLength": 5,
+      "example": "BU001"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the sales business unit.",
+      "maxLength": 25,
+      "example": "Corporate Sales Unit A"
+    },
+    "localTimezone": {
+      "$ref": "#/components/schemas/local_time_zone"
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "localTimezone"
+  ]
+}

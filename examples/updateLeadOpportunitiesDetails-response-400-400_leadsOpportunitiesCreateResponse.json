@@ -1,0 +1,72 @@
+{
+  "data": {
+    "leadOportunityId": "string",
+    "leadOpportunity": {
+      "partnerExternalId": "string",
+      "name": "string",
+      "dsOwnerEmail": "string",
+      "status": "string",
+      "forecastCategory": "string",
+      "closeDate": "date",
+      "cometCampaignCode": "string",
+      "reasonWon": [
+        "string"
+      ],
+      "reasonLost": [
+        "string"
+      ],
+      "competitors": [
+        "string"
+      ],
+      "reasonWonLostComment": "string",
+      "gtmTacticId": "string",
+      "description": "string",
+      "nextMilestone": "string",
+      "nextMilestoneDate": "date",
+      "currency": "string"
+    },
+    "offerLines": [
+      {
+        "amount": "double",
+        "offerNameId": "string",
+        "revenueType": "string"
+      }
+    ],
+    "customerLegalEntity": {
+      "id": "string",
+      "dunsNumber": "string",
+      "vatNumber": "string",
+      "registrationId": "string",
+      "name": "string",
+      "city": "string",
+      "country": "string",
+      "addressLine1": "string",
+      "statePrefecture": "string",
+      "addressLine2": "string",
+      "zipCode": "string",
+      "websiteUrl": "string"
+    },
+    "customerContact": [
+      {
+        "phoneNumber": "(555) 555-1234",
+        "salutation": "Mr",
+        "jobTitle": "R&D Director",
+        "email": "robert.johnson@customer.com",
+        "firstName": "robert",
+        "lastName": "Johnson"
+      }
+    ],
+    "partnerContact": [
+      {
+        "salesRepEmail": "john.doe@partner.com",
+        "salesRepFirstName": "john",
+        "salesRepLastName": "Doe"
+      }
+    ]
+  },
+  "info": {
+    "success": false,
+    "statusCode": 400
+  },
+  "errors": {}
+}

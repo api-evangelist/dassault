@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/200_post_apikeys.json",
+  "title": "200 Post Apikeys",
+  "type": "object",
+  "properties": {
+    "hashed_key": {
+      "type": "string",
+      "description": "Generated hash of the API key (60 characters)",
+      "example": "$2b$12$8tcF4MTIDcup3WEo8fFSieGIYEnp/DTLHSTivUCcW2II/VVwRI9Qm",
+      "minLength": 60,
+      "maxLength": 60
+    },
+    "api_key": {
+      "type": "string",
+      "description": "Plain API key (64 characters)",
+      "example": "5839bcfabb9e0d20f889f366dbfbbe2973c152cfbe91fae728a9f7e662ce1a2d",
+      "minLength": 64,
+      "maxLength": 64
+    }
+  },
+  "required": [
+    "hashed_key",
+    "api_key"
+  ]
+}

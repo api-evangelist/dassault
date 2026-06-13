@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/error.json",
+  "title": "Error",
+  "type": "array",
+  "description": "An array containing one or more error objects identified during the request processing.\nEach object provides detailed information about a specific type of error encountered.\n",
+  "items": {
+    "type": "object",
+    "properties": {
+      "type": {
+        "type": "string",
+        "description": "A URI identifying the specific type of error.  \nThis allows API consumers to programmatically recognize and handle the error appropriately.  \n\nThe URI follows the format: `errors:<domain>:<error_type>`  \nExample values include:\n- `errors:3dx:invalidRequest`\n- `errors:3dx:authenticationGenericError`\n- `errors:3dx:resourceNotFound`\n- `errors:3dx:internalServerError`\n",
+        "enum": [
+          "errors:3dx:invalidRequest",
+          "errors:3dx:authenticationGenericError",
+          "errors:3dx:resourceNotFound",
+          "errors:3dx:internalServerError"
+        ]
+      },
+      "title": {
+        "type": "string",
+        "description": "A user-friendly error message, typically localized (NLS-supported), describing the general nature of the error."
+      },
+      "errors": {
+        "type": "array",
+        "description": "A list of individual validation or processing errors related to the request.  \nUseful when multiple issues are detected at once.\n",
+        "items": {
+          "type": "object",
+          "description": "Details of a single error instance.",
+          "properties": {
+            "detail": {
+              "type": "string",
+              "description": "A human-readable message offering guidance to resolve the specific error."
+            },
+            "pointer": {
+              "type": "string",
+              "description": "A [JSON Pointer](https://datatracker.ietf.org/doc/html/rfc6901) indicating the location of the field in the request payload where the error occurred."
+            }
+          }
+        }
+      }
+    },
+    "required": [
+      "type",
+      "title"
+    ]
+  }
+}

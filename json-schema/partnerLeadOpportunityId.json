@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/partnerLeadOpportunityId.json",
+  "title": "Partnerleadopportunityid",
+  "type": "string",
+  "description": "<ins>Unique Identifier</ins> of the lead-opportunity in the CRM system of the 3DS partner.",
+  "example": "OPPY-1004526"
+}

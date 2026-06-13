@@ -1,0 +1,20 @@
+{
+  "data": [],
+  "info": {
+    "success": false,
+    "statusCode": 400,
+    "estimatedSearchCount": 0
+  },
+  "error": [
+    {
+      "type": "errors:3dx:invalidRequest",
+      "title": "Missing required search criteria",
+      "errors": [
+        {
+          "detail": "Please specify at least one search criterion. Valid options include: `creationDateTime`, `bookingDateTime`, `lastUpdateDateTime`, `installedBaseNumber`, `onlineInstanceSeatId`, `billToPoReferences`.",
+          "pointer": "#"
+        }
+      ]
+    }
+  ]
+}

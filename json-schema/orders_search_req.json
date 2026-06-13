@@ -1,0 +1,135 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/orders_search_req.json",
+  "title": "Orders Search Req",
+  "type": "object",
+  "properties": {
+    "creationDateTime": {
+      "type": "object",
+      "description": "Returns orders created within a specified time range, using the `Creation` timestamp.\nThe maximum time window allowed for the search is **7 days** (calculated time to time).\nIncluding this tag prompts the system to perform validations and automatically compute the `from` or `to` timestamp if either is missing.\nOmitting this tag means the system will skip these validations and will not perform any implicit computation of the `from` or `to` values.\n",
+      "properties": {
+        "from": {
+          "$ref": "#/components/schemas/date_time_from"
+        },
+        "to": {
+          "$ref": "#/components/schemas/date_time_to"
+        }
+      },
+      "anyOf": [
+        {
+          "required": [
+            "from"
+          ]
+        },
+        {
+          "required": [
+            "to"
+          ]
+        }
+      ]
+    },
+    "bookingDateTime": {
+      "type": "object",
+      "description": "Returns orders booked within a specified time range, using the `Booking` timestamp.\nThe maximum time window allowed for the search is **7 days** (calculated time to time).\nThe `Booking` timestamp refers to the date and time when the order was approved by the Finance Department.\nIncluding this tag prompts the system to perform validations and automatically compute the `from` or `to` timestamp if either is missing.\nOmitting this tag means the system will skip these validations and will not perform any implicit computation of the `from` or `to` values.\n",
+      "properties": {
+        "from": {
+          "$ref": "#/components/schemas/date_time_from"
+        },
+        "to": {
+          "$ref": "#/components/schemas/date_time_to"
+        }
+      },
+      "anyOf": [
+        {
+          "required": [
+            "from"
+          ]
+        },
+        {
+          "required": [
+            "to"
+          ]
+        }
+      ]
+    },
+    "lastUpdateDateTime": {
+      "type": "object",
+      "description": "Indicates the timestamp of the most recent update to the order.\nThe maximum time window allowed for the search is **3 days** (calculated time to time).\nThis field is automatically set to the current timestamp whenever the order is modified.\nOmitting this tag means the system will skip these validations and will not perform any implicit computation of the `from` or `to` values.\n",
+      "properties": {
+        "from": {
+          "$ref": "#/components/schemas/date_time_from"
+        },
+        "to": {
+          "$ref": "#/components/schemas/date_time_to"
+        }
+      },
+      "anyOf": [
+        {
+          "required": [
+            "from"
+          ]
+        },
+        {
+          "required": [
+            "to"
+          ]
+        }
+      ]
+    },
+    "installedBaseNumber": {
+      "$ref": "#/components/schemas/installed_base_number"
+    },
+    "onlineInstanceSeatId": {
+      "$ref": "#/components/schemas/online_instance_seat_id"
+    },
+    "billToPoReferences": {
+      "type": "array",
+      "minItems": 1,
+      "description": "List of partner order references.",
+      "example": [
+        "390830"
+      ],
+      "items": {
+        "type": "string",
+        "maxLength": 60,
+        "description": "Must be a string with a maximum length of 60 characters.\n"
+      }
+    },
+    "transactionType": {
+      "description": "Order type (one of: `PO`, `RN`).\n\nIf left unspecified, records of both transaction types will be included in the response.\n",
+      "$ref": "#/components/schemas/transaction_type"
+    }
+  },
+  "anyOf": [
+    {
+      "required": [
+        "creationDateTime"
+      ]
+    },
+    {
+      "required": [
+        "bookingDateTime"
+      ]
+    },
+    {
+      "required": [
+        "lastUpdateDateTime"
+      ]
+    },
+    {
+      "required": [
+        "installedBaseNumber"
+      ]
+    },
+    {
+      "required": [
+        "onlineInstanceSeatId"
+      ]
+    },
+    {
+      "required": [
+        "billToPoReferences"
+      ]
+    }
+  ]
+}

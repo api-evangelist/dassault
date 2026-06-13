@@ -1,0 +1,126 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "hydra": "http://www.w3.org/ns/hydra/core#",
+    "ds": "https://www.3ds.com/vocab/"
+  },
+  "@type": "WebAPI",
+  "@id": "https://partners.3ds.com/docs/0.10.0/",
+  "name": "APIs for Dassault Syst\u00e8mes Partners",
+  "description": "APIs exposed by Dassault Syst\u00e8mes to its partners and resellers.",
+  "version": "0.10.0",
+  "provider": {
+    "@type": "Organization",
+    "name": "Dassault Syst\u00e8mes",
+    "url": "https://www.3ds.com",
+    "sameAs": [
+      "https://www.linkedin.com/company/dassaultsystemes",
+      "https://x.com/dassault3ds"
+    ]
+  },
+  "documentation": "https://partners.3ds.com/docs/0.10.0/",
+  "termsOfService": "https://www.3ds.com/",
+  "license": "https://www.3ds.com/",
+  "potentialAction": [
+    {
+      "@type": "Action",
+      "name": "searchOrders",
+      "description": "Search Orders using various filters",
+      "httpMethod": "POST",
+      "urlTemplate": "/order/api4partners/v0/orders/search",
+      "tags": [
+        "orders"
+      ]
+    },
+    {
+      "@type": "Action",
+      "name": "getOrderDetails",
+      "description": "Get Order details",
+      "httpMethod": "GET",
+      "urlTemplate": "/order/api4partners/v0/orders/{id}",
+      "tags": [
+        "orders"
+      ]
+    },
+    {
+      "@type": "Action",
+      "name": "searchPriceList",
+      "description": "Retrieve Price Lists",
+      "httpMethod": "GET",
+      "urlTemplate": "/order/api4partners/v0/price-lists/search",
+      "tags": [
+        "price-lists"
+      ]
+    },
+    {
+      "@type": "Action",
+      "name": "searchAccreditations",
+      "description": "Retrieve Accreditations",
+      "httpMethod": "GET",
+      "urlTemplate": "/order/api4partners/v0/accreditations/search",
+      "tags": [
+        "accreditations"
+      ]
+    },
+    {
+      "@type": "Action",
+      "name": "generateApiKey",
+      "description": "Generate a new API key",
+      "httpMethod": "POST",
+      "urlTemplate": "/order/api4partners/v0/apikeys",
+      "tags": [
+        "apikeys"
+      ]
+    },
+    {
+      "@type": "Action",
+      "name": "createLeadsOpportunities",
+      "description": "Create a lead-opportunity object",
+      "httpMethod": "POST",
+      "urlTemplate": "/sales/api4partners/v0/leads-opportunities",
+      "tags": [
+        "leads-opportunities"
+      ]
+    },
+    {
+      "@type": "Action",
+      "name": "updateLeadOpportunitiesDetails",
+      "description": "Update a lead-opportunity object",
+      "httpMethod": "PATCH",
+      "urlTemplate": "/sales/api4partners/v0/leads-opportunities/{id}",
+      "tags": [
+        "leads-opportunities"
+      ]
+    },
+    {
+      "@type": "Action",
+      "name": "getLeadsOpportunities",
+      "description": "Get details of a lead-opportunity object",
+      "httpMethod": "GET",
+      "urlTemplate": "/sales/api4partners/v0/leads-opportunities/{id}",
+      "tags": [
+        "leads-opportunities"
+      ]
+    },
+    {
+      "@type": "Action",
+      "name": "searchLeadsOpportunities",
+      "description": "Search for leads-opportunities",
+      "httpMethod": "POST",
+      "urlTemplate": "/sales/api4partners/v0/leads-opportunities/search",
+      "tags": [
+        "leads-opportunities"
+      ]
+    },
+    {
+      "@type": "Action",
+      "name": "searchPortfolioItems",
+      "description": "Search Sales portfolio items",
+      "httpMethod": "GET",
+      "urlTemplate": "/sales/api4partners/v0/portfolio-items/search",
+      "tags": [
+        "portfolio-items"
+      ]
+    }
+  ]
+}

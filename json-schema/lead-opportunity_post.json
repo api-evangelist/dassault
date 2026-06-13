@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/lead-opportunity_post.json",
+  "title": "Lead Opportunity Post",
+  "type": "object",
+  "description": "Core attributes of the lead-opportunity in case of creation.\n",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/lead-opportunity_attributes"
+    },
+    {
+      "type": "object"
+    }
+  ],
+  "required": [
+    "partnerLeadOpportunityId",
+    "name",
+    "status",
+    "closeDate",
+    "currency"
+  ]
+}

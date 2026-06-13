@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/lead-opportunity-status.json",
+  "title": "Lead Opportunity Status",
+  "type": "string",
+  "description": "Status of the lead-opportunity (LEVERAGE Processs)\n",
+  "enum": [
+    "LEAD_OPEN",
+    "QUALIFIED",
+    "ACCEPTED",
+    "OPPY_OPEN",
+    "VALIDATED",
+    "ESTABLISHED",
+    "WON",
+    "LOST"
+  ],
+  "x-enumDescriptions": {
+    "LEAD_OPEN": "-6 Open",
+    "QUALIFIED": "-5 Qualified",
+    "ACCEPTED": "-4 Accepted",
+    "OPPY_OPEN": "-3 Open",
+    "VALIDATED": "-2 Validated",
+    "ESTABLISHED": "-1 Established",
+    "WON": "Won opportunity",
+    "LOST": "Lost opportunity"
+  }
+}

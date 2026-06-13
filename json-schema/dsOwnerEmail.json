@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/dsOwnerEmail.json",
+  "title": "Dsowneremail",
+  "type": "string",
+  "description": "email of the 3DS Partner Sales Manager (PSM).\n\n<ins>Note :</ins> It is defaulted to the primary 3DS PSM if not provided at creation time.",
+  "example": "john.doe@3ds.com"
+}

@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/price-lists_search_data.json",
+  "title": "Price Lists Search Data",
+  "type": "array",
+  "description": "List of **Products** and **Industry Process Experiences (IPE)** that the authorized user is accredited to sell.",
+  "items": {
+    "type": "object",
+    "description": "Summary information for a price list query.",
+    "properties": {
+      "countryCode": {
+        "$ref": "#/components/schemas/country_code"
+      },
+      "countryName": {
+        "$ref": "#/components/schemas/country_name"
+      },
+      "priceLists": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "description": "A predefined set of product prices applicable to a specific country and currency.\nEach price list defines how products are priced within a particular market or region\nand serves as a reference for calculating order amounts.\n",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "example": 9
+            },
+            "name": {
+              "type": "string",
+              "example": "EMEA Price List"
+            },
+            "currency": {
+              "$ref": "#/components/schemas/currency"
+            },
+            "hasFuturePriceList": {
+              "type": "boolean",
+              "description": "Indicates whether a future version of the price list has been declared.\n- true: A future-dated price list exists.\n- false: No future price list has been declared.\n",
+              "example": [
+                true,
+                false
+              ]
+            },
+            "effectiveDate": {
+              "type": "string",
+              "format": "date",
+              "description": "The date when the future price list takes effect.\nIf 'null', it indicates that no future price list version has been declared.\n",
+              "example": [
+                "2025-09-09",
+                null
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}

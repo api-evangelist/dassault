@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/online_consent_status.json",
+  "title": "Online Consent Status",
+  "type": "string",
+  "description": "Status of the online consent request sent to the designated contact.\n",
+  "enum": [
+    "Accepted",
+    "Expired",
+    "Not Applicable",
+    "Not Requested",
+    "Refused",
+    "Requested"
+  ],
+  "x-enumDescriptions": {
+    "Accepted": "The online consent request has been successfully accepted by the designated contact.",
+    "Expired": "The online consent request has expired and is no longer valid.",
+    "Not Applicable": "The online consent request is not applicable to the current situation or context.",
+    "Not Requested": "The online consent request has not been sent to the designated contact.",
+    "Refused": "The online consent request has been refused by the designated contact.",
+    "Requested": "The online consent request has been sent to the designated contact, but the status is pending."
+  },
+  "default": "",
+  "example": "Accepted"
+}

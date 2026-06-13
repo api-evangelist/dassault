@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/customerLegalEntity.json",
+  "title": "Customerlegalentity",
+  "type": "object",
+  "description": "identification of the target Customer Legal Entity",
+  "properties": {
+    "id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "3DS site identifier",
+      "example": 200000000029188
+    },
+    "dunsNumber": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Duns & Bradstreet identification",
+      "example": 266257315
+    },
+    "vatNumber": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "VAT (Value Added Tax) identification number",
+      "example": "DE128212199"
+    },
+    "registrationId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "registration id of the company in the country"
+    },
+    "name": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "the targeted name",
+      "example": "World Company Limited"
+    },
+    "city": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "City Location",
+      "example": "San Francisco"
+    },
+    "country": {
+      "$ref": "#/components/schemas/country"
+    },
+    "addressLine1": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "1st line of the address",
+      "example": "Kraillinger Strasse 5"
+    },
+    "statePrefecture": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "state / Prefecture"
+    },
+    "addressLine2": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "2nd line of the address (if needed)"
+    },
+    "zipCode": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "ZIP Postal code",
+      "example": 82131
+    },
+    "websiteUrl": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "website URL of the company",
+      "example": "www.world-company-limited.com"
+    }
+  },
+  "required": [
+    "name",
+    "city",
+    "country"
+  ]
+}

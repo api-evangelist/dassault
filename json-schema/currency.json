@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/currency.json",
+  "title": "Currency",
+  "type": "string",
+  "description": "Three-letter ISO 4217 currency code representing the transaction currency.\n\nMust be exactly 3 uppercase alphabetic characters (e.g., `USD` for US Dollar, `EUR` for Euro, `INR` for Indian Ruppee).\n",
+  "minLength": 3,
+  "maxLength": 3,
+  "pattern": "^[A-Z]{3}$",
+  "example": "USD"
+}

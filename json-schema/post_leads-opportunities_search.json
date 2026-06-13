@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/post_leads-opportunities_search.json",
+  "title": "Post Leads Opportunities Search",
+  "description": "Request body schema for searching leads-opportunities",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "modifiedDate": {
+            "type": "object",
+            "description": "Search criterion on the last modification date/time of the leads-opportunities.\n\nThe maximum time window allowed for the search is **1 week / 7 days** (between `fromDate`and `toDate`, calculated time to time).\nBoth lower (`fromDate`) and upper (`toDate`) bounds need to be provided as no implict range calculation is done.\nLower and upper bounds need to be consistent : `fromDate` has to be anterior to `toDate`.",
+            "properties": {
+              "fromDate": {
+                "type": "string",
+                "format": "date-time",
+                "description": "Lower bound to be considererd for the last modification date/time of the leads-opportunities.\nThis property represents a timestamp in UTC format, following the ISO 8601 standard.\nAll date-time values must be provided in Coordinated Universal Time (UTC).",
+                "example": "2024-08-01T14:30:00Z"
+              },
+              "toDate": {
+                "type": "string",
+                "format": "date-time",
+                "description": "Upper bound to be considererd for the last modification date/time of the leads-opportunities.\nThis property represents a timestamp in UTC format, following the ISO 8601 standard.\nAll date-time values must be provided in Coordinated Universal Time (UTC).",
+                "example": "2024-08-08T08:30:00Z"
+              }
+            },
+            "required": [
+              "fromDate",
+              "toDate"
+            ]
+          },
+          "partnerLeadOpportunityId": {
+            "type": [
+              "array",
+              "string"
+            ],
+            "description": "Search criterion on the id of the leads-opportunities as defined in partner CRM System.\n\nThis search criterion can be used for 2 main use cases :\n- Exact search for a particular lead-opportunitity id from Partner CRM system.\n  - Set the exact id searched for (e.g \"PARTNER-ID-1234\")\n- Retrieval of all leads-opportunitities that do not have a partnerLeadOpportunityId defined in 3DS CRM application (MySalesPipeline).\n  - These are typically marketing leads on which update by Partner could be required.\n  - Simply set an empty string (\"\")",
+            "examples": [
+              "PARTNER-ID-1234",
+              ""
+            ]
+          }
+        },
+        "anyOf": [
+          {
+            "required": [
+              "modifiedDate"
+            ]
+          },
+          {
+            "required": [
+              "partnerLeadOpportunityId"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "required": [
+    "data"
+  ]
+}

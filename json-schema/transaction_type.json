@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/transaction_type.json",
+  "title": "Transaction Type",
+  "type": "string",
+  "description": "Order type (one of: `PO`, `RN`).\n",
+  "enum": [
+    "PO",
+    "RN"
+  ],
+  "x-enumDescriptions": {
+    "PO": "Purchase Order",
+    "RN": "Renewal Notification"
+  },
+  "example": "PO"
+}

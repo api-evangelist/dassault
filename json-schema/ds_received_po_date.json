@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/ds_received_po_date.json",
+  "title": "Ds Received Po Date",
+  "type": "string",
+  "description": "Date when the order was received by Dassault Syst\u00e8mes, in ISO 8601 format (YYYY-MM-DD).",
+  "format": "date",
+  "example": "2025-05-21"
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/legal_entity.json",
+  "title": "Legal Entity",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "A unique identifier for the company. The value will be within the Legal Entity Family.\n",
+      "maxLength": 15,
+      "example": "100012345678901"
+    },
+    "name": {
+      "type": "string",
+      "description": "The registered name of the company in English.\n",
+      "maxLength": 120,
+      "example": "Example Corporation"
+    },
+    "localName": {
+      "type": "string",
+      "description": "The registered name of the company in the local language.\n",
+      "maxLength": 120,
+      "example": "\u793a\u4f8b\u516c\u53f8"
+    },
+    "locationId": {
+      "type": "integer",
+      "description": "A unique identifier representing the company's location. \nMust be an integer between 1 and 999.\n",
+      "minimum": 1,
+      "maximum": 999,
+      "example": 2
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "locationId"
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/200_post_leads-opportunities_search.json",
+  "title": "200 Post Leads Opportunities Search",
+  "description": "Response body schema for searching leads-opportunities",
+  "type": "object",
+  "properties": {
+    "info": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "boolean",
+          "description": "status of the operation"
+        },
+        "statusCode": {
+          "type": "integer",
+          "description": "HTTP status code"
+        },
+        "timeStamp": {
+          "type": [
+            "string"
+          ],
+          "description": "timestamp of the operation"
+        },
+        "traceId": {
+          "type": "string",
+          "description": "trace id to be provided for technical investigations."
+        }
+      }
+    },
+    "error": {
+      "type": "null",
+      "description": "no error in case of succees"
+    },
+    "data": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "description": "3DS lead-opportunities list of id corresponding to the search criteria",
+        "properties": {
+          "dsLeadOpportunityId": {
+            "type": "array",
+            "description": "list of Ids",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "data",
+    "info"
+  ]
+}

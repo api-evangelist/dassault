@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/online_instance_seat_id.json",
+  "title": "Online Instance Seat Id",
+  "type": "string",
+  "description": "Unique identifier assigned to a 3DEXPERIENCE platform instance.\nIt is used to identify a specific instance of the platform, which can be accessed through the cloud.\nThis identifier is also referred to as the **Online Instance ID**.\nAdditionally, it is also used as the **Seat ID** to identify a user's access to the instance.\nThe Seat ID is used to manage user licenses, authenticate users, and track user activity within the instance.\nThe Online Instance ID/Seat ID is a combination of letters and numbers.\n",
+  "maxLength": 15,
+  "example": "R1122334455667"
+}

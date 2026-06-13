@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/billto_sales_representative.json",
+  "title": "Billto Sales Representative",
+  "type": "string",
+  "description": "Name of the sales representative person from the **Bill To** site.",
+  "example": "DOE, Jane"
+}

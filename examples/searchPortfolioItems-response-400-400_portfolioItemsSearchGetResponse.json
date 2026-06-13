@@ -1,0 +1,12 @@
+{
+  "info": {
+    "success": false,
+    "statusCode": 400,
+    "timeStamp": "2025-08-14T09:07:04.000Z",
+    "estimatedSearchCount": 3030
+  },
+  "error": {
+    "code": "ERROR_004",
+    "message": "#top should be a positive, non zero integer"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/country_name.json",
+  "title": "Country Name",
+  "type": "string",
+  "description": "Country Location\n",
+  "example": "France"
+}

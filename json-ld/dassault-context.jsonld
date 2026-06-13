@@ -1,0 +1,24 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "ds": "https://www.3ds.com/vocab/",
+    "api4p": "https://partners.3ds.com/docs/0.10.0/#",
+    "openapi": "https://spec.openapis.org/oas/v3.1.0#",
+    "order": "ds:Order",
+    "orderId": "ds:orderId",
+    "orderStatus": "ds:orderStatus",
+    "priceList": "ds:PriceList",
+    "accreditation": "ds:Accreditation",
+    "leadOpportunity": "ds:LeadOpportunity",
+    "portfolioItem": "ds:PortfolioItem",
+    "apiKey": "ds:ApiKey",
+    "partner": "ds:Partner",
+    "currency": "schema:currency",
+    "country": "schema:addressCountry",
+    "transactionType": "ds:transactionType",
+    "businessUnit": "ds:businessUnit",
+    "legalEntity": "ds:legalEntity",
+    "revenueType": "ds:revenueType",
+    "forecastCategory": "ds:forecastCategory"
+  }
+}

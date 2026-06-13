@@ -1,0 +1,16 @@
+{
+  "data": [
+    {
+      "partnerLeadOpportunityId": [
+        "PARTNERID-129763",
+        "PARTNERID-248651"
+      ]
+    },
+    {
+      "modifiedDate": {
+        "fromDate": "2025-08-04T08:00:00Z",
+        "toDate": "2025-08-08T18:00:00Z"
+      }
+    }
+  ]
+}

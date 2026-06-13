@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/accreditations_search_data.json",
+  "title": "Accreditations Search Data",
+  "type": "array",
+  "description": "List of accreditations retrieved during the search operation.",
+  "items": {
+    "type": "object",
+    "description": "Summary information for an accreditation query.",
+    "properties": {
+      "id": {
+        "type": "string",
+        "example": [
+          "IPE00034863",
+          "PRTF119"
+        ]
+      },
+      "name": {
+        "type": "string",
+        "example": [
+          "04-Continuous Product Development",
+          "Public Cloud 3D Design"
+        ]
+      },
+      "accreditationType": {
+        "type": "string",
+        "enum": [
+          "Industry Process Experience",
+          "Portfolio"
+        ],
+        "x-enumDescriptions": {
+          "Industry Process Experience": "A Dassault Syst\u00e8mes offering designed to correspond to the business process used by a team in the context of the solution. \nDelivered through the 3DEXPERIENCE platform, Industry Process Experiences (IPEs) are composed of Roles. \nWhen combined, they make up Industry Solution Experiences.\n",
+          "Portfolio": "The portfolio to which the product being ordered belongs. \nThis field identifies the specific product family or category to which the ordered product belongs. \nFor example, a product might belong to a portfolio such as \"CATIA\", \"ENOVIA\", or \"SIMULIA\".\n"
+        }
+      },
+      "deploymentType": {
+        "type": "string",
+        "enum": [
+          "On Premise",
+          "Public Cloud"
+        ],
+        "x-enumDescriptions": {
+          "On Premise": "On-premise refers to a computing infrastructure (either bare metal or virtual machines) that is deployed and maintained within the organization's own data centers or facilities. \n\nIt is not shared with other organizations, providing the highest level of control and security. \n",
+          "Public Cloud": "On-Cloud refers to products or solutions that are designed, developed, and delivered directly on cloud infrastructure rather than on traditional on-premises systems."
+        }
+      },
+      "industrySolutionExperience": {
+        "description": "A Dassault Syst\u00e8mes industry-specific offering designed to help companies innovate and achieve their performance objectives by addressing specific business challenges, Delivered through the 3DEXPERIENCE platform, an Industry Solution Experience is comprised of Industry Process Experiences.\n",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "ISE00004588"
+          },
+          "name": {
+            "type": "string",
+            "example": "Engineered to Fly"
+          }
+        }
+      },
+      "solutionRelease": {
+        "description": "A Release is a group of iterations that results in the completion of a valuable deliverable on the project.\n",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "REL00000051"
+          },
+          "name": {
+            "type": "string",
+            "example": "3DEXPERIENCE R2024x"
+          }
+        }
+      },
+      "industry": {
+        "description": "Industry is a wide business industrial domain, marketed by Dassault Syst\u00e8mes as an industry.\n",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "IND000005"
+          },
+          "name": {
+            "type": "string",
+            "example": "Aerospace & Defense"
+          }
+        }
+      }
+    },
+    "required": [
+      "id",
+      "name",
+      "accreditationType"
+    ]
+  }
+}

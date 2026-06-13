@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/country_code.json",
+  "title": "Country Code",
+  "type": "string",
+  "description": "ISO3 Code (3 capital letters code) of the country",
+  "example": "FRA"
+}

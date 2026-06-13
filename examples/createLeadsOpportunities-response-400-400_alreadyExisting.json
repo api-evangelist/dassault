@@ -1,0 +1,17 @@
+{
+  "info": {
+    "success": false,
+    "statusCode": 400,
+    "timeStamp": "2025-07-01T13:03:16.325Z",
+    "traceId": "4e58705b1c7d40b78e0d1ab6ac404ac8"
+  },
+  "error": {
+    "code": "ERR801",
+    "message": "Leverage with this Partner External ID DSLeadOpportunityID already exists."
+  },
+  "data": {
+    "partnerLeadOpportunityId": null,
+    "dsLeadOpportunityId": null,
+    "action": null
+  }
+}

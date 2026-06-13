@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/info.json",
+  "title": "Info",
+  "type": "object",
+  "description": "Metadata section of the response providing execution status and result summary.",
+  "properties": {
+    "success": {
+      "type": "boolean",
+      "description": "Indicates whether the API request was executed successfully."
+    },
+    "statusCode": {
+      "type": "integer",
+      "description": "HTTP status code corresponding to the response."
+    },
+    "estimatedSearchCount": {
+      "type": "integer",
+      "description": "Estimated number of results matching the search criteria."
+    }
+  },
+  "required": [
+    "success",
+    "statusCode"
+  ]
+}

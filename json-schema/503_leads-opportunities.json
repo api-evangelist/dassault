@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/503_leads-opportunities.json",
+  "title": "503 Leads Opportunities",
+  "type": "object",
+  "description": "Service Unavailable",
+  "properties": {
+    "info": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "boolean",
+          "description": "boolean to indicate if request was successful or not.",
+          "example": false
+        },
+        "statusCode": {
+          "type": "integer",
+          "description": "HTTP code of the response",
+          "example": 503
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp of the query",
+          "example": "2025-06-30T12:36:46.556Z"
+        },
+        "traceId": {
+          "type": "string",
+          "description": "Identifier to be communicated to 3DS Support in case support/investigation is required",
+          "example": "3d29ece30a064ea68c3f5f4a9f785c6f"
+        }
+      }
+    },
+    "error": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "example": "ERR899"
+        },
+        "message": {
+          "type": "string",
+          "example": "Service currently unavailable, please try again later."
+        }
+      }
+    },
+    "data": {
+      "type": "object",
+      "properties": {
+        "partnerLeadOpportunityId": {
+          "description": "Identification of the lead-opportunity in the CRM system of the 3DS partner.",
+          "type": "null",
+          "example": "null"
+        },
+        "dsLeadOpportunityId": {
+          "description": "Identification of the lead-opportunity in 3DS System (MySalesPipeline).",
+          "type": "null",
+          "example": "null"
+        },
+        "action": {
+          "description": "categorisation of the action performed",
+          "type": "null",
+          "example": "null"
+        }
+      }
+    }
+  },
+  "required": [
+    "error",
+    "info"
+  ]
+}

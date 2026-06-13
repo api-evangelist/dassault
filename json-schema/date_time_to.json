@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/date_time_to.json",
+  "title": "Date Time To",
+  "type": "string",
+  "description": "This property represents a timestamp in UTC format, following the ISO 8601 standard.\nAll date-time values must be provided in Coordinated Universal Time (UTC).\nIf the `from` timestamp is specified, this value must be later than `from`.\nIf not provided, the system will automatically calculate this value by adding the maximum number of days specified for the time range defined for the parent search criteria.\n",
+  "format": "date-time",
+  "example": "2024-05-22T14:30:00Z"
+}

@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/500_get_leads-opportunities.json",
+  "title": "500 Get Leads Opportunities",
+  "type": "object",
+  "description": "Response in case of Bad Request for retrieving lead-opportunity details",
+  "required": [
+    "data",
+    "info",
+    "error"
+  ],
+  "properties": {
+    "partnerId": {
+      "type": "null"
+    },
+    "data": {
+      "type": "null"
+    },
+    "info": {
+      "type": "object",
+      "required": [
+        "success",
+        "statusCode"
+      ],
+      "properties": {
+        "success": {
+          "type": "boolean"
+        },
+        "statusCode": {
+          "type": "integer"
+        },
+        "timeStamp": {
+          "type": "string"
+        },
+        "traceId": {
+          "type": "string"
+        }
+      }
+    },
+    "error": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "Error code"
+        },
+        "message": {
+          "type": "string",
+          "description": "Human readable error message"
+        }
+      }
+    }
+  }
+}

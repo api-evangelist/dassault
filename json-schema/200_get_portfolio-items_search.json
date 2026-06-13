@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/200_get_portfolio-items_search.json",
+  "title": "200 Get Portfolio Items Search",
+  "type": "object",
+  "description": "Response in case of a successful search operation on portfolio-items",
+  "required": [
+    "data",
+    "info"
+  ],
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/portfolio-items_data"
+      }
+    },
+    "info": {
+      "$ref": "#/components/schemas/info_response_portfolio-items"
+    }
+  }
+}

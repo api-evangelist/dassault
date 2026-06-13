@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/post_leads-opportunities_data.json",
+  "title": "Post Leads Opportunities Data",
+  "description": "request body for creating a new lead-opportunity object.",
+  "type": "object",
+  "properties": {
+    "partnerId": {
+      "type": "string",
+      "description": "Identification of partner LegalEntity in 3DS system.",
+      "example": "200000000014442"
+    },
+    "leadOpportunity": {
+      "type": "object",
+      "$ref": "#/components/schemas/lead-opportunity_post"
+    },
+    "offerLines": {
+      "type": "array",
+      "description": "array of the various Offer Lines.",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "$ref": "#/components/schemas/offerLine"
+      }
+    },
+    "customerLegalEntity": {
+      "$ref": "#/components/schemas/customerLegalEntity"
+    },
+    "customerContacts": {
+      "type": "array",
+      "description": "Customer Contact(s) informations",
+      "items": {
+        "$ref": "#/components/schemas/customerContact"
+      }
+    },
+    "partnerContacts": {
+      "type": "array",
+      "description": "Partner Contact(s) informations",
+      "items": {
+        "$ref": "#/components/schemas/partnerContact"
+      }
+    }
+  },
+  "required": [
+    "leadOpportunity",
+    "offerLines",
+    "customerLegalEntity",
+    "partnerId"
+  ]
+}

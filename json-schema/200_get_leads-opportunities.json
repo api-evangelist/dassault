@@ -1,0 +1,296 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/200_get_leads-opportunities.json",
+  "title": "200 Get Leads Opportunities",
+  "type": "object",
+  "description": "Response in case of a successful get operation on leadsOpportunities",
+  "required": [
+    "data",
+    "info"
+  ],
+  "properties": {
+    "data": {
+      "type": "object",
+      "properties": {
+        "leadOpportunity": {
+          "type": "object",
+          "properties": {
+            "partnerLeadOpportunityId": {
+              "$ref": "#/components/schemas/partnerLeadOpportunityId"
+            },
+            "dsLeadOpportunityId": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "3DS id of the lead-opportunity",
+              "example": "5ZOQ-LF35OK"
+            },
+            "name": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "Name assigned to the lead-opportunity",
+              "example": "Projekt Big-Picture Topic + MBSE (STEP 1+2)"
+            },
+            "dsOwnerEmail": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "email of the 3DS Partner Sales Manager (PSM)",
+              "example": "john.doe@3ds.com"
+            },
+            "status": {
+              "$ref": "#/components/schemas/lead-opportunity-status",
+              "example": "LEAD_OPEN"
+            },
+            "forecastCategory": {
+              "$ref": "#/components/schemas/forecastCategory",
+              "example": "UPSIDE"
+            },
+            "closeDate": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "example": "2025-06-30",
+              "description": "expected date for the closing of the sale in ISO 8601 format (YYYY-MM-DD)"
+            },
+            "cometCampaignCode": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "COMET Campaign code",
+              "example": "OC2DE17TAQ1C13018"
+            },
+            "reasonWon": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "$ref": "#/components/schemas/reason_won"
+              }
+            },
+            "reasonLost": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "$ref": "#/components/schemas/reason_lost"
+              }
+            },
+            "competitors": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "description": "List of the competitors",
+              "items": {
+                "type": "string"
+              }
+            },
+            "reasonWonLostComment": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "Comment associated to WON or LOST reasons",
+              "example": "The Customer has no budget"
+            },
+            "gtmTacticId": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "identification of GoToMarket."
+            },
+            "description": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "description associated to the lead-opportunity",
+              "example": "Projekt Dashboard - Big-Picture TopicPilotprojekt"
+            },
+            "nextMilestone": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "Description of the next activity to be done",
+              "example": "Next activity is to make a demo to the Customer"
+            },
+            "nextMilestoneDate": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "Next Milestone date in ISO 8601 format (YYYY-MM-DD)",
+              "example": "2025-06-15"
+            },
+            "currency": {
+              "$ref": "#/components/schemas/currency"
+            },
+            "approvalStatus": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "engagementType": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "poInformation": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "poStatus": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "poNumber": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "sboIndicator": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "sboStatus": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "sboNumber": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "growthType": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "leadPriority": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "levelOfInterest": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "dsComment": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "partnerImportMode": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "createdDate": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "modifiedDate": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "offerLines": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "description": "array of the various Offer Lines.",
+              "items": {
+                "type": "object",
+                "$ref": "#/components/schemas/offerLine"
+              }
+            },
+            "customerLegalEntity": {
+              "$ref": "#/components/schemas/customerLegalEntity"
+            },
+            "customerContact": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "description": "Customer Contact(s) informations",
+              "items": {
+                "$ref": "#/components/schemas/customerContact"
+              }
+            },
+            "partnerContact": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "description": "Partner Contact(s) informations",
+              "items": {
+                "$ref": "#/components/schemas/partnerContact"
+              }
+            }
+          }
+        }
+      }
+    },
+    "info": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "boolean",
+          "description": "status of the operation"
+        },
+        "statusCode": {
+          "type": "integer",
+          "description": "HTTP status code"
+        },
+        "timeStamp": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "timestamp of the operation"
+        },
+        "traceId": {
+          "type": "null",
+          "description": "trace id to be provided for technical investigations."
+        }
+      }
+    },
+    "error": {
+      "type": "null",
+      "description": "no error in case of succees"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/installed_base_number.json",
+  "title": "Installed Base Number",
+  "type": "string",
+  "description": "A unique identifier for the installed base, representing the total number of software licenses that have been issued to a Final Customer.\nThe Installed Base Number is used to determine the Final Customer's maintenance and support obligations, as well as to calculate the cost of future upgrades or renewals.\nThis is used to track the Final Customer's software licenses and maintenance history.\n",
+  "maxLength": 40,
+  "example": "LN00012345678"
+}

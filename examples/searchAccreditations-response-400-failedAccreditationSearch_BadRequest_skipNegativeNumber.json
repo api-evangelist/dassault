@@ -1,0 +1,20 @@
+{
+  "data": [],
+  "info": {
+    "success": false,
+    "statusCode": 400,
+    "estimatedSearchCount": 0
+  },
+  "error": [
+    {
+      "type": "errors:3dx:invalidRequest",
+      "title": "Bad Request",
+      "errors": [
+        {
+          "detail": "Invalid pagination parameter. It must be a positive whole number.",
+          "pointer": "#/Skip"
+        }
+      ]
+    }
+  ]
+}

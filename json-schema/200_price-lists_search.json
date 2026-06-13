@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/200_price-lists_search.json",
+  "title": "200 Price Lists Search",
+  "type": "object",
+  "description": "Response body returned upon a successful price list search request.",
+  "properties": {
+    "data": {
+      "$ref": "#/components/schemas/price-lists_search_data"
+    },
+    "info": {
+      "$ref": "#/components/schemas/info"
+    },
+    "error": {
+      "$ref": "#/components/schemas/error"
+    }
+  },
+  "required": [
+    "info",
+    "data"
+  ]
+}

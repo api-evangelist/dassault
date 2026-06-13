@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/revenueType.json",
+  "title": "Revenuetype",
+  "type": "string",
+  "enum": [
+    "UPFRONT",
+    "RENTAL_BOOKING",
+    "SUPPORT_SERVICES",
+    "SERVICES_SIGNING",
+    "EMPTY"
+  ],
+  "description": "The type of revenue\n",
+  "x-enumDescriptions": {
+    "UPFRONT": "Upfront",
+    "RENTAL_BOOKING": "Rental Booking",
+    "SUPPORT_SERVICES": "Support Services",
+    "SERVICES_SIGNING": "Services Signing",
+    "EMPTY": "Empty"
+  }
+}

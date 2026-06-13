@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/creation_datetime.json",
+  "title": "Creation Datetime",
+  "type": "string",
+  "description": "UTC timestamp when the order was created in the system.\n\nFormat: ISO 8601 UTC (e.g., `2025-05-21T14:30:00Z`)\n",
+  "format": "date-time",
+  "example": "2025-05-21T14:30:00Z"
+}

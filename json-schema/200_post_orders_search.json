@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/200_post_orders_search.json",
+  "title": "200 Post Orders Search",
+  "type": "object",
+  "description": "Response body returned upon a successful order search request.",
+  "properties": {
+    "data": {
+      "$ref": "#/components/schemas/orders_search_data"
+    },
+    "info": {
+      "$ref": "#/components/schemas/info"
+    },
+    "error": {
+      "$ref": "#/components/schemas/error"
+    }
+  },
+  "required": [
+    "info",
+    "data"
+  ]
+}

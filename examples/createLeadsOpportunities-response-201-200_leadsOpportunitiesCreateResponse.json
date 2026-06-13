@@ -1,0 +1,12 @@
+{
+  "dsLeadOpportunityId": "9YEL-Y3W56Q",
+  "partnerLeadOpportunityId": "PARTNER-CRM-LEAD-1A8R",
+  "action": "create",
+  "info": {
+    "success": true,
+    "statusCode": 200,
+    "timestamp": null,
+    "traceId": null
+  },
+  "error": null
+}

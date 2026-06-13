@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/billto_po_reference.json",
+  "title": "Billto Po Reference",
+  "type": "string",
+  "description": "Identifier of the order as recorded in the **Bill To** site's ordering system.\n\nIf available, this reference will also appear on the Dassault Syst\u00e8mes invoice.\n",
+  "example": "EXAMPLE-CORP-20250518"
+}

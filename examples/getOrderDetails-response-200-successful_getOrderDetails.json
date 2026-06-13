@@ -1,0 +1,113 @@
+{
+  "data": [
+    {
+      "transaction": {
+        "id": "PO_A123456789",
+        "type": "PO",
+        "status": "Sent to DSx.Finance",
+        "description": "XYZ Company Order 50 products"
+      },
+      "businessUnit": {
+        "id": "BU001",
+        "name": "Corporate Sales Unit A",
+        "localTimezone": "CET"
+      },
+      "billToSite": {
+        "id": "100012345678901",
+        "name": "Example Corporation",
+        "localName": "\u793a\u4f8b\u516c\u53f8",
+        "locationId": 1
+      },
+      "billToContact": "DOE, Jini",
+      "soldToSite": {
+        "id": "200012345678901",
+        "name": "Foobar Inc",
+        "localName": "\u092b\u093c\u0942\u092c\u093e\u0930 \u0907\u0902\u0915",
+        "locationId": 2
+      },
+      "creationDateTime": "2024-05-21T14:30:00Z",
+      "dsReceivedPoDate": "2024-05-21",
+      "bookingDateTime": "2024-05-29T18:00:00Z",
+      "currency": "USD",
+      "onlineConsentStatus": "Not Applicable",
+      "billToSalesRepresentative": "DOE, Jane",
+      "billToPoReference": "EXAMPLE-CORP-20250518",
+      "agreement": {
+        "type": "General VAR Agreement",
+        "reference": "Enterprise License Agreement Q2 2024"
+      },
+      "sboNumber": "ABC0012345",
+      "customerRequestedArrivalDate": "2025-05-31",
+      "dsSalesRepresentative": "DOE, John",
+      "isMultiYear": false,
+      "hasExitClause": false,
+      "recurringChargeBillingCycle": "Calendar Year",
+      "opportunity": "A1B2-C3D4E5",
+      "paymentTerms": "Net Date of Invoice + 60 days",
+      "licenseChargeConditions": [
+        {
+          "sequenceNumber": 1,
+          "lineGroup": "SBL0001234567",
+          "onlineInstanceSeatId": "R1122334455667",
+          "orderType": "Stop - Transform",
+          "usageScope": "GEO EMEA",
+          "promotion": {
+            "id": "PAO0000111",
+            "name": "3DEXPERIENCE for small and medium business",
+            "combination": "Collaborative Design & Engineering Learning @Home"
+          },
+          "waiver": {
+            "endDate": "2025-09-15"
+          },
+          "licenseChargeBreakdown": [
+            {
+              "sequenceNumber": 1,
+              "installedBaseNumber": "LN00012345678",
+              "subOrderType": "New License",
+              "revenueType": "ALC",
+              "portfolio": "CATIA",
+              "release": "3DEXPERIENCE R2025x",
+              "product": {
+                "trigram": "ABC",
+                "type": "Named User",
+                "number": "1AB-ABC",
+                "name": "Generic Product Standard with Cloud Services",
+                "dsOffering": "Licensed Program"
+              },
+              "quantity": 2,
+              "unitListPrice": 1000,
+              "totalListPrice": 2000,
+              "billToNetAmount": 1930,
+              "billToAnnualAmount": 1930,
+              "billToDiscountPercentage": 30.5,
+              "billToMarginPercentage": 10.5,
+              "maximumCustomerNetAmount": 1958.95,
+              "maximumCustomerAnnualAmount": 1958.95,
+              "minimumCustomerDiscountPercentage": 10.5,
+              "startDate": "2025-06-01",
+              "endDate": "2026-05-31",
+              "duration": 2,
+              "calculatedStartDate": "2025-06-01",
+              "calculatedEndDate": "2026-05-31",
+              "yearNumber": 1,
+              "coupon": {
+                "name": "10% off on Installation Fee",
+                "discountPercentage": 10
+              },
+              "inflation": {
+                "date": "2025-07-01",
+                "ratio": 1.04,
+                "exception": "Capping To Price List"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "info": {
+    "success": true,
+    "statusCode": 200,
+    "estimatedSearchCount": 1
+  }
+}

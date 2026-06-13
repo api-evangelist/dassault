@@ -1,0 +1,48 @@
+{
+  "data": [
+    {
+      "countryCode": "BLZ",
+      "countryName": "Belize",
+      "priceLists": [
+        {
+          "id": 9,
+          "name": "LATAM South Price List",
+          "currency": "USD",
+          "hasFuturePriceList": false,
+          "effectiveDate": "null"
+        }
+      ]
+    },
+    {
+      "countryCode": "CAN",
+      "countryName": "Canada",
+      "priceLists": [
+        {
+          "id": 3,
+          "name": "Canada Price List",
+          "currency": "CAD",
+          "hasFuturePriceList": false,
+          "effectiveDate": "2025-09-12"
+        }
+      ]
+    },
+    {
+      "countryCode": "HND",
+      "countryName": "Honduras",
+      "priceLists": [
+        {
+          "id": 9,
+          "name": "LATAM South Price List",
+          "currency": "USD",
+          "hasFuturePriceList": false,
+          "effectiveDate": "null"
+        }
+      ]
+    }
+  ],
+  "info": {
+    "success": true,
+    "statusCode": 200,
+    "estimatedSearchCount": 3
+  }
+}

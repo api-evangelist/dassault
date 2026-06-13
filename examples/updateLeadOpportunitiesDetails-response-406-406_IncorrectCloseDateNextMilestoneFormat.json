@@ -1,0 +1,17 @@
+{
+  "info": {
+    "success": false,
+    "statusCode": 406,
+    "timeStamp": "2025-08-07T07:22:41.357Z",
+    "traceId": "7a722f2871304f7fa0bd1457388dff5d"
+  },
+  "error": {
+    "code": "ERR805",
+    "message": "Incorrect Close Date/next milestone date Format. Provide date in ISO8601 format."
+  },
+  "data": {
+    "partnerLeadOpportunityId": null,
+    "dsLeadOpportunityId": null,
+    "action": null
+  }
+}

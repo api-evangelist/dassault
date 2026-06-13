@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/reason_won.json",
+  "title": "Reason Won",
+  "type": "string",
+  "description": "Identification of the reason a lead or an opportunity is won.\n\n<ins>Note :</ins> At Creation time, if Value is Not provided, it will be defaulted to 'STRNG_VAL_PROP' (Stronger value proposition).",
+  "enum": [
+    "SOLUTION_FUNCT",
+    "STRNG_VAL_PROP",
+    "LWR_CST_OF_OWNRSHIP",
+    "LWR_IMPL_COST",
+    "GOOD_CSTMR_REFER",
+    "OFFR_TRM_CONDN",
+    "LWR_SFTWR_COSTS",
+    "STRONG_CLIENT_RELATION",
+    "DS_SKILLS_EXPERTISE",
+    "PRTNR_SKILL_&_EXPRT",
+    "PRTNR_RELTNSHIP",
+    "SALE_OPP_ACT",
+    "IT_DRVN_ACT",
+    "EMPTY"
+  ],
+  "x-enumDescriptions": {
+    "SOLUTION_FUNCT": "Solution functionality",
+    "STRNG_VAL_PROP": "Stronger value proposition",
+    "LWR_CST_OF_OWNRSHIP": "Lower costs of ownership",
+    "LWR_IMPL_COST": "Lower implementation costs",
+    "GOOD_CSTMR_REFER": "Good customer references",
+    "OFFR_TRM_CONDN": "Offer Terms & conditions",
+    "LWR_SFTWR_COSTS": "Lower software costs",
+    "STRONG_CLIENT_RELATION": "Strong client relationship",
+    "DS_SKILLS_EXPERTISE": "DS skills & expertise",
+    "PRTNR_SKILL_&_EXPRT": "Partner skills & expertise",
+    "PRTNR_RELTNSHIP": "Partner (CSI) relationship",
+    "SALE_OPP_ACT": "SalesOperations activities",
+    "IT_DRVN_ACT": "IT driven activities",
+    "EMPTY": "Empty"
+  },
+  "example": "STRNG_VAL_PROP"
+}

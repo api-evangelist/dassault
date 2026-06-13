@@ -1,0 +1,17 @@
+{
+  "info": {
+    "success": false,
+    "statusCode": 503,
+    "timestamp": "2025-06-30T12:36:46.556Z",
+    "traceId": "3d29ece30a064ea68c3f5f4a9f785c6f"
+  },
+  "error": {
+    "code": "ERR899",
+    "message": "Service currently unavailable, please try again later."
+  },
+  "data": {
+    "partnerLeadOpportunityId": null,
+    "dsLeadOpportunityId": null,
+    "action": null
+  }
+}

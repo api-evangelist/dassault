@@ -1,0 +1,813 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Dassault Syst\u00e8mes API Vocabulary",
+  "description": "Vocabulary terms extracted from the Dassault Syst\u00e8mes APIs for Partners (API4Partners) OpenAPI specification",
+  "version": "0.10.0",
+  "terms": {
+    "date-time-from": {
+      "term": "date_time_from",
+      "description": "This property represents a timestamp in UTC format, following the ISO 8601 standard.\nAll date-time values must be provided in Coordinated Universal Time (UTC).\nThe timestamp must not be set in the future.\nIf not provided, the system will automatically calculate it by subtracting the maximum number of days specified for the time range defined for the parent search criteria.\n",
+      "source": "schema"
+    },
+    "date-time-to": {
+      "term": "date_time_to",
+      "description": "This property represents a timestamp in UTC format, following the ISO 8601 standard.\nAll date-time values must be provided in Coordinated Universal Time (UTC).\nIf the `from` timestamp is specified, this value must be later than `from`.\nIf not provided, the system will automatically calculate this value by adding the maximum number of days specified for the time range defined for the parent search criteria.\n",
+      "source": "schema"
+    },
+    "installed-base-number": {
+      "term": "installed_base_number",
+      "description": "A unique identifier for the installed base, representing the total number of software licenses that have been issued to a Final Customer.\nThe Installed Base Number is used to determine the Final Customer's maintenance and support obligations, as well as to calculate the cost of future upgrades or renewals.\nThis is used to track the Final Customer's software licenses and maintenance history.\n",
+      "source": "schema"
+    },
+    "online-instance-seat-id": {
+      "term": "online_instance_seat_id",
+      "description": "Unique identifier assigned to a 3DEXPERIENCE platform instance.\nIt is used to identify a specific instance of the platform, which can be accessed through the cloud.\nThis identifier is also referred to as the **Online Instance ID**.\nAdditionally, it is also used as the **Seat ID** to identify a user's access to the instance.\nThe Seat ID is used to manage user licenses, authenticate users, and track user activity within the instance.\nThe Online Instance ID/Seat ID is a combination of letters and numbers.\n",
+      "source": "schema"
+    },
+    "transaction-type": {
+      "term": "transaction_type",
+      "description": "Order type (one of: `PO`, `RN`).\n",
+      "source": "schema"
+    },
+    "creationdatetime": {
+      "term": "creationDateTime",
+      "description": "Returns orders created within a specified time range, using the `Creation` timestamp.\nThe maximum time window allowed for the search is **7 days** (calculated time to time).\nIncluding this tag prompts the system to perform validations and automatically compute the `from` or `to` timestamp if either is missing.\nOmitting this tag means the system will skip these validations and will not perform any implicit computation of the `from` or `to` values.\n",
+      "source": "schema_property"
+    },
+    "bookingdatetime": {
+      "term": "bookingDateTime",
+      "description": "Returns orders booked within a specified time range, using the `Booking` timestamp.\nThe maximum time window allowed for the search is **7 days** (calculated time to time).\nThe `Booking` timestamp refers to the date and time when the order was approved by the Finance Department.\nIncluding this tag prompts the system to perform validations and automatically compute the `from` or `to` timestamp if either is missing.\nOmitting this tag means the system will skip these validations and will not perform any implicit computation of the `from` or `to` values.\n",
+      "source": "schema_property"
+    },
+    "lastupdatedatetime": {
+      "term": "lastUpdateDateTime",
+      "description": "Indicates the timestamp of the most recent update to the order.\nThe maximum time window allowed for the search is **3 days** (calculated time to time).\nThis field is automatically set to the current timestamp whenever the order is modified.\nOmitting this tag means the system will skip these validations and will not perform any implicit computation of the `from` or `to` values.\n",
+      "source": "schema_property"
+    },
+    "billtoporeferences": {
+      "term": "billToPoReferences",
+      "description": "List of partner order references.",
+      "source": "schema_property"
+    },
+    "transactiontype": {
+      "term": "transactionType",
+      "description": "Order type (one of: `PO`, `RN`).\n\nIf left unspecified, records of both transaction types will be included in the response.\n",
+      "source": "schema_property"
+    },
+    "order-processing-status": {
+      "term": "order_processing_status",
+      "description": "Current processing status of the order.",
+      "source": "schema"
+    },
+    "transaction": {
+      "term": "transaction",
+      "description": "Transactional details of the order.",
+      "source": "schema"
+    },
+    "id": {
+      "term": "id",
+      "description": "Unique identifier of the order. Can represent a Purchase Order or a Renewal Notification.",
+      "source": "schema_property"
+    },
+    "description": {
+      "term": "description",
+      "description": "Short description given to the Purchase Order / Renewal Notification.",
+      "source": "schema_property"
+    },
+    "local-time-zone": {
+      "term": "local_time_zone",
+      "description": "Time zone abbreviation used by the sales business unit.\n",
+      "source": "schema"
+    },
+    "business-unit": {
+      "term": "business_unit",
+      "description": "Details of the sales business unit.",
+      "source": "schema"
+    },
+    "name": {
+      "term": "name",
+      "description": "Name of the sales business unit.",
+      "source": "schema_property"
+    },
+    "localname": {
+      "term": "localName",
+      "description": "The registered name of the company in the local language.\n",
+      "source": "schema_property"
+    },
+    "locationid": {
+      "term": "locationId",
+      "description": "A unique identifier representing the company's location. \nMust be an integer between 1 and 999.\n",
+      "source": "schema_property"
+    },
+    "creation-datetime": {
+      "term": "creation_datetime",
+      "description": "UTC timestamp when the order was created in the system.\n\nFormat: ISO 8601 UTC (e.g., `2025-05-21T14:30:00Z`)\n",
+      "source": "schema"
+    },
+    "ds-received-po-date": {
+      "term": "ds_received_po_date",
+      "description": "Date when the order was received by Dassault Syst\u00e8mes, in ISO 8601 format (YYYY-MM-DD).",
+      "source": "schema"
+    },
+    "booking-datetime": {
+      "term": "booking_datetime",
+      "description": "UTC timestamp when the order was approved by the Finance Department.\n\nFormat: ISO 8601 UTC (e.g., `2025-05-30T14:30:00Z`)\n",
+      "source": "schema"
+    },
+    "currency": {
+      "term": "currency",
+      "description": "Three-letter ISO 4217 currency code representing the transaction currency.\n\nMust be exactly 3 uppercase alphabetic characters (e.g., `USD` for US Dollar, `EUR` for Euro, `INR` for Indian Ruppee).\n",
+      "source": "schema"
+    },
+    "online-consent-status": {
+      "term": "online_consent_status",
+      "description": "Status of the online consent request sent to the designated contact.\n",
+      "source": "schema"
+    },
+    "billto-sales-representative": {
+      "term": "billto_sales_representative",
+      "description": "Name of the sales representative person from the **Bill To** site.",
+      "source": "schema"
+    },
+    "billto-po-reference": {
+      "term": "billto_po_reference",
+      "description": "Identifier of the order as recorded in the **Bill To** site's ordering system.\n\nIf available, this reference will also appear on the Dassault Syst\u00e8mes invoice.\n",
+      "source": "schema"
+    },
+    "orders-search-data": {
+      "term": "orders_search_data",
+      "description": "List of orders retrieved during the search operation.",
+      "source": "schema"
+    },
+    "info": {
+      "term": "info",
+      "description": "Metadata section of the response providing execution status and result summary.",
+      "source": "schema"
+    },
+    "success": {
+      "term": "success",
+      "description": "Indicates whether the API request was executed successfully.",
+      "source": "schema_property"
+    },
+    "statuscode": {
+      "term": "statusCode",
+      "description": "HTTP status code corresponding to the response.",
+      "source": "schema_property"
+    },
+    "estimatedsearchcount": {
+      "term": "estimatedSearchCount",
+      "description": "Estimated number of results matching the search criteria.",
+      "source": "schema_property"
+    },
+    "error": {
+      "term": "error",
+      "description": "An array containing one or more error objects identified during the request processing.\nEach object provides detailed information about a specific type of error encountered.\n",
+      "source": "schema"
+    },
+    "200-post-orders-search": {
+      "term": "200_post_orders_search",
+      "description": "Response body returned upon a successful order search request.",
+      "source": "schema"
+    },
+    "400-post-orders-search": {
+      "term": "400_post_orders_search",
+      "description": "Response body returned when the order search request fails.",
+      "source": "schema"
+    },
+    "data": {
+      "term": "data",
+      "description": "Always an empty array in case of error responses.",
+      "source": "schema_property"
+    },
+    "401-basic-unauthorized": {
+      "term": "401_basic_unauthorized",
+      "description": "Unauthorized",
+      "source": "schema"
+    },
+    "403-basic-forbidden": {
+      "term": "403_basic_forbidden",
+      "description": "Access Forbidden.",
+      "source": "schema"
+    },
+    "429-too-many-requests": {
+      "term": "429_too_many_requests",
+      "description": "Too Many Requests",
+      "source": "schema"
+    },
+    "recurring-charge-billing-cycle": {
+      "term": "recurring_charge_billing_cycle",
+      "description": "Identifies how often invoices are sent for ALC and ASC licenses. In the event of prorating (to an anniversary date, in the first month, or in the first quarter) or cancellation and refund or overpayment, the prorate calculation is based on 30 day months.\n",
+      "source": "schema"
+    },
+    "order-type": {
+      "term": "order_type",
+      "description": "Specifies the classification of the order based on its nature, purpose, or contractual arrangement.\nThis helps identify whether the order involves a new purchase, renewal, upgrade, transfer, suspension,\nmigration, evaluation, or any other business scenario. Each value represents a predefined business process\nor transaction type that impacts how the order is handled and processed.\nFor a complete list of supported values, refer to the `enum` section.\n",
+      "source": "schema"
+    },
+    "sub-order-type": {
+      "term": "sub_order_type",
+      "description": "sub Order Type",
+      "source": "schema"
+    },
+    "product-type": {
+      "term": "product_type",
+      "description": "Type of the product.",
+      "source": "schema"
+    },
+    "ds-offering": {
+      "term": "ds_offering",
+      "description": "Dassault Syst\u00e8mes offering Type",
+      "source": "schema"
+    },
+    "order-sub-line": {
+      "term": "order_sub_line",
+      "description": "Details of License Charge Breakdown.\nIt is also interchangably called as Sub-Line Item.\n",
+      "source": "schema"
+    },
+    "sequencenumber": {
+      "term": "sequenceNumber",
+      "description": "The sequence number used to identify the license charge breakdown item.\nIt is an integer autogenerated by system, between 1 and 999.\n",
+      "source": "schema_property"
+    },
+    "portfolio": {
+      "term": "portfolio",
+      "description": "The portfolio to which the product being ordered belongs.\nThis field identifies the specific product family or category to which the ordered product belongs.\nFor example, a product might belong to a portfolio such as \"CATIA\", \"ENOVIA\", or \"SIMULIA\".\n",
+      "source": "schema_property"
+    },
+    "release": {
+      "term": "release",
+      "description": "The name of the product release being ordered.\nThis field identifies the specific version of the product to which the ordered product belongs.\nFor example, a product might belong to a release such as \"3DEXPERIENCE R2025x\", \"SOLIDWORKS 2025\", or \"V5-6R2025\".\n",
+      "source": "schema_property"
+    },
+    "product": {
+      "term": "product",
+      "description": "This field identifies the specific product that is being ordered.\n",
+      "source": "schema_property"
+    },
+    "quantity": {
+      "term": "quantity",
+      "description": "The quantity of the product being ordered.\n",
+      "source": "schema_property"
+    },
+    "unitlistprice": {
+      "term": "unitListPrice",
+      "description": "The price listed by the Finance Department for the product being ordered.\n\nThis field represents the standard price of a single unit of the product, as approved by the Finance Department.\n",
+      "source": "schema_property"
+    },
+    "totallistprice": {
+      "term": "totalListPrice",
+      "description": "The total price of the product licenses, calculated by multiplying the `Unit List Price` and the `Quantity`.\n\nThis field represents the total cost of the product licenses, taking into account the number of units purchased.\n",
+      "source": "schema_property"
+    },
+    "billtonetamount": {
+      "term": "billToNetAmount",
+      "description": "The actual amount payable by the Bill To Site for the selected product.\n\nThis field represents the total cost of the product or service, including any applicable taxes, fees, or discounts.\n",
+      "source": "schema_property"
+    },
+    "billtoannualamount": {
+      "term": "billToAnnualAmount",
+      "description": "The total amount payable by the Bill To Site for the full year.\n\nThis field represents the annual cost of the product or service, taking into account any usage periods that are not a full year.\n\nNote that there may be a difference between `Bill To Net Amount` and `Bill To Annual Amount` when the product is not purchased for a full year of usage.\n",
+      "source": "schema_property"
+    },
+    "billtodiscountpercentage": {
+      "term": "billToDiscountPercentage",
+      "description": "The discount percentage applicable to the `Total List Price`.\n\nThis field represents the percentage reduction in the total list price, as a decimal value (e.g. 3.5 represents 3.5%).\n",
+      "source": "schema_property"
+    },
+    "billtomarginpercentage": {
+      "term": "billToMarginPercentage",
+      "description": "The percentage difference between the discount price offered by Dassault Syst\u00e8mes and the Partner Bill To Site.\n\nThis field represents the margin earned by the Partner Bill To Site, calculated as a percentage of the discount price.\n\nNote: This field is pre-filled according to the percentage value set inside the Distributor Discount Model section of the GVA Agreement.\n\nAdditionally, note that this field is related to `Bill to Discount Percentage`, which represents the percentage reduction in the `Total List Price`.\n",
+      "source": "schema_property"
+    },
+    "maximumcustomernetamount": {
+      "term": "maximumCustomerNetAmount",
+      "description": "The actual amount payable by the Final Customer Site for the selected product.\n\nThis field represents the maximum net amount that the Final Customer Site is responsible for paying, taking into account any applicable discounts or fees.\n",
+      "source": "schema_property"
+    },
+    "maximumcustomerannualamount": {
+      "term": "maximumCustomerAnnualAmount",
+      "description": "The total amount payable by the Final Customer Site for the full year.\n\nThis field represents the annual cost of the product or service, taking into account any usage periods that are not a full year.\n\nNote that there may be a difference between `Maximum Customer Net Amount` and `Maximum Customer Annual Amount` when the product is not purchased for a full year of usage.\n",
+      "source": "schema_property"
+    },
+    "minimumcustomerdiscountpercentage": {
+      "term": "minimumCustomerDiscountPercentage",
+      "description": "The minimum discount percentage that the Partner Bill To Site offers to the Final Customer for the selected product.\n\nThis field represents the lowest percentage discount that the Partner Bill To Site is willing to offer to the Final Customer, as a decimal value (e.g. 0.5 represents 0.5%).\n",
+      "source": "schema_property"
+    },
+    "startdate": {
+      "term": "startDate",
+      "description": "The start date of the product or service, in ISO 8601 format (YYYY-MM-DD).\n",
+      "source": "schema_property"
+    },
+    "enddate": {
+      "term": "endDate",
+      "description": "The end date of the product or service, in ISO 8601 format (YYYY-MM-DD).\n",
+      "source": "schema_property"
+    },
+    "duration": {
+      "term": "duration",
+      "description": "The duration for which the product or service is intended to be used.\n\nThe unit of duration depends on the `Revenue Type`:\n\n- If `Revenue Type` is ALC (Annual License Charge), then the duration is measured in years. For example, a duration of 2 represents 2 years.\n- If `Revenue Type` is QLC (Quarterly License Charge), then the duration is measured in quarters. For example, a duration of 2 represents 2 quarters.\n",
+      "source": "schema_property"
+    },
+    "calculatedstartdate": {
+      "term": "calculatedStartDate",
+      "description": "This field is automatically calculated by the system. Format: ISO 8601 format (YYYY-MM-DD).\n\nIt is based on one of the following dates:\n\n- The user-entered `Start Date`\n- The `CRAD (Customer Requested Arrival Date)`\n- The `Finance Approved` date of the order\n",
+      "source": "schema_property"
+    },
+    "calculatedenddate": {
+      "term": "calculatedEndDate",
+      "description": "This field is automatically calculated by the system. Format: ISO 8601 format (YYYY-MM-DD).\n\nIt is based on one of the following values:\n\n- `First Year Co-Terminus`: The end date of the first year of the contract.\n- End date of the Duration calculated from 'calculatedStartDate' or entered by the user\n",
+      "source": "schema_property"
+    },
+    "yearnumber": {
+      "term": "yearNumber",
+      "description": "This field represents the product usage `Year Number` for multi-year orders.\n\nIt is used to identify the specific year of a multi-year contract.\n",
+      "source": "schema_property"
+    },
+    "coupon": {
+      "term": "coupon",
+      "description": "Details of the discount coupon applied to the final price.\n",
+      "source": "schema_property"
+    },
+    "inflation": {
+      "term": "inflation",
+      "description": "Details about the inflation rate applied to the price of the product.\nThe inflation occurs when it is the case of product renewals.\n",
+      "source": "schema_property"
+    },
+    "order-line": {
+      "term": "order_line",
+      "description": "Details of License Charge Condition.\nThis object is also interchangably called as Line Item.\n",
+      "source": "schema"
+    },
+    "linegroup": {
+      "term": "lineGroup",
+      "description": "Unique identifier of license charge condition. This is used to group together the Installed Base sub-lines.\n",
+      "source": "schema_property"
+    },
+    "usagescope": {
+      "term": "usageScope",
+      "description": "Defines the geographical or territorial scope in which the product can be used,\nas specified in the associated agreement details. This may refer to a region (e.g., GEO)\nor a specific country.\n",
+      "source": "schema_property"
+    },
+    "promotion": {
+      "term": "promotion",
+      "description": "Promotion information.\nThis object contains information about the promotion applied to the order.\nThe promotion object contains information about the promotion, including its name, ID, and combination of one or more products.\n",
+      "source": "schema_property"
+    },
+    "waiver": {
+      "term": "waiver",
+      "description": "Waiver information for the license charge.\nIt can be either of `duration` or `endDate`.\n",
+      "source": "schema_property"
+    },
+    "order-get-data": {
+      "term": "order_get_data",
+      "description": "List of orders retrieved during the search operation.",
+      "source": "schema"
+    },
+    "200-get-orders": {
+      "term": "200_get_orders",
+      "description": "Response body returned upon a successful order details request.",
+      "source": "schema"
+    },
+    "4xx-get-orders": {
+      "term": "4xx_get_orders",
+      "description": "Response body returned when the order details request fails.",
+      "source": "schema"
+    },
+    "country-code": {
+      "term": "country_code",
+      "description": "ISO3 Code (3 capital letters code) of the country",
+      "source": "schema"
+    },
+    "country-name": {
+      "term": "country_name",
+      "description": "Country Location\n",
+      "source": "schema"
+    },
+    "price-lists-search-data": {
+      "term": "price-lists_search_data",
+      "description": "List of **Products** and **Industry Process Experiences (IPE)** that the authorized user is accredited to sell.",
+      "source": "schema"
+    },
+    "200-price-lists-search": {
+      "term": "200_price-lists_search",
+      "description": "Response body returned upon a successful price list search request.",
+      "source": "schema"
+    },
+    "accreditations-search-data": {
+      "term": "accreditations_search_data",
+      "description": "List of accreditations retrieved during the search operation.",
+      "source": "schema"
+    },
+    "200-accreditations-search": {
+      "term": "200_accreditations_search",
+      "description": "Response returned upon a successful price list search request.",
+      "source": "schema"
+    },
+    "400-accreditations-search": {
+      "term": "400_accreditations_search",
+      "description": "Response body returned when the accreditation search request fails.",
+      "source": "schema"
+    },
+    "hashed-key": {
+      "term": "hashed_key",
+      "description": "Generated hash of the API key (60 characters)",
+      "source": "schema_property"
+    },
+    "api-key": {
+      "term": "api_key",
+      "description": "Plain API key (64 characters)",
+      "source": "schema_property"
+    },
+    "partnerleadopportunityid": {
+      "term": "partnerLeadOpportunityId",
+      "description": "<ins>Unique Identifier</ins> of the lead-opportunity in the CRM system of the 3DS partner.",
+      "source": "schema"
+    },
+    "dsowneremail": {
+      "term": "dsOwnerEmail",
+      "description": "email of the 3DS Partner Sales Manager (PSM).\n\n<ins>Note :</ins> It is defaulted to the primary 3DS PSM if not provided at creation time.",
+      "source": "schema"
+    },
+    "lead-opportunity-status": {
+      "term": "lead-opportunity-status",
+      "description": "Status of the lead-opportunity (LEVERAGE Processs)\n",
+      "source": "schema"
+    },
+    "forecastcategory": {
+      "term": "forecastCategory",
+      "description": "Forecast Category is an assessment done by the Sales Expert to report his/her level of confidence that the Opportunity will close on the Close Date with the revenue amounts defined.\nValue is ignored at creation if status is \u2018LEAD_OPEN\u2019,\u2019QUALIFIED\u2019 or \u2019ACCEPTED\u2019.\nif value is not provided at creation time, it defaults based on the following matrix : \n| status | default forecastCategory | forecastCategory values |\n| ------- | ------------------------ | -----------------------|\n| -3 Open | Upside | Safe/Commit/Upside/Longshot |\n| -2 validated | Upside | Safe/Commit/Upside/Longshot |\n| -1 Established | Upside | Safe/Commit/Upside/Longshot |\n| Won | Won | Won (set by the system)|\n| Lost | Lost| Lost (set by the system)",
+      "source": "schema"
+    },
+    "reason-won": {
+      "term": "reason_won",
+      "description": "Identification of the reason a lead or an opportunity is won.\n\n<ins>Note :</ins> At Creation time, if Value is Not provided, it will be defaulted to 'STRNG_VAL_PROP' (Stronger value proposition).",
+      "source": "schema"
+    },
+    "reason-lost": {
+      "term": "reason_lost",
+      "description": "A list of reason lost is used to identify the reason(s) for loss of an opportunity and for a Lead (which will give insight for the lessons learnt).\n<ins>Note :</ins> It is defaulted to `No Project` if value is Not provided during creation of the lead-opportunity.",
+      "source": "schema"
+    },
+    "closedate": {
+      "term": "closeDate",
+      "description": "Expected date for the closing of the sale in ISO 8601 format (like YYYY-MM-DDThh:mm:ss.sssZ)",
+      "source": "schema_property"
+    },
+    "cometcampaigncode": {
+      "term": "cometCampaignCode",
+      "description": "COMET Campaign code",
+      "source": "schema_property"
+    },
+    "reasonwon": {
+      "term": "reasonWon",
+      "description": "\nIdentification of the reason a lead or an opportunity is won.\n\n_Note_ : At creation time, if value is not provided, it will be defaulted to `STRNG_VAL_PROP` (Stronger value proposition).",
+      "source": "schema_property"
+    },
+    "reasonlost": {
+      "term": "reasonLost",
+      "description": "\nA list of reason lost is used to identify the reason(s) for loss of an opportunity and for a Lead (which will give insight for the lessons learnt).\n\n_Note_ : At creation time, if value is not provided, it will be defaulted to `NO_PROJECT`.",
+      "source": "schema_property"
+    },
+    "competitors": {
+      "term": "competitors",
+      "description": "List of the competitors. \nIn current state of the API, the list of valid values will be provided through direct communication with partners (mail or 3DSwym discussion). \n",
+      "source": "schema_property"
+    },
+    "reasonwonlostcomment": {
+      "term": "reasonWonLostComment",
+      "description": "Comment associated to WON or LOST reasons",
+      "source": "schema_property"
+    },
+    "gtmtacticid": {
+      "term": "gtmTacticId",
+      "description": "identification of GoToMarket.",
+      "source": "schema_property"
+    },
+    "nextmilestone": {
+      "term": "nextMilestone",
+      "description": "Description of the next activity to be done",
+      "source": "schema_property"
+    },
+    "nextmilestonedate": {
+      "term": "nextMilestoneDate",
+      "description": "Next Milestone date in ISO 8601 format (like YYYY-MM-DDThh:mm:ss.sssZ)",
+      "source": "schema_property"
+    },
+    "lead-opportunity-post": {
+      "term": "lead-opportunity_post",
+      "description": "Core attributes of the lead-opportunity in case of creation.\n",
+      "source": "schema"
+    },
+    "revenuetype": {
+      "term": "revenueType",
+      "description": "The type of revenue\n",
+      "source": "schema"
+    },
+    "offerline": {
+      "term": "offerLine",
+      "description": "One of the item within an offer.\n",
+      "source": "schema"
+    },
+    "amount": {
+      "term": "amount",
+      "description": "Amount of the offer in the desgnated currency",
+      "source": "schema_property"
+    },
+    "offernameid": {
+      "term": "offerNameId",
+      "description": "Identification of the Offer.  \n<ins>Note:</ins> : In current state of the API, the list of valid values will be communicated directly to 3DS Partners via email or within 3DS Partner Swym Community. ",
+      "source": "schema_property"
+    },
+    "country": {
+      "term": "country",
+      "description": "Country Location\n",
+      "source": "schema"
+    },
+    "customerlegalentity": {
+      "term": "customerLegalEntity",
+      "description": "identification of the target Customer Legal Entity",
+      "source": "schema"
+    },
+    "dunsnumber": {
+      "term": "dunsNumber",
+      "description": "Duns & Bradstreet identification",
+      "source": "schema_property"
+    },
+    "vatnumber": {
+      "term": "vatNumber",
+      "description": "VAT (Value Added Tax) identification number",
+      "source": "schema_property"
+    },
+    "registrationid": {
+      "term": "registrationId",
+      "description": "registration id of the company in the country",
+      "source": "schema_property"
+    },
+    "city": {
+      "term": "city",
+      "description": "City Location",
+      "source": "schema_property"
+    },
+    "addressline1": {
+      "term": "addressLine1",
+      "description": "1st line of the address",
+      "source": "schema_property"
+    },
+    "stateprefecture": {
+      "term": "statePrefecture",
+      "description": "state / Prefecture",
+      "source": "schema_property"
+    },
+    "addressline2": {
+      "term": "addressLine2",
+      "description": "2nd line of the address (if needed)",
+      "source": "schema_property"
+    },
+    "zipcode": {
+      "term": "zipCode",
+      "description": "ZIP Postal code",
+      "source": "schema_property"
+    },
+    "websiteurl": {
+      "term": "websiteUrl",
+      "description": "website URL of the company",
+      "source": "schema_property"
+    },
+    "customercontact": {
+      "term": "customerContact",
+      "description": "Customer Contact Information",
+      "source": "schema"
+    },
+    "phonenumber": {
+      "term": "phoneNumber",
+      "description": "phone number of the Customer Contact",
+      "source": "schema_property"
+    },
+    "salutation": {
+      "term": "salutation",
+      "description": "Salution of the person : Mr., Ms., Dr., etc..",
+      "source": "schema_property"
+    },
+    "jobtitle": {
+      "term": "jobTitle",
+      "description": "Job title of the customer Contact",
+      "source": "schema_property"
+    },
+    "email": {
+      "term": "email",
+      "description": "email of the customer Contact",
+      "source": "schema_property"
+    },
+    "firstname": {
+      "term": "firstName",
+      "description": "first name of the customer Contact",
+      "source": "schema_property"
+    },
+    "lastname": {
+      "term": "lastName",
+      "description": "lastname of the customer Contact",
+      "source": "schema_property"
+    },
+    "partnercontact": {
+      "term": "partnerContact",
+      "description": "Partner contact information\n",
+      "source": "schema"
+    },
+    "salesrepemail": {
+      "term": "salesRepEmail",
+      "description": "email of the partner contact",
+      "source": "schema_property"
+    },
+    "salesrepfirstname": {
+      "term": "salesRepFirstName",
+      "description": "first Name of the partner Contact",
+      "source": "schema_property"
+    },
+    "salesreplastname": {
+      "term": "salesRepLastName",
+      "description": "last name of the partner contact",
+      "source": "schema_property"
+    },
+    "post-leads-opportunities-data": {
+      "term": "post_leads-opportunities_data",
+      "description": "request body for creating a new lead-opportunity object.",
+      "source": "schema"
+    },
+    "partnerid": {
+      "term": "partnerId",
+      "description": "Identification of partner LegalEntity in 3DS system.",
+      "source": "schema_property"
+    },
+    "offerlines": {
+      "term": "offerLines",
+      "description": "array of the various Offer Lines.",
+      "source": "schema_property"
+    },
+    "customercontacts": {
+      "term": "customerContacts",
+      "description": "Customer Contact(s) informations",
+      "source": "schema_property"
+    },
+    "partnercontacts": {
+      "term": "partnerContacts",
+      "description": "Partner Contact(s) informations",
+      "source": "schema_property"
+    },
+    "201-post-leads-opportunities": {
+      "term": "201_post_leads-opportunities",
+      "description": "response in case of successful operation",
+      "source": "schema"
+    },
+    "dsleadopportunityid": {
+      "term": "dsLeadOpportunityId",
+      "description": "3DS id of the lead-opportunity",
+      "source": "schema_property"
+    },
+    "action": {
+      "term": "action",
+      "description": "action performed",
+      "source": "schema_property"
+    },
+    "400-post-leads-opportunities": {
+      "term": "400_post_leads-opportunities",
+      "description": "response in case of Bad Request operation",
+      "source": "schema"
+    },
+    "503-leads-opportunities": {
+      "term": "503_leads-opportunities",
+      "description": "Service Unavailable",
+      "source": "schema"
+    },
+    "200-get-leads-opportunities": {
+      "term": "200_get_leads-opportunities",
+      "description": "Response in case of a successful get operation on leadsOpportunities",
+      "source": "schema"
+    },
+    "500-get-leads-opportunities": {
+      "term": "500_get_leads-opportunities",
+      "description": "Response in case of Bad Request for retrieving lead-opportunity details",
+      "source": "schema"
+    },
+    "lead-opportunity-patch": {
+      "term": "lead-opportunity_patch",
+      "description": "Core attributes of the lead-opportunity in case of update.\n",
+      "source": "schema"
+    },
+    "patch-leads-opportunities-data": {
+      "term": "patch_leads-opportunities_data",
+      "description": "Request body schema for updating leads-opportunities",
+      "source": "schema"
+    },
+    "leadopportunity": {
+      "term": "leadOpportunity",
+      "description": "Specific attributes of the lead-opportunity in case of update",
+      "source": "schema_property"
+    },
+    "200-patch-leads-opportunities": {
+      "term": "200_patch_leads-opportunities",
+      "description": "Response in case of successful update operation on lead-Opportunities object",
+      "source": "schema"
+    },
+    "400-patch-leads-opportunities": {
+      "term": "400_patch_leads-opportunities",
+      "description": "Response in case of Bad Request operation for updating leadsOpportunities object",
+      "source": "schema"
+    },
+    "post-leads-opportunities-search": {
+      "term": "post_leads-opportunities_search",
+      "description": "Request body schema for searching leads-opportunities",
+      "source": "schema"
+    },
+    "200-post-leads-opportunities-search": {
+      "term": "200_post_leads-opportunities_search",
+      "description": "Response body schema for searching leads-opportunities",
+      "source": "schema"
+    },
+    "portfolio-items-data": {
+      "term": "portfolio-items_data",
+      "description": "A sales portfolio-item.",
+      "source": "schema"
+    },
+    "salesportfoliotype": {
+      "term": "salesPortfolioType",
+      "description": "type of portfolio item",
+      "source": "schema_property"
+    },
+    "salesportfolioinfrastructure": {
+      "term": "salesPortfolioInfrastructure",
+      "description": "infrastructure type",
+      "source": "schema_property"
+    },
+    "salesportfolioisorderable": {
+      "term": "salesPortfolioisOrderable",
+      "description": "Whether or not the item can be ordered",
+      "source": "schema_property"
+    },
+    "salesportfoliolevel1": {
+      "term": "salesPortfolioLevel1",
+      "description": "Level 1 of the description of the portfolio item",
+      "source": "schema_property"
+    },
+    "salesportfoliolevel2": {
+      "term": "salesPortfolioLevel2",
+      "description": "Level 2 of the description of the portfolio item",
+      "source": "schema_property"
+    },
+    "salesportfoliolevel3": {
+      "term": "salesPortfolioLevel3",
+      "description": "Level 3 of the description of the portfolio item",
+      "source": "schema_property"
+    },
+    "salesportfolioid": {
+      "term": "salesPortfolioId",
+      "description": "type of portfolio item",
+      "source": "schema_property"
+    },
+    "info-response-base-attributes": {
+      "term": "info_response_base_attributes",
+      "description": "Global Information on the operation requested.",
+      "source": "schema"
+    },
+    "200-get-portfolio-items-search": {
+      "term": "200_get_portfolio-items_search",
+      "description": "Response in case of a successful search operation on portfolio-items",
+      "source": "schema"
+    },
+    "400-get-portfolio-items-search": {
+      "term": "400_get_portfolio-items_search",
+      "description": "Response in case of Bad Request operation for updating leadsOpportunities object",
+      "source": "schema"
+    },
+    "orders": {
+      "term": "orders",
+      "description": "This section defines the operations related to orders, including the creation, management, and fulfillment of orders.\n\nIt provides a comprehensive overview of the order lifecycle, from initial request to final delivery.\n\nThe operations in this section are designed to support the efficient and effective management of orders, ensuring that customers receive their products or services in a timely and satisfactory manner.\n\nThe following operations are included in this section:\n\n* Searching Orders\n* Getting Order Details",
+      "source": "tag"
+    },
+    "price-lists": {
+      "term": "price-lists",
+      "description": "This section defines all the operations related to price lists, including the search of price lists for a specfic partner.",
+      "source": "tag"
+    },
+    "accreditations": {
+      "term": "accreditations",
+      "description": "This section defines all the operations related to accreditations, including the search of accreditations for a specfic partner.",
+      "source": "tag"
+    },
+    "apikeys": {
+      "term": "apikeys",
+      "description": "This section defines the operations related to API keys . \n\nCurrent API key management still requires some interaction with Dassault Syst\u00e8mes Information System (IS) team.\nThis process will likely be updated in the future to provide more autonomy and reactivity on partner side. \n\nBelow is the description of the process when a partner is onboarded on APIForPartners program : \n\n1. Dassault Syst\u00e8mes IS team will initialize an API key and communicate it to partner Admin through a secured channel :\n\n    - **Recommendation is to use a 1-1 discussion between Partner Admin and Dassault Syst\u00e8mes IS person in charge within the dedicated 3DSwym Community**\n    - **Do NOT use email or any unsecured communication channel or with wider audience**\n\n2. Partner Admin will then use this initial APIKEY value to authenticate and generate a new API key using the API  \n\n3. Partner admin will communicate back (within same secured channel) to Dassault Syst\u00e8mes IS person in charge the **hashed_key** attributed from the API (NOT the API key itself)\n\n    - The Hash operation is NOT reversible, so Dassault Syst\u00e8mes will NOT have knowledge about partner API key. \n    - Partner Admin must store securely the generated API key (same level of confidentiality as a password)\n\n4. Dassault Syst\u00e8mes IS team will update API Gateway configuration with the new API key (in practice with the hash value provided) and inform Partner when it is ready to use.\n\n5. Partner can then use this newly generated APIKEY to interact with all the available APIs.\n\nFor the case of revocation and request of a new API key, steps 2 to 5 have to be followed.",
+      "source": "tag"
+    },
+    "leads-opportunities": {
+      "term": "leads-opportunities",
+      "description": "This section defines the operations related to leads and opportunities for sales pipeline management.\n\nThese ressources are managed with 'MySalesPipeline' application which implements Dassault Syst\u00e8mes sales process called 'LEVERAGE' in accordance with the VALUE Engagement framework.\nLEVERAGE is an acronym that stands for Listen, Explore, Validate, Establish, Reach AGreement & Experience.",
+      "source": "tag"
+    },
+    "portfolio-items": {
+      "term": "portfolio-items",
+      "description": "This section defines the operations related to sales portfolio-items.\n\nThe portfolio items are used in the definition of leads-opportunities in 'MySalesPipeline' application.",
+      "source": "tag"
+    }
+  }
+}

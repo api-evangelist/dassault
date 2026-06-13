@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/201_post_leads-opportunities.json",
+  "title": "201 Post Leads Opportunities",
+  "type": "object",
+  "description": "response in case of successful operation",
+  "required": [
+    "partnerLeadOpportunityId",
+    "dsLeadOpportunityId",
+    "action",
+    "info"
+  ],
+  "properties": {
+    "partnerLeadOpportunityId": {
+      "$ref": "#/components/schemas/partnerLeadOpportunityId"
+    },
+    "dsLeadOpportunityId": {
+      "type": "string",
+      "description": "3DS id of the lead-opportunity",
+      "example": "5ZOQ-LF35OK"
+    },
+    "action": {
+      "type": "string",
+      "description": "action performed",
+      "example": "create"
+    },
+    "info": {
+      "type": "object",
+      "description": "Status of the request",
+      "properties": {
+        "success": {
+          "type": "boolean",
+          "description": "indicator whether request is successful or not.",
+          "example": true
+        },
+        "statusCode": {
+          "type": "integer",
+          "description": "HTTP Code of the response",
+          "example": 201
+        },
+        "timestamp": {
+          "oneOf": [
+            {
+              "type": "string",
+              "description": "Timestamp of the query",
+              "example": "2025-06-30T12:36:46.556Z"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "traceId": {
+          "oneOf": [
+            {
+              "type": "string",
+              "description": "Identifier to be communicated to 3DS Support in case support/investigation is required",
+              "example": "3d29ece30a064ea68c3f5f4a9f785c6f"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "success",
+        "statusCode"
+      ]
+    },
+    "error": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string",
+              "description": "identification of the error"
+            },
+            "message": {
+              "type": "string",
+              "description": "description of the error."
+            }
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  }
+}

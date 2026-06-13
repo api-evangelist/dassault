@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/booking_datetime.json",
+  "title": "Booking Datetime",
+  "type": "string",
+  "description": "UTC timestamp when the order was approved by the Finance Department.\n\nFormat: ISO 8601 UTC (e.g., `2025-05-30T14:30:00Z`)\n",
+  "format": "date-time",
+  "example": "2025-05-29T18:00:00Z"
+}

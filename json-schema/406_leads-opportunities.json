@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/406_leads-opportunities.json",
+  "title": "406 Leads Opportunities",
+  "type": "object",
+  "properties": {
+    "info": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "boolean",
+          "description": "status of the operation"
+        },
+        "statusCode": {
+          "type": "integer",
+          "description": "HTTP status code"
+        },
+        "timeStamp": {
+          "type": "string",
+          "description": "timestamp of the operation"
+        },
+        "traceId": {
+          "type": "string",
+          "description": "trace id to be provided for technical investigations."
+        }
+      }
+    },
+    "error": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "error code"
+        },
+        "message": {
+          "type": "string",
+          "description": "error message"
+        }
+      }
+    },
+    "data": {
+      "type": "object",
+      "properties": {
+        "partnerLeadOpportunityId": {
+          "type": "null"
+        },
+        "dsLeadOpportunityId": {
+          "type": "null"
+        },
+        "action": {
+          "type": "null"
+        }
+      }
+    }
+  }
+}

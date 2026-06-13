@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/ds_offering.json",
+  "title": "Ds Offering",
+  "type": "string",
+  "description": "Dassault Syst\u00e8mes offering Type",
+  "enum": [
+    "Auxiliary",
+    "Licensed Program",
+    "Not Applicable",
+    "Online Services",
+    "Packaged Offering",
+    "Specific"
+  ],
+  "x-enumDescriptions": {
+    "Auxiliary": "Non software items i.e hardware, peripherals, or anything else that is not software.",
+    "Licensed Program": "On premises software.",
+    "Not Applicable": "Items that are not governed by the CLOSA at all.\t",
+    "Online Services": "Cloud based services.",
+    "Packaged Offering": "A bundle that mixes licensed programs and online.",
+    "Specific": "Items covered by a separate agreement rather than the standard CLOSA."
+  },
+  "example": "Licensed Program"
+}

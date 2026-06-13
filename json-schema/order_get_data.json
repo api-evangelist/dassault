@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/order_get_data.json",
+  "title": "Order Get Data",
+  "type": "array",
+  "description": "List of orders retrieved during the search operation.",
+  "items": {
+    "type": "object",
+    "description": "Summary information for a single order.",
+    "properties": {
+      "transaction": {
+        "$ref": "#/components/schemas/transaction"
+      },
+      "businessUnit": {
+        "$ref": "#/components/schemas/business_unit"
+      },
+      "billToSite": {
+        "type": "object",
+        "description": "Legal entity to which Dassault Syst\u00e8mes will issue the invoice (Bill To).",
+        "$ref": "#/components/schemas/legal_entity"
+      },
+      "soldToSite": {
+        "type": "object",
+        "description": "Legal entity of the company that is the Final Customer of Dassault Syst\u00e8mes products (Sold To).",
+        "$ref": "#/components/schemas/legal_entity"
+      },
+      "agreement": {
+        "type": "object",
+        "description": "Contains details about the license agreement associated with the licenses being ordered in the Purchase Order (PO).\n",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Type or classification of the agreement.\n",
+            "maxLength": 100,
+            "example": "General VAR Agreement"
+          },
+          "reference": {
+            "type": "string",
+            "description": "A short, descriptive title or label assigned to the agreement at the time of its creation.\nThis helps users identify the specific agreement applied to the order.\nIt can be selected in the Purchase Order only for agreement types where the sub-group is `Instantiated`.\n",
+            "maxLength": 254,
+            "example": "Enterprise License Agreement Q2 2024"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "billToContact": {
+        "type": "string",
+        "description": "Full name of the contact person at the Bill To site (billing entity) who is responsible for the order. This contact person is the primary point of communication for billing-related inquiries and transactions. Format-`LASTNAME, Firstname` (e.g., `DOE, John`)."
+      },
+      "creationDateTime": {
+        "$ref": "#/components/schemas/creation_datetime"
+      },
+      "dsReceivedPoDate": {
+        "$ref": "#/components/schemas/ds_received_po_date"
+      },
+      "bookingDateTime": {
+        "$ref": "#/components/schemas/booking_datetime"
+      },
+      "currency": {
+        "$ref": "#/components/schemas/currency"
+      },
+      "onlineConsentStatus": {
+        "$ref": "#/components/schemas/online_consent_status"
+      },
+      "billToSalesRepresentative": {
+        "$ref": "#/components/schemas/billto_sales_representative"
+      },
+      "billToPoReference": {
+        "$ref": "#/components/schemas/billto_po_reference"
+      },
+      "sboNumber": {
+        "type": "string",
+        "description": "Unique identifier of the Special Bid Offer (SBO) that served as the basis for creating the order.\nTypically used to track and reference special pricing or offer conditions.\n",
+        "maxLength": 10,
+        "example": "ABC0012345"
+      },
+      "customerRequestedArrivalDate": {
+        "type": "string",
+        "description": "Customer Requested Arrival Date (CRAD) indicates the date by which the Final Customer requests delivery of the DS Licenses and Support Order.\n\n> **Note:** CRAD is a non-binding request. While DS will make reasonable efforts to meet this date, it does not constitute a contractual commitment.\n\n- Orders can still receive 'Finance Approved' status, media can be 'Shipped', and license keys can be issued and marked as 'Completed' irrespective of the CRAD.\n- The **Support Start Date** in the Installed Base will never begin before the CRAD.\n- Format: ISO 8601 format (YYYY-MM-DD)\n- License keys will remain inactive until the Support Start Date.\n",
+        "format": "date",
+        "example": "2025-05-31"
+      },
+      "dsSalesRepresentative": {
+        "type": "string",
+        "description": "Full name of the Dassault Syst\u00e8mes (DS) sales representative responsible for the order.\n\nFormat: `LASTNAME, Firstname` (e.g., `DOE, John`)\n",
+        "example": "DOE, John"
+      },
+      "isMultiYear": {
+        "type": "boolean",
+        "description": "Indicates whether the order is part of a Multi-Year deal (i.e., duration longer than one year),\napplicable for revenue types such as `YxC` or `AxC`.\n",
+        "example": true
+      },
+      "hasExitClause": {
+        "type": "boolean",
+        "description": "Indicates whether the agreement includes an exit clause requiring the Final Customer to pay early termination fees\nif they end the rental before the completion of the multi-year engagement.\n",
+        "example": true
+      },
+      "recurringChargeBillingCycle": {
+        "$ref": "#/components/schemas/recurring_charge_billing_cycle"
+      },
+      "opportunity": {
+        "type": "string",
+        "description": "Unique identifier for the sales opportunity as recorded in the **My Sales Pipeline** system.\nThis value helps link the order to its originating sales activity.\n",
+        "example": "A1B2-C3D4E5"
+      },
+      "paymentTerms": {
+        "type": "string",
+        "description": "Payment terms for the order, as provided by the Finance Department.\nSpecifies the agreed period within which the payment must be made.\n",
+        "maxLength": 50,
+        "example": "Net Date of Invoice + 60 days"
+      },
+      "licenseChargeConditions": {
+        "type": "array",
+        "description": "A list of conditions that determine when the license is charged for the order.\nThese conditions specify the circumstances under which the license fee is applied, such as:\n\n- The number of users or seats that are licensed.\n- The type of license or subscription being purchased.\n- Any waiver given on the license or subscription.\n- Any additional features or services that are included with the license.\n\nThe license charge conditions are used to calculate the total cost of the license and to ensure that the correct pricing is applied.\n",
+        "items": {
+          "$ref": "#/components/schemas/order_line"
+        }
+      }
+    },
+    "required": [
+      "transaction",
+      "businessUnit",
+      "billToSite",
+      "soldToSite",
+      "creationDateTime",
+      "currency",
+      "agreement"
+    ]
+  }
+}

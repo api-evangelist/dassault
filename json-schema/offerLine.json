@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/offerLine.json",
+  "title": "Offerline",
+  "type": "object",
+  "description": "One of the item within an offer.\n",
+  "properties": {
+    "amount": {
+      "type": "number",
+      "description": "Amount of the offer in the desgnated currency",
+      "example": 13000
+    },
+    "offerNameId": {
+      "type": "string",
+      "description": "Identification of the Offer.  \n<ins>Note:</ins> : In current state of the API, the list of valid values will be communicated directly to 3DS Partners via email or within 3DS Partner Swym Community. ",
+      "example": "MDMIND00022_PUBL_ISE00002687_IPE00021337"
+    },
+    "revenueType": {
+      "$ref": "#/components/schemas/revenueType",
+      "example": "UPFRONT"
+    }
+  },
+  "required": [
+    "offerNameId"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/info_response_base_attributes.json",
+  "title": "Info Response Base Attributes",
+  "type": "object",
+  "description": "Global Information on the operation requested.",
+  "properties": {
+    "success": {
+      "type": "boolean",
+      "description": "true if operation succeeded or false in case of error.",
+      "example": true
+    },
+    "statusCode": {
+      "type": "integer",
+      "description": "HTTP return code of the operation",
+      "example": 200
+    },
+    "estimatedSearchCount": {
+      "type": "integer",
+      "description": "Total number of Results.",
+      "example": 6027
+    }
+  }
+}

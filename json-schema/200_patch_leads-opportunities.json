@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/200_patch_leads-opportunities.json",
+  "title": "200 Patch Leads Opportunities",
+  "type": "object",
+  "description": "Response in case of successful update operation on lead-Opportunities object",
+  "required": [
+    "data",
+    "info"
+  ],
+  "properties": {
+    "data": {
+      "type": "object",
+      "properties": {
+        "partnerLeadOpportunityId": {
+          "type": "string"
+        },
+        "dsLeadOpportunityId": {
+          "type": "string"
+        },
+        "action": {
+          "type": "string"
+        }
+      }
+    },
+    "info": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "boolean",
+          "description": "status of the operation"
+        },
+        "statusCode": {
+          "type": "integer",
+          "description": "HTTP status code"
+        },
+        "timeStamp": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "timestamp of the operation"
+        },
+        "traceId": {
+          "type": "null",
+          "description": "trace id to be provided for technical investigations."
+        }
+      }
+    },
+    "error": {
+      "type": "null",
+      "description": "no error in case of succees"
+    }
+  }
+}

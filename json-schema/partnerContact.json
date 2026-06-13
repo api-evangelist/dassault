@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/partnerContact.json",
+  "title": "Partnercontact",
+  "description": "Partner contact information\n",
+  "properties": {
+    "salesRepEmail": {
+      "type": "string",
+      "description": "email of the partner contact",
+      "example": "john.doe@best-partner.com"
+    },
+    "salesRepFirstName": {
+      "type": "string",
+      "description": "first Name of the partner Contact",
+      "example": "John"
+    },
+    "salesRepLastName": {
+      "type": "string",
+      "description": "last name of the partner contact",
+      "example": "Doe"
+    }
+  },
+  "required": [
+    "salesRepEmail",
+    "salesRepFirstName",
+    "salesRepLastName"
+  ]
+}

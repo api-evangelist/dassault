@@ -1,0 +1,13 @@
+{
+  "error": {
+    "code": "ERROR_048",
+    "message": "Leverage Id not in scope of requestor"
+  },
+  "info": {
+    "success": false,
+    "statusCode": 500,
+    "timeStamp": "2025-08-12T15:40:35.774Z",
+    "traceId": "12bcca3a019645829d5330c5df912537"
+  },
+  "data": null
+}

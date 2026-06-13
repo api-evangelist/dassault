@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/400_get_portfolio-items_search.json",
+  "title": "400 Get Portfolio Items Search",
+  "type": "object",
+  "description": "Response in case of Bad Request operation for updating leadsOpportunities object",
+  "required": [
+    "info",
+    "error"
+  ],
+  "properties": {
+    "info": {
+      "$ref": "#/components/schemas/info_response_portfolio-items"
+    },
+    "error": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "Error code",
+          "example": "ERROR_004"
+        },
+        "message": {
+          "type": "string",
+          "description": "Human readable error message",
+          "example": "#top should be a positive, non zero integer"
+        }
+      },
+      "required": [
+        "code",
+        "message"
+      ]
+    }
+  }
+}

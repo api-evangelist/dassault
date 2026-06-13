@@ -1,0 +1,86 @@
+{
+  "error": null,
+  "info": {
+    "success": true,
+    "statusCode": 200,
+    "timeStamp": null,
+    "traceId": null
+  },
+  "data": {
+    "leadOpportunity": {
+      "partnerLeadOpportunityId": "API4PARTNERS-0813C",
+      "dsLeadOpportunityId": "HCRQ-F1LLDE",
+      "name": "TEST-0813C",
+      "dsOwnerEmail": "john.doe@3ds.com",
+      "status": "WON",
+      "forecastCategory": "WON",
+      "closeDate": "2024-12-31T00:00:00.000Z",
+      "cometCampaignCode": "OC2DE17TAQ1C13018",
+      "competitors": null,
+      "reasonWon": [
+        "STRNG_VAL_PROP"
+      ],
+      "reasonLost": [
+        "EMPTY"
+      ],
+      "reasonWonLostComment": "",
+      "gtmTacticId": null,
+      "description": "",
+      "nextMilestone": "",
+      "nextMilestoneDate": "",
+      "currency": "EUR",
+      "approvalStatus": "PRE_APPROVED",
+      "engagementType": "EXTEND",
+      "poInformation": "",
+      "poStatus": null,
+      "poNumber": null,
+      "sboIndicator": "EMPTY",
+      "sboStatus": null,
+      "sboNumber": null,
+      "growthType": "EMPTY",
+      "leadPriority": "EMPTY",
+      "levelOfInterest": "EMPTY",
+      "dsComment": "",
+      "partnerImportMode": "EMPTY",
+      "createdDate": "2025-08-13T12:35:03.775Z",
+      "modifiedDate": "2025-08-13T15:44:44.453Z",
+      "offerLines": [
+        {
+          "amount": 10000,
+          "offerNameId": "MDMIND00022_PUBL_ISE00002687_IPE00021337",
+          "revenueType": "UPFRONT"
+        },
+        {
+          "amount": 11,
+          "offerNameId": "MDMIND00022_PUBL_ISE00002687_IPE00021337",
+          "revenueType": "RENTAL_BOOKING"
+        }
+      ],
+      "customerContact": [
+        {
+          "phoneNumber": "9658252499",
+          "salutation": "MR",
+          "jobTitle": "",
+          "email": "dummy123_mail@mail.com",
+          "firstName": "F Name1",
+          "lastName": "L_Name2"
+        }
+      ],
+      "partnerContact": null,
+      "customerLegalEntity": {
+        "id": "200000000781989",
+        "dunsNumber": null,
+        "vatNumber": null,
+        "registrationId": null,
+        "name": null,
+        "city": null,
+        "country": null,
+        "addressLine1": null,
+        "statePrefecture": null,
+        "addressLine2": null,
+        "zipCode": null,
+        "websiteUrl": null
+      }
+    }
+  }
+}

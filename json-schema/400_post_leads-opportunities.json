@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/400_post_leads-opportunities.json",
+  "title": "400 Post Leads Opportunities",
+  "type": "object",
+  "description": "response in case of Bad Request operation",
+  "properties": {
+    "data": {
+      "type": [
+        "null",
+        "object"
+      ]
+    },
+    "info": {
+      "type": "object",
+      "required": [
+        "success",
+        "statusCode"
+      ],
+      "properties": {
+        "success": {
+          "type": "boolean",
+          "description": "indicator whether request is successful or not.",
+          "example": false
+        },
+        "statusCode": {
+          "type": "integer",
+          "description": "HTTP Code of the response",
+          "example": 400
+        },
+        "timeStamp": {
+          "type": "string",
+          "description": "Timestamp of the query",
+          "example": "2025-06-30T12:36:46.556Z"
+        },
+        "traceId": {
+          "type": "string",
+          "description": "Identifier to be communicated to 3DS Support in case support/investigation is required",
+          "example": "3d29ece30a064ea68c3f5f4a9f785c6f"
+        }
+      }
+    },
+    "error": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "identification of the error"
+        },
+        "message": {
+          "type": "string",
+          "description": "description of the error."
+        }
+      }
+    }
+  },
+  "required": [
+    "data",
+    "info",
+    "error"
+  ]
+}

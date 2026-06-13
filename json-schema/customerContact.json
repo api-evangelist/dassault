@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/customerContact.json",
+  "title": "Customercontact",
+  "description": "Customer Contact Information",
+  "type": "object",
+  "properties": {
+    "phoneNumber": {
+      "type": "string",
+      "description": "phone number of the Customer Contact",
+      "example": 987654321
+    },
+    "salutation": {
+      "type": "string",
+      "description": "Salution of the person : Mr., Ms., Dr., etc..",
+      "example": "M."
+    },
+    "jobTitle": {
+      "type": "string",
+      "description": "Job title of the customer Contact",
+      "example": "Director of Reseearch & Development"
+    },
+    "email": {
+      "type": "string",
+      "description": "email of the customer Contact",
+      "example": "john.smith@world-company.com"
+    },
+    "firstName": {
+      "type": "string",
+      "description": "first name of the customer Contact",
+      "example": "John"
+    },
+    "lastName": {
+      "type": "string",
+      "description": "lastname of the customer Contact",
+      "example": "Smith"
+    }
+  },
+  "required": [
+    "email",
+    "firstName",
+    "lastName"
+  ]
+}

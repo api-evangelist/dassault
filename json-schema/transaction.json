@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/dassault/json-schema/transaction.json",
+  "title": "Transaction",
+  "type": "object",
+  "description": "Transactional details of the order.",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier of the order. Can represent a Purchase Order or a Renewal Notification.",
+      "maxLength": 13,
+      "example": "PO_A123456789"
+    },
+    "type": {
+      "$ref": "#/components/schemas/transaction_type"
+    },
+    "status": {
+      "$ref": "#/components/schemas/order_processing_status"
+    },
+    "description": {
+      "type": "string",
+      "description": "Short description given to the Purchase Order / Renewal Notification.",
+      "maxLength": 30,
+      "example": "XYZ Company Order 50 products"
+    }
+  }
+}
