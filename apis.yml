@@ -5,7 +5,7 @@ description: Dassault Systèmes provides the 3DEXPERIENCE platform with thousand
   The platform covers SolidWorks, CATIA, ENOVIA, and 3D collaboration tools, exposing
   web services across engineering items, manufacturing processes, CAD collaboration,
   project tasks, and partner order management through standardized RESTful endpoints.
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/dassault/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -26,7 +26,7 @@ apis:
     description: REST API for accessing and managing engineering item resources and
       attributes on the 3DEXPERIENCE platform, including part masters, specifications,
       and engineering BOMs.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://www.3ds.com/support/documentation/developer-guides
     baseURL: https://apigw-prd.3ds.com
     tags:
@@ -43,7 +43,7 @@ apis:
     description: REST API for managing manufacturing item data, manufacturing BOMs,
       and process plans on the 3DEXPERIENCE platform used in production and factory
       planning.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://www.3ds.com/support/documentation/developer-guides
     baseURL: https://apigw-prd.3ds.com
     tags:
@@ -58,7 +58,7 @@ apis:
     description: REST API for CAD collaboration and coordination on the 3DEXPERIENCE
       platform, enabling integration with SolidWorks, CATIA, and other CAD tools for
       managing design data and versions.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://www.3ds.com/support/documentation/developer-guides
     baseURL: https://apigw-prd.3ds.com
     tags:
@@ -74,7 +74,7 @@ apis:
     description: REST API for managing manufacturing processes, process plans, and
       operations on the 3DEXPERIENCE platform, supporting digital manufacturing and
       process simulation workflows.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://www.3ds.com/support/documentation/developer-guides
     baseURL: https://apigw-prd.3ds.com
     tags:
@@ -89,7 +89,7 @@ apis:
     description: REST API for project management and task handling on the 3DEXPERIENCE
       platform, enabling integration with project schedules, milestones, and team
       assignments within ENOVIA applications.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://www.3ds.com/support/documentation/developer-guides
     baseURL: https://apigw-prd.3ds.com
     tags:
@@ -104,7 +104,7 @@ apis:
     description: REST API for change and issue tracking on the 3DEXPERIENCE platform,
       supporting engineering change orders, problem reports, and corrective actions
       within the product lifecycle.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://www.3ds.com/support/documentation/developer-guides
     baseURL: https://apigw-prd.3ds.com
     tags:
@@ -119,7 +119,7 @@ apis:
     description: REST API for Dassault Systèmes channel partners to manage orders,
       price lists, accreditations, leads, and portfolio items through the partner
       gateway, using API key authentication.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://partners.3ds.com/docs/0.10.0/
     baseURL: https://apigw-prd.3ds.com
     tags:
