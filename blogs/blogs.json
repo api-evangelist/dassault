@@ -2,10 +2,20 @@
   "repo": "dassault",
   "feeds": [
     {
+      "source": "https://blog.3ds.com/feed.xml",
+      "feed_url": "https://blog.3ds.com/feed.xml",
+      "title": "",
+      "saved": 7,
+      "method": "feed"
+    },
+    {
       "source": "https://www.linkedin.com/company/dassaultsystemes",
-      "error": "HTTPError"
+      "feed_url": "https://www.linkedin.com/company/dassaultsystemes",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
-  "post_count": 0,
-  "fetched": "2026-06-14T20:42:17Z"
+  "fetched": "2026-06-27T12:03:07Z",
+  "post_count": 11
 }
