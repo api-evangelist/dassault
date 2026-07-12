@@ -131,6 +131,12 @@ apis:
       - type: Documentation
         url: https://partners.3ds.com/docs/0.10.0/
 common:
+  - type: TrustCenter
+    url: security/dassault-trust-center.yml
+  - type: DomainSecurity
+    url: security/dassault-domain-security.yml
+  - type: Authentication
+    url: authentication/dassault-authentication.yml
   - type: Website
     url: https://www.3ds.com
   - type: Documentation

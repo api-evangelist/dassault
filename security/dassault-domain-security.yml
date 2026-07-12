@@ -1,0 +1,28 @@
+generated: '2026-07-11'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: www.3ds.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep  5 20:33:46 2026 GMT
+  hsts: true
+  hsts_max_age: 86400
+- host: apigw-prd.3ds.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 11 21:35:48 2026 GMT
+  hsts: null
+- host: partners.3ds.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 16 22:17:35 2026 GMT
+  hsts: true
+  hsts_max_age: 86400
+domains:
+- domain: 3ds.com
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: reject

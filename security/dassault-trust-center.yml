@@ -1,0 +1,14 @@
+generated: '2026-07-11'
+method: searched
+probe: true
+source: https://www.3ds.com/trust-center
+url: https://www.3ds.com/trust-center
+certifications:
+- ISO 27001
+- GDPR
+evidence:
+- source: https://www.3ds.com/trust-center
+  keywords:
+  - iso 27001
+  - trust center
+  - gdpr
