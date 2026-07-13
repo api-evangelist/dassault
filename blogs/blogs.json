@@ -5,7 +5,7 @@
       "source": "https://blog.3ds.com/feed.xml",
       "feed_url": "https://blog.3ds.com/feed.xml",
       "title": "",
-      "saved": 7,
+      "saved": 0,
       "method": "feed"
     },
     {
@@ -16,6 +16,6 @@
       "method": "none"
     }
   ],
-  "fetched": "2026-06-27T12:03:07Z",
-  "post_count": 11
+  "fetched": "2026-07-11T11:50:51Z",
+  "post_count": 22
 }
