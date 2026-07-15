@@ -131,6 +131,8 @@ apis:
       - type: Documentation
         url: https://partners.3ds.com/docs/0.10.0/
 common:
+  - type: AgenticAccess
+    url: agentic-access/dassault-agentic-access.yml
   - type: TrustCenter
     url: security/dassault-trust-center.yml
   - type: DomainSecurity

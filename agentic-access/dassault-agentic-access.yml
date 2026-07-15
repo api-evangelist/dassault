@@ -1,0 +1,151 @@
+generated: '2026-07-15'
+method: generated
+source: openapi/dassault-api4partners-openapi.yaml
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 10
+  by_action_class:
+    acting: 5
+    connected: 5
+  by_consequence:
+    physical: 2
+    read: 5
+    write: 3
+  human_in_the_loop_required: 0
+operations:
+- path: /order/api4partners/v0/orders/search
+  method: post
+  operationId: searchOrders
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /order/api4partners/v0/orders/{id}
+  method: get
+  operationId: getOrderDetails
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /order/api4partners/v0/price-lists/search
+  method: get
+  operationId: searchPriceList
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /order/api4partners/v0/accreditations/search
+  method: get
+  operationId: searchAccreditations
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /order/api4partners/v0/apikeys
+  method: post
+  operationId: generateApiKey
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /sales/api4partners/v0/leads-opportunities
+  method: post
+  operationId: createLeadsOpportunities
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /sales/api4partners/v0/leads-opportunities/{id}
+  method: patch
+  operationId: updateLeadOpportunitiesDetails
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /sales/api4partners/v0/leads-opportunities/{id}
+  method: get
+  operationId: getLeadsOpportunities
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /sales/api4partners/v0/leads-opportunities/search
+  method: post
+  operationId: searchLeadsOpportunities
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /sales/api4partners/v0/portfolio-items/search
+  method: get
+  operationId: searchPortfolioItems
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
