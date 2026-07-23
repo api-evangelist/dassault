@@ -1,0 +1,1994 @@
+openapi: 3.1.1
+info:
+  title: APIs for Dassault Systèmes Partners accreditations leads-opportunities API
+  description: APIs exposed by Dassault Systèmes to its partners and resellers.
+  version: 0.10.0
+  license:
+    name: Dassault Systèmes 2025
+    url: https://www.3ds.com/
+  x-logo:
+    url: https://www.3ds.com/assets/3ds-navigation/3DS_corporate-logo_blue.svg
+    altText: Dassault Systèmes
+    backgroundColor: '#FFFFFF'
+servers:
+- url: https://apigw-prd.3ds.com
+  description: Main (production) server
+- url: https://apigw-ppt.3ds.com
+  description: Server for development by Partners (Non Production)
+- url: https://apigw-qal.3ds.com
+  description: Server for Quality Assurance Testing (Non Production)
+- url: https://apigw-ptd.3ds.com
+  description: Server for preprod validation (Non Production)
+- url: https://apigw-ppd.3ds.com
+  description: Server for postprod validation (Non Production)
+security:
+- ApiKeyAuth: []
+tags:
+- name: leads-opportunities
+  description: 'This section defines the operations related to leads and opportunities for sales pipeline management.
+
+
+    These ressources are managed with ''MySalesPipeline'' application which implements Dassault Systèmes sales process called ''LEVERAGE'' in accordance with the VALUE Engagement framework.
+
+    LEVERAGE is an acronym that stands for Listen, Explore, Validate, Establish, Reach AGreement & Experience.
+
+    '
+paths:
+  /sales/api4partners/v0/leads-opportunities:
+    post:
+      summary: Create a lead-opportunity object
+      description: 'Creates a lead-opportunity object from its attributes along with possible linked objects (contact, sales Rep)
+
+        '
+      tags:
+      - leads-opportunities
+      operationId: createLeadsOpportunities
+      requestBody:
+        description: request Body for creating a lead-opportunity
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/post_leads-opportunities_data'
+            examples:
+              createLeadBasic:
+                $ref: '#/components/examples/post_leads-opportunities_lead'
+              createOpportunityBasic:
+                $ref: '#/components/examples/post_leads-opportunities_oppy'
+        required: true
+      responses:
+        '201':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/201_post_leads-opportunities'
+              examples:
+                200_leadsOpportunitiesCreateResponse:
+                  summary: OK
+                  description: Response in case of a successful creation of a new leadOpportunity
+                  value:
+                    dsLeadOpportunityId: 9YEL-Y3W56Q
+                    partnerLeadOpportunityId: PARTNER-CRM-LEAD-1A8R
+                    action: create
+                    info:
+                      success: true
+                      statusCode: 200
+                      timestamp: null
+                      traceId: null
+                    error: null
+        '400':
+          description: Bad request, invalid input.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400_post_leads-opportunities'
+              examples:
+                400_leadsOpportunitiesCreateResponse:
+                  summary: Bad Request
+                  description: Response in case of a failure for creation of a new lead Opportunity
+                  value:
+                    data:
+                      leadOportunityId: string
+                      leadOpportunity:
+                        partnerExternalId: string
+                        name: string
+                        dsOwnerEmail: string
+                        status: string
+                        forecastCategory: string
+                        closeDate: date
+                        cometCampaignCode: string
+                        reasonWon:
+                        - string
+                        reasonLost:
+                        - string
+                        competitors:
+                        - string
+                        reasonWonLostComment: string
+                        gtmTacticId: string
+                        description: string
+                        nextMilestone: string
+                        nextMilestoneDate: date
+                        currency: string
+                      offerLines:
+                      - amount: double
+                        offerNameId: string
+                        revenueType: string
+                      customerLegalEntity:
+                        id: string
+                        dunsNumber: string
+                        vatNumber: string
+                        registrationId: string
+                        name: string
+                        city: string
+                        country: string
+                        addressLine1: string
+                        statePrefecture: string
+                        addressLine2: string
+                        zipCode: string
+                        websiteUrl: string
+                    info:
+                      success: false
+                      statusCode: 400
+                    error: {}
+                400_alreadyExisting:
+                  summary: Bad Request, already existing lead-opportunity
+                  description: Lead-opportunity with same partnerExternalId already existing
+                  value:
+                    info:
+                      success: false
+                      statusCode: 400
+                      timeStamp: '2025-07-01T13:03:16.325Z'
+                      traceId: 4e58705b1c7d40b78e0d1ab6ac404ac8
+                    error:
+                      code: ERR801
+                      message: Leverage with this Partner External ID DSLeadOpportunityID already exists.
+                    data:
+                      partnerLeadOpportunityId: null
+                      dsLeadOpportunityId: null
+                      action: null
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/401_basic_unauthorized'
+              examples:
+                401_missing-apikey:
+                  summary: Service response in case of missing APIKEY.
+                  description: Basic Service response in case of missing APIKEY in request
+                  value:
+                    message: Missing API key in request
+        '403':
+          description: Access Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/403_basic_forbidden'
+              examples:
+                403_forbidden:
+                  summary: Access Forbidden
+                  description: Access Forbidden. Typical reason could be usage of invalid API-KEY or a valid one but for a scope on which access has not been granted by 3DS.
+                  value:
+                    message: API Consumer Not allowed
+        '406':
+          description: Not acceptable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/406_leads-opportunities'
+              examples:
+                406_IncorrectCloseDateNextMilestoneFormat:
+                  summary: Error returned when date Format is not as expected.
+                  description: Date format provided in one input is not as per the expected format.
+                  value:
+                    info:
+                      success: false
+                      statusCode: 406
+                      timeStamp: '2025-08-07T07:22:41.357Z'
+                      traceId: 7a722f2871304f7fa0bd1457388dff5d
+                    error:
+                      code: ERR805
+                      message: Incorrect Close Date/next milestone date Format. Provide date in ISO8601 format.
+                    data:
+                      partnerLeadOpportunityId: null
+                      dsLeadOpportunityId: null
+                      action: null
+        '429':
+          description: Too many Requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/429_too_many_requests'
+              examples:
+                429_too_many_requests:
+                  summary: Too many Requests
+                  description: The service cannot handle the request as too many have been received.
+                  value:
+                    message: Too many requests, please try again later
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/503_leads-opportunities'
+              examples:
+                503_ServiceUnavailable:
+                  summary: Service Unavailable
+                  description: Service Unavailable Typical reason could be a maintenance on 3DS System. try again later
+                  value:
+                    info:
+                      success: false
+                      statusCode: 503
+                      timestamp: '2025-06-30T12:36:46.556Z'
+                      traceId: 3d29ece30a064ea68c3f5f4a9f785c6f
+                    error:
+                      code: ERR899
+                      message: Service currently unavailable, please try again later.
+                    data:
+                      partnerLeadOpportunityId: null
+                      dsLeadOpportunityId: null
+                      action: null
+  /sales/api4partners/v0/leads-opportunities/{id}:
+    patch:
+      summary: Update a lead-opportunity object
+      description: Update a lead-opportunity (partial updates on some attributes is recommended)
+      tags:
+      - leads-opportunities
+      operationId: updateLeadOpportunitiesDetails
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: 3DS id of the lead-opportunity object to update
+        schema:
+          type: string
+      requestBody:
+        description: request Body for updating a lead-opportunity object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/patch_leads-opportunities_data'
+            examples:
+              updateLeadStatus:
+                $ref: '#/components/examples/patch_update-lead_status'
+              updateLeadNextMilestone:
+                $ref: '#/components/examples/patch_update-lead_nextMilestone'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200_patch_leads-opportunities'
+              examples:
+                200_leadsOpportunitiesCreateResponse:
+                  summary: OK
+                  description: Response in case of a successful creation of a new leadOpportunity
+                  value:
+                    info:
+                      success: true
+                      statusCode: 200
+                      timeStamp: null
+                      traceId: null
+                    error: null
+                    data:
+                      partnerLeadOpportunityId: OPPY-12345
+                      dsLeadOpportunityId: XJSR-DZMFFT
+                      action: update
+        '400':
+          description: Bad request, invalid input.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400_patch_leads-opportunities'
+              examples:
+                400_leadsOpportunitiesCreateResponse:
+                  summary: Bad Request
+                  description: Response in case of a Failure in updating an existing leadOpportunity
+                  value:
+                    data:
+                      leadOportunityId: string
+                      leadOpportunity:
+                        partnerExternalId: string
+                        name: string
+                        dsOwnerEmail: string
+                        status: string
+                        forecastCategory: string
+                        closeDate: date
+                        cometCampaignCode: string
+                        reasonWon:
+                        - string
+                        reasonLost:
+                        - string
+                        competitors:
+                        - string
+                        reasonWonLostComment: string
+                        gtmTacticId: string
+                        description: string
+                        nextMilestone: string
+                        nextMilestoneDate: date
+                        currency: string
+                      offerLines:
+                      - amount: double
+                        offerNameId: string
+                        revenueType: string
+                      customerLegalEntity:
+                        id: string
+                        dunsNumber: string
+                        vatNumber: string
+                        registrationId: string
+                        name: string
+                        city: string
+                        country: string
+                        addressLine1: string
+                        statePrefecture: string
+                        addressLine2: string
+                        zipCode: string
+                        websiteUrl: string
+                      customerContact:
+                      - phoneNumber: (555) 555-1234
+                        salutation: Mr
+                        jobTitle: R&D Director
+                        email: robert.johnson@customer.com
+                        firstName: robert
+                        lastName: Johnson
+                      partnerContact:
+                      - salesRepEmail: john.doe@partner.com
+                        salesRepFirstName: john
+                        salesRepLastName: Doe
+                    info:
+                      success: false
+                      statusCode: 400
+                    errors: {}
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/401_basic_unauthorized'
+              examples:
+                401_missing-apikey:
+                  summary: Service response in case of missing APIKEY.
+                  description: Basic Service response in case of missing APIKEY in request
+                  value:
+                    message: Missing API key in request
+        '403':
+          description: Access Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/403_basic_forbidden'
+              examples:
+                403_forbidden:
+                  summary: Access Forbidden
+                  description: Access Forbidden. Typical reason could be usage of invalid API-KEY or a valid one but for a scope on which access has not been granted by 3DS.
+                  value:
+                    message: API Consumer Not allowed
+        '406':
+          description: Not acceptable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/406_leads-opportunities'
+              examples:
+                406_IncorrectCloseDateNextMilestoneFormat:
+                  summary: Error returned when date Format is not as expected.
+                  description: Date format provided in one input is not as per the expected format.
+                  value:
+                    info:
+                      success: false
+                      statusCode: 406
+                      timeStamp: '2025-08-07T07:22:41.357Z'
+                      traceId: 7a722f2871304f7fa0bd1457388dff5d
+                    error:
+                      code: ERR805
+                      message: Incorrect Close Date/next milestone date Format. Provide date in ISO8601 format.
+                    data:
+                      partnerLeadOpportunityId: null
+                      dsLeadOpportunityId: null
+                      action: null
+        '429':
+          description: Too many Requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/429_too_many_requests'
+              examples:
+                429_too_many_requests:
+                  summary: Too many Requests
+                  description: The service cannot handle the request as too many have been received.
+                  value:
+                    message: Too many requests, please try again later
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/503_leads-opportunities'
+              examples:
+                503_ServiceUnavailable:
+                  summary: Service Unavailable
+                  description: Service Unavailable Typical reason could be a maintenance on 3DS System. try again later
+                  value:
+                    info:
+                      success: false
+                      statusCode: 503
+                      timestamp: '2025-06-30T12:36:46.556Z'
+                      traceId: 3d29ece30a064ea68c3f5f4a9f785c6f
+                    error:
+                      code: ERR899
+                      message: Service currently unavailable, please try again later.
+                    data:
+                      partnerLeadOpportunityId: null
+                      dsLeadOpportunityId: null
+                      action: null
+    get:
+      summary: Get details of a lead-opportunity object
+      description: 'gets details of a lead-opportunity object from its 3DS identifier.
+
+        '
+      tags:
+      - leads-opportunities
+      operationId: getLeadsOpportunities
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: 3DS id of the lead-opportunity object for which details are requested
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200_get_leads-opportunities'
+              examples:
+                200_leadsOpportunitiesGetResponse:
+                  summary: OK
+                  description: Successful retrieval of an existing leadOpportunity object
+                  value:
+                    error: null
+                    info:
+                      success: true
+                      statusCode: 200
+                      timeStamp: null
+                      traceId: null
+                    data:
+                      leadOpportunity:
+                        partnerLeadOpportunityId: API4PARTNERS-0813C
+                        dsLeadOpportunityId: HCRQ-F1LLDE
+                        name: TEST-0813C
+                        dsOwnerEmail: john.doe@3ds.com
+                        status: WON
+                        forecastCategory: WON
+                        closeDate: '2024-12-31T00:00:00.000Z'
+                        cometCampaignCode: OC2DE17TAQ1C13018
+                        competitors: null
+                        reasonWon:
+                        - STRNG_VAL_PROP
+                        reasonLost:
+                        - EMPTY
+                        reasonWonLostComment: ''
+                        gtmTacticId: null
+                        description: ''
+                        nextMilestone: ''
+                        nextMilestoneDate: ''
+                        currency: EUR
+                        approvalStatus: PRE_APPROVED
+                        engagementType: EXTEND
+                        poInformation: ''
+                        poStatus: null
+                        poNumber: null
+                        sboIndicator: EMPTY
+                        sboStatus: null
+                        sboNumber: null
+                        growthType: EMPTY
+                        leadPriority: EMPTY
+                        levelOfInterest: EMPTY
+                        dsComment: ''
+                        partnerImportMode: EMPTY
+                        createdDate: '2025-08-13T12:35:03.775Z'
+                        modifiedDate: '2025-08-13T15:44:44.453Z'
+                        offerLines:
+                        - amount: 10000
+                          offerNameId: MDMIND00022_PUBL_ISE00002687_IPE00021337
+                          revenueType: UPFRONT
+                        - amount: 11
+                          offerNameId: MDMIND00022_PUBL_ISE00002687_IPE00021337
+                          revenueType: RENTAL_BOOKING
+                        customerContact:
+                        - phoneNumber: '9658252499'
+                          salutation: MR
+                          jobTitle: ''
+                          email: dummy123_mail@mail.com
+                          firstName: F Name1
+                          lastName: L_Name2
+                        partnerContact: null
+                        customerLegalEntity:
+                          id: '200000000781989'
+                          dunsNumber: null
+                          vatNumber: null
+                          registrationId: null
+                          name: null
+                          city: null
+                          country: null
+                          addressLine1: null
+                          statePrefecture: null
+                          addressLine2: null
+                          zipCode: null
+                          websiteUrl: null
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/401_basic_unauthorized'
+              examples:
+                401_missing-apikey:
+                  summary: Service response in case of missing APIKEY.
+                  description: Basic Service response in case of missing APIKEY in request
+                  value:
+                    message: Missing API key in request
+        '403':
+          description: Access Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/403_basic_forbidden'
+              examples:
+                403_forbidden:
+                  summary: Access Forbidden
+                  description: Access Forbidden. Typical reason could be usage of invalid API-KEY or a valid one but for a scope on which access has not been granted by 3DS.
+                  value:
+                    message: API Consumer Not allowed
+        '429':
+          description: Too many Requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/429_too_many_requests'
+              examples:
+                429_too_many_requests:
+                  summary: Too many Requests
+                  description: The service cannot handle the request as too many have been received.
+                  value:
+                    message: Too many requests, please try again later
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/500_get_leads-opportunities'
+              examples:
+                500_leadsOpportunitiesGetResponse:
+                  summary: Internal Server Error
+                  description: No access or inexistant lead-opportunity id
+                  value:
+                    error:
+                      code: ERROR_048
+                      message: Leverage Id not in scope of requestor
+                    info:
+                      success: false
+                      statusCode: 500
+                      timeStamp: '2025-08-12T15:40:35.774Z'
+                      traceId: 12bcca3a019645829d5330c5df912537
+                    data: null
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/503_leads-opportunities'
+              examples:
+                503_ServiceUnavailable:
+                  summary: Service Unavailable
+                  description: Service Unavailable Typical reason could be a maintenance on 3DS System. try again later
+                  value:
+                    info:
+                      success: false
+                      statusCode: 503
+                      timestamp: '2025-06-30T12:36:46.556Z'
+                      traceId: 3d29ece30a064ea68c3f5f4a9f785c6f
+                    error:
+                      code: ERR899
+                      message: Service currently unavailable, please try again later.
+                    data:
+                      partnerLeadOpportunityId: null
+                      dsLeadOpportunityId: null
+                      action: null
+  /sales/api4partners/v0/leads-opportunities/search:
+    post:
+      summary: Search for leads-opportunities
+      description: 'Searches for leads-opportunities using various search criteria (e.g. modifiedDate)
+
+        '
+      tags:
+      - leads-opportunities
+      operationId: searchLeadsOpportunities
+      requestBody:
+        description: 'Request Body for searching leads-opportunities.
+
+
+          The request must include at least one of the following sub-objects:
+
+
+          - `modifiedDate`
+
+          - `partnerLeadOpportunityId`
+
+
+          These criteria will be combined using an AND operator if more than one is provided.'
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/post_leads-opportunities_search'
+            examples:
+              search_modifiedDate:
+                summary: search on modifiedDate criterion
+                description: Sample BodyRequest to search leads-opportunities based on 'modifiedDate' criterion.
+                value:
+                  data:
+                  - modifiedDate:
+                      fromDate: '2025-08-04T08:00:00Z'
+                      toDate: '2025-08-08T18:00:00Z'
+              search_partnerLeadOpportunityId:
+                summary: search on partnerLeadOpportunityId criterion
+                description: sample BodyRequest to search leads-opportunitied based on 'partnerLeadOpportunityId' criterion.
+                value:
+                  data:
+                  - partnerLeadOpportunityId:
+                    - PARTNERID-129763
+                    - PARTNERID-248651
+              search_partnerLeadOpportunityId-unassigned:
+                summary: search for leads-opportunities without partnerLeadOpportunityId
+                description: sample BodyRequest to search leads-opportunities on which there is no partnerLeadOpportunityId defined.
+                value:
+                  data:
+                  - partnerLeadOpportunityId: ''
+              search_combined:
+                summary: search with combined criteria
+                description: sample BodyRequest to search leads-opportunitied based on 'modifiedDate' & 'partnerLeadOpportunityId' criterion.
+                value:
+                  data:
+                  - partnerLeadOpportunityId:
+                    - PARTNERID-129763
+                    - PARTNERID-248651
+                  - modifiedDate:
+                      fromDate: '2025-08-04T08:00:00Z'
+                      toDate: '2025-08-08T18:00:00Z'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200_post_leads-opportunities_search'
+              examples:
+                200_lead-opportunities_search:
+                  summary: OK
+                  description: Sample response for successful search.
+                  value:
+                    info:
+                      success: true
+                      statusCode: 200
+                      timeStamp: '2025-08-08T16:36:23Z'
+                      traceId: 785594df0cbd4f149d0ffbd7e0933820
+                    error: null
+                    data:
+                    - dsLeadOpportunityId:
+                      - 1FFC-7BQC5E
+                      - BYTK-COL4A0
+                      - 5KSL-VLSWRX
+        '400':
+          description: Bad request, invalid input.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400_post_leads-opportunities'
+              examples:
+                400_lead-opportunities_search_missingFromToDate:
+                  summary: Bad Request
+                  description: Error when modifedDate search criterias (from or to) is invalid
+                  value:
+                    info:
+                      success: false
+                      statusCode: 400
+                      timeStamp: '2025-08-08T15:14:19Z'
+                      traceId: afafb61eb2704ecb9b626d8b3b6c593f
+                    error:
+                      code: ERROR_043
+                      message: Both startDateTime and endDateTime must be passed as parameters
+                    data: null
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/401_basic_unauthorized'
+              examples:
+                401_missing-apikey:
+                  summary: Service response in case of missing APIKEY.
+                  description: Basic Service response in case of missing APIKEY in request
+                  value:
+                    message: Missing API key in request
+        '403':
+          description: Access Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/403_basic_forbidden'
+              examples:
+                403_forbidden:
+                  summary: Access Forbidden
+                  description: Access Forbidden. Typical reason could be usage of invalid API-KEY or a valid one but for a scope on which access has not been granted by 3DS.
+                  value:
+                    message: API Consumer Not allowed
+        '429':
+          description: Too many Requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/429_too_many_requests'
+              examples:
+                429_too_many_requests:
+                  summary: Too many Requests
+                  description: The service cannot handle the request as too many have been received.
+                  value:
+                    message: Too many requests, please try again later
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/503_leads-opportunities'
+              examples:
+                503_ServiceUnavailable:
+                  summary: Service Unavailable
+                  description: Service Unavailable Typical reason could be a maintenance on 3DS System. try again later
+                  value:
+                    info:
+                      success: false
+                      statusCode: 503
+                      timestamp: '2025-06-30T12:36:46.556Z'
+                      traceId: 3d29ece30a064ea68c3f5f4a9f785c6f
+                    error:
+                      code: ERR899
+                      message: Service currently unavailable, please try again later.
+                    data:
+                      partnerLeadOpportunityId: null
+                      dsLeadOpportunityId: null
+                      action: null
+components:
+  schemas:
+    406_leads-opportunities:
+      type: object
+      properties:
+        info:
+          type: object
+          properties:
+            success:
+              type: boolean
+              description: status of the operation
+            statusCode:
+              type: integer
+              description: HTTP status code
+            timeStamp:
+              type: string
+              description: timestamp of the operation
+            traceId:
+              type: string
+              description: trace id to be provided for technical investigations.
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: error code
+            message:
+              type: string
+              description: error message
+        data:
+          type: object
+          properties:
+            partnerLeadOpportunityId:
+              type: 'null'
+            dsLeadOpportunityId:
+              type: 'null'
+            action:
+              type: 'null'
+    post_leads-opportunities_search:
+      description: Request body schema for searching leads-opportunities
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              modifiedDate:
+                type: object
+                description: 'Search criterion on the last modification date/time of the leads-opportunities.
+
+
+                  The maximum time window allowed for the search is **1 week / 7 days** (between `fromDate`and `toDate`, calculated time to time).
+
+                  Both lower (`fromDate`) and upper (`toDate`) bounds need to be provided as no implict range calculation is done.
+
+                  Lower and upper bounds need to be consistent : `fromDate` has to be anterior to `toDate`.'
+                properties:
+                  fromDate:
+                    type: string
+                    format: date-time
+                    description: 'Lower bound to be considererd for the last modification date/time of the leads-opportunities.
+
+                      This property represents a timestamp in UTC format, following the ISO 8601 standard.
+
+                      All date-time values must be provided in Coordinated Universal Time (UTC).'
+                    example: '2024-08-01T14:30:00Z'
+                  toDate:
+                    type: string
+                    format: date-time
+                    description: 'Upper bound to be considererd for the last modification date/time of the leads-opportunities.
+
+                      This property represents a timestamp in UTC format, following the ISO 8601 standard.
+
+                      All date-time values must be provided in Coordinated Universal Time (UTC).'
+                    example: '2024-08-08T08:30:00Z'
+                required:
+                - fromDate
+                - toDate
+              partnerLeadOpportunityId:
+                type:
+                - array
+                - string
+                description: "Search criterion on the id of the leads-opportunities as defined in partner CRM System.\n\nThis search criterion can be used for 2 main use cases :\n- Exact search for a particular lead-opportunitity id from Partner CRM system.\n  - Set the exact id searched for (e.g \"PARTNER-ID-1234\")\n- Retrieval of all leads-opportunitities that do not have a partnerLeadOpportunityId defined in 3DS CRM application (MySalesPipeline).\n  - These are typically marketing leads on which update by Partner could be required.\n  - Simply set an empty string (\"\")"
+                examples:
+                - PARTNER-ID-1234
+                - ''
+            anyOf:
+            - required:
+              - modifiedDate
+            - required:
+              - partnerLeadOpportunityId
+      required:
+      - data
+    offerLine:
+      type: object
+      description: 'One of the item within an offer.
+
+        '
+      properties:
+        amount:
+          type: number
+          description: Amount of the offer in the desgnated currency
+          example: 13000
+        offerNameId:
+          type: string
+          description: "Identification of the Offer.  \n<ins>Note:</ins> : In current state of the API, the list of valid values will be communicated directly to 3DS Partners via email or within 3DS Partner Swym Community. "
+          example: MDMIND00022_PUBL_ISE00002687_IPE00021337
+        revenueType:
+          $ref: '#/components/schemas/revenueType'
+          example: UPFRONT
+      required:
+      - offerNameId
+    400_post_leads-opportunities:
+      type: object
+      description: response in case of Bad Request operation
+      properties:
+        data:
+          type:
+          - 'null'
+          - object
+        info:
+          type: object
+          required:
+          - success
+          - statusCode
+          properties:
+            success:
+              type: boolean
+              description: indicator whether request is successful or not.
+              example: false
+            statusCode:
+              type: integer
+              description: HTTP Code of the response
+              example: 400
+            timeStamp:
+              type: string
+              description: Timestamp of the query
+              example: '2025-06-30T12:36:46.556Z'
+            traceId:
+              type: string
+              description: Identifier to be communicated to 3DS Support in case support/investigation is required
+              example: 3d29ece30a064ea68c3f5f4a9f785c6f
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: identification of the error
+            message:
+              type: string
+              description: description of the error.
+      required:
+      - data
+      - info
+      - error
+    429_too_many_requests:
+      type: object
+      description: Too Many Requests
+      properties:
+        message:
+          type: string
+      required:
+      - message
+    partnerContact:
+      description: 'Partner contact information
+
+        '
+      properties:
+        salesRepEmail:
+          type: string
+          description: email of the partner contact
+          example: john.doe@best-partner.com
+        salesRepFirstName:
+          type: string
+          description: first Name of the partner Contact
+          example: John
+        salesRepLastName:
+          type: string
+          description: last name of the partner contact
+          example: Doe
+      required:
+      - salesRepEmail
+      - salesRepFirstName
+      - salesRepLastName
+    lead-opportunity_attributes:
+      type: object
+      properties:
+        partnerLeadOpportunityId:
+          $ref: '#/components/schemas/partnerLeadOpportunityId'
+        name:
+          type: string
+          description: Name assigned to the lead-opportunity
+          example: Projekt Big-Picture Topic + MBSE (STEP 1+2)
+        dsOwnerEmail:
+          $ref: '#/components/schemas/dsOwnerEmail'
+        status:
+          $ref: '#/components/schemas/lead-opportunity-status'
+          example: LEAD_OPEN
+        forecastCategory:
+          $ref: '#/components/schemas/forecastCategory'
+          example: UPSIDE
+        closeDate:
+          type: string
+          format: date-time
+          description: Expected date for the closing of the sale in ISO 8601 format (like YYYY-MM-DDThh:mm:ss.sssZ)
+          example: '2025-08-01T18:03:16.325Z'
+        cometCampaignCode:
+          type: string
+          description: COMET Campaign code
+          example: OC2DE17TAQ1C13018
+        reasonWon:
+          type: array
+          description: '
+
+            Identification of the reason a lead or an opportunity is won.
+
+
+            _Note_ : At creation time, if value is not provided, it will be defaulted to `STRNG_VAL_PROP` (Stronger value proposition).'
+          items:
+            $ref: '#/components/schemas/reason_won'
+        reasonLost:
+          type: array
+          description: '
+
+            A list of reason lost is used to identify the reason(s) for loss of an opportunity and for a Lead (which will give insight for the lessons learnt).
+
+
+            _Note_ : At creation time, if value is not provided, it will be defaulted to `NO_PROJECT`.'
+          items:
+            $ref: '#/components/schemas/reason_lost'
+        competitors:
+          type: array
+          description: "List of the competitors. \nIn current state of the API, the list of valid values will be provided through direct communication with partners (mail or 3DSwym discussion). \n"
+          items:
+            type: string
+        reasonWonLostComment:
+          type: string
+          description: Comment associated to WON or LOST reasons
+          example: The Customer has no budget
+        gtmTacticId:
+          type: string
+          description: identification of GoToMarket.
+        description:
+          type: string
+          description: description associated to the lead-opportunity
+          example: Projekt Dashboard - Big-Picture TopicPilotprojekt
+        nextMilestone:
+          type: string
+          description: Description of the next activity to be done
+          example: Next activity is to make a demo to the Customer
+        nextMilestoneDate:
+          type: string
+          format: date-time
+          description: Next Milestone date in ISO 8601 format (like YYYY-MM-DDThh:mm:ss.sssZ)
+          example: '2025-08-01T18:03:16.325Z'
+        currency:
+          $ref: '#/components/schemas/currency'
+    403_basic_forbidden:
+      type: object
+      description: Access Forbidden.
+      properties:
+        message:
+          type: string
+      required:
+      - message
+    201_post_leads-opportunities:
+      type: object
+      description: response in case of successful operation
+      required:
+      - partnerLeadOpportunityId
+      - dsLeadOpportunityId
+      - action
+      - info
+      properties:
+        partnerLeadOpportunityId:
+          $ref: '#/components/schemas/partnerLeadOpportunityId'
+        dsLeadOpportunityId:
+          type: string
+          description: 3DS id of the lead-opportunity
+          example: 5ZOQ-LF35OK
+        action:
+          type: string
+          description: action performed
+          example: create
+        info:
+          type: object
+          description: Status of the request
+          properties:
+            success:
+              type: boolean
+              description: indicator whether request is successful or not.
+              example: true
+            statusCode:
+              type: integer
+              description: HTTP Code of the response
+              example: 201
+            timestamp:
+              oneOf:
+              - type: string
+                description: Timestamp of the query
+                example: '2025-06-30T12:36:46.556Z'
+              - type: 'null'
+            traceId:
+              oneOf:
+              - type: string
+                description: Identifier to be communicated to 3DS Support in case support/investigation is required
+                example: 3d29ece30a064ea68c3f5f4a9f785c6f
+              - type: 'null'
+          required:
+          - success
+          - statusCode
+        error:
+          oneOf:
+          - type: object
+            properties:
+              code:
+                type: string
+                description: identification of the error
+              message:
+                type: string
+                description: description of the error.
+          - type: 'null'
+    reason_won:
+      type: string
+      description: 'Identification of the reason a lead or an opportunity is won.
+
+
+        <ins>Note :</ins> At Creation time, if Value is Not provided, it will be defaulted to ''STRNG_VAL_PROP'' (Stronger value proposition).'
+      enum:
+      - SOLUTION_FUNCT
+      - STRNG_VAL_PROP
+      - LWR_CST_OF_OWNRSHIP
+      - LWR_IMPL_COST
+      - GOOD_CSTMR_REFER
+      - OFFR_TRM_CONDN
+      - LWR_SFTWR_COSTS
+      - STRONG_CLIENT_RELATION
+      - DS_SKILLS_EXPERTISE
+      - PRTNR_SKILL_&_EXPRT
+      - PRTNR_RELTNSHIP
+      - SALE_OPP_ACT
+      - IT_DRVN_ACT
+      - EMPTY
+      x-enumDescriptions:
+        SOLUTION_FUNCT: Solution functionality
+        STRNG_VAL_PROP: Stronger value proposition
+        LWR_CST_OF_OWNRSHIP: Lower costs of ownership
+        LWR_IMPL_COST: Lower implementation costs
+        GOOD_CSTMR_REFER: Good customer references
+        OFFR_TRM_CONDN: Offer Terms & conditions
+        LWR_SFTWR_COSTS: Lower software costs
+        STRONG_CLIENT_RELATION: Strong client relationship
+        DS_SKILLS_EXPERTISE: DS skills & expertise
+        PRTNR_SKILL_&_EXPRT: Partner skills & expertise
+        PRTNR_RELTNSHIP: Partner (CSI) relationship
+        SALE_OPP_ACT: SalesOperations activities
+        IT_DRVN_ACT: IT driven activities
+        EMPTY: Empty
+      example: STRNG_VAL_PROP
+    customerLegalEntity:
+      type: object
+      description: identification of the target Customer Legal Entity
+      properties:
+        id:
+          type:
+          - string
+          - 'null'
+          description: 3DS site identifier
+          example: 200000000029188
+        dunsNumber:
+          type:
+          - string
+          - 'null'
+          description: Duns & Bradstreet identification
+          example: 266257315
+        vatNumber:
+          type:
+          - string
+          - 'null'
+          description: VAT (Value Added Tax) identification number
+          example: DE128212199
+        registrationId:
+          type:
+          - string
+          - 'null'
+          description: registration id of the company in the country
+        name:
+          type:
+          - string
+          - 'null'
+          description: the targeted name
+          example: World Company Limited
+        city:
+          type:
+          - string
+          - 'null'
+          description: City Location
+          example: San Francisco
+        country:
+          $ref: '#/components/schemas/country'
+        addressLine1:
+          type:
+          - string
+          - 'null'
+          description: 1st line of the address
+          example: Kraillinger Strasse 5
+        statePrefecture:
+          type:
+          - string
+          - 'null'
+          description: state / Prefecture
+        addressLine2:
+          type:
+          - string
+          - 'null'
+          description: 2nd line of the address (if needed)
+        zipCode:
+          type:
+          - string
+          - 'null'
+          description: ZIP Postal code
+          example: 82131
+        websiteUrl:
+          type:
+          - string
+          - 'null'
+          description: website URL of the company
+          example: www.world-company-limited.com
+      required:
+      - name
+      - city
+      - country
+    customerContact:
+      description: Customer Contact Information
+      type: object
+      properties:
+        phoneNumber:
+          type: string
+          description: phone number of the Customer Contact
+          example: 987654321
+        salutation:
+          type: string
+          description: 'Salution of the person : Mr., Ms., Dr., etc..'
+          example: M.
+        jobTitle:
+          type: string
+          description: Job title of the customer Contact
+          example: Director of Reseearch & Development
+        email:
+          type: string
+          description: email of the customer Contact
+          example: john.smith@world-company.com
+        firstName:
+          type: string
+          description: first name of the customer Contact
+          example: John
+        lastName:
+          type: string
+          description: lastname of the customer Contact
+          example: Smith
+      required:
+      - email
+      - firstName
+      - lastName
+    200_get_leads-opportunities:
+      type: object
+      description: Response in case of a successful get operation on leadsOpportunities
+      required:
+      - data
+      - info
+      properties:
+        data:
+          type: object
+          properties:
+            leadOpportunity:
+              type: object
+              properties:
+                partnerLeadOpportunityId:
+                  $ref: '#/components/schemas/partnerLeadOpportunityId'
+                dsLeadOpportunityId:
+                  type:
+                  - string
+                  - 'null'
+                  description: 3DS id of the lead-opportunity
+                  example: 5ZOQ-LF35OK
+                name:
+                  type:
+                  - string
+                  - 'null'
+                  description: Name assigned to the lead-opportunity
+                  example: Projekt Big-Picture Topic + MBSE (STEP 1+2)
+                dsOwnerEmail:
+                  type:
+                  - string
+                  - 'null'
+                  description: email of the 3DS Partner Sales Manager (PSM)
+                  example: john.doe@3ds.com
+                status:
+                  $ref: '#/components/schemas/lead-opportunity-status'
+                  example: LEAD_OPEN
+                forecastCategory:
+                  $ref: '#/components/schemas/forecastCategory'
+                  example: UPSIDE
+                closeDate:
+                  type:
+                  - string
+                  - 'null'
+                  example: '2025-06-30'
+                  description: expected date for the closing of the sale in ISO 8601 format (YYYY-MM-DD)
+                cometCampaignCode:
+                  type:
+                  - string
+                  - 'null'
+                  description: COMET Campaign code
+                  example: OC2DE17TAQ1C13018
+                reasonWon:
+                  type:
+                  - array
+                  - 'null'
+                  items:
+                    $ref: '#/components/schemas/reason_won'
+                reasonLost:
+                  type:
+                  - array
+                  - 'null'
+                  items:
+                    $ref: '#/components/schemas/reason_lost'
+                competitors:
+                  type:
+                  - array
+                  - 'null'
+                  description: List of the competitors
+                  items:
+                    type: string
+                reasonWonLostComment:
+                  type:
+                  - string
+                  - 'null'
+                  description: Comment associated to WON or LOST reasons
+                  example: The Customer has no budget
+                gtmTacticId:
+                  type:
+                  - string
+                  - 'null'
+                  description: identification of GoToMarket.
+                description:
+                  type:
+                  - string
+                  - 'null'
+                  description: description associated to the lead-opportunity
+                  example: Projekt Dashboard - Big-Picture TopicPilotprojekt
+                nextMilestone:
+                  type:
+                  - string
+                  - 'null'
+                  description: Description of the next activity to be done
+                  example: Next activity is to make a demo to the Customer
+                nextMilestoneDate:
+                  type:
+                  - string
+                  - 'null'
+                  description: Next Milestone date in ISO 8601 format (YYYY-MM-DD)
+                  example: '2025-06-15'
+                currency:
+                  $ref: '#/components/schemas/currency'
+                approvalStatus:
+                  type:
+                  - string
+                  - 'null'
+                engagementType:
+                  type:
+                  - string
+                  - 'null'
+                poInformation:
+                  type:
+                  - string
+                  - 'null'
+                poStatus:
+                  type:
+                  - string
+                  - 'null'
+                poNumber:
+                  type:
+                  - string
+                  - 'null'
+                sboIndicator:
+                  type:
+                  - string
+                  - 'null'
+                sboStatus:
+                  type:
+                  - string
+                  - 'null'
+                sboNumber:
+                  type:
+                  - string
+                  - 'null'
+                growthType:
+                  type:
+                  - string
+                  - 'null'
+                leadPriority:
+                  type:
+                  - string
+                  - 'null'
+                levelOfInterest:
+                  type:
+                  - string
+                  - 'null'
+                dsComment:
+                  type:
+                  - string
+                  - 'null'
+                partnerImportMode:
+                  type:
+                  - string
+                  - 'null'
+                createdDate:
+                  type:
+                  - string
+                  - 'null'
+                modifiedDate:
+                  type:
+                  - string
+                  - 'null'
+                offerLines:
+                  type:
+                  - array
+                  - 'null'
+                  description: array of the various Offer Lines.
+                  items:
+                    type: object
+                    $ref: '#/components/schemas/offerLine'
+                customerLegalEntity:
+                  $ref: '#/components/schemas/customerLegalEntity'
+                customerContact:
+                  type:
+                  - array
+                  - 'null'
+                  description: Customer Contact(s) informations
+                  items:
+                    $ref: '#/components/schemas/customerContact'
+                partnerContact:
+                  type:
+                  - array
+                  - 'null'
+                  description: Partner Contact(s) informations
+                  items:
+                    $ref: '#/components/schemas/partnerContact'
+        info:
+          type: object
+          properties:
+            success:
+              type: boolean
+              description: status of the operation
+            statusCode:
+              type: integer
+              description: HTTP status code
+            timeStamp:
+              type:
+              - 'null'
+              - string
+              description: timestamp of the operation
+            traceId:
+              type: 'null'
+              description: trace id to be provided for technical investigations.
+        error:
+          type: 'null'
+          description: no error in case of succees
+    lead-opportunity-status:
+      type: string
+      description: 'Status of the lead-opportunity (LEVERAGE Processs)
+
+        '
+      enum:
+      - LEAD_OPEN
+      - QUALIFIED
+      - ACCEPTED
+      - OPPY_OPEN
+      - VALIDATED
+      - ESTABLISHED
+      - WON
+      - LOST
+      x-enumDescriptions:
+        LEAD_OPEN: -6 Open
+        QUALIFIED: -5 Qualified
+        ACCEPTED: -4 Accepted
+        OPPY_OPEN: -3 Open
+        VALIDATED: -2 Validated
+        ESTABLISHED: -1 Established
+        WON: Won opportunity
+        LOST: Lost opportunity
+    200_patch_leads-opportunities:
+      type: object
+      description: Response in case of successful update operation on lead-Opportunities object
+      required:
+      - data
+      - info
+      properties:
+        data:
+          type: object
+          properties:
+            partnerLeadOpportunityId:
+              type: string
+            dsLeadOpportunityId:
+              type: string
+            action:
+              type: string
+        info:
+          type: object
+          properties:
+            success:
+              type: boolean
+              description: status of the operation
+            statusCode:
+              type: integer
+              description: HTTP status code
+            timeStamp:
+              type:
+              - 'null'
+              - string
+              description: timestamp of the operation
+            traceId:
+              type: 'null'
+              description: trace id to be provided for technical investigations.
+        error:
+          type: 'null'
+          description: no error in case of succees
+    lead-opportunity_patch:
+      type: object
+      description: 'Core attributes of the lead-opportunity in case of update.
+
+        '
+      allOf:
+      - $ref: '#/components/schemas/lead-opportunity_attributes'
+      - type: object
+      required:
+      - partnerLeadOpportunityId
+    currency:
+      type: string
+      description: 'Three-letter ISO 4217 currency code representing the transaction currency.
+
+
+        Must be exactly 3 uppercase alphabetic characters (e.g., `USD` for US Dollar, `EUR` for Euro, `INR` for Indian Ruppee).
+
+        '
+      minLength: 3
+      maxLength: 3
+      pattern: ^[A-Z]{3}$
+      example: USD
+    partnerLeadOpportunityId:
+      type: string
+      description: <ins>Unique Identifier</ins> of the lead-opportunity in the CRM system of the 3DS partner.
+      example: OPPY-1004526
+    country:
+      type:
+      - 'null'
+      - string
+      description: 'Country Location
+
+        '
+      example: France
+    revenueType:
+      type: string
+      enum:
+      - UPFRONT
+      - RENTAL_BOOKING
+      - SUPPORT_SERVICES
+      - SERVICES_SIGNING
+      - EMPTY
+      description: 'The type of revenue
+
+        '
+      x-enumDescriptions:
+        UPFRONT: Upfront
+        RENTAL_BOOKING: Rental Booking
+        SUPPORT_SERVICES: Support Services
+        SERVICES_SIGNING: Services Signing
+        EMPTY: Empty
+    200_post_leads-opportunities_search:
+      description: Response body schema for searching leads-opportunities
+      type: object
+      properties:
+        info:
+          type: object
+          properties:
+            success:
+              type: boolean
+              description: status of the operation
+            statusCode:
+              type: integer
+              description: HTTP status code
+            timeStamp:
+              type:
+              - string
+              description: timestamp of the operation
+            traceId:
+              type: string
+              description: trace id to be provided for technical investigations.
+        error:
+          type: 'null'
+          description: no error in case of succees
+        data:
+          type: array
+          items:
+            type: object
+            description: 3DS lead-opportunities list of id corresponding to the search criteria
+            properties:
+              dsLeadOpportunityId:
+                type: array
+                description: list of Ids
+                items:
+                  type: string
+      required:
+      - data
+      - info
+    reason_lost:
+      type: string
+      enum:
+      - BETTER_COMP_OFFER
+      - CLIENT_DOES_NOT_SEE_VALUE
+      - LACK_OR_LOSS_OF_CHAMPION
+      - FUNC_GAP
+      - HIGH_IMPLEM_COST
+      - LACK_OF_REF
+      - OFFER_DOES_NOT_MATCH_NEEDS
+      - QUALITY_ISSUE
+      - DS_SKILLS_SUPPORT_ISSUE
+      - PARTNER_SKILL_SUPPORT
+      - REL_LEVEL_ISSUE
+      - SOFT_COST_TOO_HIGH
+      - TERMS_COND_ISSUE
+      - COST_OF_SALES_TOO_HIGH
+      - LACK_OF_SKILLS_TO_SUPPORT
+      - LACK_OF_TECH_RESOURCES
+      - NOT_A_DS_PRIORITY
+      - NOT_A_PARTNER_PRIORITY
+      - CLIENT_BANKRUPT_OR_ACQUIRED
+      - CLIENT_HAS_NO_MORE_NEED
+      - CLIENT_HAS_NO_MORE_BUDGET
+      - DUP_COPY
+      - IT_DRIVEN_ACTIVITIES
+      - LOST_TO_ANOTHER_PARTNER
+      - SALESOPS_ACTIVITIES
+      - TERRITORY_REJECT
+      - INADEQUATE_REF
+      - WRONG_PARTNER_OR_DS_SALES
+      - MISSING_INFORMATION
+      - INCORRECT_CHANNEL
+      - UNMOVABLE_COMPET
+      - OPPY_ALREADY_EXISTS
+      - NO_PROJECT
+      - IMMATURE_PROJECT
+      - DUP_LEAD
+      - DUP_OPPY
+      - CUST_BNKRUPT
+      - NVR_SUCCEED_RECHN_CUST
+      - NT_ENG_RLVNT_EVD_CUST
+      - ROI_NT_VIBLE
+      - VLD_CUST_EXPLNTN
+      - MERGED
+      - EMPTY
+      description: 'A list of reason lost is used to identify the reason(s) for loss of an opportunity and for a Lead (which will give insight for the lessons learnt).
+
+        <ins>Note :</ins> It is defaulted to `No Project` if value is Not provided during creation of the lead-opportunity.'
+      x-enumDescriptions:
+        BETTER_COMP_OFFER: Better competition offer
+        CLIENT_DOES_NOT_SEE_VALUE: Client does not see value
+        LACK_OR_LOSS_OF_CHAMPION: Lack or loss of Champion
+        FUNC_GAP: Functional gap
+        HIGH_IMPLEM_COST: High Implementation cost
+        LACK_OF_REF: Lack of references
+        OFFER_DOES_NOT_MATCH_NEEDS: Offer does not match needs
+        QUALITY_ISSUE: Quality issue
+        DS_SKILLS_SUPPORT_ISSUE: DS skills & support issue
+        PARTNER_SKILL_SUPPORT: Partner skills & support
+        REL_LEVEL_ISSUE: Relationship level issue
+        SOFT_COST_TOO_HIGH: Software cost too high
+        TERMS_COND_ISSUE: Terms & conditions issue
+        COST_OF_SALES_TOO_HIGH: Cost of Sales too high
+        LACK_OF_SKILLS_TO_SUPPORT: Lack of skills to support
+        LACK_OF_TECH_RESOURCES: Lack of tech resources
+        NOT_A_DS_PRIORITY: Not a priority for DS
+        NOT_A_PARTNER_PRIORITY: Not a priority for Partner
+        CLIENT_BANKRUPT_OR_ACQUIRED: Client Bankrupt/Acquired
+        CLIENT_HAS_NO_MORE_NEED: Client has no (more) need
+        CLIENT_HAS_NO_MORE_BUDGET: Client has no (more) budget
+        DUP_COPY: Duplicate copy
+        IT_DRIVEN_ACTIVITIES: IT driven activities
+        LOST_TO_ANOTHER_PARTNER: Lost to another partner
+        SALESOPS_ACTIVITIES: SalesOperations activities
+        TERRITORY_REJECT: Territory reject
+        INADEQUATE_REF: Inadequate references
+        WRONG_PARTNER_OR_DS_SALES: Wrong Partner/DS Sales
+        MISSING_INFORMATION: Missing information
+        INCORRECT_CHANNEL: Incorrect channel
+        UNMOVABLE_COMPET: Unmovable compet.
+        OPPY_ALREADY_EXISTS: Oppy already exists
+        NO_PROJECT: No Project
+        IMMATURE_PROJECT: Immature project
+        DUP_LEAD: Duplicate lead
+        DUP_OPPY: Duplicate oppy
+        CUST_BNKRUPT: Customer bankruptcy
+        NVR_SUCCEED_RECHN_CUST: Never succeed in reaching customer (mail/phone/letter)
+        NT_ENG_RLVNT_EVD_CUST: Not enough relevant evidences to escalate with the customer (at risk at the court)
+        ROI_NT_VIBLE: ROI for enforcement not viable
+        VLD_CUST_EXPLNTN: Valid Customer Explanation (approved by legal)
+        MERGED: Merged
+        EMPTY: Empty
+      example: CLIENT_HAS_NO_MORE_BUDGET
+    patch_leads-opportunities_data:
+      description: Request body schema for updating leads-opportunities
+      type: object
+      properties:
+        partnerId:
+          type: string
+          description: Identification of partner LegalEntity in 3DS system.
+          example: '200000000014442'
+        leadOpportunity:
+          type: object
+          description: Specific attributes of the lead-opportunity in case of update
+          $ref: '#/components/schemas/lead-opportunity_patch'
+        offerLines:
+          type: array
+          description: array of the various Offer Lines.
+          items:
+            type: object
+            $ref: '#/components/schemas/offerLine'
+        customerLegalEntity:
+          $ref: '#/components/schemas/customerLegalEntity'
+        customerContacts:
+          type: array
+          description: Customer Contact(s) informations
+          items:
+            $ref: '#/components/schemas/customerContact'
+        partnerContacts:
+          type: array
+          description: Partner Contact(s) informations
+          items:
+            $ref: '#/components/schemas/partnerContact'
+      required:
+      - leadOpportunity
+    forecastCategory:
+      type: string
+      enum:
+      - UPSIDE
+      - COMMIT
+      - SAFE
+      - WON
+      - LOST
+      - LONGSHOT
+      - EMPTY
+      description: "Forecast Category is an assessment done by the Sales Expert to report his/her level of confidence that the Opportunity will close on the Close Date with the revenue amounts defined.\nValue is ignored at creation if status is ‘LEAD_OPEN’,’QUALIFIED’ or ’ACCEPTED’.\nif value is not provided at creation time, it defaults based on the following matrix : \n| status | default forecastCategory | forecastCategory values |\n| ------- | ------------------------ | -----------------------|\n| -3 Open | Upside | Safe/Commit/Upside/Longshot |\n| -2 validated | Upside | Safe/Commit/Upside/Longshot |\n| -1 Established | Upside | Safe/Commit/Upside/Longshot |\n| Won | Won | Won (set by the system)|\n| Lost | Lost| Lost (set by the system)"
+      x-enumDescriptions:
+        UPSIDE: 'One or more major risks of closing business by the close date, however the customer stated an intention, as represented in the Win Plan, to place an order by the specified Close Date.
+
+          '
+        COMMIT: 'Commitment that this Opportunity will be won by the close date. All key steps to close by the close date have been agreed upon with the customer and there are no known major risks.
+
+          '
+        SAFE: 'The Purchase Order and agreements signed by the customer are received by 3DS, are being reviewed by Sales Operations and have been submitted to Finance.
+
+          '
+        WON: 'The signed Statement of work and Purchase Order are approved (by Finance)
+
+          '
+        LOST: 'The signed Statement of work and Purchase Order are approved (by Finance) and the Opportunity is lost.
+
+          '
+        LONGSHOT: 'LongLow probability of closing business by the close date due to one or more significant risks (RFP in process, missing technical proofs or vendor selection, no alignment on Close Date, services or legal contracts not startedshot.
+
+          '
+        EMPTY: 'Empty, not filled in.
+
+          '
+    400_patch_leads-opportunities:
+      type: object
+      description: Response in case of Bad Request operation for updating leadsOpportunities object
+      required:
+      - data
+      - info
+      - errors
+      properties:
+        data:
+          type: object
+        info:
+          type: object
+          required:
+          - success
+          - statusCode
+          properties:
+            success:
+              type: boolean
+            statusCode:
+              type: integer
+            estimateSearchCount:
+              type: integer
+        errors:
+          type: object
+    401_basic_unauthorized:
+      type: object
+      description: Unauthorized
+      properties:
+        message:
+          type: string
+      required:
+      - message
+    500_get_leads-opportunities:
+      type: object
+      description: Response in case of Bad Request for retrieving lead-opportunity details
+      required:
+      - data
+      - info
+      - error
+      properties:
+        partnerId:
+          type: 'null'
+        data:
+          type: 'null'
+        info:
+          type: object
+          required:
+          - success
+          - statusCode
+          properties:
+            success:
+              type: boolean
+            statusCode:
+              type: integer
+            timeStamp:
+              type: string
+            traceId:
+              type: string
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code
+            message:
+              type: string
+              description: Human readable error message
+    503_leads-opportunities:
+      type: object
+      description: Service Unavailable
+      properties:
+        info:
+          type: object
+          properties:
+            success:
+              type: boolean
+              description: boolean to indicate if request was successful or not.
+              example: false
+            statusCode:
+              type: integer
+              description: HTTP code of the response
+              example: 503
+            timestamp:
+              type: string
+              format: date-time
+              description: Timestamp of the query
+              example: '2025-06-30T12:36:46.556Z'
+            traceId:
+              type: string
+              description: Identifier to be communicated to 3DS Support in case support/investigation is required
+              example: 3d29ece30a064ea68c3f5f4a9f785c6f
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              example: ERR899
+            message:
+              type: string
+              example: Service currently unavailable, please try again later.
+        data:
+          type: object
+          properties:
+            partnerLeadOpportunityId:
+              description: Identification of the lead-opportunity in the CRM system of the 3DS partner.
+              type: 'null'
+              example: 'null'
+            dsLeadOpportunityId:
+              description: Identification of the lead-opportunity in 3DS System (MySalesPipeline).
+              type: 'null'
+              example: 'null'
+            action:
+              description: categorisation of the action performed
+              type: 'null'
+              example: 'null'
+      required:
+      - error
+      - info
+    dsOwnerEmail:
+      type: string
+      description: 'email of the 3DS Partner Sales Manager (PSM).
+
+
+        <ins>Note :</ins> It is defaulted to the primary 3DS PSM if not provided at creation time.'
+      example: john.doe@3ds.com
+    post_leads-opportunities_data:
+      description: request body for creating a new lead-opportunity object.
+      type: object
+      properties:
+        partnerId:
+          type: string
+          description: Identification of partner LegalEntity in 3DS system.
+          example: '200000000014442'
+        leadOpportunity:
+          type: object
+          $ref: '#/components/schemas/lead-opportunity_post'
+        offerLines:
+          type: array
+          description: array of the various Offer Lines.
+          minItems: 1
+          items:
+            type: object
+            $ref: '#/components/schemas/offerLine'
+        customerLegalEntity:
+          $ref: '#/components/schemas/customerLegalEntity'
+        customerContacts:
+          type: array
+          description: Customer Contact(s) informations
+          items:
+            $ref: '#/components/schemas/customerContact'
+        partnerContacts:
+          type: array
+          description: Partner Contact(s) informations
+          items:
+            $ref: '#/components/schemas/partnerContact'
+      required:
+      - leadOpportunity
+      - offerLines
+      - customerLegalEntity
+      - partnerId
+    lead-opportunity_post:
+      type: object
+      description: 'Core attributes of the lead-opportunity in case of creation.
+
+        '
+      allOf:
+      - $ref: '#/components/schemas/lead-opportunity_attributes'
+      - type: object
+      required:
+      - partnerLeadOpportunityId
+      - name
+      - status
+      - closeDate
+      - currency
+  examples:
+    patch_update-lead_status:
+      summary: Example 1, updates status of lead.
+      description: Basic example of request body to update an existing lead-opportunity object.
+      value:
+        leadOpportunity:
+          partnerLeadOpportunityId: CRM-LEAD-1234
+          status: QUALIFIED
+    post_leads-opportunities_oppy:
+      summary: Request for creation of an opportunity.
+      description: Minimal Request with mandatory attributes to create an ooportunity with a single Offer Line
+      value:
+        partnerId: '200000000014442'
+        leadOpportunity:
+          partnerLeadOpportunityId: PARTNER-CRM-OPPY-1A8R
+          name: Transformation Project at NewCustomer
+          status: OPPY_OPEN
+          closeDate: '2025-06-01T18:46:51.326Z'
+          currency: EUR
+        offerLines:
+        - amount: 5490
+          offerNameId: 3DEXPERIENCE_Design/Engineering_On_Premise
+          revenueType: RENTAL_BOOKING
+        customerLegalEntity:
+          name: string
+          city: PARIS
+          country: FRANCE
+    patch_update-lead_nextMilestone:
+      summary: Example 2, updates nextMilestone of lead (date & action)
+      description: 'Basic example of request body to update an existing lead-opportunity object.
+
+        Note : only identification attributes of the lead-opportunity + modified attributes are required.
+
+        '
+      value:
+        leadOpportunity:
+          partnerLeadOpportunityId: CRM-LEAD-1234
+          nextMilestone: Customer Demo
+          nextMilestoneDate: '2025-06-01T18:46:51.326Z'
+    post_leads-opportunities_lead:
+      summary: Basic Request for Creation of a lead
+      description: Minimal Request with mandatory attributes to create a lead with a single Offer Line, no customer Contact or partner contact.
+      value:
+        partnerId: '200000000014442'
+        leadOpportunity:
+          partnerLeadOpportunityId: PARTNER-CRM-LEAD-1A8R
+          name: Projekt Big-Picture Topic + MBSE (STEP 1+2)
+          status: LEAD_OPEN
+          closeDate: '2025-06-01T18:46:51.326Z'
+          description: Projekt Dashboard - Big-Picture TopicPilotprojekt
+          currency: EUR
+        offerLines:
+        - amount: 13800
+          offerNameId: 3DEXPERIENCE_Design/Engineering_On_Premise
+          revenueType: UPFRONT
+        customerLegalEntity:
+          name: NEW CUSTOMER CORPORATION
+          city: Stockdorf
+          country: Germany
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+x-tagGroups:
+- name: Authentication
+  tags:
+  - apikeys
+- name: Order
+  tags:
+  - orders
+  - price-lists
+  - accreditations
+- name: Sales
+  tags:
+  - leads-opportunities
+  - portfolio-items
+- name: Schemas
+  tags:
+  - Schemas

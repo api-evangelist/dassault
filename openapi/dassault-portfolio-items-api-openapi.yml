@@ -1,0 +1,284 @@
+openapi: 3.1.1
+info:
+  title: APIs for Dassault Systèmes Partners accreditations portfolio-items API
+  description: APIs exposed by Dassault Systèmes to its partners and resellers.
+  version: 0.10.0
+  license:
+    name: Dassault Systèmes 2025
+    url: https://www.3ds.com/
+  x-logo:
+    url: https://www.3ds.com/assets/3ds-navigation/3DS_corporate-logo_blue.svg
+    altText: Dassault Systèmes
+    backgroundColor: '#FFFFFF'
+servers:
+- url: https://apigw-prd.3ds.com
+  description: Main (production) server
+- url: https://apigw-ppt.3ds.com
+  description: Server for development by Partners (Non Production)
+- url: https://apigw-qal.3ds.com
+  description: Server for Quality Assurance Testing (Non Production)
+- url: https://apigw-ptd.3ds.com
+  description: Server for preprod validation (Non Production)
+- url: https://apigw-ppd.3ds.com
+  description: Server for postprod validation (Non Production)
+security:
+- ApiKeyAuth: []
+tags:
+- name: portfolio-items
+  description: 'This section defines the operations related to sales portfolio-items.
+
+
+    The portfolio items are used in the definition of leads-opportunities in ''MySalesPipeline'' application.
+
+    '
+paths:
+  /sales/api4partners/v0/portfolio-items/search:
+    get:
+      summary: Search Sales portfolio items
+      description: "Search Sales Portfolio Items. \nFor now, no particular search criteria is offered, only pagination with skip & top query parameters.\n"
+      tags:
+      - portfolio-items
+      operationId: searchPortfolioItems
+      parameters:
+      - name: skip
+        in: query
+        description: Number of items to skip in the search results.
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+        example: 0
+      - name: top
+        in: query
+        description: Maximum number of items to retrieve in search results.
+        schema:
+          type: integer
+          minimum: 1
+          default: 9999
+        example: 100
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200_get_portfolio-items_search'
+              examples:
+                200_portfolioItemsSearchGetResponse:
+                  summary: OK
+                  description: Successful search in portfolio items (with top=1)
+                  value:
+                    info:
+                      success: true
+                      statusCode: 200
+                      estimatedSearchCount: 3049
+                      timeStamp: '2025-08-14T06:24:04.000Z'
+                    data:
+                    - salesPortfolioType: Brand
+                      salesPortfolioInfrastructure: On Premise
+                      salesPortfolioisOrderable: true
+                      salesPortfolioLevel1: CATIA
+                      salesPortfolioLevel2: CATIA V4
+                      salesPortfolioLevel3: MANUFACTURING
+                      salesPortfolioId: CLASS00001_ONPR_CATIAV4_SOL000038
+        '400':
+          description: Bad request, invalid input.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400_get_portfolio-items_search'
+              examples:
+                400_portfolioItemsSearchGetResponse:
+                  summary: Bad request
+                  description: Invalid query parameter value (top=-5)
+                  value:
+                    info:
+                      success: false
+                      statusCode: 400
+                      timeStamp: '2025-08-14T09:07:04.000Z'
+                      estimatedSearchCount: 3030
+                    error:
+                      code: ERROR_004
+                      message: '#top should be a positive, non zero integer'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/401_basic_unauthorized'
+              examples:
+                401_missing-apikey:
+                  summary: Service response in case of missing APIKEY.
+                  description: Basic Service response in case of missing APIKEY in request
+                  value:
+                    message: Missing API key in request
+        '403':
+          description: Access Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/403_basic_forbidden'
+              examples:
+                403_forbidden:
+                  summary: Access Forbidden
+                  description: Access Forbidden. Typical reason could be usage of invalid API-KEY or a valid one but for a scope on which access has not been granted by 3DS.
+                  value:
+                    message: API Consumer Not allowed
+        '429':
+          description: Too many Requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/429_too_many_requests'
+              examples:
+                429_too_many_requests:
+                  summary: Too many Requests
+                  description: The service cannot handle the request as too many have been received.
+                  value:
+                    message: Too many requests, please try again later
+components:
+  schemas:
+    400_get_portfolio-items_search:
+      type: object
+      description: Response in case of Bad Request operation for updating leadsOpportunities object
+      required:
+      - info
+      - error
+      properties:
+        info:
+          $ref: '#/components/schemas/info_response_portfolio-items'
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code
+              example: ERROR_004
+            message:
+              type: string
+              description: Human readable error message
+              example: '#top should be a positive, non zero integer'
+          required:
+          - code
+          - message
+    429_too_many_requests:
+      type: object
+      description: Too Many Requests
+      properties:
+        message:
+          type: string
+      required:
+      - message
+    401_basic_unauthorized:
+      type: object
+      description: Unauthorized
+      properties:
+        message:
+          type: string
+      required:
+      - message
+    portfolio-items_data:
+      type: object
+      description: A sales portfolio-item.
+      properties:
+        salesPortfolioType:
+          type: string
+          description: type of portfolio item
+          example: Brand
+        salesPortfolioInfrastructure:
+          type: string
+          description: infrastructure type
+          example: On Premise
+        salesPortfolioisOrderable:
+          type: boolean
+          description: Whether or not the item can be ordered
+          example: true
+        salesPortfolioLevel1:
+          type: string
+          description: Level 1 of the description of the portfolio item
+          example: 3DEXPERIENCE
+        salesPortfolioLevel2:
+          type: string
+          description: Level 2 of the description of the portfolio item
+          example: Simulation
+        salesPortfolioLevel3:
+          type: string
+          description: Level 3 of the description of the portfolio item
+          example: Design to Manufacturing Process
+        salesPortfolioId:
+          type: string
+          description: type of portfolio item
+          example: CLASS00002_ONPR_PRTF077_SOL001277
+    info_response_portfolio-items:
+      allOf:
+      - $ref: '#/components/schemas/info_response_base_attributes'
+      - type: object
+        properties:
+          timeStamp:
+            type: string
+            format: date-time
+            description: Timestamp of the operation.
+            example: '2025-08-14T07:45:59.000Z'
+      required:
+      - success
+      - statusCode
+      - timeStamp
+      - estimatedSearchCount
+    200_get_portfolio-items_search:
+      type: object
+      description: Response in case of a successful search operation on portfolio-items
+      required:
+      - data
+      - info
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/portfolio-items_data'
+        info:
+          $ref: '#/components/schemas/info_response_portfolio-items'
+    info_response_base_attributes:
+      type: object
+      description: Global Information on the operation requested.
+      properties:
+        success:
+          type: boolean
+          description: true if operation succeeded or false in case of error.
+          example: true
+        statusCode:
+          type: integer
+          description: HTTP return code of the operation
+          example: 200
+        estimatedSearchCount:
+          type: integer
+          description: Total number of Results.
+          example: 6027
+    403_basic_forbidden:
+      type: object
+      description: Access Forbidden.
+      properties:
+        message:
+          type: string
+      required:
+      - message
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+x-tagGroups:
+- name: Authentication
+  tags:
+  - apikeys
+- name: Order
+  tags:
+  - orders
+  - price-lists
+  - accreditations
+- name: Sales
+  tags:
+  - leads-opportunities
+  - portfolio-items
+- name: Schemas
+  tags:
+  - Schemas

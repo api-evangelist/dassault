@@ -1,0 +1,384 @@
+openapi: 3.1.1
+info:
+  title: APIs for Dassault Systèmes Partners accreditations API
+  description: APIs exposed by Dassault Systèmes to its partners and resellers.
+  version: 0.10.0
+  license:
+    name: Dassault Systèmes 2025
+    url: https://www.3ds.com/
+  x-logo:
+    url: https://www.3ds.com/assets/3ds-navigation/3DS_corporate-logo_blue.svg
+    altText: Dassault Systèmes
+    backgroundColor: '#FFFFFF'
+servers:
+- url: https://apigw-prd.3ds.com
+  description: Main (production) server
+- url: https://apigw-ppt.3ds.com
+  description: Server for development by Partners (Non Production)
+- url: https://apigw-qal.3ds.com
+  description: Server for Quality Assurance Testing (Non Production)
+- url: https://apigw-ptd.3ds.com
+  description: Server for preprod validation (Non Production)
+- url: https://apigw-ppd.3ds.com
+  description: Server for postprod validation (Non Production)
+security:
+- ApiKeyAuth: []
+tags:
+- name: accreditations
+  description: 'This section defines all the operations related to accreditations, including the search of accreditations for a specfic partner.
+
+    '
+paths:
+  /order/api4partners/v0/accreditations/search:
+    get:
+      summary: Retrieve Accreditations
+      description: 'Retrieves accreditations associated with the authenticated user. Supports pagination with `skip` and `top` parameters.
+
+        '
+      tags:
+      - accreditations
+      operationId: searchAccreditations
+      parameters:
+      - name: skip
+        in: query
+        description: Number of items to skip in the search results.
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+        example: 0
+      - name: top
+        in: query
+        description: Maximum number of items to retrieve in search results.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+          default: 100
+        example: 100
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200_accreditations_search'
+              examples:
+                successful_accreditations_search_threeResult:
+                  summary: Successful accreditation search example
+                  description: Example of a successful accreditation search request that returns multiple results, demonstrating top matches.
+                  value:
+                    data:
+                    - id: PRTF008
+                      name: Support & Services Offering
+                      accreditationType: Portfolio
+                    - id: PRTF063
+                      name: Public Cloud 3DEXPERIENCE WORKS
+                      accreditationType: Portfolio
+                    - id: IPE00041462
+                      name: 18-Sub-system Level Structural Validation
+                      accreditationType: Industry Process Experience
+                      deploymentType: On Premise
+                      industrySolutionExperience:
+                        id: ISE00005355
+                        name: Co-Design to Target
+                      solutionRelease:
+                        id: REL00000055
+                        name: 3DEXPERIENCE R2025x
+                      industry:
+                        id: IND000005
+                        name: Aerospace & Defense
+                    info:
+                      success: true
+                      statusCode: 200
+                      estimatedSearchCount: 3
+                successful_accreditations_search_noResult:
+                  summary: Successful accreditation search with no results
+                  description: Example of a successful accreditation search request that returns no results, indicating no matching accreditations.
+                  value:
+                    data: []
+                    info:
+                      success: true
+                      statusCode: 200
+                      estimatedSearchCount: 0
+        '400':
+          description: Bad request, invalid input.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400_accreditations_search'
+              examples:
+                failedAccreditationSearch_BadRequest_topOutsideRange:
+                  summary: Top query parameter is outside the allowed ranged
+                  description: 'Response returned when the top parameter exceeds the allowed range.
+
+                    '
+                  value:
+                    data: []
+                    info:
+                      success: false
+                      statusCode: 400
+                      estimatedSearchCount: 0
+                    error:
+                    - type: errors:3dx:invalidRequest
+                      title: Bad Request
+                      errors:
+                      - detail: Invalid pagination parameter. It must be a positive natural number between 1 and 100.
+                        pointer: '#/Top'
+                failedAccreditationSearch_BadRequest_skipNegativeNumber:
+                  summary: skip query parameter is a negative number
+                  description: 'This example shows the response returned when a bad request is made, such as when the skip parameter is a negative number
+
+                    '
+                  value:
+                    data: []
+                    info:
+                      success: false
+                      statusCode: 400
+                      estimatedSearchCount: 0
+                    error:
+                    - type: errors:3dx:invalidRequest
+                      title: Bad Request
+                      errors:
+                      - detail: Invalid pagination parameter. It must be a positive whole number.
+                        pointer: '#/Skip'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/401_basic_unauthorized'
+              examples:
+                401_missing-apikey:
+                  summary: Service response in case of missing APIKEY.
+                  description: Basic Service response in case of missing APIKEY in request
+                  value:
+                    message: Missing API key in request
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/403_basic_forbidden'
+              examples:
+                403_forbidden:
+                  summary: Access Forbidden
+                  description: Access Forbidden. Typical reason could be usage of invalid API-KEY or a valid one but for a scope on which access has not been granted by 3DS.
+                  value:
+                    message: API Consumer Not allowed
+        '429':
+          description: Too many Requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/429_too_many_requests'
+              examples:
+                429_too_many_requests:
+                  summary: Too many Requests
+                  description: The service cannot handle the request as too many have been received.
+                  value:
+                    message: Too many requests, please try again later
+components:
+  schemas:
+    info:
+      type: object
+      description: Metadata section of the response providing execution status and result summary.
+      properties:
+        success:
+          type: boolean
+          description: Indicates whether the API request was executed successfully.
+        statusCode:
+          type: integer
+          description: HTTP status code corresponding to the response.
+        estimatedSearchCount:
+          type: integer
+          description: Estimated number of results matching the search criteria.
+      required:
+      - success
+      - statusCode
+    error:
+      type: array
+      description: 'An array containing one or more error objects identified during the request processing.
+
+        Each object provides detailed information about a specific type of error encountered.
+
+        '
+      items:
+        type: object
+        properties:
+          type:
+            type: string
+            description: "A URI identifying the specific type of error.  \nThis allows API consumers to programmatically recognize and handle the error appropriately.  \n\nThe URI follows the format: `errors:<domain>:<error_type>`  \nExample values include:\n- `errors:3dx:invalidRequest`\n- `errors:3dx:authenticationGenericError`\n- `errors:3dx:resourceNotFound`\n- `errors:3dx:internalServerError`\n"
+            enum:
+            - errors:3dx:invalidRequest
+            - errors:3dx:authenticationGenericError
+            - errors:3dx:resourceNotFound
+            - errors:3dx:internalServerError
+          title:
+            type: string
+            description: A user-friendly error message, typically localized (NLS-supported), describing the general nature of the error.
+          errors:
+            type: array
+            description: "A list of individual validation or processing errors related to the request.  \nUseful when multiple issues are detected at once.\n"
+            items:
+              type: object
+              description: Details of a single error instance.
+              properties:
+                detail:
+                  type: string
+                  description: A human-readable message offering guidance to resolve the specific error.
+                pointer:
+                  type: string
+                  description: A [JSON Pointer](https://datatracker.ietf.org/doc/html/rfc6901) indicating the location of the field in the request payload where the error occurred.
+        required:
+        - type
+        - title
+    200_accreditations_search:
+      type: object
+      description: Response returned upon a successful price list search request.
+      properties:
+        data:
+          $ref: '#/components/schemas/accreditations_search_data'
+        info:
+          $ref: '#/components/schemas/info'
+        error:
+          $ref: '#/components/schemas/error'
+      required:
+      - info
+      - data
+    429_too_many_requests:
+      type: object
+      description: Too Many Requests
+      properties:
+        message:
+          type: string
+      required:
+      - message
+    401_basic_unauthorized:
+      type: object
+      description: Unauthorized
+      properties:
+        message:
+          type: string
+      required:
+      - message
+    400_accreditations_search:
+      type: object
+      description: Response body returned when the accreditation search request fails.
+      properties:
+        data:
+          type: array
+          description: Always an empty array in case of error responses.
+          maxItems: 0
+          items: {}
+          example: []
+        info:
+          $ref: '#/components/schemas/info'
+        error:
+          $ref: '#/components/schemas/error'
+      required:
+      - info
+      - data
+      - error
+    accreditations_search_data:
+      type: array
+      description: List of accreditations retrieved during the search operation.
+      items:
+        type: object
+        description: Summary information for an accreditation query.
+        properties:
+          id:
+            type: string
+            example:
+            - IPE00034863
+            - PRTF119
+          name:
+            type: string
+            example:
+            - 04-Continuous Product Development
+            - Public Cloud 3D Design
+          accreditationType:
+            type: string
+            enum:
+            - Industry Process Experience
+            - Portfolio
+            x-enumDescriptions:
+              Industry Process Experience: "A Dassault Systèmes offering designed to correspond to the business process used by a team in the context of the solution. \nDelivered through the 3DEXPERIENCE platform, Industry Process Experiences (IPEs) are composed of Roles. \nWhen combined, they make up Industry Solution Experiences.\n"
+              Portfolio: "The portfolio to which the product being ordered belongs. \nThis field identifies the specific product family or category to which the ordered product belongs. \nFor example, a product might belong to a portfolio such as \"CATIA\", \"ENOVIA\", or \"SIMULIA\".\n"
+          deploymentType:
+            type: string
+            enum:
+            - On Premise
+            - Public Cloud
+            x-enumDescriptions:
+              On Premise: "On-premise refers to a computing infrastructure (either bare metal or virtual machines) that is deployed and maintained within the organization's own data centers or facilities. \n\nIt is not shared with other organizations, providing the highest level of control and security. \n"
+              Public Cloud: On-Cloud refers to products or solutions that are designed, developed, and delivered directly on cloud infrastructure rather than on traditional on-premises systems.
+          industrySolutionExperience:
+            description: 'A Dassault Systèmes industry-specific offering designed to help companies innovate and achieve their performance objectives by addressing specific business challenges, Delivered through the 3DEXPERIENCE platform, an Industry Solution Experience is comprised of Industry Process Experiences.
+
+              '
+            type: object
+            properties:
+              id:
+                type: string
+                example: ISE00004588
+              name:
+                type: string
+                example: Engineered to Fly
+          solutionRelease:
+            description: 'A Release is a group of iterations that results in the completion of a valuable deliverable on the project.
+
+              '
+            type: object
+            properties:
+              id:
+                type: string
+                example: REL00000051
+              name:
+                type: string
+                example: 3DEXPERIENCE R2024x
+          industry:
+            description: 'Industry is a wide business industrial domain, marketed by Dassault Systèmes as an industry.
+
+              '
+            type: object
+            properties:
+              id:
+                type: string
+                example: IND000005
+              name:
+                type: string
+                example: Aerospace & Defense
+        required:
+        - id
+        - name
+        - accreditationType
+    403_basic_forbidden:
+      type: object
+      description: Access Forbidden.
+      properties:
+        message:
+          type: string
+      required:
+      - message
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+x-tagGroups:
+- name: Authentication
+  tags:
+  - apikeys
+- name: Order
+  tags:
+  - orders
+  - price-lists
+  - accreditations
+- name: Sales
+  tags:
+  - leads-opportunities
+  - portfolio-items
+- name: Schemas
+  tags:
+  - Schemas

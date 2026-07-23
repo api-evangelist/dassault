@@ -1,0 +1,315 @@
+openapi: 3.1.1
+info:
+  title: APIs for Dassault Systèmes Partners accreditations price-lists API
+  description: APIs exposed by Dassault Systèmes to its partners and resellers.
+  version: 0.10.0
+  license:
+    name: Dassault Systèmes 2025
+    url: https://www.3ds.com/
+  x-logo:
+    url: https://www.3ds.com/assets/3ds-navigation/3DS_corporate-logo_blue.svg
+    altText: Dassault Systèmes
+    backgroundColor: '#FFFFFF'
+servers:
+- url: https://apigw-prd.3ds.com
+  description: Main (production) server
+- url: https://apigw-ppt.3ds.com
+  description: Server for development by Partners (Non Production)
+- url: https://apigw-qal.3ds.com
+  description: Server for Quality Assurance Testing (Non Production)
+- url: https://apigw-ptd.3ds.com
+  description: Server for preprod validation (Non Production)
+- url: https://apigw-ppd.3ds.com
+  description: Server for postprod validation (Non Production)
+security:
+- ApiKeyAuth: []
+tags:
+- name: price-lists
+  description: 'This section defines all the operations related to price lists, including the search of price lists for a specfic partner.
+
+    '
+paths:
+  /order/api4partners/v0/price-lists/search:
+    get:
+      summary: Retrieve Price Lists
+      description: 'Retrieves the price lists for the authenticated user.
+
+        '
+      tags:
+      - price-lists
+      operationId: searchPriceList
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200_price-lists_search'
+              examples:
+                successful_priceLists_search:
+                  summary: Successful price list search
+                  description: Example of a successful price list search request that returns multiple price lists for different countries.
+                  value:
+                    data:
+                    - countryCode: BLZ
+                      countryName: Belize
+                      priceLists:
+                      - id: 9
+                        name: LATAM South Price List
+                        currency: USD
+                        hasFuturePriceList: false
+                        effectiveDate: 'null'
+                    - countryCode: CAN
+                      countryName: Canada
+                      priceLists:
+                      - id: 3
+                        name: Canada Price List
+                        currency: CAD
+                        hasFuturePriceList: false
+                        effectiveDate: '2025-09-12'
+                    - countryCode: HND
+                      countryName: Honduras
+                      priceLists:
+                      - id: 9
+                        name: LATAM South Price List
+                        currency: USD
+                        hasFuturePriceList: false
+                        effectiveDate: 'null'
+                    info:
+                      success: true
+                      statusCode: 200
+                      estimatedSearchCount: 3
+                successful_priceLists_search_noResult:
+                  summary: Successful price list search with no results
+                  description: Example of a successful price list search request that returns no results, indicating no matching price lists.
+                  value:
+                    data: []
+                    info:
+                      success: true
+                      statusCode: 200
+                      estimatedSearchCount: 0
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/401_basic_unauthorized'
+              examples:
+                401_missing-apikey:
+                  summary: Service response in case of missing APIKEY.
+                  description: Basic Service response in case of missing APIKEY in request
+                  value:
+                    message: Missing API key in request
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/403_basic_forbidden'
+              examples:
+                403_forbidden:
+                  summary: Access Forbidden
+                  description: Access Forbidden. Typical reason could be usage of invalid API-KEY or a valid one but for a scope on which access has not been granted by 3DS.
+                  value:
+                    message: API Consumer Not allowed
+        '429':
+          description: Too many Requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/429_too_many_requests'
+              examples:
+                429_too_many_requests:
+                  summary: Too many Requests
+                  description: The service cannot handle the request as too many have been received.
+                  value:
+                    message: Too many requests, please try again later
+components:
+  schemas:
+    country_name:
+      type: string
+      description: 'Country Location
+
+        '
+      example: France
+    info:
+      type: object
+      description: Metadata section of the response providing execution status and result summary.
+      properties:
+        success:
+          type: boolean
+          description: Indicates whether the API request was executed successfully.
+        statusCode:
+          type: integer
+          description: HTTP status code corresponding to the response.
+        estimatedSearchCount:
+          type: integer
+          description: Estimated number of results matching the search criteria.
+      required:
+      - success
+      - statusCode
+    error:
+      type: array
+      description: 'An array containing one or more error objects identified during the request processing.
+
+        Each object provides detailed information about a specific type of error encountered.
+
+        '
+      items:
+        type: object
+        properties:
+          type:
+            type: string
+            description: "A URI identifying the specific type of error.  \nThis allows API consumers to programmatically recognize and handle the error appropriately.  \n\nThe URI follows the format: `errors:<domain>:<error_type>`  \nExample values include:\n- `errors:3dx:invalidRequest`\n- `errors:3dx:authenticationGenericError`\n- `errors:3dx:resourceNotFound`\n- `errors:3dx:internalServerError`\n"
+            enum:
+            - errors:3dx:invalidRequest
+            - errors:3dx:authenticationGenericError
+            - errors:3dx:resourceNotFound
+            - errors:3dx:internalServerError
+          title:
+            type: string
+            description: A user-friendly error message, typically localized (NLS-supported), describing the general nature of the error.
+          errors:
+            type: array
+            description: "A list of individual validation or processing errors related to the request.  \nUseful when multiple issues are detected at once.\n"
+            items:
+              type: object
+              description: Details of a single error instance.
+              properties:
+                detail:
+                  type: string
+                  description: A human-readable message offering guidance to resolve the specific error.
+                pointer:
+                  type: string
+                  description: A [JSON Pointer](https://datatracker.ietf.org/doc/html/rfc6901) indicating the location of the field in the request payload where the error occurred.
+        required:
+        - type
+        - title
+    429_too_many_requests:
+      type: object
+      description: Too Many Requests
+      properties:
+        message:
+          type: string
+      required:
+      - message
+    401_basic_unauthorized:
+      type: object
+      description: Unauthorized
+      properties:
+        message:
+          type: string
+      required:
+      - message
+    country_code:
+      type: string
+      description: ISO3 Code (3 capital letters code) of the country
+      example: FRA
+    200_price-lists_search:
+      type: object
+      description: Response body returned upon a successful price list search request.
+      properties:
+        data:
+          $ref: '#/components/schemas/price-lists_search_data'
+        info:
+          $ref: '#/components/schemas/info'
+        error:
+          $ref: '#/components/schemas/error'
+      required:
+      - info
+      - data
+    price-lists_search_data:
+      type: array
+      description: List of **Products** and **Industry Process Experiences (IPE)** that the authorized user is accredited to sell.
+      items:
+        type: object
+        description: Summary information for a price list query.
+        properties:
+          countryCode:
+            $ref: '#/components/schemas/country_code'
+          countryName:
+            $ref: '#/components/schemas/country_name'
+          priceLists:
+            type: array
+            items:
+              type: object
+              description: 'A predefined set of product prices applicable to a specific country and currency.
+
+                Each price list defines how products are priced within a particular market or region
+
+                and serves as a reference for calculating order amounts.
+
+                '
+              properties:
+                id:
+                  type: integer
+                  example: 9
+                name:
+                  type: string
+                  example: EMEA Price List
+                currency:
+                  $ref: '#/components/schemas/currency'
+                hasFuturePriceList:
+                  type: boolean
+                  description: 'Indicates whether a future version of the price list has been declared.
+
+                    - true: A future-dated price list exists.
+
+                    - false: No future price list has been declared.
+
+                    '
+                  example:
+                  - true
+                  - false
+                effectiveDate:
+                  type: string
+                  format: date
+                  description: 'The date when the future price list takes effect.
+
+                    If ''null'', it indicates that no future price list version has been declared.
+
+                    '
+                  example:
+                  - '2025-09-09'
+                  - null
+    currency:
+      type: string
+      description: 'Three-letter ISO 4217 currency code representing the transaction currency.
+
+
+        Must be exactly 3 uppercase alphabetic characters (e.g., `USD` for US Dollar, `EUR` for Euro, `INR` for Indian Ruppee).
+
+        '
+      minLength: 3
+      maxLength: 3
+      pattern: ^[A-Z]{3}$
+      example: USD
+    403_basic_forbidden:
+      type: object
+      description: Access Forbidden.
+      properties:
+        message:
+          type: string
+      required:
+      - message
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+x-tagGroups:
+- name: Authentication
+  tags:
+  - apikeys
+- name: Order
+  tags:
+  - orders
+  - price-lists
+  - accreditations
+- name: Sales
+  tags:
+  - leads-opportunities
+  - portfolio-items
+- name: Schemas
+  tags:
+  - Schemas

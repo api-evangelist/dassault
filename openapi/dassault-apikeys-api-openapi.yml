@@ -1,0 +1,144 @@
+openapi: 3.1.1
+info:
+  title: APIs for Dassault Systèmes Partners accreditations apikeys API
+  description: APIs exposed by Dassault Systèmes to its partners and resellers.
+  version: 0.10.0
+  license:
+    name: Dassault Systèmes 2025
+    url: https://www.3ds.com/
+  x-logo:
+    url: https://www.3ds.com/assets/3ds-navigation/3DS_corporate-logo_blue.svg
+    altText: Dassault Systèmes
+    backgroundColor: '#FFFFFF'
+servers:
+- url: https://apigw-prd.3ds.com
+  description: Main (production) server
+- url: https://apigw-ppt.3ds.com
+  description: Server for development by Partners (Non Production)
+- url: https://apigw-qal.3ds.com
+  description: Server for Quality Assurance Testing (Non Production)
+- url: https://apigw-ptd.3ds.com
+  description: Server for preprod validation (Non Production)
+- url: https://apigw-ppd.3ds.com
+  description: Server for postprod validation (Non Production)
+security:
+- ApiKeyAuth: []
+tags:
+- name: apikeys
+  description: "This section defines the operations related to API keys . \n\nCurrent API key management still requires some interaction with Dassault Systèmes Information System (IS) team.\nThis process will likely be updated in the future to provide more autonomy and reactivity on partner side. \n\nBelow is the description of the process when a partner is onboarded on APIForPartners program : \n\n1. Dassault Systèmes IS team will initialize an API key and communicate it to partner Admin through a secured channel :\n\n    - **Recommendation is to use a 1-1 discussion between Partner Admin and Dassault Systèmes IS person in charge within the dedicated 3DSwym Community**\n    - **Do NOT use email or any unsecured communication channel or with wider audience**\n\n2. Partner Admin will then use this initial APIKEY value to authenticate and generate a new API key using the API  \n\n3. Partner admin will communicate back (within same secured channel) to Dassault Systèmes IS person in charge the **hashed_key** attributed from the API (NOT the API key itself)\n\n    - The Hash operation is NOT reversible, so Dassault Systèmes will NOT have knowledge about partner API key. \n    - Partner Admin must store securely the generated API key (same level of confidentiality as a password)\n\n4. Dassault Systèmes IS team will update API Gateway configuration with the new API key (in practice with the hash value provided) and inform Partner when it is ready to use.\n\n5. Partner can then use this newly generated APIKEY to interact with all the available APIs.\n\nFor the case of revocation and request of a new API key, steps 2 to 5 have to be followed.\n"
+paths:
+  /order/api4partners/v0/apikeys:
+    post:
+      summary: Generate a new API key
+      description: Generate a new API key and its hash.
+      tags:
+      - apikeys
+      operationId: generateApiKey
+      responses:
+        '200':
+          description: Successfully generated API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200_post_apikeys'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/401_basic_unauthorized'
+              examples:
+                401_missing-apikey:
+                  summary: Service response in case of missing APIKEY.
+                  description: Basic Service response in case of missing APIKEY in request
+                  value:
+                    message: Missing API key in request
+        '403':
+          description: Access Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/403_basic_forbidden'
+              examples:
+                403_forbidden:
+                  summary: Access Forbidden
+                  description: Access Forbidden. Typical reason could be usage of invalid API-KEY or a valid one but for a scope on which access has not been granted by 3DS.
+                  value:
+                    message: API Consumer Not allowed
+        '429':
+          description: Too many Requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/429_too_many_requests'
+              examples:
+                429_too_many_requests:
+                  summary: Too many Requests
+                  description: The service cannot handle the request as too many have been received.
+                  value:
+                    message: Too many requests, please try again later
+components:
+  schemas:
+    429_too_many_requests:
+      type: object
+      description: Too Many Requests
+      properties:
+        message:
+          type: string
+      required:
+      - message
+    403_basic_forbidden:
+      type: object
+      description: Access Forbidden.
+      properties:
+        message:
+          type: string
+      required:
+      - message
+    401_basic_unauthorized:
+      type: object
+      description: Unauthorized
+      properties:
+        message:
+          type: string
+      required:
+      - message
+    200_post_apikeys:
+      type: object
+      properties:
+        hashed_key:
+          type: string
+          description: Generated hash of the API key (60 characters)
+          example: $2b$12$8tcF4MTIDcup3WEo8fFSieGIYEnp/DTLHSTivUCcW2II/VVwRI9Qm
+          minLength: 60
+          maxLength: 60
+        api_key:
+          type: string
+          description: Plain API key (64 characters)
+          example: 5839bcfabb9e0d20f889f366dbfbbe2973c152cfbe91fae728a9f7e662ce1a2d
+          minLength: 64
+          maxLength: 64
+      required:
+      - hashed_key
+      - api_key
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+x-tagGroups:
+- name: Authentication
+  tags:
+  - apikeys
+- name: Order
+  tags:
+  - orders
+  - price-lists
+  - accreditations
+- name: Sales
+  tags:
+  - leads-opportunities
+  - portfolio-items
+- name: Schemas
+  tags:
+  - Schemas
