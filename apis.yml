@@ -5,7 +5,20 @@ description: Dassault Systèmes provides the 3DEXPERIENCE platform with thousand
   The platform covers SolidWorks, CATIA, ENOVIA, and 3D collaboration tools, exposing
   web services across engineering items, manufacturing processes, CAD collaboration,
   project tasks, and partner order management through standardized RESTful endpoints.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: paid
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Paid · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/dassault.png
 url: https://raw.githubusercontent.com/api-evangelist/dassault/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -22,114 +35,217 @@ tags:
   - Engineering
   - 3D Collaboration
 apis:
-  - name: 3DEXPERIENCE Engineering Web Services
-    description: REST API for accessing and managing engineering item resources and
-      attributes on the 3DEXPERIENCE platform, including part masters, specifications,
-      and engineering BOMs.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://www.3ds.com/support/documentation/developer-guides
-    baseURL: https://apigw-prd.3ds.com
-    tags:
-      - Engineering
-      - PLM
-      - CAD
-      - BOM
-    properties:
-      - type: Documentation
-        url: https://www.3ds.com/support/documentation/developer-guides
-      - type: OpenAPI
-        url: https://github.com/3ds-cpe-emed/ws3dx-dotnet
-  - name: 3DEXPERIENCE Manufacturing Web Services
-    description: REST API for managing manufacturing item data, manufacturing BOMs,
-      and process plans on the 3DEXPERIENCE platform used in production and factory
-      planning.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://www.3ds.com/support/documentation/developer-guides
-    baseURL: https://apigw-prd.3ds.com
-    tags:
-      - Manufacturing
-      - PLM
-      - Production
-      - BOM
-    properties:
-      - type: Documentation
-        url: https://www.3ds.com/support/documentation/developer-guides
-  - name: 3DEXPERIENCE CAD Collaboration Web Services
-    description: REST API for CAD collaboration and coordination on the 3DEXPERIENCE
-      platform, enabling integration with SolidWorks, CATIA, and other CAD tools for
-      managing design data and versions.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://www.3ds.com/support/documentation/developer-guides
-    baseURL: https://apigw-prd.3ds.com
-    tags:
-      - CAD
-      - SolidWorks
-      - CATIA
-      - Collaboration
-      - Design
-    properties:
-      - type: Documentation
-        url: https://www.3ds.com/support/documentation/developer-guides
-  - name: 3DEXPERIENCE Manufacturing Process Web Services
-    description: REST API for managing manufacturing processes, process plans, and
-      operations on the 3DEXPERIENCE platform, supporting digital manufacturing and
-      process simulation workflows.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://www.3ds.com/support/documentation/developer-guides
-    baseURL: https://apigw-prd.3ds.com
-    tags:
-      - Manufacturing
-      - Process
-      - PLM
-      - Simulation
-    properties:
-      - type: Documentation
-        url: https://www.3ds.com/support/documentation/developer-guides
-  - name: 3DEXPERIENCE Project Task Web Services
-    description: REST API for project management and task handling on the 3DEXPERIENCE
-      platform, enabling integration with project schedules, milestones, and team
-      assignments within ENOVIA applications.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://www.3ds.com/support/documentation/developer-guides
-    baseURL: https://apigw-prd.3ds.com
-    tags:
-      - Project Management
-      - ENOVIA
-      - Tasks
-      - Collaboration
-    properties:
-      - type: Documentation
-        url: https://www.3ds.com/support/documentation/developer-guides
-  - name: 3DEXPERIENCE Issue Web Services
-    description: REST API for change and issue tracking on the 3DEXPERIENCE platform,
-      supporting engineering change orders, problem reports, and corrective actions
-      within the product lifecycle.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://www.3ds.com/support/documentation/developer-guides
-    baseURL: https://apigw-prd.3ds.com
-    tags:
-      - Change Management
-      - Issues
-      - ENOVIA
-      - PLM
-    properties:
-      - type: Documentation
-        url: https://www.3ds.com/support/documentation/developer-guides
-  - name: API4Partners
-    description: REST API for Dassault Systèmes channel partners to manage orders,
-      price lists, accreditations, leads, and portfolio items through the partner
-      gateway, using API key authentication.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://partners.3ds.com/docs/0.10.0/
-    baseURL: https://apigw-prd.3ds.com
-    tags:
-      - Partners
-      - Orders
-      - Sales
-      - Pricing
-    properties:
-      - type: Documentation
-        url: https://partners.3ds.com/docs/0.10.0/
+- name: 3DEXPERIENCE Manufacturing Web Services
+  description: >-
+    REST API for managing manufacturing item data, manufacturing BOMs, and process plans on the 3DEXPERIENCE
+    platform used in production and factory planning.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.3ds.com/support/documentation/developer-guides
+  baseURL: https://apigw-prd.3ds.com
+  tags:
+  - Manufacturing
+  - PLM
+  - Production
+  - BOM
+  properties:
+  - type: Documentation
+    url: https://www.3ds.com/support/documentation/developer-guides
+- name: 3DEXPERIENCE CAD Collaboration Web Services
+  description: >-
+    REST API for CAD collaboration and coordination on the 3DEXPERIENCE platform, enabling integration
+    with SolidWorks, CATIA, and other CAD tools for managing design data and versions.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.3ds.com/support/documentation/developer-guides
+  baseURL: https://apigw-prd.3ds.com
+  tags:
+  - CAD
+  - SolidWorks
+  - CATIA
+  - Collaboration
+  - Design
+  properties:
+  - type: Documentation
+    url: https://www.3ds.com/support/documentation/developer-guides
+- name: 3DEXPERIENCE Manufacturing Process Web Services
+  description: >-
+    REST API for managing manufacturing processes, process plans, and operations on the 3DEXPERIENCE platform,
+    supporting digital manufacturing and process simulation workflows.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.3ds.com/support/documentation/developer-guides
+  baseURL: https://apigw-prd.3ds.com
+  tags:
+  - Manufacturing
+  - Process
+  - PLM
+  - Simulation
+  properties:
+  - type: Documentation
+    url: https://www.3ds.com/support/documentation/developer-guides
+- name: 3DEXPERIENCE Project Task Web Services
+  description: >-
+    REST API for project management and task handling on the 3DEXPERIENCE platform, enabling integration
+    with project schedules, milestones, and team assignments within ENOVIA applications.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.3ds.com/support/documentation/developer-guides
+  baseURL: https://apigw-prd.3ds.com
+  tags:
+  - Project Management
+  - ENOVIA
+  - Tasks
+  - Collaboration
+  properties:
+  - type: Documentation
+    url: https://www.3ds.com/support/documentation/developer-guides
+- name: 3DEXPERIENCE Issue Web Services
+  description: >-
+    REST API for change and issue tracking on the 3DEXPERIENCE platform, supporting engineering change
+    orders, problem reports, and corrective actions within the product lifecycle.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.3ds.com/support/documentation/developer-guides
+  baseURL: https://apigw-prd.3ds.com
+  tags:
+  - Change Management
+  - Issues
+  - ENOVIA
+  - PLM
+  properties:
+  - type: Documentation
+    url: https://www.3ds.com/support/documentation/developer-guides
+- name: API4Partners
+  description: >-
+    REST API for Dassault Systèmes channel partners to manage orders, price lists, accreditations, leads,
+    and portfolio items through the partner gateway, using API key authentication.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://partners.3ds.com/docs/0.10.0/
+  baseURL: https://apigw-prd.3ds.com
+  tags:
+  - Partners
+  - Orders
+  - Sales
+  - Pricing
+  properties:
+  - type: Documentation
+    url: https://partners.3ds.com/docs/0.10.0/
+- aid: dassault:dassault-accreditations-api
+  name: Dassault Systèmes accreditations API
+  description: >-
+    This section defines all the operations related to accreditations, including the search of accreditations
+    for a specfic partner.
+  humanURL: https://www.3ds.com/support/documentation/developer-guides
+  baseURL: https://apigw-prd.3ds.com
+  tags:
+  - accreditations
+  properties:
+  - type: OpenAPI
+    url: openapi/dassault-accreditations-api-openapi.yml
+  - type: Documentation
+    url: https://www.3ds.com/support/documentation/developer-guides
+- aid: dassault:dassault-apikeys-api
+  name: Dassault Systèmes apikeys API
+  description: "This section defines the operations related to API keys . \n\nCurrent API key management\
+    \ still requires some interaction with Dassault Systèmes Information System (IS) team.\nThis process\
+    \ will likely be updated in the future to provide more autonomy and reactivity on partner side. \n\
+    \nBelow is the description of the process when a partner is onboarded on APIForPartners program :\
+    \ \n\n1. Dassault Systèmes IS team will initialize an API key and communicate it to partner Admin\
+    \ through a secured channel :\n\n    - **Recommendation is to use a 1-1 discussion between Partner\
+    \ Admin and Dassault Systèmes IS person in charge within the dedicated 3DSwym Community**\n    - **Do\
+    \ NOT use email or any unsecured communication channel or with wider audience**\n\n2. Partner Admin\
+    \ will then use this initial APIKEY value to authenticate and generate a new API key using the API\
+    \  \n\n3. Partner admin will communicate back (within same secured channel) to Dassault Systèmes IS\
+    \ person in charge the **hashed_key** attributed from the API (NOT the API key itself)\n\n    - The\
+    \ Hash operation is NOT reversible, so Dassault Systèmes will NOT have knowledge about partner API\
+    \ key. \n    - Partner Admin must store securely the generated API key (same level of confidentiality\
+    \ as a password)\n\n4. Dassault Systèmes IS team will update API Gateway configuration with the new\
+    \ API key (in practice with the hash value provided) and inform Partner when it is ready to use.\n\
+    \n5. Partner can then use this newly generated APIKEY to interact with all the available APIs.\n\n\
+    For the case of revocation and request of a new API key, steps 2 to 5 have to be followed."
+  humanURL: https://www.3ds.com/support/documentation/developer-guides
+  baseURL: https://apigw-prd.3ds.com
+  tags:
+  - apikeys
+  properties:
+  - type: OpenAPI
+    url: openapi/dassault-apikeys-api-openapi.yml
+  - type: Documentation
+    url: https://www.3ds.com/support/documentation/developer-guides
+- aid: dassault:dassault-leads-opportunities-api
+  name: Dassault Systèmes leads-opportunities API
+  description: >-
+    This section defines the operations related to leads and opportunities for sales pipeline management.
+
+
+    These ressources are managed with 'MySalesPipeline' application which implements Dassault Systèmes
+    sales process called 'LEVERAGE' in accordance with the VALUE Engagement framework.
+
+    LEVERAGE is an acronym that stands for Listen, Explore, Validate, Establish, Reach AGreement & Experience.
+  humanURL: https://www.3ds.com/support/documentation/developer-guides
+  baseURL: https://apigw-prd.3ds.com
+  tags:
+  - leads-opportunities
+  properties:
+  - type: OpenAPI
+    url: openapi/dassault-leads-opportunities-api-openapi.yml
+  - type: Documentation
+    url: https://www.3ds.com/support/documentation/developer-guides
+- aid: dassault:dassault-orders-api
+  name: Dassault Systèmes orders API
+  description: >-
+    This section defines the operations related to orders, including the creation, management, and fulfillment
+    of orders.
+
+
+    It provides a comprehensive overview of the order lifecycle, from initial request to final delivery.
+
+
+    The operations in this section are designed to support the efficient and effective management of orders,
+    ensuring that customers receive their products or services in a timely and satisfactory manner.
+
+
+    The following operations are included in this section:
+
+
+    * Searching Orders
+
+    * Getting Order Details
+  humanURL: https://www.3ds.com/support/documentation/developer-guides
+  baseURL: https://apigw-prd.3ds.com
+  tags:
+  - orders
+  properties:
+  - type: OpenAPI
+    url: openapi/dassault-orders-api-openapi.yml
+  - type: Documentation
+    url: https://www.3ds.com/support/documentation/developer-guides
+- aid: dassault:dassault-portfolio-items-api
+  name: Dassault Systèmes portfolio-items API
+  description: >-
+    This section defines the operations related to sales portfolio-items.
+
+
+    The portfolio items are used in the definition of leads-opportunities in 'MySalesPipeline' application.
+  humanURL: https://www.3ds.com/support/documentation/developer-guides
+  baseURL: https://apigw-prd.3ds.com
+  tags:
+  - portfolio-items
+  properties:
+  - type: OpenAPI
+    url: openapi/dassault-portfolio-items-api-openapi.yml
+  - type: Documentation
+    url: https://www.3ds.com/support/documentation/developer-guides
+- aid: dassault:dassault-price-lists-api
+  name: Dassault Systèmes price-lists API
+  description: >-
+    This section defines all the operations related to price lists, including the search of price lists
+    for a specfic partner.
+  humanURL: https://www.3ds.com/support/documentation/developer-guides
+  baseURL: https://apigw-prd.3ds.com
+  tags:
+  - price-lists
+  properties:
+  - type: OpenAPI
+    url: openapi/dassault-price-lists-api-openapi.yml
+  - type: Documentation
+    url: https://www.3ds.com/support/documentation/developer-guides
 common:
   - type: AgenticAccess
     url: agentic-access/dassault-agentic-access.yml
