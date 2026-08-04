@@ -1,0 +1,24 @@
+{
+  "provider": "dassault",
+  "sources": [
+    "dassault-accreditations-api-openapi.yml",
+    "dassault-apikeys-api-openapi.yml",
+    "dassault-leads-opportunities-api-openapi.yml",
+    "dassault-orders-api-openapi.yml",
+    "dassault-portfolio-items-api-openapi.yml",
+    "dassault-price-lists-api-openapi.yml"
+  ],
+  "outputs": [
+    "dassault-accreditations-api-openapi.yml",
+    "dassault-apikeys-api-openapi.yml",
+    "dassault-leads-opportunities-api-openapi.yml",
+    "dassault-orders-api-openapi.yml",
+    "dassault-portfolio-items-api-openapi.yml",
+    "dassault-price-lists-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
