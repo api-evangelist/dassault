@@ -1,0 +1,811 @@
+{
+  "item": [
+    {
+      "id": "a27bc9ec-82a6-43a4-af36-ce0fe74f1455",
+      "name": "orders",
+      "description": {
+        "content": "This section defines the operations related to orders, including the creation, management, and fulfillment of orders.\n\nIt provides a comprehensive overview of the order lifecycle, from initial request to final delivery.\n\nThe operations in this section are designed to support the efficient and effective management of orders, ensuring that customers receive their products or services in a timely and satisfactory manner.\n\nThe following operations are included in this section:\n\n* Searching Orders\n* Getting Order Details\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fea91ad7-9f46-453d-bae4-f43379c28ae4",
+          "name": "Search Orders using various filters",
+          "request": {
+            "name": "Search Orders using various filters",
+            "description": {
+              "content": "Searches for orders based on various filter criteria such as creation date, booking date, last modified date, and more.\nSupports pagination through `skip` and `top` query parameters.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "order",
+                "api4partners",
+                "v0",
+                "orders",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "skip",
+                  "value": "0",
+                  "description": "The number of records to skip in the result set.  \nUse this for paginating through results. Defaults to 0 if not specified.\nFor example, `skip=20` will skip the first 20 records.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "top",
+                  "value": "10",
+                  "description": "The maximum number of records to return in the response.  \nUse this to limit the size of the result set. Defaults to 10 if not specified.\nFor example, `top=10` will return up to 10 records starting from the position defined by `skip`.\n"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "042b31c6-8243-425f-885a-6460557cc93e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    "api4partners",
+                    "v0",
+                    "orders",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "top",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"creationDateTime\": {\n    \"from\": \"2025-04-01T01:30:00Z\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"transaction\": {\n        \"id\": \"PO_A123456789\",\n        \"type\": \"PO\",\n        \"status\": \"Sent to DSx.Finance\",\n        \"description\": \"XYZ Company Order 50 products\"\n      },\n      \"creationDateTime\": \"2024-05-21T14:30:00Z\",\n      \"dsRecievedPoDate\": \"2024-05-21\",\n      \"bookingDateTime\": \"2024-05-29T18:00:00Z\",\n      \"currency\": \"USD\",\n      \"onlineConsentStatus\": \"Not Applicable\",\n      \"billToSalesRepresentative\": \"DOE, Jane\",\n      \"billToPoReference\": \"EXAMPLE-CORP-20250518\",\n      \"billToSite\": {\n        \"id\": \"100012345678901\",\n        \"name\": \"Example Corporation\",\n        \"localName\": \"示例公司\",\n        \"locationId\": 1\n      },\n      \"soldToSite\": {\n        \"id\": \"200012345678901\",\n        \"name\": \"Foobar Inc\",\n        \"localName\": \"फ़ूबार इंक\",\n        \"locationId\": 2\n      },\n      \"businessUnit\": {\n        \"id\": \"BU001\",\n        \"name\": \"Corporate Sales Unit A\",\n        \"localTimezone\": \"CET\"\n      }\n    }\n  ],\n  \"info\": {\n    \"success\": true,\n    \"statusCode\": 200,\n    \"estimatedSearchCount\": 1\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c36b1f7c-6469-4f5d-aa62-8b7440ad3f72",
+              "name": "Bad request, invalid input.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    "api4partners",
+                    "v0",
+                    "orders",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "top",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"creationDateTime\": {\n    \"from\": \"2025-04-01T01:30:00Z\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [],\n  \"info\": {\n    \"success\": false,\n    \"statusCode\": 400,\n    \"estimatedSearchCount\": 0\n  },\n  \"error\": [\n    {\n      \"type\": \"errors:3dx:invalidRequest\",\n      \"title\": \"Missing required search criteria\",\n      \"errors\": [\n        {\n          \"detail\": \"Please specify at least one search criterion. Valid options include: `creationDateTime`, `bookingDateTime`, `lastUpdateDateTime`, `installedBaseNumber`, `onlineInstanceSeatId`, `billToPoReferences`.\",\n          \"pointer\": \"#\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3f4d988c-afb1-4b63-ad8c-11afdb3f7c3e",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    "api4partners",
+                    "v0",
+                    "orders",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "top",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"creationDateTime\": {\n    \"from\": \"2025-04-01T01:30:00Z\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Missing API key in request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "de2d627e-39b9-4951-873a-917511be210f",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    "api4partners",
+                    "v0",
+                    "orders",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "top",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"creationDateTime\": {\n    \"from\": \"2025-04-01T01:30:00Z\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"API Consumer Not allowed\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e3b514a4-ff4a-44b2-b806-53f1e48f2be1",
+              "name": "Too many Requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    "api4partners",
+                    "v0",
+                    "orders",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "top",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"creationDateTime\": {\n    \"from\": \"2025-04-01T01:30:00Z\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Too many requests, please try again later\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2359f40a-016b-48d2-b4ac-edf772c1197d",
+          "name": "Get Order details",
+          "request": {
+            "name": "Get Order details",
+            "description": {
+              "content": "Retrieves all the details of an order given its Dassault Systèmes reference.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "order",
+                "api4partners",
+                "v0",
+                "orders",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) id of the order to get details from"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ceed0dfc-3b40-4c55-bf86-fc3df52146aa",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    "api4partners",
+                    "v0",
+                    "orders",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) id of the order to get details from"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"transaction\": {\n        \"id\": \"PO_A123456789\",\n        \"type\": \"PO\",\n        \"status\": \"Sent to DSx.Finance\",\n        \"description\": \"XYZ Company Order 50 products\"\n      },\n      \"businessUnit\": {\n        \"id\": \"BU001\",\n        \"name\": \"Corporate Sales Unit A\",\n        \"localTimezone\": \"CET\"\n      },\n      \"billToSite\": {\n        \"id\": \"100012345678901\",\n        \"name\": \"Example Corporation\",\n        \"localName\": \"示例公司\",\n        \"locationId\": 1\n      },\n      \"billToContact\": \"DOE, Jini\",\n      \"soldToSite\": {\n        \"id\": \"200012345678901\",\n        \"name\": \"Foobar Inc\",\n        \"localName\": \"फ़ूबार इंक\",\n        \"locationId\": 2\n      },\n      \"creationDateTime\": \"2024-05-21T14:30:00Z\",\n      \"dsReceivedPoDate\": \"2024-05-21\",\n      \"bookingDateTime\": \"2024-05-29T18:00:00Z\",\n      \"currency\": \"USD\",\n      \"onlineConsentStatus\": \"Not Applicable\",\n      \"billToSalesRepresentative\": \"DOE, Jane\",\n      \"billToPoReference\": \"EXAMPLE-CORP-20250518\",\n      \"agreement\": {\n        \"type\": \"General VAR Agreement\",\n        \"reference\": \"Enterprise License Agreement Q2 2024\"\n      },\n      \"sboNumber\": \"ABC0012345\",\n      \"customerRequestedArrivalDate\": \"2025-05-31\",\n      \"dsSalesRepresentative\": \"DOE, John\",\n      \"isMultiYear\": false,\n      \"hasExitClause\": false,\n      \"recurringChargeBillingCycle\": \"Calendar Year\",\n      \"opportunity\": \"A1B2-C3D4E5\",\n      \"paymentTerms\": \"Net Date of Invoice + 60 days\",\n      \"licenseChargeConditions\": [\n        {\n          \"sequenceNumber\": 1,\n          \"lineGroup\": \"SBL0001234567\",\n          \"onlineInstanceSeatId\": \"R1122334455667\",\n          \"orderType\": \"Stop - Transform\",\n          \"usageScope\": \"GEO EMEA\",\n          \"promotion\": {\n            \"id\": \"PAO0000111\",\n            \"name\": \"3DEXPERIENCE for small and medium business\",\n            \"combination\": \"Collaborative Design & Engineering Learning @Home\"\n          },\n          \"waiver\": {\n            \"endDate\": \"2025-09-15\"\n          },\n          \"licenseChargeBreakdown\": [\n            {\n              \"sequenceNumber\": 1,\n              \"installedBaseNumber\": \"LN00012345678\",\n              \"subOrderType\": \"New License\",\n              \"revenueType\": \"ALC\",\n              \"portfolio\": \"CATIA\",\n              \"release\": \"3DEXPERIENCE R2025x\",\n              \"product\": {\n                \"trigram\": \"ABC\",\n                \"type\": \"Named User\",\n                \"number\": \"1AB-ABC\",\n                \"name\": \"Generic Product Standard with Cloud Services\",\n                \"dsOffering\": \"Licensed Program\"\n              },\n              \"quantity\": 2,\n              \"unitListPrice\": 1000,\n              \"totalListPrice\": 2000,\n              \"billToNetAmount\": 1930,\n              \"billToAnnualAmount\": 1930,\n              \"billToDiscountPercentage\": 30.5,\n              \"billToMarginPercentage\": 10.5,\n              \"maximumCustomerNetAmount\": 1958.95,\n              \"maximumCustomerAnnualAmount\": 1958.95,\n              \"minimumCustomerDiscountPercentage\": 10.5,\n              \"startDate\": \"2025-06-01\",\n              \"endDate\": \"2026-05-31\",\n              \"duration\": 2,\n              \"calculatedStartDate\": \"2025-06-01\",\n              \"calculatedEndDate\": \"2026-05-31\",\n              \"yearNumber\": 1,\n              \"coupon\": {\n                \"name\": \"10% off on Installation Fee\",\n                \"discountPercentage\": 10\n              },\n              \"inflation\": {\n                \"date\": \"2025-07-01\",\n                \"ratio\": 1.04,\n                \"exception\": \"Capping To Price List\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ],\n  \"info\": {\n    \"success\": true,\n    \"statusCode\": 200,\n    \"estimatedSearchCount\": 1\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b6ba7ac9-4137-4ec4-83d4-1f2a9d0579ef",
+              "name": "Bad Request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    "api4partners",
+                    "v0",
+                    "orders",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) id of the order to get details from"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [],\n  \"info\": {\n    \"success\": false,\n    \"statusCode\": 400,\n    \"estimatedSearchCount\": 0\n  },\n  \"error\": [\n    {\n      \"type\": \"errors:3dx:invalidRequest\",\n      \"title\": \"Bad Request\",\n      \"errors\": [\n        {\n          \"detail\": \"A required parameter is missing.\",\n          \"pointer\": \"#/transactionId\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "60239a02-7589-4e5f-b523-f0b211c17632",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    "api4partners",
+                    "v0",
+                    "orders",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) id of the order to get details from"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Missing API key in request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f3e57a4f-434a-4638-91d2-79e2a03b4a03",
+              "name": "Unauthorized, missing or invalid API Key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    "api4partners",
+                    "v0",
+                    "orders",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) id of the order to get details from"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"API Consumer Not allowed\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bb9fa3a0-c594-463b-9731-c7f31af94915",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    "api4partners",
+                    "v0",
+                    "orders",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) id of the order to get details from"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [],\n  \"info\": {\n    \"success\": false,\n    \"statusCode\": 400,\n    \"estimatedSearchCount\": 0\n  },\n  \"error\": [\n    {\n      \"type\": \"errors:3dx:resourceNotFound\",\n      \"title\": \"Not found\",\n      \"errors\": [\n        {\n          \"detail\": \"Change your parameters to get results\",\n          \"pointer\": \"#\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3e0ac67b-e649-4fb5-a9f1-fd0875724889",
+              "name": "Too many Requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    "api4partners",
+                    "v0",
+                    "orders",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) id of the order to get details from"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Too many requests, please try again later\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://apigw-prd.3ds.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d29534b9-fb60-4d1e-b984-f991117570ee",
+    "name": "APIs for Dassault Systèmes Partners accreditations orders API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "APIs exposed by Dassault Systèmes to its partners and resellers.",
+      "type": "text/plain"
+    }
+  }
+}

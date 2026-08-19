@@ -1,0 +1,276 @@
+{
+  "item": [
+    {
+      "id": "394cfcaa-c47d-4065-bb73-104d4f34e5a0",
+      "name": "price-lists",
+      "description": {
+        "content": "This section defines all the operations related to price lists, including the search of price lists for a specfic partner.\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b3de9792-3df6-40ab-9b8c-41ca8e06d9f8",
+          "name": "Retrieve Price Lists",
+          "request": {
+            "name": "Retrieve Price Lists",
+            "description": {
+              "content": "Retrieves the price lists for the authenticated user.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "order",
+                "api4partners",
+                "v0",
+                "price-lists",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dd6a7693-6321-4b39-8f90-dcc37051693a",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    "api4partners",
+                    "v0",
+                    "price-lists",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"countryCode\": \"BLZ\",\n      \"countryName\": \"Belize\",\n      \"priceLists\": [\n        {\n          \"id\": 9,\n          \"name\": \"LATAM South Price List\",\n          \"currency\": \"USD\",\n          \"hasFuturePriceList\": false,\n          \"effectiveDate\": \"null\"\n        }\n      ]\n    },\n    {\n      \"countryCode\": \"CAN\",\n      \"countryName\": \"Canada\",\n      \"priceLists\": [\n        {\n          \"id\": 3,\n          \"name\": \"Canada Price List\",\n          \"currency\": \"CAD\",\n          \"hasFuturePriceList\": false,\n          \"effectiveDate\": \"2025-09-12\"\n        }\n      ]\n    },\n    {\n      \"countryCode\": \"HND\",\n      \"countryName\": \"Honduras\",\n      \"priceLists\": [\n        {\n          \"id\": 9,\n          \"name\": \"LATAM South Price List\",\n          \"currency\": \"USD\",\n          \"hasFuturePriceList\": false,\n          \"effectiveDate\": \"null\"\n        }\n      ]\n    }\n  ],\n  \"info\": {\n    \"success\": true,\n    \"statusCode\": 200,\n    \"estimatedSearchCount\": 3\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e32bb45a-c382-4407-9b12-0b0dbfd10c18",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    "api4partners",
+                    "v0",
+                    "price-lists",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Missing API key in request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b5bc52c7-c62a-478b-8b99-0bd80a25455b",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    "api4partners",
+                    "v0",
+                    "price-lists",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"API Consumer Not allowed\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d2c824a6-880e-401e-a8ef-9b538cdba13e",
+              "name": "Too many Requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    "api4partners",
+                    "v0",
+                    "price-lists",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Too many requests, please try again later\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://apigw-prd.3ds.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "11eb878e-22c0-4f89-92f7-7a5e1a5c1f52",
+    "name": "APIs for Dassault Systèmes Partners accreditations price-lists API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "APIs exposed by Dassault Systèmes to its partners and resellers.",
+      "type": "text/plain"
+    }
+  }
+}

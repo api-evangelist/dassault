@@ -1,0 +1,1738 @@
+{
+  "item": [
+    {
+      "id": "3f84fae9-398a-4732-941d-fc3ff3713ae9",
+      "name": "leads-opportunities",
+      "description": {
+        "content": "This section defines the operations related to leads and opportunities for sales pipeline management.\n\nThese ressources are managed with 'MySalesPipeline' application which implements Dassault Systèmes sales process called 'LEVERAGE' in accordance with the VALUE Engagement framework.\nLEVERAGE is an acronym that stands for Listen, Explore, Validate, Establish, Reach AGreement & Experience.\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "94c11d0c-34bf-48f7-96bd-c12cfdd526cc",
+          "name": "Create a lead-opportunity object",
+          "request": {
+            "name": "Create a lead-opportunity object",
+            "description": {
+              "content": "Creates a lead-opportunity object from its attributes along with possible linked objects (contact, sales Rep)\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales",
+                "api4partners",
+                "v0",
+                "leads-opportunities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"leadOpportunity\": \"<object>\",\n  \"offerLines\": [\n    {\n      \"offerNameId\": \"<string>\",\n      \"amount\": \"<number>\",\n      \"revenueType\": \"<string>\"\n    }\n  ],\n  \"customerLegalEntity\": {\n    \"name\": \"<string,null>\",\n    \"city\": \"<string,null>\",\n    \"country\": \"<null,string>\",\n    \"id\": \"<string,null>\",\n    \"dunsNumber\": \"<string,null>\",\n    \"vatNumber\": \"<string,null>\",\n    \"registrationId\": \"<string,null>\",\n    \"addressLine1\": \"<string,null>\",\n    \"statePrefecture\": \"<string,null>\",\n    \"addressLine2\": \"<string,null>\",\n    \"zipCode\": \"<string,null>\",\n    \"websiteUrl\": \"<string,null>\"\n  },\n  \"partnerId\": \"<string>\",\n  \"customerContacts\": [\n    {\n      \"email\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"phoneNumber\": \"<string>\",\n      \"salutation\": \"<string>\",\n      \"jobTitle\": \"<string>\"\n    },\n    {\n      \"email\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"phoneNumber\": \"<string>\",\n      \"salutation\": \"<string>\",\n      \"jobTitle\": \"<string>\"\n    }\n  ],\n  \"partnerContacts\": [\n    {\n      \"salesRepEmail\": \"<string>\",\n      \"salesRepFirstName\": \"<string>\",\n      \"salesRepLastName\": \"<string>\"\n    },\n    {\n      \"salesRepEmail\": \"<string>\",\n      \"salesRepFirstName\": \"<string>\",\n      \"salesRepLastName\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "607df25a-4c68-4c1c-8131-dba420748807",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales",
+                    "api4partners",
+                    "v0",
+                    "leads-opportunities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"partnerId\": \"200000000014442\",\n  \"leadOpportunity\": {\n    \"partnerLeadOpportunityId\": \"PARTNER-CRM-LEAD-1A8R\",\n    \"name\": \"Projekt Big-Picture Topic + MBSE (STEP 1+2)\",\n    \"status\": \"LEAD_OPEN\",\n    \"closeDate\": \"2025-06-01T18:46:51.326Z\",\n    \"description\": \"Projekt Dashboard - Big-Picture TopicPilotprojekt\",\n    \"currency\": \"EUR\"\n  },\n  \"offerLines\": [\n    {\n      \"amount\": 13800,\n      \"offerNameId\": \"3DEXPERIENCE_Design/Engineering_On_Premise\",\n      \"revenueType\": \"UPFRONT\"\n    }\n  ],\n  \"customerLegalEntity\": {\n    \"name\": \"NEW CUSTOMER CORPORATION\",\n    \"city\": \"Stockdorf\",\n    \"country\": \"Germany\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"dsLeadOpportunityId\": \"9YEL-Y3W56Q\",\n  \"partnerLeadOpportunityId\": \"PARTNER-CRM-LEAD-1A8R\",\n  \"action\": \"create\",\n  \"info\": {\n    \"success\": true,\n    \"statusCode\": 200,\n    \"timestamp\": null,\n    \"traceId\": null\n  },\n  \"error\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "201c3ccf-1888-406f-badb-a1db024aeb61",
+              "name": "Bad request, invalid input.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales",
+                    "api4partners",
+                    "v0",
+                    "leads-opportunities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"partnerId\": \"200000000014442\",\n  \"leadOpportunity\": {\n    \"partnerLeadOpportunityId\": \"PARTNER-CRM-LEAD-1A8R\",\n    \"name\": \"Projekt Big-Picture Topic + MBSE (STEP 1+2)\",\n    \"status\": \"LEAD_OPEN\",\n    \"closeDate\": \"2025-06-01T18:46:51.326Z\",\n    \"description\": \"Projekt Dashboard - Big-Picture TopicPilotprojekt\",\n    \"currency\": \"EUR\"\n  },\n  \"offerLines\": [\n    {\n      \"amount\": 13800,\n      \"offerNameId\": \"3DEXPERIENCE_Design/Engineering_On_Premise\",\n      \"revenueType\": \"UPFRONT\"\n    }\n  ],\n  \"customerLegalEntity\": {\n    \"name\": \"NEW CUSTOMER CORPORATION\",\n    \"city\": \"Stockdorf\",\n    \"country\": \"Germany\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"leadOportunityId\": \"string\",\n    \"leadOpportunity\": {\n      \"partnerExternalId\": \"string\",\n      \"name\": \"string\",\n      \"dsOwnerEmail\": \"string\",\n      \"status\": \"string\",\n      \"forecastCategory\": \"string\",\n      \"closeDate\": \"date\",\n      \"cometCampaignCode\": \"string\",\n      \"reasonWon\": [\n        \"string\"\n      ],\n      \"reasonLost\": [\n        \"string\"\n      ],\n      \"competitors\": [\n        \"string\"\n      ],\n      \"reasonWonLostComment\": \"string\",\n      \"gtmTacticId\": \"string\",\n      \"description\": \"string\",\n      \"nextMilestone\": \"string\",\n      \"nextMilestoneDate\": \"date\",\n      \"currency\": \"string\"\n    },\n    \"offerLines\": [\n      {\n        \"amount\": \"double\",\n        \"offerNameId\": \"string\",\n        \"revenueType\": \"string\"\n      }\n    ],\n    \"customerLegalEntity\": {\n      \"id\": \"string\",\n      \"dunsNumber\": \"string\",\n      \"vatNumber\": \"string\",\n      \"registrationId\": \"string\",\n      \"name\": \"string\",\n      \"city\": \"string\",\n      \"country\": \"string\",\n      \"addressLine1\": \"string\",\n      \"statePrefecture\": \"string\",\n      \"addressLine2\": \"string\",\n      \"zipCode\": \"string\",\n      \"websiteUrl\": \"string\"\n    }\n  },\n  \"info\": {\n    \"success\": false,\n    \"statusCode\": 400\n  },\n  \"error\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "11c762b6-11a1-48e8-8d3c-43dbc315c9a0",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales",
+                    "api4partners",
+                    "v0",
+                    "leads-opportunities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"partnerId\": \"200000000014442\",\n  \"leadOpportunity\": {\n    \"partnerLeadOpportunityId\": \"PARTNER-CRM-LEAD-1A8R\",\n    \"name\": \"Projekt Big-Picture Topic + MBSE (STEP 1+2)\",\n    \"status\": \"LEAD_OPEN\",\n    \"closeDate\": \"2025-06-01T18:46:51.326Z\",\n    \"description\": \"Projekt Dashboard - Big-Picture TopicPilotprojekt\",\n    \"currency\": \"EUR\"\n  },\n  \"offerLines\": [\n    {\n      \"amount\": 13800,\n      \"offerNameId\": \"3DEXPERIENCE_Design/Engineering_On_Premise\",\n      \"revenueType\": \"UPFRONT\"\n    }\n  ],\n  \"customerLegalEntity\": {\n    \"name\": \"NEW CUSTOMER CORPORATION\",\n    \"city\": \"Stockdorf\",\n    \"country\": \"Germany\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Missing API key in request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "338543f9-cc29-46d3-8703-c91d522d0f6e",
+              "name": "Access Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales",
+                    "api4partners",
+                    "v0",
+                    "leads-opportunities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"partnerId\": \"200000000014442\",\n  \"leadOpportunity\": {\n    \"partnerLeadOpportunityId\": \"PARTNER-CRM-LEAD-1A8R\",\n    \"name\": \"Projekt Big-Picture Topic + MBSE (STEP 1+2)\",\n    \"status\": \"LEAD_OPEN\",\n    \"closeDate\": \"2025-06-01T18:46:51.326Z\",\n    \"description\": \"Projekt Dashboard - Big-Picture TopicPilotprojekt\",\n    \"currency\": \"EUR\"\n  },\n  \"offerLines\": [\n    {\n      \"amount\": 13800,\n      \"offerNameId\": \"3DEXPERIENCE_Design/Engineering_On_Premise\",\n      \"revenueType\": \"UPFRONT\"\n    }\n  ],\n  \"customerLegalEntity\": {\n    \"name\": \"NEW CUSTOMER CORPORATION\",\n    \"city\": \"Stockdorf\",\n    \"country\": \"Germany\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"API Consumer Not allowed\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fe188fca-ec55-4e29-946a-3e3fcba1c081",
+              "name": "Not acceptable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales",
+                    "api4partners",
+                    "v0",
+                    "leads-opportunities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"partnerId\": \"200000000014442\",\n  \"leadOpportunity\": {\n    \"partnerLeadOpportunityId\": \"PARTNER-CRM-LEAD-1A8R\",\n    \"name\": \"Projekt Big-Picture Topic + MBSE (STEP 1+2)\",\n    \"status\": \"LEAD_OPEN\",\n    \"closeDate\": \"2025-06-01T18:46:51.326Z\",\n    \"description\": \"Projekt Dashboard - Big-Picture TopicPilotprojekt\",\n    \"currency\": \"EUR\"\n  },\n  \"offerLines\": [\n    {\n      \"amount\": 13800,\n      \"offerNameId\": \"3DEXPERIENCE_Design/Engineering_On_Premise\",\n      \"revenueType\": \"UPFRONT\"\n    }\n  ],\n  \"customerLegalEntity\": {\n    \"name\": \"NEW CUSTOMER CORPORATION\",\n    \"city\": \"Stockdorf\",\n    \"country\": \"Germany\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Acceptable",
+              "code": 406,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"info\": {\n    \"success\": false,\n    \"statusCode\": 406,\n    \"timeStamp\": \"2025-08-07T07:22:41.357Z\",\n    \"traceId\": \"7a722f2871304f7fa0bd1457388dff5d\"\n  },\n  \"error\": {\n    \"code\": \"ERR805\",\n    \"message\": \"Incorrect Close Date/next milestone date Format. Provide date in ISO8601 format.\"\n  },\n  \"data\": {\n    \"partnerLeadOpportunityId\": null,\n    \"dsLeadOpportunityId\": null,\n    \"action\": null\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1281aacd-4616-4666-a702-8d24ce105066",
+              "name": "Too many Requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales",
+                    "api4partners",
+                    "v0",
+                    "leads-opportunities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"partnerId\": \"200000000014442\",\n  \"leadOpportunity\": {\n    \"partnerLeadOpportunityId\": \"PARTNER-CRM-LEAD-1A8R\",\n    \"name\": \"Projekt Big-Picture Topic + MBSE (STEP 1+2)\",\n    \"status\": \"LEAD_OPEN\",\n    \"closeDate\": \"2025-06-01T18:46:51.326Z\",\n    \"description\": \"Projekt Dashboard - Big-Picture TopicPilotprojekt\",\n    \"currency\": \"EUR\"\n  },\n  \"offerLines\": [\n    {\n      \"amount\": 13800,\n      \"offerNameId\": \"3DEXPERIENCE_Design/Engineering_On_Premise\",\n      \"revenueType\": \"UPFRONT\"\n    }\n  ],\n  \"customerLegalEntity\": {\n    \"name\": \"NEW CUSTOMER CORPORATION\",\n    \"city\": \"Stockdorf\",\n    \"country\": \"Germany\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Too many requests, please try again later\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1c61d143-d03a-4e2c-bba5-b844612b3107",
+              "name": "Service Unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales",
+                    "api4partners",
+                    "v0",
+                    "leads-opportunities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"partnerId\": \"200000000014442\",\n  \"leadOpportunity\": {\n    \"partnerLeadOpportunityId\": \"PARTNER-CRM-LEAD-1A8R\",\n    \"name\": \"Projekt Big-Picture Topic + MBSE (STEP 1+2)\",\n    \"status\": \"LEAD_OPEN\",\n    \"closeDate\": \"2025-06-01T18:46:51.326Z\",\n    \"description\": \"Projekt Dashboard - Big-Picture TopicPilotprojekt\",\n    \"currency\": \"EUR\"\n  },\n  \"offerLines\": [\n    {\n      \"amount\": 13800,\n      \"offerNameId\": \"3DEXPERIENCE_Design/Engineering_On_Premise\",\n      \"revenueType\": \"UPFRONT\"\n    }\n  ],\n  \"customerLegalEntity\": {\n    \"name\": \"NEW CUSTOMER CORPORATION\",\n    \"city\": \"Stockdorf\",\n    \"country\": \"Germany\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"info\": {\n    \"success\": false,\n    \"statusCode\": 503,\n    \"timestamp\": \"2025-06-30T12:36:46.556Z\",\n    \"traceId\": \"3d29ece30a064ea68c3f5f4a9f785c6f\"\n  },\n  \"error\": {\n    \"code\": \"ERR899\",\n    \"message\": \"Service currently unavailable, please try again later.\"\n  },\n  \"data\": {\n    \"partnerLeadOpportunityId\": null,\n    \"dsLeadOpportunityId\": null,\n    \"action\": null\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f8d8f852-654e-469a-94ea-96550cf4cb59",
+          "name": "Update a lead-opportunity object",
+          "request": {
+            "name": "Update a lead-opportunity object",
+            "description": {
+              "content": "Update a lead-opportunity (partial updates on some attributes is recommended)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales",
+                "api4partners",
+                "v0",
+                "leads-opportunities",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) 3DS id of the lead-opportunity object to update"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"leadOpportunity\": \"<object>\",\n  \"partnerId\": \"<string>\",\n  \"offerLines\": [\n    {\n      \"offerNameId\": \"<string>\",\n      \"amount\": \"<number>\",\n      \"revenueType\": \"<string>\"\n    },\n    {\n      \"offerNameId\": \"<string>\",\n      \"amount\": \"<number>\",\n      \"revenueType\": \"<string>\"\n    }\n  ],\n  \"customerLegalEntity\": {\n    \"name\": \"<string,null>\",\n    \"city\": \"<string,null>\",\n    \"country\": \"<null,string>\",\n    \"id\": \"<string,null>\",\n    \"dunsNumber\": \"<string,null>\",\n    \"vatNumber\": \"<string,null>\",\n    \"registrationId\": \"<string,null>\",\n    \"addressLine1\": \"<string,null>\",\n    \"statePrefecture\": \"<string,null>\",\n    \"addressLine2\": \"<string,null>\",\n    \"zipCode\": \"<string,null>\",\n    \"websiteUrl\": \"<string,null>\"\n  },\n  \"customerContacts\": [\n    {\n      \"email\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"phoneNumber\": \"<string>\",\n      \"salutation\": \"<string>\",\n      \"jobTitle\": \"<string>\"\n    },\n    {\n      \"email\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"phoneNumber\": \"<string>\",\n      \"salutation\": \"<string>\",\n      \"jobTitle\": \"<string>\"\n    }\n  ],\n  \"partnerContacts\": [\n    {\n      \"salesRepEmail\": \"<string>\",\n      \"salesRepFirstName\": \"<string>\",\n      \"salesRepLastName\": \"<string>\"\n    },\n    {\n      \"salesRepEmail\": \"<string>\",\n      \"salesRepFirstName\": \"<string>\",\n      \"salesRepLastName\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "68c8f4e7-b622-4e31-aca0-0cd87ac6a740",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales",
+                    "api4partners",
+                    "v0",
+                    "leads-opportunities",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) 3DS id of the lead-opportunity object to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"leadOpportunity\": {\n    \"partnerLeadOpportunityId\": \"CRM-LEAD-1234\",\n    \"status\": \"QUALIFIED\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"info\": {\n    \"success\": true,\n    \"statusCode\": 200,\n    \"timeStamp\": null,\n    \"traceId\": null\n  },\n  \"error\": null,\n  \"data\": {\n    \"partnerLeadOpportunityId\": \"OPPY-12345\",\n    \"dsLeadOpportunityId\": \"XJSR-DZMFFT\",\n    \"action\": \"update\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8a2a4645-dc10-4adb-9315-581b82526593",
+              "name": "Bad request, invalid input.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales",
+                    "api4partners",
+                    "v0",
+                    "leads-opportunities",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) 3DS id of the lead-opportunity object to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"leadOpportunity\": {\n    \"partnerLeadOpportunityId\": \"CRM-LEAD-1234\",\n    \"status\": \"QUALIFIED\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"leadOportunityId\": \"string\",\n    \"leadOpportunity\": {\n      \"partnerExternalId\": \"string\",\n      \"name\": \"string\",\n      \"dsOwnerEmail\": \"string\",\n      \"status\": \"string\",\n      \"forecastCategory\": \"string\",\n      \"closeDate\": \"date\",\n      \"cometCampaignCode\": \"string\",\n      \"reasonWon\": [\n        \"string\"\n      ],\n      \"reasonLost\": [\n        \"string\"\n      ],\n      \"competitors\": [\n        \"string\"\n      ],\n      \"reasonWonLostComment\": \"string\",\n      \"gtmTacticId\": \"string\",\n      \"description\": \"string\",\n      \"nextMilestone\": \"string\",\n      \"nextMilestoneDate\": \"date\",\n      \"currency\": \"string\"\n    },\n    \"offerLines\": [\n      {\n        \"amount\": \"double\",\n        \"offerNameId\": \"string\",\n        \"revenueType\": \"string\"\n      }\n    ],\n    \"customerLegalEntity\": {\n      \"id\": \"string\",\n      \"dunsNumber\": \"string\",\n      \"vatNumber\": \"string\",\n      \"registrationId\": \"string\",\n      \"name\": \"string\",\n      \"city\": \"string\",\n      \"country\": \"string\",\n      \"addressLine1\": \"string\",\n      \"statePrefecture\": \"string\",\n      \"addressLine2\": \"string\",\n      \"zipCode\": \"string\",\n      \"websiteUrl\": \"string\"\n    },\n    \"customerContact\": [\n      {\n        \"phoneNumber\": \"(555) 555-1234\",\n        \"salutation\": \"Mr\",\n        \"jobTitle\": \"R&D Director\",\n        \"email\": \"robert.johnson@customer.com\",\n        \"firstName\": \"robert\",\n        \"lastName\": \"Johnson\"\n      }\n    ],\n    \"partnerContact\": [\n      {\n        \"salesRepEmail\": \"john.doe@partner.com\",\n        \"salesRepFirstName\": \"john\",\n        \"salesRepLastName\": \"Doe\"\n      }\n    ]\n  },\n  \"info\": {\n    \"success\": false,\n    \"statusCode\": 400\n  },\n  \"errors\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f6d690f7-5f0a-4298-9566-657de9755692",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales",
+                    "api4partners",
+                    "v0",
+                    "leads-opportunities",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) 3DS id of the lead-opportunity object to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"leadOpportunity\": {\n    \"partnerLeadOpportunityId\": \"CRM-LEAD-1234\",\n    \"status\": \"QUALIFIED\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Missing API key in request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2f491267-a689-4208-aa85-10a1df88d87c",
+              "name": "Access Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales",
+                    "api4partners",
+                    "v0",
+                    "leads-opportunities",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) 3DS id of the lead-opportunity object to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"leadOpportunity\": {\n    \"partnerLeadOpportunityId\": \"CRM-LEAD-1234\",\n    \"status\": \"QUALIFIED\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"API Consumer Not allowed\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1c1fdf98-171a-44a4-bd57-a59186cf5570",
+              "name": "Not acceptable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales",
+                    "api4partners",
+                    "v0",
+                    "leads-opportunities",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) 3DS id of the lead-opportunity object to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"leadOpportunity\": {\n    \"partnerLeadOpportunityId\": \"CRM-LEAD-1234\",\n    \"status\": \"QUALIFIED\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Acceptable",
+              "code": 406,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"info\": {\n    \"success\": false,\n    \"statusCode\": 406,\n    \"timeStamp\": \"2025-08-07T07:22:41.357Z\",\n    \"traceId\": \"7a722f2871304f7fa0bd1457388dff5d\"\n  },\n  \"error\": {\n    \"code\": \"ERR805\",\n    \"message\": \"Incorrect Close Date/next milestone date Format. Provide date in ISO8601 format.\"\n  },\n  \"data\": {\n    \"partnerLeadOpportunityId\": null,\n    \"dsLeadOpportunityId\": null,\n    \"action\": null\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a5df8222-3317-416d-889a-1a95029b71cb",
+              "name": "Too many Requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales",
+                    "api4partners",
+                    "v0",
+                    "leads-opportunities",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) 3DS id of the lead-opportunity object to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"leadOpportunity\": {\n    \"partnerLeadOpportunityId\": \"CRM-LEAD-1234\",\n    \"status\": \"QUALIFIED\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Too many requests, please try again later\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "43a805b7-ac62-4ee7-965b-f8cf14a74ded",
+              "name": "Service Unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales",
+                    "api4partners",
+                    "v0",
+                    "leads-opportunities",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) 3DS id of the lead-opportunity object to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"leadOpportunity\": {\n    \"partnerLeadOpportunityId\": \"CRM-LEAD-1234\",\n    \"status\": \"QUALIFIED\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"info\": {\n    \"success\": false,\n    \"statusCode\": 503,\n    \"timestamp\": \"2025-06-30T12:36:46.556Z\",\n    \"traceId\": \"3d29ece30a064ea68c3f5f4a9f785c6f\"\n  },\n  \"error\": {\n    \"code\": \"ERR899\",\n    \"message\": \"Service currently unavailable, please try again later.\"\n  },\n  \"data\": {\n    \"partnerLeadOpportunityId\": null,\n    \"dsLeadOpportunityId\": null,\n    \"action\": null\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d2907a84-d7fb-4ede-aab3-3c38f2241895",
+          "name": "Get details of a lead-opportunity object",
+          "request": {
+            "name": "Get details of a lead-opportunity object",
+            "description": {
+              "content": "gets details of a lead-opportunity object from its 3DS identifier.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales",
+                "api4partners",
+                "v0",
+                "leads-opportunities",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) 3DS id of the lead-opportunity object for which details are requested"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "86a53113-6f76-4d19-b848-0ec2c57ff7b6",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales",
+                    "api4partners",
+                    "v0",
+                    "leads-opportunities",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) 3DS id of the lead-opportunity object for which details are requested"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": null,\n  \"info\": {\n    \"success\": true,\n    \"statusCode\": 200,\n    \"timeStamp\": null,\n    \"traceId\": null\n  },\n  \"data\": {\n    \"leadOpportunity\": {\n      \"partnerLeadOpportunityId\": \"API4PARTNERS-0813C\",\n      \"dsLeadOpportunityId\": \"HCRQ-F1LLDE\",\n      \"name\": \"TEST-0813C\",\n      \"dsOwnerEmail\": \"john.doe@3ds.com\",\n      \"status\": \"WON\",\n      \"forecastCategory\": \"WON\",\n      \"closeDate\": \"2024-12-31T00:00:00.000Z\",\n      \"cometCampaignCode\": \"OC2DE17TAQ1C13018\",\n      \"competitors\": null,\n      \"reasonWon\": [\n        \"STRNG_VAL_PROP\"\n      ],\n      \"reasonLost\": [\n        \"EMPTY\"\n      ],\n      \"reasonWonLostComment\": \"\",\n      \"gtmTacticId\": null,\n      \"description\": \"\",\n      \"nextMilestone\": \"\",\n      \"nextMilestoneDate\": \"\",\n      \"currency\": \"EUR\",\n      \"approvalStatus\": \"PRE_APPROVED\",\n      \"engagementType\": \"EXTEND\",\n      \"poInformation\": \"\",\n      \"poStatus\": null,\n      \"poNumber\": null,\n      \"sboIndicator\": \"EMPTY\",\n      \"sboStatus\": null,\n      \"sboNumber\": null,\n      \"growthType\": \"EMPTY\",\n      \"leadPriority\": \"EMPTY\",\n      \"levelOfInterest\": \"EMPTY\",\n      \"dsComment\": \"\",\n      \"partnerImportMode\": \"EMPTY\",\n      \"createdDate\": \"2025-08-13T12:35:03.775Z\",\n      \"modifiedDate\": \"2025-08-13T15:44:44.453Z\",\n      \"offerLines\": [\n        {\n          \"amount\": 10000,\n          \"offerNameId\": \"MDMIND00022_PUBL_ISE00002687_IPE00021337\",\n          \"revenueType\": \"UPFRONT\"\n        },\n        {\n          \"amount\": 11,\n          \"offerNameId\": \"MDMIND00022_PUBL_ISE00002687_IPE00021337\",\n          \"revenueType\": \"RENTAL_BOOKING\"\n        }\n      ],\n      \"customerContact\": [\n        {\n          \"phoneNumber\": \"9658252499\",\n          \"salutation\": \"MR\",\n          \"jobTitle\": \"\",\n          \"email\": \"dummy123_mail@mail.com\",\n          \"firstName\": \"F Name1\",\n          \"lastName\": \"L_Name2\"\n        }\n      ],\n      \"partnerContact\": null,\n      \"customerLegalEntity\": {\n        \"id\": \"200000000781989\",\n        \"dunsNumber\": null,\n        \"vatNumber\": null,\n        \"registrationId\": null,\n        \"name\": null,\n        \"city\": null,\n        \"country\": null,\n        \"addressLine1\": null,\n        \"statePrefecture\": null,\n        \"addressLine2\": null,\n        \"zipCode\": null,\n        \"websiteUrl\": null\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "18dab1be-856e-4391-99d9-e5638f1201d2",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales",
+                    "api4partners",
+                    "v0",
+                    "leads-opportunities",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) 3DS id of the lead-opportunity object for which details are requested"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Missing API key in request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "01349555-4437-4cba-baee-704ff68c44f1",
+              "name": "Access Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales",
+                    "api4partners",
+                    "v0",
+                    "leads-opportunities",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) 3DS id of the lead-opportunity object for which details are requested"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"API Consumer Not allowed\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "168eccfd-5cc6-45e3-8415-345198758074",
+              "name": "Too many Requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales",
+                    "api4partners",
+                    "v0",
+                    "leads-opportunities",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) 3DS id of the lead-opportunity object for which details are requested"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Too many requests, please try again later\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "496333f6-8b29-4de1-adc1-6bea67bc5092",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales",
+                    "api4partners",
+                    "v0",
+                    "leads-opportunities",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) 3DS id of the lead-opportunity object for which details are requested"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"ERROR_048\",\n    \"message\": \"Leverage Id not in scope of requestor\"\n  },\n  \"info\": {\n    \"success\": false,\n    \"statusCode\": 500,\n    \"timeStamp\": \"2025-08-12T15:40:35.774Z\",\n    \"traceId\": \"12bcca3a019645829d5330c5df912537\"\n  },\n  \"data\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "70ab6573-2141-42d7-9080-f9b998295c40",
+              "name": "Service Unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales",
+                    "api4partners",
+                    "v0",
+                    "leads-opportunities",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) 3DS id of the lead-opportunity object for which details are requested"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"info\": {\n    \"success\": false,\n    \"statusCode\": 503,\n    \"timestamp\": \"2025-06-30T12:36:46.556Z\",\n    \"traceId\": \"3d29ece30a064ea68c3f5f4a9f785c6f\"\n  },\n  \"error\": {\n    \"code\": \"ERR899\",\n    \"message\": \"Service currently unavailable, please try again later.\"\n  },\n  \"data\": {\n    \"partnerLeadOpportunityId\": null,\n    \"dsLeadOpportunityId\": null,\n    \"action\": null\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4e3db6b8-f5ee-4a68-992c-91ead61f8092",
+          "name": "Search for leads-opportunities",
+          "request": {
+            "name": "Search for leads-opportunities",
+            "description": {
+              "content": "Searches for leads-opportunities using various search criteria (e.g. modifiedDate)\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales",
+                "api4partners",
+                "v0",
+                "leads-opportunities",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": []\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a8ef459c-f9b6-4832-aad6-d2d05a6ca79c",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales",
+                    "api4partners",
+                    "v0",
+                    "leads-opportunities",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"modifiedDate\": {\n        \"fromDate\": \"2025-08-04T08:00:00Z\",\n        \"toDate\": \"2025-08-08T18:00:00Z\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"info\": {\n    \"success\": true,\n    \"statusCode\": 200,\n    \"timeStamp\": \"2025-08-08T16:36:23Z\",\n    \"traceId\": \"785594df0cbd4f149d0ffbd7e0933820\"\n  },\n  \"error\": null,\n  \"data\": [\n    {\n      \"dsLeadOpportunityId\": [\n        \"1FFC-7BQC5E\",\n        \"BYTK-COL4A0\",\n        \"5KSL-VLSWRX\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "19bb4920-c4bb-4ec1-8930-8b825e6fa8d9",
+              "name": "Bad request, invalid input.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales",
+                    "api4partners",
+                    "v0",
+                    "leads-opportunities",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"modifiedDate\": {\n        \"fromDate\": \"2025-08-04T08:00:00Z\",\n        \"toDate\": \"2025-08-08T18:00:00Z\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"info\": {\n    \"success\": false,\n    \"statusCode\": 400,\n    \"timeStamp\": \"2025-08-08T15:14:19Z\",\n    \"traceId\": \"afafb61eb2704ecb9b626d8b3b6c593f\"\n  },\n  \"error\": {\n    \"code\": \"ERROR_043\",\n    \"message\": \"Both startDateTime and endDateTime must be passed as parameters\"\n  },\n  \"data\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "59644636-bf51-4019-8c55-5f727abbd2fc",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales",
+                    "api4partners",
+                    "v0",
+                    "leads-opportunities",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"modifiedDate\": {\n        \"fromDate\": \"2025-08-04T08:00:00Z\",\n        \"toDate\": \"2025-08-08T18:00:00Z\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Missing API key in request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1ef2be89-88fe-4993-96cf-7145bc4e859f",
+              "name": "Access Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales",
+                    "api4partners",
+                    "v0",
+                    "leads-opportunities",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"modifiedDate\": {\n        \"fromDate\": \"2025-08-04T08:00:00Z\",\n        \"toDate\": \"2025-08-08T18:00:00Z\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"API Consumer Not allowed\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4263dcfa-88ad-4e1e-a2a7-3c4ab6496120",
+              "name": "Too many Requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales",
+                    "api4partners",
+                    "v0",
+                    "leads-opportunities",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"modifiedDate\": {\n        \"fromDate\": \"2025-08-04T08:00:00Z\",\n        \"toDate\": \"2025-08-08T18:00:00Z\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Too many requests, please try again later\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ccddf578-f7ff-415f-a4e9-4e8cabd70a36",
+              "name": "Service Unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales",
+                    "api4partners",
+                    "v0",
+                    "leads-opportunities",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"modifiedDate\": {\n        \"fromDate\": \"2025-08-04T08:00:00Z\",\n        \"toDate\": \"2025-08-08T18:00:00Z\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"info\": {\n    \"success\": false,\n    \"statusCode\": 503,\n    \"timestamp\": \"2025-06-30T12:36:46.556Z\",\n    \"traceId\": \"3d29ece30a064ea68c3f5f4a9f785c6f\"\n  },\n  \"error\": {\n    \"code\": \"ERR899\",\n    \"message\": \"Service currently unavailable, please try again later.\"\n  },\n  \"data\": {\n    \"partnerLeadOpportunityId\": null,\n    \"dsLeadOpportunityId\": null,\n    \"action\": null\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://apigw-prd.3ds.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "05c37e2b-eb87-4f98-b741-45086b51f182",
+    "name": "APIs for Dassault Systèmes Partners accreditations leads-opportunities API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "APIs exposed by Dassault Systèmes to its partners and resellers.",
+      "type": "text/plain"
+    }
+  }
+}

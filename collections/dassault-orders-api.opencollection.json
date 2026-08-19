@@ -1,0 +1,74 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "APIs for Dassault Systèmes Partners accreditations orders API",
+    "version": "0.10.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-Key",
+      "value": "{{X-API-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Orders using various filters",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://apigw-prd.3ds.com/order/api4partners/v0/orders/search",
+            "params": [
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "The number of records to skip in the result set.  \nUse this for paginating through results. Defaults to 0 if not specified.\nFor example, `skip=20` will skip the first 20 records.\n"
+              },
+              {
+                "name": "top",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of records to return in the response.  \nUse this to limit the size of the result set. Defaults to 10 if not specified.\nFor example, `top=10` will return up to 10 records starting from the position defined by `skip`.\n"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Searches for orders based on various filter criteria such as creation date, booking date, last modified date, and more.\nSupports pagination through `skip` and `top` query parameters.\n"
+        },
+        {
+          "info": {
+            "name": "Get Order details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apigw-prd.3ds.com/order/api4partners/v0/orders/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "id of the order to get details from"
+              }
+            ]
+          },
+          "docs": "Retrieves all the details of an order given its Dassault Systèmes reference."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

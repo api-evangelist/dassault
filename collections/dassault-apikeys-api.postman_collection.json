@@ -1,0 +1,271 @@
+{
+  "item": [
+    {
+      "id": "1dca7ea7-359b-4902-ac5f-6793327bfbd0",
+      "name": "apikeys",
+      "description": {
+        "content": "This section defines the operations related to API keys . \n\nCurrent API key management still requires some interaction with Dassault Systèmes Information System (IS) team.\nThis process will likely be updated in the future to provide more autonomy and reactivity on partner side. \n\nBelow is the description of the process when a partner is onboarded on APIForPartners program : \n\n1. Dassault Systèmes IS team will initialize an API key and communicate it to partner Admin through a secured channel :\n\n    - **Recommendation is to use a 1-1 discussion between Partner Admin and Dassault Systèmes IS person in charge within the dedicated 3DSwym Community**\n    - **Do NOT use email or any unsecured communication channel or with wider audience**\n\n2. Partner Admin will then use this initial APIKEY value to authenticate and generate a new API key using the API  \n\n3. Partner admin will communicate back (within same secured channel) to Dassault Systèmes IS person in charge the **hashed_key** attributed from the API (NOT the API key itself)\n\n    - The Hash operation is NOT reversible, so Dassault Systèmes will NOT have knowledge about partner API key. \n    - Partner Admin must store securely the generated API key (same level of confidentiality as a password)\n\n4. Dassault Systèmes IS team will update API Gateway configuration with the new API key (in practice with the hash value provided) and inform Partner when it is ready to use.\n\n5. Partner can then use this newly generated APIKEY to interact with all the available APIs.\n\nFor the case of revocation and request of a new API key, steps 2 to 5 have to be followed.\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f1d02706-e7b7-4575-b942-df7f74efcbcd",
+          "name": "Generate a new API key",
+          "request": {
+            "name": "Generate a new API key",
+            "description": {
+              "content": "Generate a new API key and its hash.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "order",
+                "api4partners",
+                "v0",
+                "apikeys"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9c08577b-a9e6-4031-afd4-b05b55a4cb51",
+              "name": "Successfully generated API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    "api4partners",
+                    "v0",
+                    "apikeys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"hashed_key\": \"$2b$12$8tcF4MTIDcup3WEo8fFSieGIYEnp/DTLHSTivUCcW2II/VVwRI9Qm\",\n  \"api_key\": \"5839bcfabb9e0d20f889f366dbfbbe2973c152cfbe91fae728a9f7e662ce1a2d\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "80a7862a-8706-4e00-a292-96e90bee8b91",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    "api4partners",
+                    "v0",
+                    "apikeys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Missing API key in request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9d75587d-8728-41df-8abb-fe7ce9722a63",
+              "name": "Access Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    "api4partners",
+                    "v0",
+                    "apikeys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"API Consumer Not allowed\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e7924f81-948c-426d-bdfb-fe8e05907256",
+              "name": "Too many Requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    "api4partners",
+                    "v0",
+                    "apikeys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Too many requests, please try again later\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://apigw-prd.3ds.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b9df370b-fd4d-4ff8-a223-60fe817587ee",
+    "name": "APIs for Dassault Systèmes Partners accreditations apikeys API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "APIs exposed by Dassault Systèmes to its partners and resellers.",
+      "type": "text/plain"
+    }
+  }
+}

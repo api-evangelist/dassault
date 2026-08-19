@@ -1,0 +1,51 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "APIs for Dassault Systèmes Partners accreditations portfolio-items API",
+    "version": "0.10.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-Key",
+      "value": "{{X-API-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "portfolio-items",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Sales portfolio items",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apigw-prd.3ds.com/sales/api4partners/v0/portfolio-items/search",
+            "params": [
+              {
+                "name": "skip",
+                "value": "0",
+                "type": "query",
+                "description": "Number of items to skip in the search results."
+              },
+              {
+                "name": "top",
+                "value": "100",
+                "type": "query",
+                "description": "Maximum number of items to retrieve in search results."
+              }
+            ]
+          },
+          "docs": "Search Sales Portfolio Items. \nFor now, no particular search criteria is offered, only pagination with skip & top query parameters.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,381 @@
+{
+  "item": [
+    {
+      "id": "74c574da-78a5-407a-9384-7fcbf6668f24",
+      "name": "portfolio-items",
+      "description": {
+        "content": "This section defines the operations related to sales portfolio-items.\n\nThe portfolio items are used in the definition of leads-opportunities in 'MySalesPipeline' application.\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "93e655f0-3a11-4824-85aa-f11603ee0678",
+          "name": "Search Sales portfolio items",
+          "request": {
+            "name": "Search Sales portfolio items",
+            "description": {
+              "content": "Search Sales Portfolio Items. \nFor now, no particular search criteria is offered, only pagination with skip & top query parameters.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales",
+                "api4partners",
+                "v0",
+                "portfolio-items",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "skip",
+                  "value": "0",
+                  "description": "Number of items to skip in the search results."
+                },
+                {
+                  "disabled": false,
+                  "key": "top",
+                  "value": "9999",
+                  "description": "Maximum number of items to retrieve in search results."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "99a1d210-1ed5-479c-b721-fa2fd1aad04d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales",
+                    "api4partners",
+                    "v0",
+                    "portfolio-items",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "top",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"info\": {\n    \"success\": true,\n    \"statusCode\": 200,\n    \"estimatedSearchCount\": 3049,\n    \"timeStamp\": \"2025-08-14T06:24:04.000Z\"\n  },\n  \"data\": [\n    {\n      \"salesPortfolioType\": \"Brand\",\n      \"salesPortfolioInfrastructure\": \"On Premise\",\n      \"salesPortfolioisOrderable\": true,\n      \"salesPortfolioLevel1\": \"CATIA\",\n      \"salesPortfolioLevel2\": \"CATIA V4\",\n      \"salesPortfolioLevel3\": \"MANUFACTURING\",\n      \"salesPortfolioId\": \"CLASS00001_ONPR_CATIAV4_SOL000038\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "999e21c9-3147-4aab-977e-cd43a0723cef",
+              "name": "Bad request, invalid input.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales",
+                    "api4partners",
+                    "v0",
+                    "portfolio-items",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "top",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"info\": {\n    \"success\": false,\n    \"statusCode\": 400,\n    \"timeStamp\": \"2025-08-14T09:07:04.000Z\",\n    \"estimatedSearchCount\": 3030\n  },\n  \"error\": {\n    \"code\": \"ERROR_004\",\n    \"message\": \"#top should be a positive, non zero integer\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "50951fd3-095b-483e-9595-3b4c785a903e",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales",
+                    "api4partners",
+                    "v0",
+                    "portfolio-items",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "top",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Missing API key in request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "891e7a95-ab8d-46d6-b87c-1a01b5f39a35",
+              "name": "Access Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales",
+                    "api4partners",
+                    "v0",
+                    "portfolio-items",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "top",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"API Consumer Not allowed\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "54149197-98a7-4566-ba1e-52855cfbca23",
+              "name": "Too many Requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales",
+                    "api4partners",
+                    "v0",
+                    "portfolio-items",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "top",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Too many requests, please try again later\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://apigw-prd.3ds.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d74dd037-1297-403b-a908-dea07ef89b26",
+    "name": "APIs for Dassault Systèmes Partners accreditations portfolio-items API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "APIs exposed by Dassault Systèmes to its partners and resellers.",
+      "type": "text/plain"
+    }
+  }
+}

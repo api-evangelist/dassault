@@ -1,0 +1,381 @@
+{
+  "item": [
+    {
+      "id": "953b1ee7-fe73-47f9-bddd-7a03d6d24bfa",
+      "name": "accreditations",
+      "description": {
+        "content": "This section defines all the operations related to accreditations, including the search of accreditations for a specfic partner.\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a4fe4e2b-5a02-4506-b57b-0cdd8e48c308",
+          "name": "Retrieve Accreditations",
+          "request": {
+            "name": "Retrieve Accreditations",
+            "description": {
+              "content": "Retrieves accreditations associated with the authenticated user. Supports pagination with `skip` and `top` parameters.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "order",
+                "api4partners",
+                "v0",
+                "accreditations",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "skip",
+                  "value": "0",
+                  "description": "Number of items to skip in the search results."
+                },
+                {
+                  "disabled": false,
+                  "key": "top",
+                  "value": "100",
+                  "description": "Maximum number of items to retrieve in search results."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a6edb955-e8ed-4107-b80f-90d713d3d2c1",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    "api4partners",
+                    "v0",
+                    "accreditations",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "top",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"PRTF008\",\n      \"name\": \"Support & Services Offering\",\n      \"accreditationType\": \"Portfolio\"\n    },\n    {\n      \"id\": \"PRTF063\",\n      \"name\": \"Public Cloud 3DEXPERIENCE WORKS\",\n      \"accreditationType\": \"Portfolio\"\n    },\n    {\n      \"id\": \"IPE00041462\",\n      \"name\": \"18-Sub-system Level Structural Validation\",\n      \"accreditationType\": \"Industry Process Experience\",\n      \"deploymentType\": \"On Premise\",\n      \"industrySolutionExperience\": {\n        \"id\": \"ISE00005355\",\n        \"name\": \"Co-Design to Target\"\n      },\n      \"solutionRelease\": {\n        \"id\": \"REL00000055\",\n        \"name\": \"3DEXPERIENCE R2025x\"\n      },\n      \"industry\": {\n        \"id\": \"IND000005\",\n        \"name\": \"Aerospace & Defense\"\n      }\n    }\n  ],\n  \"info\": {\n    \"success\": true,\n    \"statusCode\": 200,\n    \"estimatedSearchCount\": 3\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "63ca2056-8345-437d-89ff-8e120c070c7a",
+              "name": "Bad request, invalid input.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    "api4partners",
+                    "v0",
+                    "accreditations",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "top",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [],\n  \"info\": {\n    \"success\": false,\n    \"statusCode\": 400,\n    \"estimatedSearchCount\": 0\n  },\n  \"error\": [\n    {\n      \"type\": \"errors:3dx:invalidRequest\",\n      \"title\": \"Bad Request\",\n      \"errors\": [\n        {\n          \"detail\": \"Invalid pagination parameter. It must be a positive natural number between 1 and 100.\",\n          \"pointer\": \"#/Top\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "197de758-0c57-4512-b1be-32146142d95a",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    "api4partners",
+                    "v0",
+                    "accreditations",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "top",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Missing API key in request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b7d345c7-8964-4d02-a685-dc1bf2614de2",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    "api4partners",
+                    "v0",
+                    "accreditations",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "top",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"API Consumer Not allowed\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cd2d6fbd-ae3d-4189-a9af-7cf0540b702b",
+              "name": "Too many Requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    "api4partners",
+                    "v0",
+                    "accreditations",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "top",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Too many requests, please try again later\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://apigw-prd.3ds.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "546bf3ae-ec41-420b-9531-45e39daadac4",
+    "name": "APIs for Dassault Systèmes Partners accreditations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "APIs exposed by Dassault Systèmes to its partners and resellers.",
+      "type": "text/plain"
+    }
+  }
+}

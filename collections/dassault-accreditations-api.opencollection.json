@@ -1,0 +1,51 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "APIs for Dassault Systèmes Partners accreditations API",
+    "version": "0.10.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-Key",
+      "value": "{{X-API-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "accreditations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve Accreditations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apigw-prd.3ds.com/order/api4partners/v0/accreditations/search",
+            "params": [
+              {
+                "name": "skip",
+                "value": "0",
+                "type": "query",
+                "description": "Number of items to skip in the search results."
+              },
+              {
+                "name": "top",
+                "value": "100",
+                "type": "query",
+                "description": "Maximum number of items to retrieve in search results."
+              }
+            ]
+          },
+          "docs": "Retrieves accreditations associated with the authenticated user. Supports pagination with `skip` and `top` parameters.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,98 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "APIs for Dassault Systèmes Partners accreditations leads-opportunities API",
+    "version": "0.10.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-Key",
+      "value": "{{X-API-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "leads-opportunities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a lead-opportunity object",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://apigw-prd.3ds.com/sales/api4partners/v0/leads-opportunities",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a lead-opportunity object from its attributes along with possible linked objects (contact, sales Rep)\n"
+        },
+        {
+          "info": {
+            "name": "Get details of a lead-opportunity object",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apigw-prd.3ds.com/sales/api4partners/v0/leads-opportunities/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "3DS id of the lead-opportunity object for which details are requested"
+              }
+            ]
+          },
+          "docs": "gets details of a lead-opportunity object from its 3DS identifier.\n"
+        },
+        {
+          "info": {
+            "name": "Update a lead-opportunity object",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://apigw-prd.3ds.com/sales/api4partners/v0/leads-opportunities/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "3DS id of the lead-opportunity object to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a lead-opportunity (partial updates on some attributes is recommended)"
+        },
+        {
+          "info": {
+            "name": "Search for leads-opportunities",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://apigw-prd.3ds.com/sales/api4partners/v0/leads-opportunities/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Searches for leads-opportunities using various search criteria (e.g. modifiedDate)\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
