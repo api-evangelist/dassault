@@ -75,6 +75,11 @@ apis:
   baseURL: https://apigw-prd.3ds.com
   tags:
   - Manufacturing
+  - Processes
+  - PLM
+  - Simulation
+  tags_raw:
+  - Manufacturing
   - Process
   - PLM
   - Simulation
@@ -89,6 +94,11 @@ apis:
   humanURL: https://www.3ds.com/support/documentation/developer-guides
   baseURL: https://apigw-prd.3ds.com
   tags:
+  - Project Management
+  - ENOVIA
+  - Task
+  - Collaboration
+  tags_raw:
   - Project Management
   - ENOVIA
   - Tasks
@@ -119,6 +129,11 @@ apis:
   humanURL: https://partners.3ds.com/docs/0.10.0/
   baseURL: https://apigw-prd.3ds.com
   tags:
+  - Partners
+  - Order
+  - Sales
+  - Pricing
+  tags_raw:
   - Partners
   - Orders
   - Sales
@@ -162,6 +177,8 @@ apis:
   humanURL: https://www.3ds.com/support/documentation/developer-guides
   baseURL: https://apigw-prd.3ds.com
   tags:
+  - APIKeys
+  tags_raw:
   - apikeys
   properties:
   - type: OpenAPI
@@ -210,6 +227,8 @@ apis:
   humanURL: https://www.3ds.com/support/documentation/developer-guides
   baseURL: https://apigw-prd.3ds.com
   tags:
+  - Order
+  tags_raw:
   - orders
   properties:
   - type: OpenAPI
@@ -240,6 +259,8 @@ apis:
   humanURL: https://www.3ds.com/support/documentation/developer-guides
   baseURL: https://apigw-prd.3ds.com
   tags:
+  - Price Lists
+  tags_raw:
   - price-lists
   properties:
   - type: OpenAPI
