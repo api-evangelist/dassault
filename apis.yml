@@ -5,6 +5,18 @@ description: Dassault Systèmes provides the 3DEXPERIENCE platform with thousand
   The platform covers SolidWorks, CATIA, ENOVIA, and 3D collaboration tools, exposing
   web services across engineering items, manufacturing processes, CAD collaboration,
   project tasks, and partner order management through standardized RESTful endpoints.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: self-serve
