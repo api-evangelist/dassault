@@ -10,12 +10,9 @@
     },
     {
       "source": "https://www.linkedin.com/company/dassaultsystemes",
-      "feed_url": "https://www.linkedin.com/company/dassaultsystemes",
-      "title": "",
-      "saved": 0,
-      "method": "none"
+      "error": "HTTPError"
     }
   ],
-  "fetched": "2026-08-22T20:20:02Z",
-  "post_count": 45
+  "fetched": "2026-08-30T22:33:40Z",
+  "post_count": 55
 }
