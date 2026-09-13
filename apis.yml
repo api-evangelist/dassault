@@ -39,6 +39,16 @@ specificationVersion: '0.23'
 tags:
   - 3DEXPERIENCE
   - PLM
+  - CAD
+  - Manufacturing
+  - SolidWorks
+  - CATIA
+  - ENOVIA
+  - Engineering
+  - 3D Collaboration
+tags_raw:
+  - 3DEXPERIENCE
+  - PLM
   - Product Lifecycle Management
   - CAD
   - Manufacturing
