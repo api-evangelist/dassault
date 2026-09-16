@@ -7,13 +7,9 @@
       "title": "",
       "saved": 0,
       "method": "none"
-    },
-    {
-      "source": "https://blog.3ds.com/feed.xml",
-      "error": "HTTPError"
     }
   ],
-  "fetched": "2026-09-06T19:17:18Z",
+  "fetched": "2026-09-13T13:00:00Z",
   "post_count": 65,
   "feed_nature": "vendor-blog",
   "feed_nature_basis": "blog_subdomain",
