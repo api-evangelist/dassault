@@ -178,36 +178,6 @@ apis:
     url: openapi/dassault-accreditations-api-openapi.yml
   - type: Documentation
     url: https://www.3ds.com/support/documentation/developer-guides
-- aid: dassault:dassault-apikeys-api
-  name: Dassault Systèmes apikeys API
-  description: "This section defines the operations related to API keys . \n\nCurrent API key management\
-    \ still requires some interaction with Dassault Systèmes Information System (IS) team.\nThis process\
-    \ will likely be updated in the future to provide more autonomy and reactivity on partner side. \n\
-    \nBelow is the description of the process when a partner is onboarded on APIForPartners program :\
-    \ \n\n1. Dassault Systèmes IS team will initialize an API key and communicate it to partner Admin\
-    \ through a secured channel :\n\n    - **Recommendation is to use a 1-1 discussion between Partner\
-    \ Admin and Dassault Systèmes IS person in charge within the dedicated 3DSwym Community**\n    - **Do\
-    \ NOT use email or any unsecured communication channel or with wider audience**\n\n2. Partner Admin\
-    \ will then use this initial APIKEY value to authenticate and generate a new API key using the API\
-    \  \n\n3. Partner admin will communicate back (within same secured channel) to Dassault Systèmes IS\
-    \ person in charge the **hashed_key** attributed from the API (NOT the API key itself)\n\n    - The\
-    \ Hash operation is NOT reversible, so Dassault Systèmes will NOT have knowledge about partner API\
-    \ key. \n    - Partner Admin must store securely the generated API key (same level of confidentiality\
-    \ as a password)\n\n4. Dassault Systèmes IS team will update API Gateway configuration with the new\
-    \ API key (in practice with the hash value provided) and inform Partner when it is ready to use.\n\
-    \n5. Partner can then use this newly generated APIKEY to interact with all the available APIs.\n\n\
-    For the case of revocation and request of a new API key, steps 2 to 5 have to be followed."
-  humanURL: https://www.3ds.com/support/documentation/developer-guides
-  baseURL: https://apigw-prd.3ds.com
-  tags:
-  - APIKeys
-  tags_raw:
-  - apikeys
-  properties:
-  - type: OpenAPI
-    url: openapi/dassault-apikeys-api-openapi.yml
-  - type: Documentation
-    url: https://www.3ds.com/support/documentation/developer-guides
 - aid: dassault:dassault-leads-opportunities-api
   name: Dassault Systèmes leads-opportunities API
   description: >-
@@ -288,6 +258,18 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/dassault-price-lists-api-openapi.yml
+  - type: Documentation
+    url: https://www.3ds.com/support/documentation/developer-guides
+- aid: dassault:dassault-api-keys-api
+  name: Dassault Systèmes API Keys API
+  description: This section defines the operations related to API keys .
+  humanURL: https://www.3ds.com/support/documentation/developer-guides
+  baseURL: https://apigw-prd.3ds.com
+  tags:
+  - API Keys
+  properties:
+  - type: OpenAPI
+    url: openapi/dassault-api-keys-api-openapi.yml
   - type: Documentation
     url: https://www.3ds.com/support/documentation/developer-guides
 common:
