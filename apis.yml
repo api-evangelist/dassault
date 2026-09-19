@@ -266,6 +266,8 @@ apis:
   humanURL: https://www.3ds.com/support/documentation/developer-guides
   baseURL: https://apigw-prd.3ds.com
   tags:
+  - APIKeys
+  tags_raw:
   - API Keys
   properties:
   - type: OpenAPI
