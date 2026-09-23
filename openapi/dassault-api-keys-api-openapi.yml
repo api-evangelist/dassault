@@ -1,6 +1,6 @@
-openapi: 3.1.1
+openapi: 3.2.0
 info:
-  title: APIs for Dassault Systèmes Partners accreditations apikeys API
+  title: Dassault Systèmes Partners Apikeys API
   description: APIs exposed by Dassault Systèmes to its partners and resellers.
   version: 0.10.0
   license:
@@ -24,15 +24,15 @@ servers:
 security:
 - ApiKeyAuth: []
 tags:
-- name: apikeys
-  description: "This section defines the operations related to API keys . \n\nCurrent API key management still requires some interaction with Dassault Systèmes Information System (IS) team.\nThis process will likely be updated in the future to provide more autonomy and reactivity on partner side. \n\nBelow is the description of the process when a partner is onboarded on APIForPartners program : \n\n1. Dassault Systèmes IS team will initialize an API key and communicate it to partner Admin through a secured channel :\n\n    - **Recommendation is to use a 1-1 discussion between Partner Admin and Dassault Systèmes IS person in charge within the dedicated 3DSwym Community**\n    - **Do NOT use email or any unsecured communication channel or with wider audience**\n\n2. Partner Admin will then use this initial APIKEY value to authenticate and generate a new API key using the API  \n\n3. Partner admin will communicate back (within same secured channel) to Dassault Systèmes IS person in charge the **hashed_key** attributed from the API (NOT the API key itself)\n\n    - The Hash operation is NOT reversible, so Dassault Systèmes will NOT have knowledge about partner API key. \n    - Partner Admin must store securely the generated API key (same level of confidentiality as a password)\n\n4. Dassault Systèmes IS team will update API Gateway configuration with the new API key (in practice with the hash value provided) and inform Partner when it is ready to use.\n\n5. Partner can then use this newly generated APIKEY to interact with all the available APIs.\n\nFor the case of revocation and request of a new API key, steps 2 to 5 have to be followed.\n"
+- name: API Keys
+  description: This section defines the operations related to API keys .
 paths:
   /order/api4partners/v0/apikeys:
     post:
       summary: Generate a new API key
       description: Generate a new API key and its hash.
       tags:
-      - apikeys
+      - API Keys
       operationId: generateApiKey
       responses:
         '200':
@@ -79,14 +79,6 @@ paths:
                     message: Too many requests, please try again later
 components:
   schemas:
-    429_too_many_requests:
-      type: object
-      description: Too Many Requests
-      properties:
-        message:
-          type: string
-      required:
-      - message
     403_basic_forbidden:
       type: object
       description: Access Forbidden.
@@ -95,9 +87,9 @@ components:
           type: string
       required:
       - message
-    401_basic_unauthorized:
+    429_too_many_requests:
       type: object
-      description: Unauthorized
+      description: Too Many Requests
       properties:
         message:
           type: string
@@ -121,6 +113,14 @@ components:
       required:
       - hashed_key
       - api_key
+    401_basic_unauthorized:
+      type: object
+      description: Unauthorized
+      properties:
+        message:
+          type: string
+      required:
+      - message
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

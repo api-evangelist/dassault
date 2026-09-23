@@ -1,6 +1,6 @@
-openapi: 3.1.1
+openapi: 3.2.0
 info:
-  title: APIs for Dassault Systèmes Partners accreditations portfolio-items API
+  title: Dassault Systèmes Partners Portfolio Items API
   description: APIs exposed by Dassault Systèmes to its partners and resellers.
   version: 0.10.0
   license:
@@ -28,14 +28,14 @@ tags:
   description: 'This section defines the operations related to sales portfolio-items.
 
 
-    The portfolio items are used in the definition of leads-opportunities in ''MySalesPipeline'' application.
-
-    '
+    The portfolio items are used in the definition of leads-opportunities in ''MySalesPipeline'' application.'
 paths:
   /sales/api4partners/v0/portfolio-items/search:
     get:
       summary: Search Sales portfolio items
-      description: "Search Sales Portfolio Items. \nFor now, no particular search criteria is offered, only pagination with skip & top query parameters.\n"
+      description: 'Search Sales Portfolio Items.
+
+        For now, no particular search criteria is offered, only pagination with skip & top query parameters.'
       tags:
       - portfolio-items
       operationId: searchPortfolioItems
@@ -138,45 +138,19 @@ paths:
                     message: Too many requests, please try again later
 components:
   schemas:
-    400_get_portfolio-items_search:
+    200_get_portfolio-items_search:
       type: object
-      description: Response in case of Bad Request operation for updating leadsOpportunities object
+      description: Response in case of a successful search operation on portfolio-items
       required:
+      - data
       - info
-      - error
       properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/portfolio-items_data'
         info:
           $ref: '#/components/schemas/info_response_portfolio-items'
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: Error code
-              example: ERROR_004
-            message:
-              type: string
-              description: Human readable error message
-              example: '#top should be a positive, non zero integer'
-          required:
-          - code
-          - message
-    429_too_many_requests:
-      type: object
-      description: Too Many Requests
-      properties:
-        message:
-          type: string
-      required:
-      - message
-    401_basic_unauthorized:
-      type: object
-      description: Unauthorized
-      properties:
-        message:
-          type: string
-      required:
-      - message
     portfolio-items_data:
       type: object
       description: A sales portfolio-item.
@@ -224,19 +198,14 @@ components:
       - statusCode
       - timeStamp
       - estimatedSearchCount
-    200_get_portfolio-items_search:
+    429_too_many_requests:
       type: object
-      description: Response in case of a successful search operation on portfolio-items
-      required:
-      - data
-      - info
+      description: Too Many Requests
       properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/portfolio-items_data'
-        info:
-          $ref: '#/components/schemas/info_response_portfolio-items'
+        message:
+          type: string
+      required:
+      - message
     info_response_base_attributes:
       type: object
       description: Global Information on the operation requested.
@@ -256,6 +225,37 @@ components:
     403_basic_forbidden:
       type: object
       description: Access Forbidden.
+      properties:
+        message:
+          type: string
+      required:
+      - message
+    400_get_portfolio-items_search:
+      type: object
+      description: Response in case of Bad Request operation for updating leadsOpportunities object
+      required:
+      - info
+      - error
+      properties:
+        info:
+          $ref: '#/components/schemas/info_response_portfolio-items'
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code
+              example: ERROR_004
+            message:
+              type: string
+              description: Human readable error message
+              example: '#top should be a positive, non zero integer'
+          required:
+          - code
+          - message
+    401_basic_unauthorized:
+      type: object
+      description: Unauthorized
       properties:
         message:
           type: string

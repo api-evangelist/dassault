@@ -1,0 +1,31 @@
+# Front Door AI Index — dassault — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: dassault
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: www.3ds.com
+  final_host: www.3ds.com
+  ownership: unresolved
+  owner: null
+  shares_host_with:
+  - simulia
+  inherited_from: null
+  verdict: scored
+  score: null
+  host_score: 11
+  density: null
+  words: 1114
+  tiers:
+    agentic: 2
+    core: 9
+    model: 0
+  ambiguous: 8
+  top_terms:
+    AI: 8
+    intelligence: 3
+    smart: 3
+    AI agent: 2
+    agent: 2
+    artificial intelligence: 1
