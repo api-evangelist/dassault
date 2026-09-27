@@ -165,7 +165,7 @@ apis:
   - type: Documentation
     url: https://partners.3ds.com/docs/0.10.0/
 - aid: dassault:dassault-accreditations-api
-  name: Dassault Systèmes accreditations API
+  name: Dassault Systèmes Accreditations API
   description: >-
     This section defines all the operations related to accreditations, including the search of accreditations
     for a specfic partner.
@@ -179,7 +179,7 @@ apis:
   - type: Documentation
     url: https://www.3ds.com/support/documentation/developer-guides
 - aid: dassault:dassault-leads-opportunities-api
-  name: Dassault Systèmes leads-opportunities API
+  name: Dassault Systèmes Leads Opportunities API
   description: >-
     This section defines the operations related to leads and opportunities for sales pipeline management.
 
@@ -198,7 +198,7 @@ apis:
   - type: Documentation
     url: https://www.3ds.com/support/documentation/developer-guides
 - aid: dassault:dassault-orders-api
-  name: Dassault Systèmes orders API
+  name: Dassault Systèmes Orders API
   description: >-
     This section defines the operations related to orders, including the creation, management, and fulfillment
     of orders.
@@ -229,7 +229,7 @@ apis:
   - type: Documentation
     url: https://www.3ds.com/support/documentation/developer-guides
 - aid: dassault:dassault-portfolio-items-api
-  name: Dassault Systèmes portfolio-items API
+  name: Dassault Systèmes Portfolio Items API
   description: >-
     This section defines the operations related to sales portfolio-items.
 
@@ -245,7 +245,7 @@ apis:
   - type: Documentation
     url: https://www.3ds.com/support/documentation/developer-guides
 - aid: dassault:dassault-price-lists-api
-  name: Dassault Systèmes price-lists API
+  name: Dassault Systèmes Price Lists API
   description: >-
     This section defines all the operations related to price lists, including the search of price lists
     for a specfic partner.
@@ -266,8 +266,6 @@ apis:
   humanURL: https://www.3ds.com/support/documentation/developer-guides
   baseURL: https://apigw-prd.3ds.com
   tags:
-  - APIKeys
-  tags_raw:
   - API Keys
   properties:
   - type: OpenAPI

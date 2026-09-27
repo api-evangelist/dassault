@@ -122,103 +122,6 @@ paths:
                     message: Too many requests, please try again later
 components:
   schemas:
-    price-lists_search_data:
-      type: array
-      description: List of **Products** and **Industry Process Experiences (IPE)** that the authorized user is accredited to sell.
-      items:
-        type: object
-        description: Summary information for a price list query.
-        properties:
-          countryCode:
-            $ref: '#/components/schemas/country_code'
-          countryName:
-            $ref: '#/components/schemas/country_name'
-          priceLists:
-            type: array
-            items:
-              type: object
-              description: 'A predefined set of product prices applicable to a specific country and currency.
-
-                Each price list defines how products are priced within a particular market or region
-
-                and serves as a reference for calculating order amounts.
-
-                '
-              properties:
-                id:
-                  type: integer
-                  example: 9
-                name:
-                  type: string
-                  example: EMEA Price List
-                currency:
-                  $ref: '#/components/schemas/currency'
-                hasFuturePriceList:
-                  type: boolean
-                  description: 'Indicates whether a future version of the price list has been declared.
-
-                    - true: A future-dated price list exists.
-
-                    - false: No future price list has been declared.
-
-                    '
-                  example:
-                  - true
-                  - false
-                effectiveDate:
-                  type: string
-                  format: date
-                  description: 'The date when the future price list takes effect.
-
-                    If ''null'', it indicates that no future price list version has been declared.
-
-                    '
-                  example:
-                  - '2025-09-09'
-                  - null
-    country_name:
-      type: string
-      description: 'Country Location
-
-        '
-      example: France
-    200_price-lists_search:
-      type: object
-      description: Response body returned upon a successful price list search request.
-      properties:
-        data:
-          $ref: '#/components/schemas/price-lists_search_data'
-        info:
-          $ref: '#/components/schemas/info'
-        error:
-          $ref: '#/components/schemas/error'
-      required:
-      - info
-      - data
-    429_too_many_requests:
-      type: object
-      description: Too Many Requests
-      properties:
-        message:
-          type: string
-      required:
-      - message
-    info:
-      type: object
-      description: Metadata section of the response providing execution status and result summary.
-      properties:
-        success:
-          type: boolean
-          description: Indicates whether the API request was executed successfully.
-        statusCode:
-          type: integer
-          description: HTTP status code corresponding to the response.
-        estimatedSearchCount:
-          type: integer
-          description: Estimated number of results matching the search criteria.
-      required:
-      - success
-      - statusCode
     403_basic_forbidden:
       type: object
       description: Access Forbidden.
@@ -276,10 +179,49 @@ components:
       maxLength: 3
       pattern: ^[A-Z]{3}$
       example: USD
-    country_code:
+    200_price-lists_search:
+      type: object
+      description: Response body returned upon a successful price list search request.
+      properties:
+        data:
+          $ref: '#/components/schemas/price-lists_search_data'
+        info:
+          $ref: '#/components/schemas/info'
+        error:
+          $ref: '#/components/schemas/error'
+      required:
+      - info
+      - data
+    info:
+      type: object
+      description: Metadata section of the response providing execution status and result summary.
+      properties:
+        success:
+          type: boolean
+          description: Indicates whether the API request was executed successfully.
+        statusCode:
+          type: integer
+          description: HTTP status code corresponding to the response.
+        estimatedSearchCount:
+          type: integer
+          description: Estimated number of results matching the search criteria.
+      required:
+      - success
+      - statusCode
+    429_too_many_requests:
+      type: object
+      description: Too Many Requests
+      properties:
+        message:
+          type: string
+      required:
+      - message
+    country_name:
       type: string
-      description: ISO3 Code (3 capital letters code) of the country
-      example: FRA
+      description: 'Country Location
+
+        '
+      example: France
     401_basic_unauthorized:
       type: object
       description: Unauthorized
@@ -288,6 +230,64 @@ components:
           type: string
       required:
       - message
+    country_code:
+      type: string
+      description: ISO3 Code (3 capital letters code) of the country
+      example: FRA
+    price-lists_search_data:
+      type: array
+      description: List of **Products** and **Industry Process Experiences (IPE)** that the authorized user is accredited to sell.
+      items:
+        type: object
+        description: Summary information for a price list query.
+        properties:
+          countryCode:
+            $ref: '#/components/schemas/country_code'
+          countryName:
+            $ref: '#/components/schemas/country_name'
+          priceLists:
+            type: array
+            items:
+              type: object
+              description: 'A predefined set of product prices applicable to a specific country and currency.
+
+                Each price list defines how products are priced within a particular market or region
+
+                and serves as a reference for calculating order amounts.
+
+                '
+              properties:
+                id:
+                  type: integer
+                  example: 9
+                name:
+                  type: string
+                  example: EMEA Price List
+                currency:
+                  $ref: '#/components/schemas/currency'
+                hasFuturePriceList:
+                  type: boolean
+                  description: 'Indicates whether a future version of the price list has been declared.
+
+                    - true: A future-dated price list exists.
+
+                    - false: No future price list has been declared.
+
+                    '
+                  example:
+                  - true
+                  - false
+                effectiveDate:
+                  type: string
+                  format: date
+                  description: 'The date when the future price list takes effect.
+
+                    If ''null'', it indicates that no future price list version has been declared.
+
+                    '
+                  example:
+                  - '2025-09-09'
+                  - null
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
