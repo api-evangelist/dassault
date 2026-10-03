@@ -424,90 +424,53 @@ paths:
                     message: Too many requests, please try again later
 components:
   schemas:
-    currency:
+    online_instance_seat_id:
       type: string
-      description: 'Three-letter ISO 4217 currency code representing the transaction currency.
+      description: 'Unique identifier assigned to a 3DEXPERIENCE platform instance.
 
+        It is used to identify a specific instance of the platform, which can be accessed through the cloud.
 
-        Must be exactly 3 uppercase alphabetic characters (e.g., `USD` for US Dollar, `EUR` for Euro, `INR` for Indian Ruppee).
+        This identifier is also referred to as the **Online Instance ID**.
+
+        Additionally, it is also used as the **Seat ID** to identify a user''s access to the instance.
+
+        The Seat ID is used to manage user licenses, authenticate users, and track user activity within the instance.
+
+        The Online Instance ID/Seat ID is a combination of letters and numbers.
 
         '
-      minLength: 3
-      maxLength: 3
-      pattern: ^[A-Z]{3}$
-      example: USD
-    legal_entity:
-      type: object
-      properties:
-        id:
-          type: string
-          description: 'A unique identifier for the company. The value will be within the Legal Entity Family.
-
-            '
-          maxLength: 15
-          example: '100012345678901'
-        name:
-          type: string
-          description: 'The registered name of the company in English.
-
-            '
-          maxLength: 120
-          example: Example Corporation
-        localName:
-          type: string
-          description: 'The registered name of the company in the local language.
-
-            '
-          maxLength: 120
-          example: 示例公司
-        locationId:
-          type: integer
-          description: "A unique identifier representing the company's location. \nMust be an integer between 1 and 999.\n"
-          minimum: 1
-          maximum: 999
-          example: 2
-      required:
-      - id
-      - name
-      - locationId
-    info:
-      type: object
-      description: Metadata section of the response providing execution status and result summary.
-      properties:
-        success:
-          type: boolean
-          description: Indicates whether the API request was executed successfully.
-        statusCode:
-          type: integer
-          description: HTTP status code corresponding to the response.
-        estimatedSearchCount:
-          type: integer
-          description: Estimated number of results matching the search criteria.
-      required:
-      - success
-      - statusCode
-    installed_base_number:
+      maxLength: 15
+      example: R1122334455667
+    ds_offering:
       type: string
-      description: 'A unique identifier for the installed base, representing the total number of software licenses that have been issued to a Final Customer.
-
-        The Installed Base Number is used to determine the Final Customer''s maintenance and support obligations, as well as to calculate the cost of future upgrades or renewals.
-
-        This is used to track the Final Customer''s software licenses and maintenance history.
-
-        '
-      maxLength: 40
-      example: LN00012345678
-    401_basic_unauthorized:
+      description: Dassault Systèmes offering Type
+      enum:
+      - Auxiliary
+      - Licensed Program
+      - Not Applicable
+      - Online Services
+      - Packaged Offering
+      - Specific
+      x-enumDescriptions:
+        Auxiliary: Non software items i.e hardware, peripherals, or anything else that is not software.
+        Licensed Program: On premises software.
+        Not Applicable: "Items that are not governed by the CLOSA at all.\t"
+        Online Services: Cloud based services.
+        Packaged Offering: A bundle that mixes licensed programs and online.
+        Specific: Items covered by a separate agreement rather than the standard CLOSA.
+      example: Licensed Program
+    ds_received_po_date:
+      type: string
+      description: Date when the order was received by Dassault Systèmes, in ISO 8601 format (YYYY-MM-DD).
+      format: date
+      example: '2025-05-21'
+    billto_sales_representative:
+      type: string
+      description: Name of the sales representative person from the **Bill To** site.
+      example: DOE, Jane
+    4xx_get_orders:
       type: object
-      description: Unauthorized
-      properties:
-        message:
-          type: string
-      required:
-      - message
-    400_post_orders_search:
-      type: object
-      description: Response body returned when the order search request fails.
+      description: Response body returned when the order details request fails.
       properties:
         data:
           type: array
@@ -520,8 +483,8 @@ components:
         error:
           $ref: '#/components/schemas/error'
       required:
-      - info
       - data
+      - info
       - error
     order_line:
       type: object
@@ -643,7 +606,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/order_sub_line'
-    order_get_data:
+    orders_search_data:
       type: array
       description: List of orders retrieved during the search operation.
       items:
@@ -662,38 +625,9 @@ components:
             type: object
             description: Legal entity of the company that is the Final Customer of Dassault Systèmes products (Sold To).
             $ref: '#/components/schemas/legal_entity'
-          agreement:
-            type: object
-            description: 'Contains details about the license agreement associated with the licenses being ordered in the Purchase Order (PO).
-
-              '
-            properties:
-              type:
-                type: string
-                description: 'Type or classification of the agreement.
-
-                  '
-                maxLength: 100
-                example: General VAR Agreement
-              reference:
-                type: string
-                description: 'A short, descriptive title or label assigned to the agreement at the time of its creation.
-
-                  This helps users identify the specific agreement applied to the order.
-
-                  It can be selected in the Purchase Order only for agreement types where the sub-group is `Instantiated`.
-
-                  '
-                maxLength: 254
-                example: Enterprise License Agreement Q2 2024
-            required:
-            - type
-          billToContact:
-            type: string
-            description: Full name of the contact person at the Bill To site (billing entity) who is responsible for the order. This contact person is the primary point of communication for billing-related inquiries and transactions. Format-`LASTNAME, Firstname` (e.g., `DOE, John`).
           creationDateTime:
             $ref: '#/components/schemas/creation_datetime'
-          dsReceivedPoDate:
+          dsRecievedPoDate:
             $ref: '#/components/schemas/ds_received_po_date'
           bookingDateTime:
             $ref: '#/components/schemas/booking_datetime'
@@ -705,99 +639,6 @@ components:
             $ref: '#/components/schemas/billto_sales_representative'
           billToPoReference:
             $ref: '#/components/schemas/billto_po_reference'
-          sboNumber:
-            type: string
-            description: 'Unique identifier of the Special Bid Offer (SBO) that served as the basis for creating the order.
-
-              Typically used to track and reference special pricing or offer conditions.
-
-              '
-            maxLength: 10
-            example: ABC0012345
-          customerRequestedArrivalDate:
-            type: string
-            description: 'Customer Requested Arrival Date (CRAD) indicates the date by which the Final Customer requests delivery of the DS Licenses and Support Order.
-
-
-              > **Note:** CRAD is a non-binding request. While DS will make reasonable efforts to meet this date, it does not constitute a contractual commitment.
-
-
-              - Orders can still receive ''Finance Approved'' status, media can be ''Shipped'', and license keys can be issued and marked as ''Completed'' irrespective of the CRAD.
-
-              - The **Support Start Date** in the Installed Base will never begin before the CRAD.
-
-              - Format: ISO 8601 format (YYYY-MM-DD)
-
-              - License keys will remain inactive until the Support Start Date.
-
-              '
-            format: date
-            example: '2025-05-31'
-          dsSalesRepresentative:
-            type: string
-            description: 'Full name of the Dassault Systèmes (DS) sales representative responsible for the order.
-
-
-              Format: `LASTNAME, Firstname` (e.g., `DOE, John`)
-
-              '
-            example: DOE, John
-          isMultiYear:
-            type: boolean
-            description: 'Indicates whether the order is part of a Multi-Year deal (i.e., duration longer than one year),
-
-              applicable for revenue types such as `YxC` or `AxC`.
-
-              '
-            example: true
-          hasExitClause:
-            type: boolean
-            description: 'Indicates whether the agreement includes an exit clause requiring the Final Customer to pay early termination fees
-
-              if they end the rental before the completion of the multi-year engagement.
-
-              '
-            example: true
-          recurringChargeBillingCycle:
-            $ref: '#/components/schemas/recurring_charge_billing_cycle'
-          opportunity:
-            type: string
-            description: 'Unique identifier for the sales opportunity as recorded in the **My Sales Pipeline** system.
-
-              This value helps link the order to its originating sales activity.
-
-              '
-            example: A1B2-C3D4E5
-          paymentTerms:
-            type: string
-            description: 'Payment terms for the order, as provided by the Finance Department.
-
-              Specifies the agreed period within which the payment must be made.
-
-              '
-            maxLength: 50
-            example: Net Date of Invoice + 60 days
-          licenseChargeConditions:
-            type: array
-            description: 'A list of conditions that determine when the license is charged for the order.
-
-              These conditions specify the circumstances under which the license fee is applied, such as:
-
-
-              - The number of users or seats that are licensed.
-
-              - The type of license or subscription being purchased.
-
-              - Any waiver given on the license or subscription.
-
-              - Any additional features or services that are included with the license.
-
-
-              The license charge conditions are used to calculate the total cost of the license and to ensure that the correct pricing is applied.
-
-              '
-            items:
-              $ref: '#/components/schemas/order_line'
         required:
         - transaction
         - businessUnit
@@ -805,377 +646,6 @@ components:
         - soldToSite
         - creationDateTime
         - currency
-        - agreement
-    transaction:
-      type: object
-      description: Transactional details of the order.
-      properties:
-        id:
-          type: string
-          description: Unique identifier of the order. Can represent a Purchase Order or a Renewal Notification.
-          maxLength: 13
-          example: PO_A123456789
-        type:
-          $ref: '#/components/schemas/transaction_type'
-        status:
-          $ref: '#/components/schemas/order_processing_status'
-        description:
-          type: string
-          description: Short description given to the Purchase Order / Renewal Notification.
-          maxLength: 30
-          example: XYZ Company Order 50 products
-    transaction_type:
-      type: string
-      description: 'Order type (one of: `PO`, `RN`).
-
-        '
-      enum:
-      - PO
-      - RN
-      x-enumDescriptions:
-        PO: Purchase Order
-        RN: Renewal Notification
-      example: PO
-    business_unit:
-      type: object
-      description: Details of the sales business unit.
-      properties:
-        id:
-          type: string
-          description: Unique identifier of the sales business unit.
-          minLength: 5
-          maxLength: 5
-          example: BU001
-        name:
-          type: string
-          description: Name of the sales business unit.
-          maxLength: 25
-          example: Corporate Sales Unit A
-        localTimezone:
-          $ref: '#/components/schemas/local_time_zone'
-      required:
-      - id
-      - name
-      - localTimezone
-    403_basic_forbidden:
-      type: object
-      description: Access Forbidden.
-      properties:
-        message:
-          type: string
-      required:
-      - message
-    orders_search_req:
-      type: object
-      properties:
-        creationDateTime:
-          type: object
-          description: 'Returns orders created within a specified time range, using the `Creation` timestamp.
-
-            The maximum time window allowed for the search is **7 days** (calculated time to time).
-
-            Including this tag prompts the system to perform validations and automatically compute the `from` or `to` timestamp if either is missing.
-
-            Omitting this tag means the system will skip these validations and will not perform any implicit computation of the `from` or `to` values.
-
-            '
-          properties:
-            from:
-              $ref: '#/components/schemas/date_time_from'
-            to:
-              $ref: '#/components/schemas/date_time_to'
-          anyOf:
-          - required:
-            - from
-          - required:
-            - to
-        bookingDateTime:
-          type: object
-          description: 'Returns orders booked within a specified time range, using the `Booking` timestamp.
-
-            The maximum time window allowed for the search is **7 days** (calculated time to time).
-
-            The `Booking` timestamp refers to the date and time when the order was approved by the Finance Department.
-
-            Including this tag prompts the system to perform validations and automatically compute the `from` or `to` timestamp if either is missing.
-
-            Omitting this tag means the system will skip these validations and will not perform any implicit computation of the `from` or `to` values.
-
-            '
-          properties:
-            from:
-              $ref: '#/components/schemas/date_time_from'
-            to:
-              $ref: '#/components/schemas/date_time_to'
-          anyOf:
-          - required:
-            - from
-          - required:
-            - to
-        lastUpdateDateTime:
-          type: object
-          description: 'Indicates the timestamp of the most recent update to the order.
-
-            The maximum time window allowed for the search is **3 days** (calculated time to time).
-
-            This field is automatically set to the current timestamp whenever the order is modified.
-
-            Omitting this tag means the system will skip these validations and will not perform any implicit computation of the `from` or `to` values.
-
-            '
-          properties:
-            from:
-              $ref: '#/components/schemas/date_time_from'
-            to:
-              $ref: '#/components/schemas/date_time_to'
-          anyOf:
-          - required:
-            - from
-          - required:
-            - to
-        installedBaseNumber:
-          $ref: '#/components/schemas/installed_base_number'
-        onlineInstanceSeatId:
-          $ref: '#/components/schemas/online_instance_seat_id'
-        billToPoReferences:
-          type: array
-          minItems: 1
-          description: List of partner order references.
-          example:
-          - '390830'
-          items:
-            type: string
-            maxLength: 60
-            description: 'Must be a string with a maximum length of 60 characters.
-
-              '
-        transactionType:
-          description: 'Order type (one of: `PO`, `RN`).
-
-
-            If left unspecified, records of both transaction types will be included in the response.
-
-            '
-          $ref: '#/components/schemas/transaction_type'
-      anyOf:
-      - required:
-        - creationDateTime
-      - required:
-        - bookingDateTime
-      - required:
-        - lastUpdateDateTime
-      - required:
-        - installedBaseNumber
-      - required:
-        - onlineInstanceSeatId
-      - required:
-        - billToPoReferences
-    date_time_from:
-      type: string
-      description: 'This property represents a timestamp in UTC format, following the ISO 8601 standard.
-
-        All date-time values must be provided in Coordinated Universal Time (UTC).
-
-        The timestamp must not be set in the future.
-
-        If not provided, the system will automatically calculate it by subtracting the maximum number of days specified for the time range defined for the parent search criteria.
-
-        '
-      format: date-time
-      example: '2024-05-21T14:30:00Z'
-    order_type:
-      type: string
-      description: 'Specifies the classification of the order based on its nature, purpose, or contractual arrangement.
-
-        This helps identify whether the order involves a new purchase, renewal, upgrade, transfer, suspension,
-
-        migration, evaluation, or any other business scenario. Each value represents a predefined business process
-
-        or transaction type that impacts how the order is handled and processed.
-
-        For a complete list of supported values, refer to the `enum` section.
-
-        '
-      enum:
-      - Change of Channel
-      - Change of VAR
-      - DS Brand -> DS & Migration
-      - DS Brand -> DS OTC Platform
-      - EPP Training
-      - Evaluation License
-      - IBM -> DS
-      - IBM -> DS & Migration
-      - IBM -> DS without Support
-      - IBM NAL Parallel Use -> DS
-      - IBM NAL without Support -> DS
-      - Intercompany Transfer
-      - Migration - Non Standard
-      - Migration - Standard
-      - Module Exchange - Non Standard
-      - Module Exchange - Standard
-      - New
-      - One Time Fee
-      - Parallel Use Extension
-      - Renewal
-      - Special Order
-      - Stop
-      - Stop & Parallel Use
-      - Stop - Transform
-      - Suspension
-      - Suspension Reinstatement
-      - TOS Reinstatement
-      - Termination Of Support
-      - Transfer Parallel Use
-      - Transfer without Support
-      - VAR Use
-      x-enumDescriptions:
-        New: A fresh order that does not involve any migration, renewal, or upgrade.
-        Renewal: Extending an existing license.
-        Migration - Standard: A standard migration from another platform.
-        Evaluation License: License issued temporarily for evaluation purposes.
-        Stop - Transform: Discontinuing an existing license with a shift to a transformed model or product.
-        Suspension: Temporarily halting the license or support services.
-        Termination Of Support: Ending the support of a product or service.
-        VAR Use: Orders associated with Value-Added Resellers (VAR).
-        Change of Channel: Changing Final Customer coverage from direct to indirect or vice versa.
-        Change of VAR: Changing the Value-Added Reseller (VAR) for an existing order.
-        DS Brand -> DS & Migration: Migrating from DS Brand to DS with migration services.
-        DS Brand -> DS OTC Platform: Transitioning from DS Brand to DS OTC Platform.
-        EPP Training: Training related to EPP (Enterprise Productivity Portfolio).
-        IBM -> DS: Transitioning from IBM to DS.
-        IBM -> DS & Migration: Transitioning from IBM to DS with migration services.
-        IBM -> DS without Support: Transitioning from IBM to DS without support.
-        IBM NAL Parallel Use -> DS: Parallel use of IBM NAL with DS.
-        IBM NAL without Support -> DS: Transitioning from IBM NAL to DS without support.
-        Intercompany Transfer: Transferring licenses between different companies.
-        Migration - Non Standard: Non-standard migration processes.
-        Module Exchange - Non Standard: Non-standard module exchange processes.
-        Module Exchange - Standard: Standard module exchange processes.
-        One Time Fee: Fee charged for a one-time service or transaction.
-        Parallel Use Extension: Extending the parallel use period.
-        Special Order: New licenses with specific administrative requests.
-        Stop: Discontinuing an existing license.
-        Stop & Parallel Use: Discontinuing an existing license with parallel use.
-        Suspension Reinstatement: Reinstating a suspended license or support services.
-        TOS Reinstatement: Reinstating terms of service.
-        Transfer Parallel Use: Transferring licenses with parallel use.
-        Transfer without Support: Transferring licenses without support.
-      example: Stop - Transform
-    200_get_orders:
-      type: object
-      description: Response body returned upon a successful order details request.
-      properties:
-        data:
-          $ref: '#/components/schemas/order_get_data'
-        info:
-          $ref: '#/components/schemas/info'
-        error:
-          $ref: '#/components/schemas/error'
-      required:
-      - data
-      - info
-    429_too_many_requests:
-      type: object
-      description: Too Many Requests
-      properties:
-        message:
-          type: string
-      required:
-      - message
-    sub_order_type:
-      type: string
-      description: sub Order Type
-      enum:
-      - Change of Channel
-      - Change of VAR
-      - EPP Training
-      - Evaluation License
-      - Transfer License
-      - New License
-      - One Time Fee
-      - License Renewal
-      - Stop (NO Parallel Use)
-      - Stop - Transform
-      - Stop License
-      - Stop of PU
-      - Stop & Parallel use
-      - Suspension
-      - Suspension Reinstatement
-      - TOS Reinstatement
-      - Termination Of Support
-      - Transfer without Support
-      - VAR Use
-      x-enumDescriptions:
-        Change of Channel: Changing customer coverage from direct to indirect or vice versa.
-        Change of VAR: Changing the Value-Added Reseller (VAR) for an existing order.
-        EPP Training: Training related to EPP (Enterprise Productivity Portfolio).
-        Evaluation License: License issued temporarily for evaluation purposes.
-        Transfer License: Transferring licenses between different companies.
-        New License: Fresh order that does not involve any migration, renewal, or upgrade.
-        One Time Fee: Fee charged for a one-time service or transaction.
-        License Renewal: Extending an existing license.
-        Stop (NO Parallel Use): Discontinuing an existing license with no parallel use
-        Stop - Transform: Discontinuing an existing license with a shift to a transformed model or product.
-        Stop License: Discontinuing an existing license.
-        Stop of PU: Discontinuing an existing PU  license.
-        Stop & Parallel use: Discontinuing an existing license with parallel use
-        Suspension: Temporarily halting the license or support services.
-        Suspension Reinstatement: Reinstating a suspended license or support services.
-        TOS Reinstatement: Reinstating terms of service.
-        Termination Of Support: Ending the support of a product or service.
-        Transfer without Support: Transferring licenses without support.
-        VAR Use: Orders associated with Value-Added Resellers (VAR).
-      example: New License
-    date_time_to:
-      type: string
-      description: 'This property represents a timestamp in UTC format, following the ISO 8601 standard.
-
-        All date-time values must be provided in Coordinated Universal Time (UTC).
-
-        If the `from` timestamp is specified, this value must be later than `from`.
-
-        If not provided, the system will automatically calculate this value by adding the maximum number of days specified for the time range defined for the parent search criteria.
-
-        '
-      format: date-time
-      example: '2024-05-22T14:30:00Z'
-    error:
-      type: array
-      description: 'An array containing one or more error objects identified during the request processing.
-
-        Each object provides detailed information about a specific type of error encountered.
-
-        '
-      items:
-        type: object
-        properties:
-          type:
-            type: string
-            description: "A URI identifying the specific type of error.  \nThis allows API consumers to programmatically recognize and handle the error appropriately.  \n\nThe URI follows the format: `errors:<domain>:<error_type>`  \nExample values include:\n- `errors:3dx:invalidRequest`\n- `errors:3dx:authenticationGenericError`\n- `errors:3dx:resourceNotFound`\n- `errors:3dx:internalServerError`\n"
-            enum:
-            - errors:3dx:invalidRequest
-            - errors:3dx:authenticationGenericError
-            - errors:3dx:resourceNotFound
-            - errors:3dx:internalServerError
-          title:
-            type: string
-            description: A user-friendly error message, typically localized (NLS-supported), describing the general nature of the error.
-          errors:
-            type: array
-            description: "A list of individual validation or processing errors related to the request.  \nUseful when multiple issues are detected at once.\n"
-            items:
-              type: object
-              description: Details of a single error instance.
-              properties:
-                detail:
-                  type: string
-                  description: A human-readable message offering guidance to resolve the specific error.
-                pointer:
-                  type: string
-                  description: A [JSON Pointer](https://datatracker.ietf.org/doc/html/rfc6901) indicating the location of the field in the request payload where the error occurred.
-        required:
-        - type
-        - title
     local_time_zone:
       type: string
       description: 'Time zone abbreviation used by the sales business unit.
@@ -1240,24 +710,129 @@ components:
         VAL: Vladivostok Time
         WET: Western European Time
       example: CET
-    4xx_get_orders:
+    sub_order_type:
+      type: string
+      description: sub Order Type
+      enum:
+      - Change of Channel
+      - Change of VAR
+      - EPP Training
+      - Evaluation License
+      - Transfer License
+      - New License
+      - One Time Fee
+      - License Renewal
+      - Stop (NO Parallel Use)
+      - Stop - Transform
+      - Stop License
+      - Stop of PU
+      - Stop & Parallel use
+      - Suspension
+      - Suspension Reinstatement
+      - TOS Reinstatement
+      - Termination Of Support
+      - Transfer without Support
+      - VAR Use
+      x-enumDescriptions:
+        Change of Channel: Changing customer coverage from direct to indirect or vice versa.
+        Change of VAR: Changing the Value-Added Reseller (VAR) for an existing order.
+        EPP Training: Training related to EPP (Enterprise Productivity Portfolio).
+        Evaluation License: License issued temporarily for evaluation purposes.
+        Transfer License: Transferring licenses between different companies.
+        New License: Fresh order that does not involve any migration, renewal, or upgrade.
+        One Time Fee: Fee charged for a one-time service or transaction.
+        License Renewal: Extending an existing license.
+        Stop (NO Parallel Use): Discontinuing an existing license with no parallel use
+        Stop - Transform: Discontinuing an existing license with a shift to a transformed model or product.
+        Stop License: Discontinuing an existing license.
+        Stop of PU: Discontinuing an existing PU  license.
+        Stop & Parallel use: Discontinuing an existing license with parallel use
+        Suspension: Temporarily halting the license or support services.
+        Suspension Reinstatement: Reinstating a suspended license or support services.
+        TOS Reinstatement: Reinstating terms of service.
+        Termination Of Support: Ending the support of a product or service.
+        Transfer without Support: Transferring licenses without support.
+        VAR Use: Orders associated with Value-Added Resellers (VAR).
+      example: New License
+    transaction_type:
+      type: string
+      description: 'Order type (one of: `PO`, `RN`).
+
+        '
+      enum:
+      - PO
+      - RN
+      x-enumDescriptions:
+        PO: Purchase Order
+        RN: Renewal Notification
+      example: PO
+    currency:
+      type: string
+      description: 'Three-letter ISO 4217 currency code representing the transaction currency.
+
+
+        Must be exactly 3 uppercase alphabetic characters (e.g., `USD` for US Dollar, `EUR` for Euro, `INR` for Indian Ruppee).
+
+        '
+      minLength: 3
+      maxLength: 3
+      pattern: ^[A-Z]{3}$
+      example: USD
+    429_too_many_requests:
       type: object
-      description: Response body returned when the order details request fails.
+      description: Too Many Requests
       properties:
-        data:
-          type: array
-          description: Always an empty array in case of error responses.
-          maxItems: 0
-          items: {}
-          example: []
-        info:
-          $ref: '#/components/schemas/info'
-        error:
-          $ref: '#/components/schemas/error'
+        message:
+          type: string
       required:
-      - data
-      - info
-      - error
+      - message
+    billto_po_reference:
+      type: string
+      description: 'Identifier of the order as recorded in the **Bill To** site''s ordering system.
+
+
+        If available, this reference will also appear on the Dassault Systèmes invoice.
+
+        '
+      example: EXAMPLE-CORP-20250518
+    booking_datetime:
+      type: string
+      description: 'UTC timestamp when the order was approved by the Finance Department.
+
+
+        Format: ISO 8601 UTC (e.g., `2025-05-30T14:30:00Z`)
+
+        '
+      format: date-time
+      example: '2025-05-29T18:00:00Z'
+    recurring_charge_billing_cycle:
+      type: string
+      description: 'Identifies how often invoices are sent for ALC and ASC licenses. In the event of prorating (to an anniversary date, in the first month, or in the first quarter) or cancellation and refund or overpayment, the prorate calculation is based on 30 day months.
+
+        '
+      enum:
+      - Calendar Month
+      - Calendar Quarter
+      - Calendar Semester
+      - Calendar Year
+      - Full At Date
+      - Immediate
+      - Rolling Month 360
+      - Rolling Quarter 360
+      - Rolling Semester 360
+      - Rolling Year 360
+      x-enumDescriptions:
+        Calendar Month: bill recurring license charges through the end of the current calendar month and for full month periods thereafter (or until indicated anniversary date if earlier)
+        Calendar Quarter: bill recurring license charges through the end of the current calendar quarter and for full 3 month periods thereafter (or until indicated anniversary date if earlier)
+        Calendar Semester: bill recurring license charges through the end of the current semester and for full 6 month periods thereafter (or until indicated anniversary date if earlier)
+        Calendar Year: bill recurring license charges through the end of the current calendar year and for full 12 month periods thereafter (or until indicated anniversary date if earlier)
+        Full At Date: bill recurring license charges for a 12-month period (or until indicated anniversary date if earlier) taking into consideration any start dates contained in the PO. If multiple durations (in contrast to quantity) of a recurrent license charge are ordered, they are invoiced at up front rather than on an annual basis. For example, if a PO is for two years of ALC, the two years are invoiced upfront at the start date rather than year one following order completion and year two the next year.
+        Immediate: bill is generated by DS at the PO approval date for the full amount of the order not taking into consideration any license start dates contained in the PO. For example, if a PO is for two years of ALC, the two years are invoiced upfront at PO approval date.
+        Rolling Month 360: bill recurring license charges from the start date through start date plus one month duration (or until indicated end date if earlier).
+        Rolling Quarter 360: bill recurring license charges from the start date through start date plus 3 months duration (or until indicated end date if earlier).
+        Rolling Semester 360: bill recurring license charges from the start date through start date plus 6 months duration (or until indicated end date if earlier).
+        Rolling Year 360: bill recurring license charges from the start date through start date plus 12 months (or until indicated end date if earlier). For example, if PO is for 2 years of ALC with a start date February 1st, the 2 invoicing periods will be from February 1st to January 31st.
+      example: Calendar Year
     order_sub_line:
       type: object
       description: 'Details of License Charge Breakdown.
@@ -1570,6 +1145,465 @@ components:
               - No Price Increase
               - No Cap. Lower than Price List
               example: Capping To Price List
+    creation_datetime:
+      type: string
+      description: 'UTC timestamp when the order was created in the system.
+
+
+        Format: ISO 8601 UTC (e.g., `2025-05-21T14:30:00Z`)
+
+        '
+      format: date-time
+      example: '2025-05-21T14:30:00Z'
+    online_consent_status:
+      type: string
+      description: 'Status of the online consent request sent to the designated contact.
+
+        '
+      enum:
+      - Accepted
+      - Expired
+      - Not Applicable
+      - Not Requested
+      - Refused
+      - Requested
+      x-enumDescriptions:
+        Accepted: The online consent request has been successfully accepted by the designated contact.
+        Expired: The online consent request has expired and is no longer valid.
+        Not Applicable: The online consent request is not applicable to the current situation or context.
+        Not Requested: The online consent request has not been sent to the designated contact.
+        Refused: The online consent request has been refused by the designated contact.
+        Requested: The online consent request has been sent to the designated contact, but the status is pending.
+      default: ''
+      example: Accepted
+    legal_entity:
+      type: object
+      properties:
+        id:
+          type: string
+          description: 'A unique identifier for the company. The value will be within the Legal Entity Family.
+
+            '
+          maxLength: 15
+          example: '100012345678901'
+        name:
+          type: string
+          description: 'The registered name of the company in English.
+
+            '
+          maxLength: 120
+          example: Example Corporation
+        localName:
+          type: string
+          description: 'The registered name of the company in the local language.
+
+            '
+          maxLength: 120
+          example: 示例公司
+        locationId:
+          type: integer
+          description: "A unique identifier representing the company's location. \nMust be an integer between 1 and 999.\n"
+          minimum: 1
+          maximum: 999
+          example: 2
+      required:
+      - id
+      - name
+      - locationId
+    product_type:
+      type: string
+      description: Type of the product.
+      enum:
+      - Add-On
+      - Auxiliary
+      - Casual Named User
+      - Configuration
+      - Enterprise
+      - Machine Based
+      - Migration Path
+      - Named User
+      - Offer
+      - Package
+      - Service
+      - Shareable
+      - Single Add-On
+      - System
+      - Token-Based
+      x-enumDescriptions:
+        Add-On: An additional feature or component that enhances the functionality of a product.
+        Auxiliary: A supplementary product or service that supports the primary product.
+        Casual Named User: A type of user license that allows for occasional or infrequent use of a product.
+        Configuration: A specific setup or arrangement of a product's features or components.
+        Enterprise: A product or service designed for large-scale or enterprise-level use.
+        Machine Based: A product or service that is licensed or used on a machine or device.
+        Migration Path: A product or service that helps customers transition from one product to another.
+        Named User: A type of user license that allows for regular or frequent use of a product by a specific individual.
+        Offer: A product or service that is being promoted or offered as a special deal.
+        Package: A collection of products or services that are bundled together for sale.
+        Service: A product or service that provides support or assistance to customers.
+        Shareable: A product or service that can be shared among multiple users or devices.
+        Single Add-On: A single additional feature or component that enhances the functionality of a product.
+        System: A product or service that is designed to work as a complete system or solution.
+        Token-Based: A product or service that uses tokens or other forms of authentication to manage access.
+      example: Named User
+    403_basic_forbidden:
+      type: object
+      description: Access Forbidden.
+      properties:
+        message:
+          type: string
+      required:
+      - message
+    orders_search_req:
+      type: object
+      properties:
+        creationDateTime:
+          type: object
+          description: 'Returns orders created within a specified time range, using the `Creation` timestamp.
+
+            The maximum time window allowed for the search is **7 days** (calculated time to time).
+
+            Including this tag prompts the system to perform validations and automatically compute the `from` or `to` timestamp if either is missing.
+
+            Omitting this tag means the system will skip these validations and will not perform any implicit computation of the `from` or `to` values.
+
+            '
+          properties:
+            from:
+              $ref: '#/components/schemas/date_time_from'
+            to:
+              $ref: '#/components/schemas/date_time_to'
+          anyOf:
+          - required:
+            - from
+          - required:
+            - to
+        bookingDateTime:
+          type: object
+          description: 'Returns orders booked within a specified time range, using the `Booking` timestamp.
+
+            The maximum time window allowed for the search is **7 days** (calculated time to time).
+
+            The `Booking` timestamp refers to the date and time when the order was approved by the Finance Department.
+
+            Including this tag prompts the system to perform validations and automatically compute the `from` or `to` timestamp if either is missing.
+
+            Omitting this tag means the system will skip these validations and will not perform any implicit computation of the `from` or `to` values.
+
+            '
+          properties:
+            from:
+              $ref: '#/components/schemas/date_time_from'
+            to:
+              $ref: '#/components/schemas/date_time_to'
+          anyOf:
+          - required:
+            - from
+          - required:
+            - to
+        lastUpdateDateTime:
+          type: object
+          description: 'Indicates the timestamp of the most recent update to the order.
+
+            The maximum time window allowed for the search is **3 days** (calculated time to time).
+
+            This field is automatically set to the current timestamp whenever the order is modified.
+
+            Omitting this tag means the system will skip these validations and will not perform any implicit computation of the `from` or `to` values.
+
+            '
+          properties:
+            from:
+              $ref: '#/components/schemas/date_time_from'
+            to:
+              $ref: '#/components/schemas/date_time_to'
+          anyOf:
+          - required:
+            - from
+          - required:
+            - to
+        installedBaseNumber:
+          $ref: '#/components/schemas/installed_base_number'
+        onlineInstanceSeatId:
+          $ref: '#/components/schemas/online_instance_seat_id'
+        billToPoReferences:
+          type: array
+          minItems: 1
+          description: List of partner order references.
+          example:
+          - '390830'
+          items:
+            type: string
+            maxLength: 60
+            description: 'Must be a string with a maximum length of 60 characters.
+
+              '
+        transactionType:
+          description: 'Order type (one of: `PO`, `RN`).
+
+
+            If left unspecified, records of both transaction types will be included in the response.
+
+            '
+          $ref: '#/components/schemas/transaction_type'
+      anyOf:
+      - required:
+        - creationDateTime
+      - required:
+        - bookingDateTime
+      - required:
+        - lastUpdateDateTime
+      - required:
+        - installedBaseNumber
+      - required:
+        - onlineInstanceSeatId
+      - required:
+        - billToPoReferences
+    info:
+      type: object
+      description: Metadata section of the response providing execution status and result summary.
+      properties:
+        success:
+          type: boolean
+          description: Indicates whether the API request was executed successfully.
+        statusCode:
+          type: integer
+          description: HTTP status code corresponding to the response.
+        estimatedSearchCount:
+          type: integer
+          description: Estimated number of results matching the search criteria.
+      required:
+      - success
+      - statusCode
+    order_get_data:
+      type: array
+      description: List of orders retrieved during the search operation.
+      items:
+        type: object
+        description: Summary information for a single order.
+        properties:
+          transaction:
+            $ref: '#/components/schemas/transaction'
+          businessUnit:
+            $ref: '#/components/schemas/business_unit'
+          billToSite:
+            type: object
+            description: Legal entity to which Dassault Systèmes will issue the invoice (Bill To).
+            $ref: '#/components/schemas/legal_entity'
+          soldToSite:
+            type: object
+            description: Legal entity of the company that is the Final Customer of Dassault Systèmes products (Sold To).
+            $ref: '#/components/schemas/legal_entity'
+          agreement:
+            type: object
+            description: 'Contains details about the license agreement associated with the licenses being ordered in the Purchase Order (PO).
+
+              '
+            properties:
+              type:
+                type: string
+                description: 'Type or classification of the agreement.
+
+                  '
+                maxLength: 100
+                example: General VAR Agreement
+              reference:
+                type: string
+                description: 'A short, descriptive title or label assigned to the agreement at the time of its creation.
+
+                  This helps users identify the specific agreement applied to the order.
+
+                  It can be selected in the Purchase Order only for agreement types where the sub-group is `Instantiated`.
+
+                  '
+                maxLength: 254
+                example: Enterprise License Agreement Q2 2024
+            required:
+            - type
+          billToContact:
+            type: string
+            description: Full name of the contact person at the Bill To site (billing entity) who is responsible for the order. This contact person is the primary point of communication for billing-related inquiries and transactions. Format-`LASTNAME, Firstname` (e.g., `DOE, John`).
+          creationDateTime:
+            $ref: '#/components/schemas/creation_datetime'
+          dsReceivedPoDate:
+            $ref: '#/components/schemas/ds_received_po_date'
+          bookingDateTime:
+            $ref: '#/components/schemas/booking_datetime'
+          currency:
+            $ref: '#/components/schemas/currency'
+          onlineConsentStatus:
+            $ref: '#/components/schemas/online_consent_status'
+          billToSalesRepresentative:
+            $ref: '#/components/schemas/billto_sales_representative'
+          billToPoReference:
+            $ref: '#/components/schemas/billto_po_reference'
+          sboNumber:
+            type: string
+            description: 'Unique identifier of the Special Bid Offer (SBO) that served as the basis for creating the order.
+
+              Typically used to track and reference special pricing or offer conditions.
+
+              '
+            maxLength: 10
+            example: ABC0012345
+          customerRequestedArrivalDate:
+            type: string
+            description: 'Customer Requested Arrival Date (CRAD) indicates the date by which the Final Customer requests delivery of the DS Licenses and Support Order.
+
+
+              > **Note:** CRAD is a non-binding request. While DS will make reasonable efforts to meet this date, it does not constitute a contractual commitment.
+
+
+              - Orders can still receive ''Finance Approved'' status, media can be ''Shipped'', and license keys can be issued and marked as ''Completed'' irrespective of the CRAD.
+
+              - The **Support Start Date** in the Installed Base will never begin before the CRAD.
+
+              - Format: ISO 8601 format (YYYY-MM-DD)
+
+              - License keys will remain inactive until the Support Start Date.
+
+              '
+            format: date
+            example: '2025-05-31'
+          dsSalesRepresentative:
+            type: string
+            description: 'Full name of the Dassault Systèmes (DS) sales representative responsible for the order.
+
+
+              Format: `LASTNAME, Firstname` (e.g., `DOE, John`)
+
+              '
+            example: DOE, John
+          isMultiYear:
+            type: boolean
+            description: 'Indicates whether the order is part of a Multi-Year deal (i.e., duration longer than one year),
+
+              applicable for revenue types such as `YxC` or `AxC`.
+
+              '
+            example: true
+          hasExitClause:
+            type: boolean
+            description: 'Indicates whether the agreement includes an exit clause requiring the Final Customer to pay early termination fees
+
+              if they end the rental before the completion of the multi-year engagement.
+
+              '
+            example: true
+          recurringChargeBillingCycle:
+            $ref: '#/components/schemas/recurring_charge_billing_cycle'
+          opportunity:
+            type: string
+            description: 'Unique identifier for the sales opportunity as recorded in the **My Sales Pipeline** system.
+
+              This value helps link the order to its originating sales activity.
+
+              '
+            example: A1B2-C3D4E5
+          paymentTerms:
+            type: string
+            description: 'Payment terms for the order, as provided by the Finance Department.
+
+              Specifies the agreed period within which the payment must be made.
+
+              '
+            maxLength: 50
+            example: Net Date of Invoice + 60 days
+          licenseChargeConditions:
+            type: array
+            description: 'A list of conditions that determine when the license is charged for the order.
+
+              These conditions specify the circumstances under which the license fee is applied, such as:
+
+
+              - The number of users or seats that are licensed.
+
+              - The type of license or subscription being purchased.
+
+              - Any waiver given on the license or subscription.
+
+              - Any additional features or services that are included with the license.
+
+
+              The license charge conditions are used to calculate the total cost of the license and to ensure that the correct pricing is applied.
+
+              '
+            items:
+              $ref: '#/components/schemas/order_line'
+        required:
+        - transaction
+        - businessUnit
+        - billToSite
+        - soldToSite
+        - creationDateTime
+        - currency
+        - agreement
+    order_revenue_type:
+      type: string
+      enum:
+      - ALC
+      - ASC
+      - ELC
+      - PLC
+      - PSC
+      - QLC
+      - QSC
+      - SLC
+      - SSC
+      - TBL2
+      - TBL3
+      - TSC2
+      - TSC3
+      - TSC5
+      - ULC
+      - USC
+      - XLC
+      - XSC
+      - YLC
+      - YSC
+      x-enumDescriptions:
+        ALC: Annual License Charge
+        ASC: Annual Service Charge
+        ELC: Evaluation Licence Charge
+        PLC: Primary License Charge
+        PSC: Primary Service Charge
+        QLC: Quarter License Charge
+        QSC: Quarter Service Charge
+        SLC: Service/support license charge
+        SSC: Service Charge
+        TBL2: Term Based Licenses 2
+        TBL3: Term Based Licenses 3
+        TSC2: Term Service Charge 2
+        TSC3: Term Service Charge 3
+        TSC5: Term Service Charge 5
+        ULC: Administration license charge
+        USC: Upfront Service Charge
+        XLC: X License Charge
+        XSC: eXtended Service Charge
+        YLC: Yearly License Charge
+        YSC: Yearly Service Charge
+      example: ALC
+    401_basic_unauthorized:
+      type: object
+      description: Unauthorized
+      properties:
+        message:
+          type: string
+      required:
+      - message
+    200_post_orders_search:
+      type: object
+      description: Response body returned upon a successful order search request.
+      properties:
+        data:
+          $ref: '#/components/schemas/orders_search_data'
+        info:
+          $ref: '#/components/schemas/info'
+        error:
+          $ref: '#/components/schemas/error'
+      required:
+      - info
+      - data
     order_processing_status:
       type: string
       description: Current processing status of the order.
@@ -1624,255 +1658,207 @@ components:
         Submitted to Sales: The order has been submitted to the Sales Department for further processing.
         Submitted to VAR Central Admin: The order has been submitted to the VAR central administration for further processing.
       example: Sales Approved
-    billto_po_reference:
+    installed_base_number:
       type: string
-      description: 'Identifier of the order as recorded in the **Bill To** site''s ordering system.
+      description: 'A unique identifier for the installed base, representing the total number of software licenses that have been issued to a Final Customer.
 
+        The Installed Base Number is used to determine the Final Customer''s maintenance and support obligations, as well as to calculate the cost of future upgrades or renewals.
 
-        If available, this reference will also appear on the Dassault Systèmes invoice.
+        This is used to track the Final Customer''s software licenses and maintenance history.
 
         '
-      example: EXAMPLE-CORP-20250518
-    orders_search_data:
+      maxLength: 40
+      example: LN00012345678
+    date_time_to:
+      type: string
+      description: 'This property represents a timestamp in UTC format, following the ISO 8601 standard.
+
+        All date-time values must be provided in Coordinated Universal Time (UTC).
+
+        If the `from` timestamp is specified, this value must be later than `from`.
+
+        If not provided, the system will automatically calculate this value by adding the maximum number of days specified for the time range defined for the parent search criteria.
+
+        '
+      format: date-time
+      example: '2024-05-22T14:30:00Z'
+    date_time_from:
+      type: string
+      description: 'This property represents a timestamp in UTC format, following the ISO 8601 standard.
+
+        All date-time values must be provided in Coordinated Universal Time (UTC).
+
+        The timestamp must not be set in the future.
+
+        If not provided, the system will automatically calculate it by subtracting the maximum number of days specified for the time range defined for the parent search criteria.
+
+        '
+      format: date-time
+      example: '2024-05-21T14:30:00Z'
+    transaction:
+      type: object
+      description: Transactional details of the order.
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the order. Can represent a Purchase Order or a Renewal Notification.
+          maxLength: 13
+          example: PO_A123456789
+        type:
+          $ref: '#/components/schemas/transaction_type'
+        status:
+          $ref: '#/components/schemas/order_processing_status'
+        description:
+          type: string
+          description: Short description given to the Purchase Order / Renewal Notification.
+          maxLength: 30
+          example: XYZ Company Order 50 products
+    error:
       type: array
-      description: List of orders retrieved during the search operation.
+      description: 'An array containing one or more error objects identified during the request processing.
+
+        Each object provides detailed information about a specific type of error encountered.
+
+        '
       items:
         type: object
-        description: Summary information for a single order.
         properties:
-          transaction:
-            $ref: '#/components/schemas/transaction'
-          businessUnit:
-            $ref: '#/components/schemas/business_unit'
-          billToSite:
-            type: object
-            description: Legal entity to which Dassault Systèmes will issue the invoice (Bill To).
-            $ref: '#/components/schemas/legal_entity'
-          soldToSite:
-            type: object
-            description: Legal entity of the company that is the Final Customer of Dassault Systèmes products (Sold To).
-            $ref: '#/components/schemas/legal_entity'
-          creationDateTime:
-            $ref: '#/components/schemas/creation_datetime'
-          dsRecievedPoDate:
-            $ref: '#/components/schemas/ds_received_po_date'
-          bookingDateTime:
-            $ref: '#/components/schemas/booking_datetime'
-          currency:
-            $ref: '#/components/schemas/currency'
-          onlineConsentStatus:
-            $ref: '#/components/schemas/online_consent_status'
-          billToSalesRepresentative:
-            $ref: '#/components/schemas/billto_sales_representative'
-          billToPoReference:
-            $ref: '#/components/schemas/billto_po_reference'
+          type:
+            type: string
+            description: "A URI identifying the specific type of error.  \nThis allows API consumers to programmatically recognize and handle the error appropriately.  \n\nThe URI follows the format: `errors:<domain>:<error_type>`  \nExample values include:\n- `errors:3dx:invalidRequest`\n- `errors:3dx:authenticationGenericError`\n- `errors:3dx:resourceNotFound`\n- `errors:3dx:internalServerError`\n"
+            enum:
+            - errors:3dx:invalidRequest
+            - errors:3dx:authenticationGenericError
+            - errors:3dx:resourceNotFound
+            - errors:3dx:internalServerError
+          title:
+            type: string
+            description: A user-friendly error message, typically localized (NLS-supported), describing the general nature of the error.
+          errors:
+            type: array
+            description: "A list of individual validation or processing errors related to the request.  \nUseful when multiple issues are detected at once.\n"
+            items:
+              type: object
+              description: Details of a single error instance.
+              properties:
+                detail:
+                  type: string
+                  description: A human-readable message offering guidance to resolve the specific error.
+                pointer:
+                  type: string
+                  description: A [JSON Pointer](https://datatracker.ietf.org/doc/html/rfc6901) indicating the location of the field in the request payload where the error occurred.
         required:
-        - transaction
-        - businessUnit
-        - billToSite
-        - soldToSite
-        - creationDateTime
-        - currency
-    billto_sales_representative:
+        - type
+        - title
+    order_type:
       type: string
-      description: Name of the sales representative person from the **Bill To** site.
-      example: DOE, Jane
-    recurring_charge_billing_cycle:
-      type: string
-      description: 'Identifies how often invoices are sent for ALC and ASC licenses. In the event of prorating (to an anniversary date, in the first month, or in the first quarter) or cancellation and refund or overpayment, the prorate calculation is based on 30 day months.
+      description: 'Specifies the classification of the order based on its nature, purpose, or contractual arrangement.
+
+        This helps identify whether the order involves a new purchase, renewal, upgrade, transfer, suspension,
+
+        migration, evaluation, or any other business scenario. Each value represents a predefined business process
+
+        or transaction type that impacts how the order is handled and processed.
+
+        For a complete list of supported values, refer to the `enum` section.
 
         '
       enum:
-      - Calendar Month
-      - Calendar Quarter
-      - Calendar Semester
-      - Calendar Year
-      - Full At Date
-      - Immediate
-      - Rolling Month 360
-      - Rolling Quarter 360
-      - Rolling Semester 360
-      - Rolling Year 360
+      - Change of Channel
+      - Change of VAR
+      - DS Brand -> DS & Migration
+      - DS Brand -> DS OTC Platform
+      - EPP Training
+      - Evaluation License
+      - IBM -> DS
+      - IBM -> DS & Migration
+      - IBM -> DS without Support
+      - IBM NAL Parallel Use -> DS
+      - IBM NAL without Support -> DS
+      - Intercompany Transfer
+      - Migration - Non Standard
+      - Migration - Standard
+      - Module Exchange - Non Standard
+      - Module Exchange - Standard
+      - New
+      - One Time Fee
+      - Parallel Use Extension
+      - Renewal
+      - Special Order
+      - Stop
+      - Stop & Parallel Use
+      - Stop - Transform
+      - Suspension
+      - Suspension Reinstatement
+      - TOS Reinstatement
+      - Termination Of Support
+      - Transfer Parallel Use
+      - Transfer without Support
+      - VAR Use
       x-enumDescriptions:
-        Calendar Month: bill recurring license charges through the end of the current calendar month and for full month periods thereafter (or until indicated anniversary date if earlier)
-        Calendar Quarter: bill recurring license charges through the end of the current calendar quarter and for full 3 month periods thereafter (or until indicated anniversary date if earlier)
-        Calendar Semester: bill recurring license charges through the end of the current semester and for full 6 month periods thereafter (or until indicated anniversary date if earlier)
-        Calendar Year: bill recurring license charges through the end of the current calendar year and for full 12 month periods thereafter (or until indicated anniversary date if earlier)
-        Full At Date: bill recurring license charges for a 12-month period (or until indicated anniversary date if earlier) taking into consideration any start dates contained in the PO. If multiple durations (in contrast to quantity) of a recurrent license charge are ordered, they are invoiced at up front rather than on an annual basis. For example, if a PO is for two years of ALC, the two years are invoiced upfront at the start date rather than year one following order completion and year two the next year.
-        Immediate: bill is generated by DS at the PO approval date for the full amount of the order not taking into consideration any license start dates contained in the PO. For example, if a PO is for two years of ALC, the two years are invoiced upfront at PO approval date.
-        Rolling Month 360: bill recurring license charges from the start date through start date plus one month duration (or until indicated end date if earlier).
-        Rolling Quarter 360: bill recurring license charges from the start date through start date plus 3 months duration (or until indicated end date if earlier).
-        Rolling Semester 360: bill recurring license charges from the start date through start date plus 6 months duration (or until indicated end date if earlier).
-        Rolling Year 360: bill recurring license charges from the start date through start date plus 12 months (or until indicated end date if earlier). For example, if PO is for 2 years of ALC with a start date February 1st, the 2 invoicing periods will be from February 1st to January 31st.
-      example: Calendar Year
-    ds_offering:
-      type: string
-      description: Dassault Systèmes offering Type
-      enum:
-      - Auxiliary
-      - Licensed Program
-      - Not Applicable
-      - Online Services
-      - Packaged Offering
-      - Specific
-      x-enumDescriptions:
-        Auxiliary: Non software items i.e hardware, peripherals, or anything else that is not software.
-        Licensed Program: On premises software.
-        Not Applicable: "Items that are not governed by the CLOSA at all.\t"
-        Online Services: Cloud based services.
-        Packaged Offering: A bundle that mixes licensed programs and online.
-        Specific: Items covered by a separate agreement rather than the standard CLOSA.
-      example: Licensed Program
-    booking_datetime:
-      type: string
-      description: 'UTC timestamp when the order was approved by the Finance Department.
-
-
-        Format: ISO 8601 UTC (e.g., `2025-05-30T14:30:00Z`)
-
-        '
-      format: date-time
-      example: '2025-05-29T18:00:00Z'
-    order_revenue_type:
-      type: string
-      enum:
-      - ALC
-      - ASC
-      - ELC
-      - PLC
-      - PSC
-      - QLC
-      - QSC
-      - SLC
-      - SSC
-      - TBL2
-      - TBL3
-      - TSC2
-      - TSC3
-      - TSC5
-      - ULC
-      - USC
-      - XLC
-      - XSC
-      - YLC
-      - YSC
-      x-enumDescriptions:
-        ALC: Annual License Charge
-        ASC: Annual Service Charge
-        ELC: Evaluation Licence Charge
-        PLC: Primary License Charge
-        PSC: Primary Service Charge
-        QLC: Quarter License Charge
-        QSC: Quarter Service Charge
-        SLC: Service/support license charge
-        SSC: Service Charge
-        TBL2: Term Based Licenses 2
-        TBL3: Term Based Licenses 3
-        TSC2: Term Service Charge 2
-        TSC3: Term Service Charge 3
-        TSC5: Term Service Charge 5
-        ULC: Administration license charge
-        USC: Upfront Service Charge
-        XLC: X License Charge
-        XSC: eXtended Service Charge
-        YLC: Yearly License Charge
-        YSC: Yearly Service Charge
-      example: ALC
-    online_consent_status:
-      type: string
-      description: 'Status of the online consent request sent to the designated contact.
-
-        '
-      enum:
-      - Accepted
-      - Expired
-      - Not Applicable
-      - Not Requested
-      - Refused
-      - Requested
-      x-enumDescriptions:
-        Accepted: The online consent request has been successfully accepted by the designated contact.
-        Expired: The online consent request has expired and is no longer valid.
-        Not Applicable: The online consent request is not applicable to the current situation or context.
-        Not Requested: The online consent request has not been sent to the designated contact.
-        Refused: The online consent request has been refused by the designated contact.
-        Requested: The online consent request has been sent to the designated contact, but the status is pending.
-      default: ''
-      example: Accepted
-    ds_received_po_date:
-      type: string
-      description: Date when the order was received by Dassault Systèmes, in ISO 8601 format (YYYY-MM-DD).
-      format: date
-      example: '2025-05-21'
-    online_instance_seat_id:
-      type: string
-      description: 'Unique identifier assigned to a 3DEXPERIENCE platform instance.
-
-        It is used to identify a specific instance of the platform, which can be accessed through the cloud.
-
-        This identifier is also referred to as the **Online Instance ID**.
-
-        Additionally, it is also used as the **Seat ID** to identify a user''s access to the instance.
-
-        The Seat ID is used to manage user licenses, authenticate users, and track user activity within the instance.
-
-        The Online Instance ID/Seat ID is a combination of letters and numbers.
-
-        '
-      maxLength: 15
-      example: R1122334455667
-    creation_datetime:
-      type: string
-      description: 'UTC timestamp when the order was created in the system.
-
-
-        Format: ISO 8601 UTC (e.g., `2025-05-21T14:30:00Z`)
-
-        '
-      format: date-time
-      example: '2025-05-21T14:30:00Z'
-    product_type:
-      type: string
-      description: Type of the product.
-      enum:
-      - Add-On
-      - Auxiliary
-      - Casual Named User
-      - Configuration
-      - Enterprise
-      - Machine Based
-      - Migration Path
-      - Named User
-      - Offer
-      - Package
-      - Service
-      - Shareable
-      - Single Add-On
-      - System
-      - Token-Based
-      x-enumDescriptions:
-        Add-On: An additional feature or component that enhances the functionality of a product.
-        Auxiliary: A supplementary product or service that supports the primary product.
-        Casual Named User: A type of user license that allows for occasional or infrequent use of a product.
-        Configuration: A specific setup or arrangement of a product's features or components.
-        Enterprise: A product or service designed for large-scale or enterprise-level use.
-        Machine Based: A product or service that is licensed or used on a machine or device.
-        Migration Path: A product or service that helps customers transition from one product to another.
-        Named User: A type of user license that allows for regular or frequent use of a product by a specific individual.
-        Offer: A product or service that is being promoted or offered as a special deal.
-        Package: A collection of products or services that are bundled together for sale.
-        Service: A product or service that provides support or assistance to customers.
-        Shareable: A product or service that can be shared among multiple users or devices.
-        Single Add-On: A single additional feature or component that enhances the functionality of a product.
-        System: A product or service that is designed to work as a complete system or solution.
-        Token-Based: A product or service that uses tokens or other forms of authentication to manage access.
-      example: Named User
-    200_post_orders_search:
+        New: A fresh order that does not involve any migration, renewal, or upgrade.
+        Renewal: Extending an existing license.
+        Migration - Standard: A standard migration from another platform.
+        Evaluation License: License issued temporarily for evaluation purposes.
+        Stop - Transform: Discontinuing an existing license with a shift to a transformed model or product.
+        Suspension: Temporarily halting the license or support services.
+        Termination Of Support: Ending the support of a product or service.
+        VAR Use: Orders associated with Value-Added Resellers (VAR).
+        Change of Channel: Changing Final Customer coverage from direct to indirect or vice versa.
+        Change of VAR: Changing the Value-Added Reseller (VAR) for an existing order.
+        DS Brand -> DS & Migration: Migrating from DS Brand to DS with migration services.
+        DS Brand -> DS OTC Platform: Transitioning from DS Brand to DS OTC Platform.
+        EPP Training: Training related to EPP (Enterprise Productivity Portfolio).
+        IBM -> DS: Transitioning from IBM to DS.
+        IBM -> DS & Migration: Transitioning from IBM to DS with migration services.
+        IBM -> DS without Support: Transitioning from IBM to DS without support.
+        IBM NAL Parallel Use -> DS: Parallel use of IBM NAL with DS.
+        IBM NAL without Support -> DS: Transitioning from IBM NAL to DS without support.
+        Intercompany Transfer: Transferring licenses between different companies.
+        Migration - Non Standard: Non-standard migration processes.
+        Module Exchange - Non Standard: Non-standard module exchange processes.
+        Module Exchange - Standard: Standard module exchange processes.
+        One Time Fee: Fee charged for a one-time service or transaction.
+        Parallel Use Extension: Extending the parallel use period.
+        Special Order: New licenses with specific administrative requests.
+        Stop: Discontinuing an existing license.
+        Stop & Parallel Use: Discontinuing an existing license with parallel use.
+        Suspension Reinstatement: Reinstating a suspended license or support services.
+        TOS Reinstatement: Reinstating terms of service.
+        Transfer Parallel Use: Transferring licenses with parallel use.
+        Transfer without Support: Transferring licenses without support.
+      example: Stop - Transform
+    business_unit:
       type: object
-      description: Response body returned upon a successful order search request.
+      description: Details of the sales business unit.
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the sales business unit.
+          minLength: 5
+          maxLength: 5
+          example: BU001
+        name:
+          type: string
+          description: Name of the sales business unit.
+          maxLength: 25
+          example: Corporate Sales Unit A
+        localTimezone:
+          $ref: '#/components/schemas/local_time_zone'
+      required:
+      - id
+      - name
+      - localTimezone
+    400_post_orders_search:
+      type: object
+      description: Response body returned when the order search request fails.
       properties:
         data:
-          $ref: '#/components/schemas/orders_search_data'
+          type: array
+          description: Always an empty array in case of error responses.
+          maxItems: 0
+          items: {}
+          example: []
         info:
           $ref: '#/components/schemas/info'
         error:
@@ -1880,6 +1866,20 @@ components:
       required:
       - info
       - data
+      - error
+    200_get_orders:
+      type: object
+      description: Response body returned upon a successful order details request.
+      properties:
+        data:
+          $ref: '#/components/schemas/order_get_data'
+        info:
+          $ref: '#/components/schemas/info'
+        error:
+          $ref: '#/components/schemas/error'
+      required:
+      - data
+      - info
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

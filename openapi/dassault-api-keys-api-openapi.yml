@@ -87,9 +87,9 @@ components:
           type: string
       required:
       - message
-    429_too_many_requests:
+    401_basic_unauthorized:
       type: object
-      description: Too Many Requests
+      description: Unauthorized
       properties:
         message:
           type: string
@@ -113,9 +113,9 @@ components:
       required:
       - hashed_key
       - api_key
-    401_basic_unauthorized:
+    429_too_many_requests:
       type: object
-      description: Unauthorized
+      description: Too Many Requests
       properties:
         message:
           type: string

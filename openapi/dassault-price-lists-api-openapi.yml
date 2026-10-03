@@ -122,6 +122,32 @@ paths:
                     message: Too many requests, please try again later
 components:
   schemas:
+    country_name:
+      type: string
+      description: 'Country Location
+
+        '
+      example: France
+    currency:
+      type: string
+      description: 'Three-letter ISO 4217 currency code representing the transaction currency.
+
+
+        Must be exactly 3 uppercase alphabetic characters (e.g., `USD` for US Dollar, `EUR` for Euro, `INR` for Indian Ruppee).
+
+        '
+      minLength: 3
+      maxLength: 3
+      pattern: ^[A-Z]{3}$
+      example: USD
+    429_too_many_requests:
+      type: object
+      description: Too Many Requests
+      properties:
+        message:
+          type: string
+      required:
+      - message
     403_basic_forbidden:
       type: object
       description: Access Forbidden.
@@ -130,6 +156,22 @@ components:
           type: string
       required:
       - message
+    info:
+      type: object
+      description: Metadata section of the response providing execution status and result summary.
+      properties:
+        success:
+          type: boolean
+          description: Indicates whether the API request was executed successfully.
+        statusCode:
+          type: integer
+          description: HTTP status code corresponding to the response.
+        estimatedSearchCount:
+          type: integer
+          description: Estimated number of results matching the search criteria.
+      required:
+      - success
+      - statusCode
     error:
       type: array
       description: 'An array containing one or more error objects identified during the request processing.
@@ -167,18 +209,18 @@ components:
         required:
         - type
         - title
-    currency:
+    401_basic_unauthorized:
+      type: object
+      description: Unauthorized
+      properties:
+        message:
+          type: string
+      required:
+      - message
+    country_code:
       type: string
-      description: 'Three-letter ISO 4217 currency code representing the transaction currency.
-
-
-        Must be exactly 3 uppercase alphabetic characters (e.g., `USD` for US Dollar, `EUR` for Euro, `INR` for Indian Ruppee).
-
-        '
-      minLength: 3
-      maxLength: 3
-      pattern: ^[A-Z]{3}$
-      example: USD
+      description: ISO3 Code (3 capital letters code) of the country
+      example: FRA
     200_price-lists_search:
       type: object
       description: Response body returned upon a successful price list search request.
@@ -192,48 +234,6 @@ components:
       required:
       - info
       - data
-    info:
-      type: object
-      description: Metadata section of the response providing execution status and result summary.
-      properties:
-        success:
-          type: boolean
-          description: Indicates whether the API request was executed successfully.
-        statusCode:
-          type: integer
-          description: HTTP status code corresponding to the response.
-        estimatedSearchCount:
-          type: integer
-          description: Estimated number of results matching the search criteria.
-      required:
-      - success
-      - statusCode
-    429_too_many_requests:
-      type: object
-      description: Too Many Requests
-      properties:
-        message:
-          type: string
-      required:
-      - message
-    country_name:
-      type: string
-      description: 'Country Location
-
-        '
-      example: France
-    401_basic_unauthorized:
-      type: object
-      description: Unauthorized
-      properties:
-        message:
-          type: string
-      required:
-      - message
-    country_code:
-      type: string
-      description: ISO3 Code (3 capital letters code) of the country
-      example: FRA
     price-lists_search_data:
       type: array
       description: List of **Products** and **Industry Process Experiences (IPE)** that the authorized user is accredited to sell.
