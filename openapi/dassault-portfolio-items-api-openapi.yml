@@ -138,6 +138,14 @@ paths:
                     message: Too many requests, please try again later
 components:
   schemas:
+    429_too_many_requests:
+      type: object
+      description: Too Many Requests
+      properties:
+        message:
+          type: string
+      required:
+      - message
     portfolio-items_data:
       type: object
       description: A sales portfolio-item.
@@ -170,17 +178,32 @@ components:
           type: string
           description: type of portfolio item
           example: CLASS00002_ONPR_PRTF077_SOL001277
-    429_too_many_requests:
+    info_response_portfolio-items:
+      allOf:
+      - $ref: '#/components/schemas/info_response_base_attributes'
+      - type: object
+        properties:
+          timeStamp:
+            type: string
+            format: date-time
+            description: Timestamp of the operation.
+            example: '2025-08-14T07:45:59.000Z'
+      required:
+      - success
+      - statusCode
+      - timeStamp
+      - estimatedSearchCount
+    403_basic_forbidden:
       type: object
-      description: Too Many Requests
+      description: Access Forbidden.
       properties:
         message:
           type: string
       required:
       - message
-    403_basic_forbidden:
+    401_basic_unauthorized:
       type: object
-      description: Access Forbidden.
+      description: Unauthorized
       properties:
         message:
           type: string
@@ -209,6 +232,19 @@ components:
           required:
           - code
           - message
+    200_get_portfolio-items_search:
+      type: object
+      description: Response in case of a successful search operation on portfolio-items
+      required:
+      - data
+      - info
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/portfolio-items_data'
+        info:
+          $ref: '#/components/schemas/info_response_portfolio-items'
     info_response_base_attributes:
       type: object
       description: Global Information on the operation requested.
@@ -225,42 +261,6 @@ components:
           type: integer
           description: Total number of Results.
           example: 6027
-    401_basic_unauthorized:
-      type: object
-      description: Unauthorized
-      properties:
-        message:
-          type: string
-      required:
-      - message
-    info_response_portfolio-items:
-      allOf:
-      - $ref: '#/components/schemas/info_response_base_attributes'
-      - type: object
-        properties:
-          timeStamp:
-            type: string
-            format: date-time
-            description: Timestamp of the operation.
-            example: '2025-08-14T07:45:59.000Z'
-      required:
-      - success
-      - statusCode
-      - timeStamp
-      - estimatedSearchCount
-    200_get_portfolio-items_search:
-      type: object
-      description: Response in case of a successful search operation on portfolio-items
-      required:
-      - data
-      - info
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/portfolio-items_data'
-        info:
-          $ref: '#/components/schemas/info_response_portfolio-items'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
