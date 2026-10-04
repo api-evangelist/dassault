@@ -1,22 +1,20 @@
-# Kin Score artifact — dassault — 2026-08-25T154045
+# Kin Score artifact — dassault — 2026-10-03T000835
 # The API Evangelist rating (https://github.com/api-evangelist/kin-score). Generated; do not edit.
 ---
 kin_score:
   slug: dassault
-  schema_version: 0.14.0
-  scored_at: '2026-08-25'
-  run_ts: 2026-08-25T154045
-  composite: 43.7
+  schema_version: 0.23.0
+  scored_at: '2026-10-03'
+  run_ts: 2026-10-03T000835
+  composite: 41.0
   band: developing
   facets:
-    discoverability: 74.1
-    contract_quality: 64.3
-    governance: 9.8
+    discoverability: 66.1
+    contract_quality: 58.4
+    contract_governance: 9.8
     operational_transparency: 21.1
     developer_ergonomics: 23.8
-    commercial_clarity: 57.9
-    contract_governance: 9.8
-    access_clarity: 57.9
+    access_clarity: 54.7
   agent_readiness:
     score: 30.6
     band: agent-ready
@@ -40,6 +38,12 @@ kin_score:
       protected_resource_metadata: false
       dynamic_client_registration: false
       agentic_commerce: false
+  regulatory:
+    applies: true
+    regime: Horizontal (data, software, accessibility, platform)
+    regime_id: horizontal
+    score: 21.6
+    matched_via: fallback
   provenance:
     agentic_access: derived
     contracts:

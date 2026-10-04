@@ -266,6 +266,8 @@ apis:
   humanURL: https://www.3ds.com/support/documentation/developer-guides
   baseURL: https://apigw-prd.3ds.com
   tags:
+  - APIKeys
+  tags_raw:
   - API Keys
   properties:
   - type: OpenAPI
@@ -273,6 +275,9 @@ apis:
   - type: Documentation
     url: https://www.3ds.com/support/documentation/developer-guides
 common:
+  - type: CapabilityMap
+    url: capabilities/dassault-capability-edges.yml
+    name: Dassault Systèmes Business Capability Map
   - type: AgenticAccess
     url: agentic-access/dassault-agentic-access.yml
   - type: TrustCenter
