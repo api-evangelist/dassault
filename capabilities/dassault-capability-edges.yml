@@ -1,0 +1,35 @@
+slug: dassault
+provider: Dassault Systèmes
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: leads-opportunities
+  spec_file: dassault-leads-opportunities-api-openapi.yml
+  capability_id: BC-410.30
+  capability_id_l1: BC-410
+  capability_name: Opportunity & Pipeline Management
+  confidence: 0.92
+  evidence: POST /sales/api4partners/v0/leads-opportunities 'Create a lead-opportunity object'; schemas
+    forecastCategory, revenueType, customerContact
+  reason: Full CRUD and search over lead/opportunity objects with forecast category and revenue type —
+    textbook Opportunity & Pipeline Management.
+- tag: Price Lists
+  spec_file: dassault-price-lists-api-openapi.yml
+  capability_id: BC-440.20
+  capability_id_l1: BC-440
+  capability_name: Price List Management
+  confidence: 0.78
+  evidence: GET /order/api4partners/v0/price-lists/search 'Retrieve Price Lists'; schemas price-lists_search_data,
+    currency, country_code
+  reason: Retrieval of country/currency-scoped price lists for partners is price book/list price maintenance
+    and distribution — Price List Management.
