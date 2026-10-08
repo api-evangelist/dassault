@@ -65,3 +65,27 @@ plans:
       - Lead and opportunity management
       - Portfolio item browsing
       - Staging and production environments
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models: []
+  units: []
+  plans:
+  - name: On-Premise License
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: 3DEXPERIENCE Cloud Subscription
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: API4Partners Gateway
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
