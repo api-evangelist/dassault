@@ -2,6 +2,13 @@
   "repo": "dassault",
   "feeds": [
     {
+      "source": "https://blog.3ds.com/",
+      "feed_url": "https://blog.3ds.com/feed.xml",
+      "title": "",
+      "saved": 5,
+      "method": "discovered"
+    },
+    {
       "source": "https://www.linkedin.com/company/dassaultsystemes",
       "feed_url": "https://www.linkedin.com/company/dassaultsystemes",
       "title": "",
@@ -9,8 +16,8 @@
       "method": "none"
     }
   ],
-  "fetched": "2026-10-03T12:30:02Z",
-  "post_count": 65,
+  "fetched": "2026-10-10T13:15:00Z",
+  "post_count": 70,
   "feed_nature": "vendor-blog",
   "feed_nature_basis": "blog_subdomain",
   "feed_nature_note": "Whether these posts are the vendor publishing or its support community, decided on the URL path grammar of the saved posts -- not the hostname, which carries both on Khoros, and not author diversity, which flags large vendor blogs as forums. 'undetermined' means undetermined."
