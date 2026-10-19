@@ -36,3 +36,140 @@
     detected: '2026-10-15'
   status: not-a-workflow
   arazzo: null
+- slug: dassault-ansys-inc
+  label: ANSYS INC
+  partner: ansys
+  partner_name: ANSYS INC
+  category: CAA / 3DEXPERIENCE partner solution
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://www.3ds.com/partners/solutions/100000000001407_PDT00000000362_FLUENT_for_CATIA_V5
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: Dassault Systemes Find a solution (3ds.com/partners/find-solution + partner-details Website)
+    spec_file: null
+    role: dassault-app
+    registered_name: ANSYS INC
+    matched_domain: ansys.com
+    matched_by: domain
+    listings: 3
+    sample_apps:
+    - FLUENT for CATIA V5
+    - Hexaedric meshing in CATIA V5
+    - ICEM CFD Solver Gateway
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-engineering-cad.py
+    detected: '2026-10-19'
+  status: not-a-workflow
+  arazzo: null
+- slug: dassault-apriori-technologies-inc
+  label: APRIORI TECHNOLOGIES INC
+  partner: apriori
+  partner_name: APRIORI TECHNOLOGIES INC
+  category: CAA / 3DEXPERIENCE partner solution
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://www.3ds.com/partners/solutions/200000000009520_PDT00000001037_aPriori_CATIA_CostConnect
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: Dassault Systemes Find a solution (3ds.com/partners/find-solution + partner-details Website)
+    spec_file: null
+    role: dassault-app
+    registered_name: APRIORI TECHNOLOGIES INC
+    matched_domain: apriori.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - aPriori CATIA CostConnect
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-engineering-cad.py
+    detected: '2026-10-19'
+  status: not-a-workflow
+  arazzo: null
+- slug: dassault-cadence-design-systems-inc
+  label: CADENCE DESIGN SYSTEMS INC
+  partner: cadence
+  partner_name: CADENCE DESIGN SYSTEMS INC
+  category: CAA / 3DEXPERIENCE partner solution
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://www.3ds.com/partners/solutions/200000000049103_PDT00000002163_CADENCE_Pulse_Connector_for_3DEXPERIENCE
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: Dassault Systemes Find a solution (3ds.com/partners/find-solution + partner-details Website)
+    spec_file: null
+    role: dassault-app
+    registered_name: CADENCE DESIGN SYSTEMS INC
+    matched_domain: cadence.com
+    matched_by: domain
+    listings: 2
+    sample_apps:
+    - CADENCE Pulse Connector for 3DEXPERIENCE
+    - CADENCE Pulse Connector for 3DEXPERIENCE On Cloud
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-engineering-cad.py
+    detected: '2026-10-19'
+  status: not-a-workflow
+  arazzo: null
+- slug: dassault-siemens-industry-software-inc
+  label: SIEMENS INDUSTRY SOFTWARE INC
+  partner: siemens-plm
+  partner_name: SIEMENS INDUSTRY SOFTWARE INC
+  category: CAA / 3DEXPERIENCE partner solution
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://www.3ds.com/partners/solutions/200000000028393_PDT00000000308_CHS_design_tools
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: Dassault Systemes Find a solution (3ds.com/partners/find-solution + partner-details Website)
+    spec_file: null
+    role: dassault-app
+    registered_name: SIEMENS INDUSTRY SOFTWARE INC
+    matched_domain: siemens.com
+    matched_by: domain+verified
+    listings: 13
+    sample_apps:
+    - CHS CATIA V5 Bridges
+    - CHS design tools
+    - Fibersim
+    - FloEFD V5
+    - LCable V5 Bridge
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-engineering-cad.py
+    detected: '2026-10-19'
+  status: not-a-workflow
+  arazzo: null
+- slug: dassault-synopsys-inc
+  label: SYNOPSYS INC
+  partner: synopsys
+  partner_name: SYNOPSYS INC
+  category: CAA / 3DEXPERIENCE partner solution
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://www.3ds.com/partners/solutions/SIT000061_PDT00000000544_SaberES_Designer_for_CATIA_V5
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: Dassault Systemes Find a solution (3ds.com/partners/find-solution + partner-details Website)
+    spec_file: null
+    role: dassault-app
+    registered_name: SYNOPSYS INC
+    matched_domain: synopsys.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - SaberES Designer for CATIA V5
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-engineering-cad.py
+    detected: '2026-10-19'
+  status: not-a-workflow
+  arazzo: null
