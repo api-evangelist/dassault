@@ -1,61 +1,4 @@
 edges:
-- partner_name: OPC Foundation (OPC UA)
-  partner: null
-  partner_match: register
-  type: register
-  direction: partner-built
-  evidence: https://opcfoundation.org/products/view/delmia-apriso/
-  category: OPC UA products
-  channel: standard-directory
-  relationship: standard-participant
-  contract_reference:
-    register: OPC Foundation product marketplace (opcfoundation.org/products)
-    spec_file: null
-    standard: OPC UA
-    role: OPC UA certified product vendor
-    registered_name: Dassault Systemes
-    member_id: '1648'
-    website: http://www.3ds.com
-    matched_domain: 3ds.com
-    matched_by: domain+name-among-holders
-    listed_products: 1
-    certified_products:
-    - product: MES
-      certified_listings: 1
-      lapsed: false
-    listed_categories: []
-    sample_products:
-    - Dassault Systemes DELMIA Apriso Show details
-    signal_note: certified_products = one entry per product CATEGORY with a certified product (diversity), never
-      per product; listed_products is context, never read
-    detected_by: sweep-industrial-robotics.py
-    detected: '2026-10-15'
-  detected_by: sweep-industrial-robotics.py
-  first_seen: '2026-10-15'
-- partner_name: OPC Foundation (OPC UA)
-  partner: null
-  partner_match: register
-  type: register
-  direction: partner-built
-  evidence: https://opcfoundation.org/products/view/delmia-apriso/
-  category: OPC UA products
-  channel: standard-directory
-  relationship: compatible
-  shape: opc-ua
-  evidence_kind: conformance-register
-  degree: certified
-  report_only: true
-  contract_reference:
-    register: OPC Foundation product marketplace (opcfoundation.org/products)
-    spec_file: null
-    standard: OPC UA
-    role: opc-ua-certified
-    registered_name: Dassault Systemes
-    matched_domain: 3ds.com
-    detected_by: sweep-industrial-robotics.py
-    detected: '2026-10-15'
-  detected_by: sweep-industrial-robotics.py
-  first_seen: '2026-10-15'
 - partner_name: ANSYS INC
   app: FLUENT for CATIA V5
   partner: ansys
@@ -193,12 +136,101 @@ edges:
     detected: '2026-10-19'
   detected_by: sweep-engineering-cad.py
   detected: '2026-10-19'
+- partner_name: Cloud Security Alliance STAR Registry
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://cloudsecurityalliance.org/star/registry/dassault-systemes/services/3dexperience-platform-saas
+  category: Cloud security assurance
+  contract_reference:
+    register: CSA STAR Registry (cloudsecurityalliance.org/star/registry)
+    spec_file: null
+    standard: CSA STAR
+    role: star-level-1
+    registered_name: Dassault Systèmes
+    registry_id: dassault-systemes
+    service_url: https://www.3ds.com/cloud
+    matched_domain: 3ds.com
+    matched_by: domain+name-among-holders
+    identity_source: the service URL the organisation filed on its STAR listing (no lookup)
+    levels:
+    - STAR Level 1
+    certified_products: []
+    signal_note: STAR Level 1 (CAIQ self-assessment) = participation; certified_products = one entry per STAR Level
+      2 / STAR for AI Level 2 assessment TYPE (third-party certification, attestation, C-STAR, ValidAIted); lapsed
+      = every instance marked (Deprecated) by the registry; service counts never recorded
+    detected_by: sweep-compliance-assurance.py
+    detected: '2026-10-20'
+  detected_by: sweep-compliance-assurance.py
+  first_seen: '2026-10-20'
+- partner_name: OPC Foundation (OPC UA)
+  partner: null
+  partner_match: register
+  type: register
+  direction: partner-built
+  evidence: https://opcfoundation.org/products/view/delmia-apriso/
+  category: OPC UA products
+  channel: standard-directory
+  relationship: standard-participant
+  contract_reference:
+    register: OPC Foundation product marketplace (opcfoundation.org/products)
+    spec_file: null
+    standard: OPC UA
+    role: OPC UA certified product vendor
+    registered_name: Dassault Systemes
+    member_id: '1648'
+    website: http://www.3ds.com
+    matched_domain: 3ds.com
+    matched_by: domain+name-among-holders
+    listed_products: 1
+    certified_products:
+    - product: MES
+      certified_listings: 1
+      lapsed: false
+    listed_categories: []
+    sample_products:
+    - Dassault Systemes DELMIA Apriso Show details
+    signal_note: certified_products = one entry per product CATEGORY with a certified product (diversity), never
+      per product; listed_products is context, never read
+    detected_by: sweep-industrial-robotics.py
+    detected: '2026-10-15'
+  detected_by: sweep-industrial-robotics.py
+  first_seen: '2026-10-15'
+- partner_name: OPC Foundation (OPC UA)
+  partner: null
+  partner_match: register
+  type: register
+  direction: partner-built
+  evidence: https://opcfoundation.org/products/view/delmia-apriso/
+  category: OPC UA products
+  channel: standard-directory
+  relationship: compatible
+  shape: opc-ua
+  evidence_kind: conformance-register
+  degree: certified
+  report_only: true
+  contract_reference:
+    register: OPC Foundation product marketplace (opcfoundation.org/products)
+    spec_file: null
+    standard: OPC UA
+    role: opc-ua-certified
+    registered_name: Dassault Systemes
+    matched_domain: 3ds.com
+    detected_by: sweep-industrial-robotics.py
+    detected: '2026-10-15'
+  detected_by: sweep-industrial-robotics.py
+  first_seen: '2026-10-15'
 generated: '2026-10-15'
 method: searched
 source:
 - https://opcfoundation.org/products/
 - https://marketplace.odva.org/organizations
 checked:
+- https://cloudsecurityalliance.org/star/registry
+- https://eucoc.cloud/en/public-register/list-of-adherent-services
 - https://marketplace.odva.org/organizations
 - https://opcfoundation.org/products/
 - https://repo.ros2.org/rosdistro_cache/humble-cache.yaml.gz
