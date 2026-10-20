@@ -136,36 +136,6 @@ edges:
     detected: '2026-10-19'
   detected_by: sweep-engineering-cad.py
   detected: '2026-10-19'
-- partner_name: Cloud Security Alliance STAR Registry
-  partner: null
-  partner_match: register
-  type: register
-  channel: standard-directory
-  relationship: standard-participant
-  direction: partner-built
-  evidence: https://cloudsecurityalliance.org/star/registry/dassault-systemes/services/3dexperience-platform-saas
-  category: Cloud security assurance
-  contract_reference:
-    register: CSA STAR Registry (cloudsecurityalliance.org/star/registry)
-    spec_file: null
-    standard: CSA STAR
-    role: star-level-1
-    registered_name: Dassault Systèmes
-    registry_id: dassault-systemes
-    service_url: https://www.3ds.com/cloud
-    matched_domain: 3ds.com
-    matched_by: domain+name-among-holders
-    identity_source: the service URL the organisation filed on its STAR listing (no lookup)
-    levels:
-    - STAR Level 1
-    certified_products: []
-    signal_note: STAR Level 1 (CAIQ self-assessment) = participation; certified_products = one entry per STAR Level
-      2 / STAR for AI Level 2 assessment TYPE (third-party certification, attestation, C-STAR, ValidAIted); lapsed
-      = every instance marked (Deprecated) by the registry; service counts never recorded
-    detected_by: sweep-compliance-assurance.py
-    detected: '2026-10-20'
-  detected_by: sweep-compliance-assurance.py
-  first_seen: '2026-10-20'
 - partner_name: OPC Foundation (OPC UA)
   partner: null
   partner_match: register
@@ -196,7 +166,7 @@ edges:
     signal_note: certified_products = one entry per product CATEGORY with a certified product (diversity), never
       per product; listed_products is context, never read
     detected_by: sweep-industrial-robotics.py
-    detected: '2026-10-15'
+    detected: '2026-10-19'
   detected_by: sweep-industrial-robotics.py
   first_seen: '2026-10-15'
 - partner_name: OPC Foundation (OPC UA)
@@ -220,9 +190,63 @@ edges:
     registered_name: Dassault Systemes
     matched_domain: 3ds.com
     detected_by: sweep-industrial-robotics.py
-    detected: '2026-10-15'
+    detected: '2026-10-19'
   detected_by: sweep-industrial-robotics.py
   first_seen: '2026-10-15'
+- partner_name: Cloud Security Alliance STAR Registry
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://cloudsecurityalliance.org/star/registry/dassault-systemes/services/3dexperience-platform-saas
+  category: Cloud security assurance
+  contract_reference:
+    register: CSA STAR Registry (cloudsecurityalliance.org/star/registry)
+    spec_file: null
+    standard: CSA STAR
+    role: star-level-1
+    registered_name: Dassault Systèmes
+    registry_id: dassault-systemes
+    service_url: https://www.3ds.com/cloud
+    matched_domain: 3ds.com
+    matched_by: domain+name-among-holders
+    identity_source: the service URL the organisation filed on its STAR listing (no lookup)
+    levels:
+    - STAR Level 1
+    certified_products: []
+    signal_note: STAR Level 1 (CAIQ self-assessment) = participation; certified_products = one entry per STAR Level
+      2 / STAR for AI Level 2 assessment TYPE (third-party certification, attestation, C-STAR, ValidAIted); lapsed
+      = every instance marked (Deprecated) by the registry; service counts never recorded
+    detected_by: sweep-compliance-assurance.py
+    detected: '2026-10-20'
+  detected_by: sweep-compliance-assurance.py
+  first_seen: '2026-10-20'
+- partner_name: Khronos Group (members)
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://www.khronos.org/members/list
+  category: graphics standards body membership
+  partner_tier: contributor
+  contract_reference:
+    register: Khronos Group members list (khronos.org/members/list)
+    standard: Khronos Group
+    spec_file: null
+    role: khronos-member
+    registered_name: Dassault Systemes
+    register_id: https://www.khronos.org/members/list
+    matched_domain: 3ds.com
+    matched_by: domain+name-among-holders
+    signal_note: 'participation only: membership level is partner_tier, never counted'
+    detected_by: sweep-xr-graphics.py
+    detected: '2026-10-20'
+  detected_by: sweep-xr-graphics.py
+  first_seen: '2026-10-20'
 generated: '2026-10-15'
 method: searched
 source:
@@ -238,6 +262,11 @@ checked:
 - https://repo.ros2.org/rosdistro_cache/kilted-cache.yaml.gz
 - https://repo.ros2.org/rosdistro_cache/rolling-cache.yaml.gz
 - https://www.3ds.com/partners/find-solution
+- https://landscape.aousd.org/data/full.json
+- https://www.khronos.org/conformance/adopters/conformant-companies
+- https://www.khronos.org/conformance/adopters/conformant-products
+- https://www.khronos.org/conformance/adopters/file-format-adopters
+- https://www.khronos.org/members/list
 marketplace_apps:
 - marketplace: own
   channel: partner-built
