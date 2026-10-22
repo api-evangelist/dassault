@@ -251,3 +251,43 @@
     detected: '2026-10-21'
   status: not-a-workflow
   arazzo: null
+- slug: dassault-cve-program-cve-numbering-authorities
+  label: CVE Program (CVE Numbering Authorities)
+  partner_name: CVE Program (CVE Numbering Authorities)
+  category: Vulnerability disclosure (CVE Numbering Authority)
+  type: register
+  channel: standard-directory
+  evidence: https://www.cve.org/PartnerInformation/ListofPartners/partner/Dassault_Systemes
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: CVE Program CNA list (github.com/CVEProject/cve-website CNAsList.json @ 239d3d9b68e0)
+    standard: CVE Program CNA Operational Rules (CVE Numbering Authority)
+    spec_file: null
+    role: cve-numbering-authority
+    registered_name: Dassault Systèmes
+    matched_domain: 3ds.com
+    matched_by: domain+name-among-holders
+    cna_id: CNA-2022-0023
+    cna_short_name: Dassault_Systemes
+    cna_types:
+    - Vendor
+    cna_roles:
+    - CNA
+    scope: All websites of the corporate group and of any subsidiaries, including but not limited to <a href='https://www.3ds.com'
+      target='_blank'>www.3ds.com</a> and <a href='https://www.solidworks.com' target='_blank'>www.solidworks.com</a>;
+      all Software as a Service solutions, such as 3DEXPERIENCE or ScienceCloud, but also any online hosting linked
+      to our brands; and all Dassault Systèmes licensed softwar
+    top_level_root: MITRE Corporation
+    root: n/a
+    security_advisories:
+    - https://www.3ds.com/vulnerability/advisories
+    disclosure_policy:
+    - https://www.3ds.com/vulnerability
+    country: France
+    signal_note: listing as a CVE Numbering Authority = participation (a public commitment to assign CVE IDs and
+      publish advisories for its scope); never a count of CVEs
+    detected_by: sweep-vulnerability-disclosure-cna.py
+    detected: '2026-10-22'
+  status: not-a-workflow
+  arazzo: null

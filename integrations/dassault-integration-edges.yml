@@ -272,6 +272,46 @@ edges:
     detected: '2026-10-21'
   detected_by: sweep-uk-g-cloud-suppliers.py
   first_seen: '2026-10-21'
+- partner_name: CVE Program (CVE Numbering Authorities)
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://www.cve.org/PartnerInformation/ListofPartners/partner/Dassault_Systemes
+  category: Vulnerability disclosure (CVE Numbering Authority)
+  contract_reference:
+    register: CVE Program CNA list (github.com/CVEProject/cve-website CNAsList.json @ 239d3d9b68e0)
+    standard: CVE Program CNA Operational Rules (CVE Numbering Authority)
+    spec_file: null
+    role: cve-numbering-authority
+    registered_name: Dassault Systèmes
+    matched_domain: 3ds.com
+    matched_by: domain+name-among-holders
+    cna_id: CNA-2022-0023
+    cna_short_name: Dassault_Systemes
+    cna_types:
+    - Vendor
+    cna_roles:
+    - CNA
+    scope: All websites of the corporate group and of any subsidiaries, including but not limited to <a href='https://www.3ds.com'
+      target='_blank'>www.3ds.com</a> and <a href='https://www.solidworks.com' target='_blank'>www.solidworks.com</a>;
+      all Software as a Service solutions, such as 3DEXPERIENCE or ScienceCloud, but also any online hosting linked
+      to our brands; and all Dassault Systèmes licensed softwar
+    top_level_root: MITRE Corporation
+    root: n/a
+    security_advisories:
+    - https://www.3ds.com/vulnerability/advisories
+    disclosure_policy:
+    - https://www.3ds.com/vulnerability
+    country: France
+    signal_note: listing as a CVE Numbering Authority = participation (a public commitment to assign CVE IDs and
+      publish advisories for its scope); never a count of CVEs
+    detected_by: sweep-vulnerability-disclosure-cna.py
+    detected: '2026-10-22'
+  detected_by: sweep-vulnerability-disclosure-cna.py
+  first_seen: '2026-10-22'
 generated: '2026-10-15'
 method: searched
 source:
@@ -296,6 +336,9 @@ checked:
 - https://www.applytosupply.digitalmarketplace.service.gov.uk/g-cloud-14/suppliers
 - https://www.crowncommercial.gov.uk/agreements
 - https://www.ncsc.gov.uk/cyberessentials/search
+- https://api.first.org/data/v1/teams
+- https://raw.githubusercontent.com/CVEProject/cve-website/dev/src/assets/data/CNAsList.json
+- https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json
 marketplace_apps:
 - marketplace: own
   channel: partner-built
